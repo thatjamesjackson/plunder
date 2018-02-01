@@ -6,6 +6,7 @@
 package byui.cit260.plunder.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -16,15 +17,16 @@ public class Player implements Serializable {
     //class instance variables
     private String name;
     private double bestTime;
-    private ArrayList<Game> games = new ArrayList<Game>();
+    private ArrayList<Game> games = new ArrayList<>();
 
-    public <any> getGames() {
+    public ArrayList<Game> getGames() {
         return games;
     }
 
-    public void setGames(<any> games) {
+    public void setGames(ArrayList<Game> games) {
         this.games = games;
     }
+
 
     public Player() {
     }
