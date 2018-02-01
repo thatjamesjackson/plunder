@@ -5,6 +5,8 @@
  */
 package plunder;
 
+import byui.cit260.plunder.model.Player;
+
 /**
  *
  * @author James
@@ -15,7 +17,11 @@ public class Plunder {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Player playerOne = new Player();
+        playerOne.setName("John");
+        playerOne.setBestTime(9999.99);
+        
+        System.out.println(playerOne.toString());
     }
     
 }
