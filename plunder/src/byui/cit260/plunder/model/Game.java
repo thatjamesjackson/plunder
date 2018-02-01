@@ -10,8 +10,18 @@ import java.io.Serializable;
  * @author James
  */
 public class Game implements Serializable{
-    double totalTime;
-    double progress;
+    private double totalTime;
+    private double progress;
+    private Player player;
+    private double money;
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
 
     @Override
     public String toString() {

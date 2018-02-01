@@ -10,8 +10,17 @@ package byui.cit260.plunder.model;
  * @author James
  */
 public enum Actor {
+    Captain("Bob", "a salty capatin", new Point(1,1), 100)
+   
     private String name;
-    private String Description;
+    private String description;
     private Point coordinates;
     private double money;
+ private Actor(String name, String description, Point coordinates, double money) {
+    this.name = name;
+    this.description = description;
+    this.coordinates = coordinates;
+    this.money = money;
+    }
+
 }
