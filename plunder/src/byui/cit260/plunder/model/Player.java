@@ -16,6 +16,18 @@ public class Player implements Serializable {
     //class instance variables
     private String name;
     private double bestTime;
+    private ArrayList<Game> games = new ArrayList<Game>();
+
+    public <any> getGames() {
+        return games;
+    }
+
+    public void setGames(<any> games) {
+        this.games = games;
+    }
+
+    public Player() {
+    }
 
     @Override
     public String toString() {
