@@ -5,22 +5,40 @@
  */
 package byui.cit260.plunder.model;
 
+import java.awt.Point;
+
 /**
  *
  * @author James
  */
 public enum Actor {
-    Captain("Bob", "a salty capatin", new Point(1,1), 100)
+    Captain("Bob", "A pirate capatin in search of treasure", new Point(1,1));
+
+    @Override
+    public String toString() {
+        return "Actor{" + "name=" + name + ", description=" + description + ", coordinates=" + coordinates + '}';
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Point getCoordinates() {
+        return coordinates;
+    }
    
     private String name;
     private String description;
     private Point coordinates;
-    private double money;
- private Actor(String name, String description, Point coordinates, double money) {
+
+ private Actor(String name, String description, Point coordinates) {
     this.name = name;
     this.description = description;
     this.coordinates = coordinates;
-    this.money = money;
     }
 
 }
