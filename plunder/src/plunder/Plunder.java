@@ -8,6 +8,7 @@ package plunder;
 import byui.cit260.plunder.model.Actor;
 import byui.cit260.plunder.model.Game;
 import byui.cit260.plunder.model.Player;
+import byui.cit260.plunder.model.Ship;
 
 /**
  *
@@ -28,11 +29,13 @@ public class Plunder {
         gameOne.setMoney(100);
         gameOne.setPlayer(playerOne);
         gameOne.setProgress(2);
-                
+        
+        Ship shipOne = new Ship("Salty Dog", 100, 500, 50, 10);
           
         System.out.println(playerOne.toString());
         System.out.println(gameOne.toString());
         System.out.println(Actor.Captain.toString());
+        System.out.println(shipOne.toString());
     }
     
 }
