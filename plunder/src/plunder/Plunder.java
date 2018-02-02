@@ -5,6 +5,7 @@
  */
 package plunder;
 
+import byui.cit260.plunder.model.Actor;
 import byui.cit260.plunder.model.Player;
 
 /**
@@ -21,7 +22,11 @@ public class Plunder {
         playerOne.setName("John");
         playerOne.setBestTime(9999.99);
         
+        
         System.out.println(playerOne.toString());
+        
+        
+        System.out.println(Actor.Captain.toString());
     }
     
 }

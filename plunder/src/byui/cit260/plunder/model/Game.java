@@ -15,6 +15,14 @@ public class Game implements Serializable{
     private Player player;
     private double money;
 
+    public double getMoney() {
+        return money;
+    }
+
+    public void setMoney(double money) {
+        this.money = money;
+    }
+
     public Player getPlayer() {
         return player;
     }
@@ -25,8 +33,9 @@ public class Game implements Serializable{
 
     @Override
     public String toString() {
-        return "Game{" + "totalTime=" + totalTime + ", progress=" + progress + '}';
+        return "Game{" + "totalTime=" + totalTime + ", progress=" + progress + ", player=" + player + ", money=" + money + '}';
     }
+
 
     @Override
     public int hashCode() {
