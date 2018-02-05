@@ -13,12 +13,16 @@ import java.util.Objects;
  * @author abigailking
  */
 public class Map implements Serializable{
+
+    public Map() {
+    }
     
     private String description;
     private double rowCount;
     private double columnCount;
     private double currentRow;
     private double currentColumn;
+    private Location[][] location;
 
     @Override
     public int hashCode() {
@@ -66,14 +70,6 @@ public class Map implements Serializable{
         return "Map{" + "description=" + description + ", rowCount=" + rowCount + ", columnCount=" + columnCount + ", currentRow=" + currentRow + ", currentColumn=" + currentColumn + '}';
     }
 
-    public Map(String description, double rowCount, double columnCount, double currentRow, double currentColumn) {
-        this.description = description;
-        this.rowCount = rowCount;
-        this.columnCount = columnCount;
-        this.currentRow = currentRow;
-        this.currentColumn = currentColumn;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -112,6 +108,14 @@ public class Map implements Serializable{
 
     public void setCurrentColumn(double currentColumn) {
         this.currentColumn = currentColumn;
+    }
+
+    public Location[][] getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location[][] location) {
+        this.location = location;
     }
     
 }

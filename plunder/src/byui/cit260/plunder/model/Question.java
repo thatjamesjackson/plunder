@@ -12,9 +12,14 @@ import java.util.Objects;
  * @author abigailking
  */
 public class Question {
+
     private boolean isAsked;
     private String askNPC;
     private String npcResponse;
+    private NPC[] npcs;
+    
+    public Question() {
+    }
 
     public boolean isIsAsked() {
         return isAsked;
@@ -39,11 +44,13 @@ public class Question {
     public void setNpcResponse(String npcResponse) {
         this.npcResponse = npcResponse;
     }
+    
+        public NPC[] getNpcs() {
+        return npcs;
+    }
 
-    public Question(boolean isAsked, String askNPC, String npcResponse) {
-        this.isAsked = isAsked;
-        this.askNPC = askNPC;
-        this.npcResponse = npcResponse;
+    public void setNpcs(NPC[] npcs) {
+        this.npcs = npcs;
     }
 
     @Override

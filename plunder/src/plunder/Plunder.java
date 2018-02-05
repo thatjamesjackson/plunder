@@ -38,7 +38,7 @@ public class Plunder {
         Ship shipOne = new Ship("Salty Dog", 100, 500, 50, 10);
         
         Map mapMain = new Map();
-        mapMain.setDescription("");
+        mapMain.setDescription("Yonder be water");
         mapMain.setRowCount(2);
         mapMain.setColumnCount(2);
         mapMain.setCurrentRow(2);
