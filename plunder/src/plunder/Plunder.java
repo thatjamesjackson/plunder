@@ -17,6 +17,12 @@ import byui.cit260.plunder.model.ResourceScene;
 import byui.cit260.plunder.model.Ship;
 import byui.cit260.plunder.model.Trap;
 
+import byui.cit260.plunder.model.Map;
+import byui.cit260.plunder.model.Location;
+import byui.cit260.plunder.model.InventoryItem;
+import byui.cit260.plunder.model.Question;
+
+
 /**
  *
  * @author James
@@ -76,6 +82,34 @@ public class Plunder {
         
         
         
+        
+        Map mapMain = new Map();
+        mapMain.setDescription("");
+        mapMain.setRowCount(2);
+        mapMain.setColumnCount(2);
+        mapMain.setCurrentRow(2);
+        mapMain.setCurrentColumn(2);
+        
+        Location locationOne = new Location();
+        locationOne.setRow(2);
+        locationOne.setColumn(2);
+        locationOne.setVisited(true);
+        
+        InventoryItem itemOne = new InventoryItem();
+        itemOne.setInventoryType("weapon");
+        itemOne.setQuantityInStock(1);
+        itemOne.setValue(200);
+        itemOne.setWeight(100);
+        
+        NPC npcOne = new NPC();
+        npcOne.setIsCrew(true);
+        npcOne.setCrewAttack(3);
+        npcOne.setCrewRepair(2);
+        
+        Question questionOne = new Question();
+        questionOne.setAskNPC("Have you been here before?");
+        questionOne.setNpcResponse("Yes, I know these seas well.");
+        questionOne.setIsAsked(true);
         System.out.println(playerOne.toString());
         System.out.println(gameOne.toString());
         System.out.println(Actor.Captain.toString());
@@ -85,7 +119,12 @@ public class Plunder {
         System.out.println(sceneD.toString());
         System.out.println(resultOne.toString());
         System.out.println(sceneT.toString());
-       
+        System.out.println(mapMain.toString());
+        System.out.println(locationOne.toString());
+        System.out.println(itemOne.toString());
+        System.out.println(npcOne.toString());
+        System.out.println(questionOne.toString());
+
     }
     
 }
