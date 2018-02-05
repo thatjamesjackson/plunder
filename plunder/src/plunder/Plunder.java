@@ -19,8 +19,10 @@ import byui.cit260.plunder.model.Trap;
 import byui.cit260.plunder.model.Map;
 import byui.cit260.plunder.model.Location;
 import byui.cit260.plunder.model.InventoryItem;
+import byui.cit260.plunder.model.NPC;
 import byui.cit260.plunder.model.Question;
 import byui.cit260.plunder.model.ShopScene;
+import byui.cit260.plunder.model.Upgrade;
 
 
 /**
@@ -74,10 +76,6 @@ public class Plunder {
         sceneT.setConsequnce(resultTwo);
         sceneT.setLostHealth(12);
         
-        ResourceScene sceneRe = new ResourceScene();
-        sceneRe.setAmount(100);
-        sceneRe.setDescription("You find some fish");
-        
         Upgrade cannonOne = new Upgrade();
         cannonOne.setType("attack");
         cannonOne.setCost(200);
@@ -106,6 +104,11 @@ public class Plunder {
         itemOne.setValue(200);
         itemOne.setWeight(100);
         
+        ResourceScene sceneRe = new ResourceScene();
+        sceneRe.setAmount(100);
+        sceneRe.setDescription("You find a weapon");
+        sceneRe.setResource(itemOne);
+        
         NPC npcOne = new NPC();
         npcOne.setIsCrew(true);
         npcOne.setCrewAttack(3);
@@ -129,7 +132,9 @@ public class Plunder {
         System.out.println(itemOne.toString());
         System.out.println(npcOne.toString());
         System.out.println(questionOne.toString());
-
+        System.out.println(sceneS.toString());
+        System.out.println(cannonOne.toString());
+        System.out.println(sceneRe.toString());
     }
     
 }
