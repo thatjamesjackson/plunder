@@ -67,13 +67,10 @@ public class Ship implements Serializable {
     private double armor;
     private double shipRepair;
 
-    public Ship(String name, double shipAttack, double carryWeight, double armor, double shipRepair) {
-        this.name = name;
-        this.shipAttack = shipAttack;
-        this.carryWeight = carryWeight;
-        this.armor = armor;
-        this.shipRepair = shipRepair;
+    public Ship() {
     }
+
+    
 
     public String getName() {
         return name;
