@@ -5,15 +5,21 @@
  */
 package byui.cit260.plunder.model;
 import java.io.Serializable;
+import java.util.ArrayList;
 /**
  *
  * @author James
  */
 public class Game implements Serializable{
+    
     private double totalTime;
     private double progress;
     private Player player;
     private double money;
+    private Map map;
+    private InventoryItem[] inventory;
+    private NPC[] npc;
+    
 
     public double getMoney() {
         return money;
@@ -29,6 +35,30 @@ public class Game implements Serializable{
 
     public void setPlayer(Player player) {
         this.player = player;
+    }
+    
+        public Map getMap() {
+        return map;
+    }
+
+    public void setMap(Map map) {
+        this.map = map;
+    }
+
+    public InventoryItem[] getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(InventoryItem[] inventory) {
+        this.inventory = inventory;
+    }
+
+    public NPC[] getNpc() {
+        return npc;
+    }
+
+    public void setNpc(NPC[] npc) {
+        this.npc = npc;
     }
 
     @Override
