@@ -10,9 +10,13 @@ package byui.cit260.plunder.model;
  * @author abigailking
  */
 public class Location {
+ 
     private int row;
     private int column;
-    private int visited;
+    private boolean visited;
+    
+    public Location() {
+    }
 
     public int getRow() {
         return row;
@@ -30,17 +34,11 @@ public class Location {
         this.column = column;
     }
 
-    public int getVisited() {
+    public boolean isVisited() {
         return visited;
     }
 
-    public void setVisited(int visited) {
-        this.visited = visited;
-    }
-
-    public Location(int row, int column, int visited) {
-        this.row = row;
-        this.column = column;
+    public void setVisited(boolean visited) {
         this.visited = visited;
     }
 
@@ -52,9 +50,9 @@ public class Location {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 71 * hash + this.row;
-        hash = 71 * hash + this.column;
-        hash = 71 * hash + this.visited;
+        hash = 67 * hash + this.row;
+        hash = 67 * hash + this.column;
+        hash = 67 * hash + (this.visited ? 1 : 0);
         return hash;
     }
 
@@ -81,4 +79,5 @@ public class Location {
         }
         return true;
     }
+
 }

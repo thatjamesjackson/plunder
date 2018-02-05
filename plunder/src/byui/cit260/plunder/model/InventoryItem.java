@@ -12,11 +12,14 @@ import java.util.Objects;
  * @author abigailking
  */
 public class InventoryItem {
+
     private String inventoryType;
     private double quantityInStock;
     private double value;
     private double weight;
-    private double money;
+
+    public InventoryItem() {
+    }
 
     public String getInventoryType() {
         return inventoryType;
@@ -50,35 +53,18 @@ public class InventoryItem {
         this.weight = weight;
     }
 
-    public double getMoney() {
-        return money;
-    }
-
-    public void setMoney(double money) {
-        this.money = money;
-    }
-
-    public InventoryItem(String inventoryType, double quantityInStock, double value, double weight, double money) {
-        this.inventoryType = inventoryType;
-        this.quantityInStock = quantityInStock;
-        this.value = value;
-        this.weight = weight;
-        this.money = money;
-    }
-
     @Override
     public String toString() {
-        return "InventoryItem{" + "inventoryType=" + inventoryType + ", quantityInStock=" + quantityInStock + ", value=" + value + ", weight=" + weight + ", money=" + money + '}';
+        return "InventoryItem{" + "inventoryType=" + inventoryType + ", quantityInStock=" + quantityInStock + ", value=" + value + ", weight=" + weight + '}';
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 59 * hash + Objects.hashCode(this.inventoryType);
-        hash = 59 * hash + (int) (Double.doubleToLongBits(this.quantityInStock) ^ (Double.doubleToLongBits(this.quantityInStock) >>> 32));
-        hash = 59 * hash + (int) (Double.doubleToLongBits(this.value) ^ (Double.doubleToLongBits(this.value) >>> 32));
-        hash = 59 * hash + (int) (Double.doubleToLongBits(this.weight) ^ (Double.doubleToLongBits(this.weight) >>> 32));
-        hash = 59 * hash + (int) (Double.doubleToLongBits(this.money) ^ (Double.doubleToLongBits(this.money) >>> 32));
+        int hash = 3;
+        hash = 89 * hash + Objects.hashCode(this.inventoryType);
+        hash = 89 * hash + (int) (Double.doubleToLongBits(this.quantityInStock) ^ (Double.doubleToLongBits(this.quantityInStock) >>> 32));
+        hash = 89 * hash + (int) (Double.doubleToLongBits(this.value) ^ (Double.doubleToLongBits(this.value) >>> 32));
+        hash = 89 * hash + (int) (Double.doubleToLongBits(this.weight) ^ (Double.doubleToLongBits(this.weight) >>> 32));
         return hash;
     }
 
@@ -103,12 +89,10 @@ public class InventoryItem {
         if (Double.doubleToLongBits(this.weight) != Double.doubleToLongBits(other.weight)) {
             return false;
         }
-        if (Double.doubleToLongBits(this.money) != Double.doubleToLongBits(other.money)) {
-            return false;
-        }
         if (!Objects.equals(this.inventoryType, other.inventoryType)) {
             return false;
         }
         return true;
     }
+   
 }

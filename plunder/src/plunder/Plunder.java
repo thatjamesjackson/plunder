@@ -89,7 +89,7 @@ public class Plunder {
         
         
         Map mapMain = new Map();
-        mapMain.setDescription("");
+        mapMain.setDescription("Yonder be water");
         mapMain.setRowCount(2);
         mapMain.setColumnCount(2);
         mapMain.setCurrentRow(2);
