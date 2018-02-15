@@ -10,6 +10,7 @@ package byui.cit260.plunder.control;
  * @author abigailking
  */
 public class CombatControl {
+
     public double recklessAttackDamage(double attack, double armor) {
 // attack is less than or equal to 0
         if (attack <= 0) {
@@ -26,9 +27,9 @@ public class CombatControl {
         double damage = attack * 2 * (100 - armor) / 100;
         return damage;
 
-        }
-    
-     public double normalAttackDamage(double attack, double armor) {
+    }
+
+    public double normalAttackDamage(double attack, double armor) {
 // attack is less than or equal to 0
         if (attack <= 0) {
             return - 1;
@@ -44,5 +45,5 @@ public class CombatControl {
         double damage = attack * (100 - armor) / 100;
         return damage;
 
-        }
+    }
 }
