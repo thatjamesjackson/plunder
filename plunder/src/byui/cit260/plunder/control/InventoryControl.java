@@ -14,13 +14,13 @@ public class InventoryControl {
     public double calculateWeight(double[] itemWeight, double[] itemQuantity) {
 
 // check all weights are not less than 0
-        for (int i = 0; i  < itemWeight.length; i++) {
+        for (int i = 0; i < itemWeight.length; i++) {
             if (itemWeight[i] < 0) {
                 return - 1;
             }
         }
 // check all quantities are not less than 0
-        for (int i = 0; i  < itemQuantity.length; i++) {
+        for (int i = 0; i < itemQuantity.length; i++) {
             if (itemQuantity[i] < 0) {
                 return - 2;
             }
