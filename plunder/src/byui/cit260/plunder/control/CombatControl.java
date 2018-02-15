@@ -5,6 +5,8 @@
  */
 package byui.cit260.plunder.control;
 
+import java.util.Random;
+
 /**
  *
  * @author abigailking
@@ -46,4 +48,28 @@ public class CombatControl {
         return damage;
 
     }
+    
+    public int doesHit(int accuracy, int evasion, int chance1, int chance2) {
+        Random randomGen = new Random();
+        
+        // int chance = randomGen.nextInt(26);
+        
+// limit negative numbers
+        if (accuracy < 0 || evasion < 0) {
+            return -1;
+        }
+        
+// limit chance between 0 and 25
+        if (chance1 < 0 || chance1 > 25 && chance2 < 0 || chance2 > 25) {
+            return -2;
+        }
+        
+// evaluate for hit even if happen to be equal
+        if (accuracy + chance1 >= evasion + chance2){
+            return 1;
+        }
+        
+        return 0;
+    } 
+    
 }
