@@ -50,7 +50,7 @@ public class CombatControl {
     }
     
     public int doesHit(int accuracy, int evasion, int chance1, int chance2) {
-        Random randomGen = new Random();
+        
         
         // int chance = randomGen.nextInt(26);
         
