@@ -13,10 +13,11 @@ public class StartProgramView {
     public void display() { 
  boolean endView = false; 
  do{
-String input = getInputs() ;
-if (input.charAt(0) == 'Q' || input.charAt(0)=='q' || input.length() == 0)
+String[] input = getInputs() ;
+String first = input[0].toUpperCase();
+if (first.equals('Q')|| input.length < 1)
  return;
-endView = doAction(inputs);
+endView = doAction(input);
     } while(endView != true);
 }
 
