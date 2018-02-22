@@ -13,11 +13,11 @@ public class StartProgramView {
     public void display() { 
  boolean endView = false; 
  do{
-String[] input = getInputs() ;
-String first = input[0].toUpperCase();
-if (first.equals('Q')|| input.length < 1)
+String[] inputs = getInputs() ;
+String first = inputs[0].toUpperCase();
+if (first.equals('Q')|| inputs.length < 1)
  return;
-endView = doAction(input);
+endView = doAction(inputs);
     } while(endView != true);
 }
 
@@ -26,5 +26,17 @@ endView = doAction(input);
     }
 
     public StartProgramView() {
+    }
+
+    private String[] getInputs() {
+        System.out.println("GET INPUTS CALLED");
+    String[] inputs = new String[1];
+    inputs[0] = "testInput";
+    return inputs;
+            }
+    private boolean doAction(String[] inputs) {
+        System.out.println("DO ACTION CALLED");
+        System.out.println("\tinputs = " + inputs[0]);
+        return true;
     }
 }
