@@ -13,8 +13,8 @@ public class StartProgramView {
     public void display() { 
  boolean endView = false; 
  do{
-inputs = getInputs() ;
-if (no inputs OR first input is Q);
+String input = getInputs() ;
+if (input.charAt(0) == 'Q' || input.charAt(0)=='q' || input.length() == 0)
  return;
 endView = doAction(inputs);
     } while(endView != true);
