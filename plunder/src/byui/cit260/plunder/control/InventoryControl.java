@@ -11,7 +11,7 @@ package byui.cit260.plunder.control;
  */
 public class InventoryControl {
 
-    public double calculateWeight(double[] itemWeight, double[] itemQuantity) {
+    public static double calculateWeight(double[] itemWeight, double[] itemQuantity) {
 
 // check all weights are not less than 0
         for (int i = 0; i < itemWeight.length; i++) {

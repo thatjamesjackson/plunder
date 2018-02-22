@@ -5,15 +5,13 @@
  */
 package byui.cit260.plunder.control;
 
-import java.util.Random;
-
 /**
  *
  * @author abigailking
  */
 public class CombatControl {
 
-    public double recklessAttackDamage(double attack, double armor) {
+    public static double recklessAttackDamage(double attack, double armor) {
 // attack is less than or equal to 0
         if (attack <= 0) {
             return - 1;
@@ -31,7 +29,7 @@ public class CombatControl {
 
     }
 
-    public double normalAttackDamage(double attack, double armor) {
+    public static double normalAttackDamage(double attack, double armor) {
 // attack is less than or equal to 0
         if (attack <= 0) {
             return - 1;

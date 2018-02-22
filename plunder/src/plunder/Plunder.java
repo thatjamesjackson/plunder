@@ -10,7 +10,6 @@ import byui.cit260.plunder.model.CombatScene;
 import byui.cit260.plunder.model.Decision;
 import byui.cit260.plunder.model.DecisionScene;
 import byui.cit260.plunder.model.Game;
-import byui.cit260.plunder.model.InventoryItem;
 import byui.cit260.plunder.model.Player;
 import byui.cit260.plunder.model.RegularScene;
 import byui.cit260.plunder.model.ResourceScene;
