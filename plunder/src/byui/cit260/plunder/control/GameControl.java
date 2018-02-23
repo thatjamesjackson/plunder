@@ -10,5 +10,7 @@ package byui.cit260.plunder.control;
  * @author abigailking
  */
 public class GameControl {
+    public static void savePlayer(String player) {
     
+    }
 }

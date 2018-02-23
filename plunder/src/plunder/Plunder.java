@@ -117,28 +117,28 @@ public class Plunder {
         StartProgramView startProgramView = new StartProgramView();
         startProgramView.display();
         
-        Question questionOne = new Question();
-        questionOne.setAskNPC("Have you been here before?");
-        questionOne.setNpcResponse("Yes, I know these seas well.");
-        questionOne.setIsAsked(true);
-        System.out.println(playerOne.toString());
-        System.out.println(gameOne.toString());
-        System.out.println(Actor.Captain.toString());
-        System.out.println(shipOne.toString());
-        System.out.println(sceneR.toString());
-        System.out.println(sceneC.toString());
-        System.out.println(sceneD.toString());
-        System.out.println(resultOne.toString());
-        System.out.println(sceneT.toString());
-        System.out.println(mapMain.toString());
-        System.out.println(locationOne.toString());
-        System.out.println(itemOne.toString());
-        System.out.println(npcOne.toString());
-        System.out.println(questionOne.toString());
-        System.out.println(sceneS.toString());
-        System.out.println(cannonOne.toString());
-        System.out.println(sceneRe.toString());
-        
+//        Question questionOne = new Question();
+//        questionOne.setAskNPC("Have you been here before?");
+//        questionOne.setNpcResponse("Yes, I know these seas well.");
+//        questionOne.setIsAsked(true);
+//        System.out.println(playerOne.toString());
+//        System.out.println(gameOne.toString());
+//        System.out.println(Actor.Captain.toString());
+//        System.out.println(shipOne.toString());
+//        System.out.println(sceneR.toString());
+//        System.out.println(sceneC.toString());
+//        System.out.println(sceneD.toString());
+//        System.out.println(resultOne.toString());
+//        System.out.println(sceneT.toString());
+//        System.out.println(mapMain.toString());
+//        System.out.println(locationOne.toString());
+//        System.out.println(itemOne.toString());
+//        System.out.println(npcOne.toString());
+//        System.out.println(questionOne.toString());
+//        System.out.println(sceneS.toString());
+//        System.out.println(cannonOne.toString());
+//        System.out.println(sceneRe.toString());
+         
     }
     
 }
