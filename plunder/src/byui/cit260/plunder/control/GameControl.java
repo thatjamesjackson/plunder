@@ -5,12 +5,17 @@
  */
 package byui.cit260.plunder.control;
 
+import byui.cit260.plunder.model.Player;
+
 /**
  *
  * @author abigailking
  */
 public class GameControl {
-    public static void savePlayer(String player) {
-    
+    public static Player savePlayer(String playerName) {
+        Player player = new Player();
+        player.setName(playerName);
+//        player.setBestTime(9999.99);
+        return player;
     }
 }

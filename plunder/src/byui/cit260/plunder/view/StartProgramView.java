@@ -5,6 +5,8 @@
  */
 package byui.cit260.plunder.view;
 
+import byui.cit260.plunder.control.GameControl;
+import byui.cit260.plunder.model.Player;
 import java.util.Scanner;
 
 /**
@@ -72,7 +74,15 @@ public class StartProgramView {
     private boolean doAction(String[] inputs) {
 //        System.out.println("DO ACTION CALLED");
 //        System.out.println("\tinputs = " + inputs[0]);
+        Player player = GameControl.savePlayer(inputs[0]);
         
+        if (player == null) {
+            System.out.println("Could not create the player "
+                    + "\t Enter a different name");
+            return false;
+        }
+        
+        System.out.println("Welcome " + inputs[0] + " to the seas of Paradise");
         return true;
     }
 }
