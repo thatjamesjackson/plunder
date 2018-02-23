@@ -22,6 +22,7 @@ import byui.cit260.plunder.model.NPC;
 import byui.cit260.plunder.model.Question;
 import byui.cit260.plunder.model.ShopScene;
 import byui.cit260.plunder.model.Upgrade;
+import byui.cit260.plunder.view.StartProgramView;
 
 
 /**
@@ -112,6 +113,9 @@ public class Plunder {
         npcOne.setIsCrew(true);
         npcOne.setCrewAttack(3);
         npcOne.setCrewRepair(2);
+        
+        StartProgramView startProgramView = new StartProgramView();
+        startProgramView.display();
         
         Question questionOne = new Question();
         questionOne.setAskNPC("Have you been here before?");
