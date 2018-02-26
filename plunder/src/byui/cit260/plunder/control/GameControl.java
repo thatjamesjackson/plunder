@@ -13,6 +13,7 @@ import byui.cit260.plunder.model.Player;
  */
 public class GameControl {
     public static Player savePlayer(String playerName) {
+        System.out.println("Save Player Called");
         Player player = new Player();
         player.setName(playerName);
 //        player.setBestTime(9999.99);

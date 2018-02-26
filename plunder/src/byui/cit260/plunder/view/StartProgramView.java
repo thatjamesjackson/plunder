@@ -83,6 +83,9 @@ public class StartProgramView {
         }
         
         System.out.println("Welcome " + inputs[0] + " to the seas of Paradise");
+        
+        MainMenuView mainMenuView = new MainMenuView();
+        mainMenuView.displayMainMenuView();
         return true;
     }
 }
