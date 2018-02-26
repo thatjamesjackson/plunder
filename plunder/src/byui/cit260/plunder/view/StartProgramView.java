@@ -42,26 +42,23 @@ public class StartProgramView {
         String[] inputs = new String[1];
         Scanner scan = new Scanner(System.in);
                     
-        System.out.println("****************************************\n" +
-"****************************************\n" +
-"****                                                                      ****\n" +
-"****                                                                      ****\n" +
-"****                                                                      ****\n" +
-"****                                                                      ****\n" +
-"****                                                                      ****\n" +
-"****                   Welcome to the                      ****\n" +
-"****                 waters of Paradise!                  ****\n" +
-"****        In this role playing pirate game,     ****\n" +
-"****     ye be the captain of this ship here.   ****\n" +
-"****        Set sails and search for plunder.     ****\n" +
-"****    There be talk of a near off treasure    ****\n" +
-"****                                                                      ****\n" +
-"****                                                                      ****\n" +
-"****                                                                      ****\n" +
-"****                                                                      ****\n" +
-"****                                                                      ****\n" +
-"****************************************\n" +
-"****************************************");
+        System.out.println(
+                "**********************************************\n" +
+                "**********************************************\n" +
+                "****                                      ****\n" +
+                "****                                      ****\n" +
+                "****                                      ****\n" +
+                "****           Welcome to the             ****\n" +
+                "****         waters of Paradise!          ****\n" +
+                "****   In this role playing pirate game,  ****\n" +
+                "**** ye be the captain of this ship here. ****\n" +
+                "****   Set sails and search for plunder.  ****\n" +
+                "**** There be talk of a near off treasure ****\n" +
+                "****                                      ****\n" +
+                "****                                      ****\n" +
+                "****                                      ****\n" +
+"                **********************************************\n" +
+"                **********************************************");
         boolean valid = false;
         while (valid == false){
             System.out.println("Enter the player's name");
