@@ -6,6 +6,7 @@
 package byui.cit260.plunder.control;
 
 import byui.cit260.plunder.model.Player;
+import plunder.Plunder;
 
 /**
  *
@@ -14,9 +15,12 @@ import byui.cit260.plunder.model.Player;
 public class GameControl {
     public static Player savePlayer(String playerName) {
         System.out.println("Save Player Called");
+        if (playerName.equals(" ")||playerName.equals("") ) {
+        return null;
+        }
         Player player = new Player();
         player.setName(playerName);
-//        player.setBestTime(9999.99);
+        Plunder.setPlayer(player);
         return player;
     }
 }

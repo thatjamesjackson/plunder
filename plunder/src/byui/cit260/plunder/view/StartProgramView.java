@@ -67,7 +67,7 @@ public class StartProgramView {
             System.out.println("Enter the player's name");
             
             String name = scan.nextLine();
-            if (name.equals(" ") ) {
+            if (name.equals(" ")||name.equals("") ) {
                 System.out.println("invalid value entered");
                 continue;
             }
@@ -96,10 +96,12 @@ public class StartProgramView {
             return false;
         }
         
-        System.out.println("Welcome " + inputs[0] + " to the seas of Paradise");
+        System.out.println("============================================================\n"
+                + "Welcome " + inputs[0] + " to the seas of Paradise\n"
+                        + "============================================================\n");
         
         MainMenuView mainMenuView = new MainMenuView();
-        mainMenuView.displayMainMenuView();
+        mainMenuView.display();
         return true;
     }
 }
