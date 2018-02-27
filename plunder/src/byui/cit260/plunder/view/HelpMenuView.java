@@ -24,8 +24,7 @@ public class HelpMenuView {
                                 "  T – How to trade \n" +
                                 "  S - Save game\n" +
                                 "  R - Restart game\n" +
-                                "  P - Pause game\n" +
-                                "  Q - Quit game");
+                                "  Q - Quit help menu");
             String[] inputs = getInputs();
             String first = inputs[0].toUpperCase();
             if (first.length() != 1 || first.equals(" ")) {
@@ -35,7 +34,7 @@ public class HelpMenuView {
             
 
             
-        endView = doAction(first);
+        endView = doAction(inputs);
     } while(endView != true);
 }
 
@@ -62,23 +61,36 @@ public class HelpMenuView {
 //        System.out.println("DO ACTION CALLED");
 //        System.out.println("\tinputs = " + inputs[0]);
         System.out.println("DO ACTION CALLED");
-     switch (input) {
-                case "N":
-                    startNewGame();
-                    break;
+     switch(inputs[0]){
+         case "G":
+               System.out.println("game goal");
+             break;
 
-                case "R":
-                    restartGame();
-                    break;
+         case "M":
+             System.out.println("how to move");
+             break;
 
-                case "H":
-                   getHelp();
-                    break;
+         case "C":
+             System.out.println("how to combat");
+             break;
 
-                case "Q":
-                    return true;
-                default:
-                        System.out.println("Invalid Menu Item");
+         case "T":
+             System.out.println("how to trade");
+             break;
+
+         case "S":
+             System.out.println("save game");
+             break;
+
+         case "R":
+             System.out.println("restart game");
+             break;
+
+         case "Q":
+             return true;
+             
+         default:
+             System.out.println("Invalid Menu Item");
                     
         }
      return true;
