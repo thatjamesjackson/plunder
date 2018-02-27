@@ -19,7 +19,7 @@ public class MainMenuView {
         
         do{
              System.out.println("  N - New game\n"
-                    + "  L - Load Game\n"
+                    + "  R - Restart Game\n"
                     + "  H - Help\n"
                     + "  Q - Quit Program");
             String[] inputs = getInputs();

@@ -5,8 +5,7 @@
  */
 package byui.cit260.plunder.view;
 
-import byui.cit260.plunder.control.GameControl;
-import byui.cit260.plunder.model.Player;
+
 import java.util.Scanner;
 
 /**
@@ -28,13 +27,13 @@ public class HelpMenuView {
             String[] inputs = getInputs();
             String first = inputs[0].toUpperCase();
             if (first.length() != 1 || first.equals(" ")) {
-                System.out.println("Please enter a valid option");
+                System.out.println("Please enter a menu item");
                 continue;
             }
             
 
             
-        endView = doAction(inputs);
+        endView = doAction(first);
     } while(endView != true);
 }
 
@@ -47,9 +46,6 @@ public class HelpMenuView {
     }
 
     private String[] getInputs() {
-//        System.out.println("GET INPUTS CALLED");
-//        String[] inputs = new String[1];
-//        inputs[0] = "testInput";
 
         String[] inputs = new String[1];
         Scanner scan = new Scanner(System.in);
@@ -57,11 +53,11 @@ public class HelpMenuView {
         return inputs;
     }
     
-    private boolean doAction(String[] inputs) {
+    private boolean doAction(String input) {
 //        System.out.println("DO ACTION CALLED");
 //        System.out.println("\tinputs = " + inputs[0]);
         System.out.println("DO ACTION CALLED");
-     switch(inputs[0]){
+     switch(input){
          case "G":
                System.out.println("game goal");
              break;
@@ -93,6 +89,6 @@ public class HelpMenuView {
              System.out.println("Invalid Menu Item");
                     
         }
-     return true;
+     return false;
     }
 }
