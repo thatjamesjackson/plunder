@@ -67,23 +67,23 @@ public class HelpMenuView {
              break;
 
          case "M":
-             System.out.println("how to move");
+               System.out.println("how to move");
              break;
 
          case "C":
-             System.out.println("how to combat");
+               System.out.println("how to combat");
              break;
 
          case "T":
-             System.out.println("how to trade");
+               System.out.println("how to trade");
              break;
 
          case "S":
-             System.out.println("save game");
+               System.out.println("save game");
              break;
 
          case "R":
-             System.out.println("restart game");
+               System.out.println("restart game");
              break;
 
          case "Q":
