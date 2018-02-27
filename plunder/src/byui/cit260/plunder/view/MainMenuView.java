@@ -23,7 +23,7 @@ public class MainMenuView {
             String[] inputs = getInputs();
             String first = inputs[0].toUpperCase();
             if (first.length() != 1 || first.equals(" ")) {
-                System.out.println("Please enter a valid option");
+                System.out.println("Please enter a menu item");
                 continue;
             }
             
@@ -33,9 +33,6 @@ public class MainMenuView {
     } while(endView != true);
     }
 
-    public MainMenuView() {
-        System.out.println("MAIN MENU CALLED");
-    }
 
     private String[] getInputs() {
         String[] inputs = new String[1];
@@ -45,7 +42,6 @@ public class MainMenuView {
     }
 
     private boolean doAction(String input) {
-     System.out.println("DO ACTION CALLED");
      switch (input) {
                 case "N":
                     startNewGame();
@@ -65,7 +61,7 @@ public class MainMenuView {
                         System.out.println("Invalid Menu Item");
                     
         }
-     return true;
+     return false;
     }
 
     private void startNewGame() {
