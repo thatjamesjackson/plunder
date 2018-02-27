@@ -16,10 +16,10 @@ public class MainMenuView {
     boolean endView = false; 
         
         do{
-             System.out.println("N - New game\n"
-                    + "L - Load Game\n"
-                    + "H - Help\n"
-                    + "Q - Quit Program");
+             System.out.println("  N - New game\n"
+                    + "  L - Load Game\n"
+                    + "  H - Help\n"
+                    + "  Q - Quit Program");
             String[] inputs = getInputs();
             String first = inputs[0].toUpperCase();
             if (first.length() != 1 || first.equals(" ")) {
