@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package byui.cit260.plunder.view;
+import byui.cit260.plunder.control.GameControl;
 import java.util.Scanner;
+import plunder.Plunder;
 /**
  *
  * @author James
@@ -65,14 +67,19 @@ public class MainMenuView {
     }
 
     private void startNewGame() {
-       System.out.println("NEW GAME");
+    //Create a new Game 
+    GameControl.createNewGame(Plunder.getPlayer());
+    GameMenuView gameMenuView =  new GameMenuView();
+    gameMenuView.display();
     }
 
     private void restartGame() {
-       System.out.println("RESTART GAME");
+       StartExistingGameView startExistingGameView = new StartExistingGameView();
+       startExistingGameView.display();
     }
 
     private void getHelp() {
-        System.out.println("GET HELP");
+        HelpMenuView helpMenuView = new HelpMenuView();
+        helpMenuView.display();
     }
 }
