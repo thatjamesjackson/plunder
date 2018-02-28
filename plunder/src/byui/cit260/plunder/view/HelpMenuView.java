@@ -46,7 +46,7 @@ public class HelpMenuView {
     }
 
     private String[] getInputs() {
-
+        //retrive inputs from user
         String[] inputs = new String[1];
         Scanner scan = new Scanner(System.in);
         inputs[0] = scan.nextLine();
@@ -54,9 +54,6 @@ public class HelpMenuView {
     }
     
     private boolean doAction(String input) {
-//        System.out.println("DO ACTION CALLED");
-//        System.out.println("\tinputs = " + inputs[0]);
-        System.out.println("DO ACTION CALLED");
      switch(input){
          case "G":
                System.out.println("============================================================\n"
