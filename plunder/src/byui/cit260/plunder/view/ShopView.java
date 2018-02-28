@@ -16,7 +16,7 @@ public class ShopView {
         boolean endView = false; 
         
         do{
-             System.out.println("                _____\n" +
+             System.out.println("                 _____\n" +
                                 "              .-\" .-. \"-.\n" +
                                 "            _/ '=(0.0)=' \\_\n" +
                                 "          /`   .='|m|'=.   `\\\n" +
