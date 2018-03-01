@@ -11,24 +11,28 @@ import java.util.Scanner;
  *
  * @author abigailking
  */
-public class ShopView {
+public class InventoryView {
     public void display() { 
         
         boolean endView = false; 
         do{
-             System.out.println("                 _____\n" +
-                                "              .-\" .-. \"-.\n" +
-                                "            _/ '=(0.0)=' \\_\n" +
-                                "          /`   .='|m|'=.   `\\\n" +
-                                "          \\________________ /\n" +
-                                "      .--.__///`'-,__~\\\\~`\n" +
-                                "     / /6|__\\/ a (__)-\\\\n" +
-                                "     \\ \\--`((  ._\\   ,)))\n" +
-                                "     /  \\\\  ))\\  -==-  (O)(\n" +
-                                "    /    )\\((((\\   .  /)))))\n" +
-                                "   /    _.' /  __(`~~~~`)__\n" +
-                                "  //\"\\\\,-'-\"` `~~~~\\\\~~`\"-.\n" +
-                                " //  /`\"              `      `\\\n" +
+             System.out.println(
+"                           .=\"\"_;=.\n" +
+"                       ,-\"_,=\"\"     `\"=.\n" +
+"                       \"=._o`\"-._        `\"=.\n" +
+"                           `\"=._o`\"=._      _`\"=.\n" +
+"                               :=._o \"=._.\"_.-=\"'\"=.\n" +
+"                           .--\" , ; `\"=._o.\" ,-\"\"\"-._ \".\n" +
+"                        ._\"  ,. .` ` `` ,  `\"-._\"-._   \". '\n" +
+"                      |o`\"=._` , \"` `; .\". ,  \"-._\"-._; ;\n" +
+"                      | ;`-.o`\"=._; .\" ` '`.\"\\` . \"-._ /\n" +
+"                      |o;    `\"-.o`\"=._``  '` \" ,__.--o;\n" +
+"                      | ;     (#) `-.o `\"=.`_.--\"_o.-; ;\n" +
+"                      |o;._    \"      `\".o|o_.--\"    ;o;\n" +
+"                       \"=._o--._        ; | ;        ; ;\n" +
+"                             =._o--._   ;o|o;     _._;o;\n" +
+"                                  =._o._; | ;_.--\"o.--\"\n" +
+"                                        =.o|o_.--\"\"" +
                                 "========================================\n" +
                                 "          What do ya want?\n" +
                                 "            B - Buy\n" +
@@ -75,12 +79,10 @@ public class ShopView {
     }
 
     private void buyShop() {
-        
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     private void sellShop() {
-        
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
 }
