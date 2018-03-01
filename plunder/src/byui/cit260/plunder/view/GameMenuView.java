@@ -36,7 +36,7 @@ public class GameMenuView {
                              + "  I - Check Inventory\n"
                              + "  C - Check Crew\n"
                              + "  B - Check Ship\n"
-                             + "  E - Explore\n"
+                             + "  P - Explore\n"
                              + "  H - Help\n"
                              + "  V - Save\n"
                              + "  X - Exit");
@@ -46,16 +46,15 @@ public class GameMenuView {
                 System.out.println("Please enter a menu item");
                 continue;
             }
-               
-        endView = doAction(first);
-    } while(endView != true);
-}
-    
-    
-    public GameMenuView() {
-        
+
+            endView = doAction(first);
+        } while (endView != true);
     }
-    
+
+    public GameMenuView() {
+
+    }
+
     private String[] getInputs() {
 
         String[] inputs = new String[1];
@@ -64,9 +63,98 @@ public class GameMenuView {
         return inputs;
     }
 
-    private boolean doAction(String first) {
-        
+    private boolean doAction(String input) {
+        switch (input) {
+            case "N":
+                travelNorth();
+                break;
+
+            case "W":
+                travelWest();
+                break;
+
+            case "E":
+                travelEast();
+                break;
+
+            case "S":
+                travelSouth();
+                break;
+
+            case "I":
+                checkInventory();
+                break;
+
+            case "C":
+                checkCrew();
+                break;
+
+            case "B":
+                checkShip();
+                break;
+
+            case "P":
+                doExplore();
+                break;
+
+            case "H":
+                loadHelp();
+                break;
+
+            case "V":
+                saveGame();
+                break;
+
+            case "X":
+                return true;
+
+            default:
+                System.out.println("Invalid Menu Item");
+
+        }
         return false;
+    }
+
+    private void travelNorth() {
+        
+    }
+
+    private void travelWest() {
+        
+    }
+
+    private void travelEast() {
+        
+    }
+
+    private void travelSouth() {
+        
+    }
+
+    private void checkInventory() {
+        
+    }
+
+    private void checkCrew() {
+        
+    }
+
+    private void checkShip() {
+        
+    }
+
+    private void doExplore() {
+        
+    }
+    
+    private void loadHelp() {
+        HelpMenuView gameHelp = new HelpMenuView();
+        
+        gameHelp.displayHelpMenuView();
+    }
+
+    private void saveGame() {
+        
     }
 
 }

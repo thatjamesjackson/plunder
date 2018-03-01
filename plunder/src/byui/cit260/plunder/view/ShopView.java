@@ -13,21 +13,21 @@ import java.util.Scanner;
  */
 public class ShopView {
     public void display() { 
-        boolean endView = false; 
         
+        boolean endView = false; 
         do{
              System.out.println("                 _____\n" +
                                 "              .-\" .-. \"-.\n" +
                                 "            _/ '=(0.0)=' \\_\n" +
                                 "          /`   .='|m|'=.   `\\\n" +
                                 "          \\________________ /\n" +
-                                "      .--.__///`'-,__~\\\\\\\\~`\n" +
-                                "     / /6|__\\// a (__)-\\\\\\\\\n" +
-                                "     \\ \\/--`((   ._\\   ,)))\n" +
+                                "      .--.__///`'-,__~\\\\~`\n" +
+                                "     / /6|__\\/ a (__)-\\\\n" +
+                                "     \\ \\--`((  ._\\   ,)))\n" +
                                 "     /  \\\\  ))\\  -==-  (O)(\n" +
                                 "    /    )\\((((\\   .  /)))))\n" +
-                                "   /  _.' /  __(`~~~~`)__\n" +
-                                "  //\"\\\\,-'-\"`   `~~~~\\\\~~`\"-.\n" +
+                                "   /    _.' /  __(`~~~~`)__\n" +
+                                "  //\"\\\\,-'-\"` `~~~~\\\\~~`\"-.\n" +
                                 " //  /`\"              `      `\\\n" +
                                 "========================================\n" +
                                 "          What do ya want?\n" +
@@ -40,8 +40,6 @@ public class ShopView {
                 System.out.println("Please enter a menu item");
                 continue;
             }
-            
-
             
         endView = doAction(first);
     } while(endView != true);
