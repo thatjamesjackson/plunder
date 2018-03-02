@@ -15,13 +15,13 @@ import java.util.Scanner;
 public class InventoryView {
     public void display() { 
         
-        InventoryControl weight = calculateWeight(double[] itemWeight, double[] itemQuantity);
+        //InventoryControl weight = calculateWeight(double[] itemWeight, double[] itemQuantity);
         
         boolean endView = false; 
         do{
              System.out.println(
-                                "     Our ship be sitting at " + weight + "tonnes"
-                                "============================================\n" +
+                                "  Our ship be sitting at " + weight + "tonnes\n"
+                                "===============================================\n" +
                                 "           What do ya want to do?\n" +
                                 "              B - Buy\n" +
                                 "              S - Sell all loot\n" +
