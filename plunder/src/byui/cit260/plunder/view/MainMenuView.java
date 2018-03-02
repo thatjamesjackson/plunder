@@ -5,6 +5,7 @@
  */
 package byui.cit260.plunder.view;
 import byui.cit260.plunder.control.GameControl;
+import byui.cit260.plunder.model.Ship;
 import java.util.Scanner;
 import plunder.Plunder;
 /**
@@ -47,25 +48,45 @@ public class MainMenuView {
 
     private boolean doAction(String input) {
         //switch for the menu
-     switch (input) {
-                case "N":
-                    startNewGame();
-                    break;
+        switch (input) {
+            case "C":
+                CombatView combatView = new CombatView();
+                Ship shipOne = new Ship();
+                shipOne.setName("Salty Dog");
+                shipOne.setShipAttack(100);
+                shipOne.setCarryWeight(500);
+                shipOne.setArmor(50);
+                shipOne.setShipRepair(10);
+                shipOne.setShipHealth(100);
+                
+                Ship shipTwo = new Ship();
+                shipTwo.setName("Man of War");
+                shipTwo.setShipAttack(100);
+                shipTwo.setCarryWeight(500);
+                shipTwo.setArmor(50);
+                shipTwo.setShipRepair(10);
+                shipTwo.setShipHealth(100);
+                
+                combatView.display(shipOne, shipTwo);
+                break;
+            case "N":
+                startNewGame();
+                break;
 
-                case "R":
-                    restartGame();
-                    break;
+            case "R":
+                restartGame();
+                break;
 
-                case "H":
-                   getHelp();
-                    break;
+            case "H":
+                getHelp();
+                break;
 
-                case "Q":
-                    //this is the only way to exit this loop
-                    return true;
-                default:
-                        System.out.println("Invalid Menu Item");
-                    
+            case "Q":
+                //this is the only way to exit this loop
+                return true;
+            default:
+                System.out.println("Invalid Menu Item");
+
         }
      return false;
     }
