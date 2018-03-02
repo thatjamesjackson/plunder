@@ -8,13 +8,12 @@ package byui.cit260.plunder.control;
 import byui.cit260.plunder.model.Player;
 import plunder.Plunder;
 
-/**
- *
- * @author abigailking
- */
+
 public class GameControl {
     public static Player savePlayer(String playerName) {
+        //make a new player with name based on input
         System.out.println("Save Player Called");
+        //fail if there is no name
         if (playerName.equals(" ")||playerName.equals("") ) {
         return null;
         }

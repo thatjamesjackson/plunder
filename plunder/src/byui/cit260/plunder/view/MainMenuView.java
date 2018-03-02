@@ -15,6 +15,7 @@ public class MainMenuView {
     
     
     public void display(){
+        //display the menu
     boolean endView = false; 
         
         do{
@@ -37,6 +38,7 @@ public class MainMenuView {
 
 
     private String[] getInputs() {
+        //get inputs from user
         String[] inputs = new String[1];
         Scanner scan = new Scanner(System.in);
         inputs[0] = scan.nextLine();
@@ -44,6 +46,7 @@ public class MainMenuView {
     }
 
     private boolean doAction(String input) {
+        //switch for the menu
      switch (input) {
                 case "N":
                     startNewGame();
@@ -58,6 +61,7 @@ public class MainMenuView {
                     break;
 
                 case "Q":
+                    //this is the only way to exit this loop
                     return true;
                 default:
                         System.out.println("Invalid Menu Item");
@@ -74,11 +78,13 @@ public class MainMenuView {
     }
 
     private void restartGame() {
+        //restart the game
        StartExistingGameView startExistingGameView = new StartExistingGameView();
        startExistingGameView.display();
     }
 
     private void getHelp() {
+        //help menu
         HelpMenuView helpMenuView = new HelpMenuView();
         helpMenuView.display();
     }
