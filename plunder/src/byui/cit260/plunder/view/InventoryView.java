@@ -5,6 +5,8 @@
  */
 package byui.cit260.plunder.view;
 
+import byui.cit260.plunder.control.InventoryControl;
+import static byui.cit260.plunder.control.InventoryControl.calculateWeight;
 import java.util.Scanner;
 
 /**
@@ -13,31 +15,21 @@ import java.util.Scanner;
  */
 public class InventoryView {
     public void display() { 
+        double[] itemWeight = {100,200};
+        double[] itemQuantity = {10,5};
+        
+        double weight = InventoryControl.calculateWeight(itemWeight, itemQuantity);
         
         boolean endView = false; 
         do{
              System.out.println(
-"                           .=\"\"_;=.\n" +
-"                       ,-\"_,=\"\"     `\"=.\n" +
-"                       \"=._o`\"-._        `\"=.\n" +
-"                           `\"=._o`\"=._      _`\"=.\n" +
-"                               :=._o \"=._.\"_.-=\"'\"=.\n" +
-"                           .--\" , ; `\"=._o.\" ,-\"\"\"-._ \".\n" +
-"                        ._\"  ,. .` ` `` ,  `\"-._\"-._   \". '\n" +
-"                      |o`\"=._` , \"` `; .\". ,  \"-._\"-._; ;\n" +
-"                      | ;`-.o`\"=._; .\" ` '`.\"\\` . \"-._ /\n" +
-"                      |o;    `\"-.o`\"=._``  '` \" ,__.--o;\n" +
-"                      | ;     (#) `-.o `\"=.`_.--\"_o.-; ;\n" +
-"                      |o;._    \"      `\".o|o_.--\"    ;o;\n" +
-"                       \"=._o--._        ; | ;        ; ;\n" +
-"                             =._o--._   ;o|o;     _._;o;\n" +
-"                                  =._o._; | ;_.--\"o.--\"\n" +
-"                                        =.o|o_.--\"\"" +
-                                "========================================\n" +
-                                "          What do ya want?\n" +
-                                "            B - Buy\n" +
-                                "            S - Sell all loot\n" +
-                                "            R - Return to ship");
+                                "  Our ship be sitting at " + weight + "tonnes\n"
+                              + "===============================================\n"
+                              + "           What do ya want to do?\n"
+                              + "              L - List Inventory\n"
+                              + "              S - Sell all loot\n"
+                              + "              D - Drop Cargo\n"
+                              + "              R - Return to navigation");
             String[] inputs = getInputs();
             String first = inputs[0].toUpperCase();
             if (first.length() != 1 || first.equals(" ")) {
@@ -60,14 +52,18 @@ public class InventoryView {
     private boolean doAction(String input) {
         
         switch (input) {
-            case "B":
-                buyShop();
+            case "L":
+                listInventory();
                 break;
 
             case "S":
                 sellShop();
                 break;
-
+                
+            case "D":
+                dropCargo();
+                break;
+                
             case "R":
                 return true;
 
@@ -78,11 +74,27 @@ public class InventoryView {
         return false; 
     }
 
-    private void buyShop() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private void listInventory() {
+        
     }
 
     private void sellShop() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+    }
+
+    private void dropCargo() {
+        System.out.println("Here is your inventory. What do you wanna drop?\n" +
+                           "C - cotton - 2 tonnes\n" +
+                           "G - gold - 10 tonnes\n" +
+                           "B - cannon balls - 20 tonnes");
+        
+        // get input as to what to drop
+        //String[] dropWhat = new String[1];
+        //Scanner scan = new Scanner(System.in);
+        //dropWhat[0] = scan.nextLine();
+        //return dropWhat;
+        
+        // how much to drop
+        //System.out.println("How much of " + dropWhat + " do you want to unload?");
     }
 }

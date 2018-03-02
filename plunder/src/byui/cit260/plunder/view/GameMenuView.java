@@ -116,35 +116,38 @@ public class GameMenuView {
     }
 
     private void travelNorth() {
-        
+        System.out.println("You are traveling North");
     }
 
     private void travelWest() {
-        
+        System.out.println("You are traveling West");
     }
 
     private void travelEast() {
-        
+        System.out.println("You are traveling East");
     }
 
     private void travelSouth() {
-        
+        System.out.println("You are traveling South");
     }
 
     private void checkInventory() {
+        System.out.println("Let's see what we have here on the boat");
         
+        InventoryView checkInventory = new InventoryView();
+        checkInventory.display();
     }
 
     private void checkCrew() {
-        
+        System.out.println("Attention! Sound off");
     }
 
     private void checkShip() {
-        
+        System.out.println("Our ship looks yar");
     }
 
     private void doExplore() {
-        
+        System.out.println("Here be water");
     }
     
     private void loadHelp() {
