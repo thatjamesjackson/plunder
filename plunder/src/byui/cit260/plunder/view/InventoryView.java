@@ -5,6 +5,7 @@
  */
 package byui.cit260.plunder.view;
 
+import static byui.cit260.plunder.control.InventoryControl.calculateWeight;
 import java.util.Scanner;
 
 /**
@@ -14,30 +15,18 @@ import java.util.Scanner;
 public class InventoryView {
     public void display() { 
         
+        InventoryControl weight = calculateWeight(double[] itemWeight, double[] itemQuantity);
+        
         boolean endView = false; 
         do{
              System.out.println(
-"                           .=\"\"_;=.\n" +
-"                       ,-\"_,=\"\"     `\"=.\n" +
-"                       \"=._o`\"-._        `\"=.\n" +
-"                           `\"=._o`\"=._      _`\"=.\n" +
-"                               :=._o \"=._.\"_.-=\"'\"=.\n" +
-"                           .--\" , ; `\"=._o.\" ,-\"\"\"-._ \".\n" +
-"                        ._\"  ,. .` ` `` ,  `\"-._\"-._   \". '\n" +
-"                      |o`\"=._` , \"` `; .\". ,  \"-._\"-._; ;\n" +
-"                      | ;`-.o`\"=._; .\" ` '`.\"\\` . \"-._ /\n" +
-"                      |o;    `\"-.o`\"=._``  '` \" ,__.--o;\n" +
-"                      | ;     (#) `-.o `\"=.`_.--\"_o.-; ;\n" +
-"                      |o;._    \"      `\".o|o_.--\"    ;o;\n" +
-"                       \"=._o--._        ; | ;        ; ;\n" +
-"                             =._o--._   ;o|o;     _._;o;\n" +
-"                                  =._o._; | ;_.--\"o.--\"\n" +
-"                                        =.o|o_.--\"\"" +
-                                "========================================\n" +
-                                "          What do ya want?\n" +
-                                "            B - Buy\n" +
-                                "            S - Sell all loot\n" +
-                                "            R - Return to ship");
+                                "     Our ship be sitting at " + weight + "tonnes"
+                                "============================================\n" +
+                                "           What do ya want to do?\n" +
+                                "              B - Buy\n" +
+                                "              S - Sell all loot\n" +
+                                "              D - Drop Cargo\n" +
+                                "              R - Return to ship");
             String[] inputs = getInputs();
             String first = inputs[0].toUpperCase();
             if (first.length() != 1 || first.equals(" ")) {
@@ -67,7 +56,10 @@ public class InventoryView {
             case "S":
                 sellShop();
                 break;
-
+                
+            case "D":
+                dropCargo();
+                break;
             case "R":
                 return true;
 
@@ -79,10 +71,14 @@ public class InventoryView {
     }
 
     private void buyShop() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     private void sellShop() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+    }
+
+    private void dropCargo() {
+        
     }
 }
