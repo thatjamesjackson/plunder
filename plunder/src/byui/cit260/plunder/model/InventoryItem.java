@@ -13,8 +13,17 @@ import java.util.Objects;
  */
 public class InventoryItem {
 
+    public String getTypeName() {
+        return typeName;
+    }
+
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
+    }
+
     private String inventoryType;
-    private double quantityInStock;
+    private String typeName;
+    private int quantityInStock;
     private double value;
     private double weight;
 
@@ -29,11 +38,11 @@ public class InventoryItem {
         this.inventoryType = inventoryType;
     }
 
-    public double getQuantityInStock() {
+    public int getQuantityInStock() {
         return quantityInStock;
     }
 
-    public void setQuantityInStock(double quantityInStock) {
+    public void setQuantityInStock(int quantityInStock) {
         this.quantityInStock = quantityInStock;
     }
 

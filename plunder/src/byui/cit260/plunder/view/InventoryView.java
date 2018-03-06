@@ -7,6 +7,7 @@ package byui.cit260.plunder.view;
 
 import byui.cit260.plunder.control.InventoryControl;
 import static byui.cit260.plunder.control.InventoryControl.calculateWeight;
+import plunder.Plunder;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -55,12 +56,13 @@ public class InventoryView {
                 + "              L - List Inventory\n"
                 + "              S - Sell all loot\n"
                 + "              D - Drop Cargo\n"
-                + "              R - Return to navigation"
+                + "              R - Return to navigation\n"
                 + "===============================================\n";
         
         this.promptMessage = "Enter your selection below: ";
 
         String input1 = this.getInput();
+        
         if (input1.equals(input1.toUpperCase().equals("Q"))) {
             return inputs;
         }
@@ -133,10 +135,10 @@ public class InventoryView {
         }
         
         // get amount
-        double howMuch = 2;
-        String item = "cotton";
+        Plunder p = new Plunder();
+        int howMuch = InventoryControl.howMuch(itemType, p.getCurrentGame().getInventory());
         
-        this.instructions = "You have " + howMuch + " tonnes of " + item + " in your inventory.";
+        this.instructions = "You have " + howMuch + " tonnes of " + itemType + " in your inventory.";
         
         this.promptMessage = this.promptMessage = "Enter a number value of how much to drop below: ";
 
@@ -146,6 +148,9 @@ public class InventoryView {
         }
         
         // new calculation
+        
+        int inventoryQuantity = howMuch - Integer.parseInt(amount);
+        InventoryControl.changeQuantity(howMuch, p.getCurrentGame().getInventory(), itemType);
         
         return true;
     }

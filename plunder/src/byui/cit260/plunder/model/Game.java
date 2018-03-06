@@ -6,6 +6,7 @@
 package byui.cit260.plunder.model;
 import java.io.Serializable;
 import java.util.ArrayList;
+import byui.cit260.plunder.model.InventoryItem;
 /**
  *
  * @author James
@@ -17,7 +18,7 @@ public class Game implements Serializable{
     private Player player;
     private double money;
     private Map map;
-    private InventoryItem[] inventory;
+    private ArrayList <InventoryItem> inventory = new ArrayList <InventoryItem>();
     private NPC[] npc;
     
 
@@ -44,12 +45,12 @@ public class Game implements Serializable{
     public void setMap(Map map) {
         this.map = map;
     }
-
-    public InventoryItem[] getInventory() {
+    
+    public ArrayList<InventoryItem> getInventory() {
         return inventory;
     }
 
-    public void setInventory(InventoryItem[] inventory) {
+    public void setInventory(ArrayList<InventoryItem> inventory) {
         this.inventory = inventory;
     }
 

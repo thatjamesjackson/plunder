@@ -5,6 +5,9 @@
  */
 package byui.cit260.plunder.control;
 
+import byui.cit260.plunder.model.InventoryItem;
+import java.util.ArrayList;
+
 /**
  *
  * @author abigailking
@@ -39,4 +42,40 @@ public class InventoryControl {
         }
         return weight;
     }
+    
+    public static int howMuch(String displayLetter, ArrayList<InventoryItem> inventoryItems) {
+        
+        int verMuch = 0;
+        
+        for (InventoryItem i: inventoryItems){
+            if (i.getInventoryType() == displayLetter){
+                verMuch = i.getQuantityInStock();
+            }
+        }
+        
+        return verMuch;
+    }
+    
+    public static int itemSearch(String displayLetter, ArrayList<InventoryItem> inventoryItems) {
+        
+        int verMuch = 0;
+        
+        for (InventoryItem i: inventoryItems){
+            if (i.getInventoryType() == displayLetter){
+                verMuch = i.getQuantityInStock();
+            }
+        }
+        
+        return verMuch;
+    }
+    
+    public static void changeQuantity(int amount, ArrayList<InventoryItem> inventoryItems, String type) {
+
+        for (InventoryItem i: inventoryItems){
+            if (i.getInventoryType() == type){
+                i.setQuantityInStock(amount);
+            }
+        }
+    }
+    
 }
