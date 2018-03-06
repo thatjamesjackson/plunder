@@ -13,14 +13,6 @@ import java.util.Objects;
  */
 public class InventoryItem {
 
-    public String getTypeName() {
-        return typeName;
-    }
-
-    public void setTypeName(String typeName) {
-        this.typeName = typeName;
-    }
-
     private String inventoryType;
     private String typeName;
     private int quantityInStock;
@@ -36,6 +28,14 @@ public class InventoryItem {
 
     public void setInventoryType(String inventoryType) {
         this.inventoryType = inventoryType;
+    }
+    
+    public String getTypeName() {
+        return typeName;
+    }
+
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
     }
 
     public int getQuantityInStock() {
@@ -71,6 +71,7 @@ public class InventoryItem {
     public int hashCode() {
         int hash = 3;
         hash = 89 * hash + Objects.hashCode(this.inventoryType);
+        hash = 89 * hash + Objects.hashCode(this.typeName);
         hash = 89 * hash + (int) (Double.doubleToLongBits(this.quantityInStock) ^ (Double.doubleToLongBits(this.quantityInStock) >>> 32));
         hash = 89 * hash + (int) (Double.doubleToLongBits(this.value) ^ (Double.doubleToLongBits(this.value) >>> 32));
         hash = 89 * hash + (int) (Double.doubleToLongBits(this.weight) ^ (Double.doubleToLongBits(this.weight) >>> 32));
