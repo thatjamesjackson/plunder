@@ -78,6 +78,7 @@ public class MainMenuView {
                 npc1.setCrewRepair(100);
                 npc1.setJob("Gunner");
                 npc1.setName("Bob");
+                npc1.setTalk("I ain't got nothin");
                     
                 NPC npc2 = new NPC();
                 npc2.setIsCrew(false);
@@ -92,6 +93,7 @@ public class MainMenuView {
                 npc3.setCrewRepair(100);
                 npc3.setJob("Carpenter");
                 npc3.setName("Steven");
+                npc3.setTalk("I ain't got nothin neither");
                 
                 NPC[] arrayNPC = {npc1, npc2, npc3};
                 CrewView crewView = new CrewView();
