@@ -5,6 +5,9 @@
  */
 package byui.cit260.plunder.model;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 /**
  *
  * @author abigailking
@@ -14,12 +17,30 @@ public class NPC {
     private boolean isCrew;
     private int crewAttack;
     private int crewRepair;
+    private String job;
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getJob() {
+        return job;
+    }
+
+    public void setJob(String job) {
+        this.job = job;
+    }
     private Question[] questions;
     
     public NPC() {
     }
 
-    public boolean isIsCrew() {
+    public boolean getIsCrew() {
         return isCrew;
     }
 
@@ -52,16 +73,14 @@ public class NPC {
     }
 
     @Override
-    public String toString() {
-        return "NPC{" + "isCrew=" + isCrew + ", crewAttack=" + crewAttack + ", crewRepair=" + crewRepair + '}';
-    }
-
-    @Override
     public int hashCode() {
         int hash = 3;
-        hash = 59 * hash + (this.isCrew ? 1 : 0);
-        hash = 59 * hash + this.crewAttack;
-        hash = 59 * hash + this.crewRepair;
+        hash = 97 * hash + (this.isCrew ? 1 : 0);
+        hash = 97 * hash + this.crewAttack;
+        hash = 97 * hash + this.crewRepair;
+        hash = 97 * hash + Objects.hashCode(this.job);
+        hash = 97 * hash + Objects.hashCode(this.name);
+        hash = 97 * hash + Arrays.deepHashCode(this.questions);
         return hash;
     }
 
@@ -86,7 +105,26 @@ public class NPC {
         if (this.crewRepair != other.crewRepair) {
             return false;
         }
+        if (!Objects.equals(this.job, other.job)) {
+            return false;
+        }
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.questions, other.questions)) {
+            return false;
+        }
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "NPC{" + "isCrew=" + isCrew + ", crewAttack=" + crewAttack + ", crewRepair=" + crewRepair + ", job=" + job + ", name=" + name + ", questions=" + questions + '}';
+    }
+
+    
+
+    
+    
     
 }

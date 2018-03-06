@@ -5,6 +5,7 @@
  */
 package byui.cit260.plunder.view;
 import byui.cit260.plunder.control.GameControl;
+import byui.cit260.plunder.model.NPC;
 import byui.cit260.plunder.model.Ship;
 import java.util.Scanner;
 import plunder.Plunder;
@@ -69,6 +70,34 @@ public class MainMenuView {
                 
                 combatView.display(shipOne, shipTwo);
                 break;
+                
+            case "P": 
+                NPC npc1 = new NPC();
+                npc1.setIsCrew(true);
+                npc1.setCrewAttack(100);
+                npc1.setCrewRepair(100);
+                npc1.setJob("Gunner");
+                npc1.setName("Bob");
+                    
+                NPC npc2 = new NPC();
+                npc2.setIsCrew(false);
+                npc2.setCrewAttack(100);
+                npc2.setCrewRepair(100);
+                npc2.setJob("Gunner");
+                npc2.setName("NOT CREW");
+                    
+                NPC npc3 = new NPC();
+                npc3.setIsCrew(true);
+                npc3.setCrewAttack(100);
+                npc3.setCrewRepair(100);
+                npc3.setJob("Carpenter");
+                npc3.setName("Steven");
+                
+                NPC[] arrayNPC = {npc1, npc2, npc3};
+                CrewView crewView = new CrewView();
+                crewView.display(arrayNPC);
+            
+                
             case "N":
                 startNewGame();
                 break;
