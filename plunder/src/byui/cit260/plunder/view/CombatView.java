@@ -32,7 +32,7 @@ public class CombatView {
                 continue;
             }
 
-            endView = doAction(first);
+            endView = doAction(first, player, enemy);
 
             //if either ship is sunk combat is over
             if (player.getShipHealth() <= 0 || enemy.getShipHealth() <= 0) {
@@ -40,13 +40,15 @@ public class CombatView {
             }
 
         } while (endView != true);
-        
-        if (enemy.getShipHealth() <= 0)
+
+        if (enemy.getShipHealth() <= 0) {
             return 0;
-        else if (player.getShipHealth() <= 0 )
+        } else if (player.getShipHealth() <= 0) {
             return 1;
-        else return 2;
-        
+        } else {
+            return 2;
+        }
+
     }
 
     public CombatView() {
@@ -60,8 +62,16 @@ public class CombatView {
         return inputs;
     }
 
-    private boolean doAction(String input) {
-        //switch for the menu
+    private boolean doAction(String input, Ship player, Ship enemy) {
+        double pAttack = player.getShipAttack();
+        double pArmor = player.getArmor();
+        double pHealth = player.getShipHealth();
+
+        double eAttack = enemy.getShipAttack();
+        double eArmor = enemy.getArmor();
+        double eHealth = enemy.getShipHealth();
+
+//switch for the menu
         switch (input) {
             case "R":
                 recklessAttack();
@@ -105,20 +115,20 @@ public class CombatView {
     private void displayEnemyShip(Ship enemy) {
 
         if ("Fishing Boat".equals(enemy.getName())) {
-            System.out.println(enemy.getName()+ "\n"
+            System.out.println(enemy.getName() + "\n"
                     + "     __/\\__\n"
                     + "  ~~~\\____/~~~~~~\n"
                     + "    ~  ~~~   ~.  ");
         }
         if ("Sail Boat".equals(enemy.getName())) {
-            System.out.println(enemy.getName()+ "\n"
+            System.out.println(enemy.getName() + "\n"
                     + "    /|\\\n"
                     + "   /_|_\\\n"
                     + " ____|____\n"
                     + " \\_o_o_o_/\n");
         }
         if ("Clipper".equals(enemy.getName())) {
-            System.out.println(enemy.getName()+ "\n"
+            System.out.println(enemy.getName() + "\n"
                     + "       _~\n"
                     + "    _~ )_)_~\n"
                     + "    )_))_))_)\n"
@@ -127,7 +137,7 @@ public class CombatView {
                     + "  ~~~~~~~~~~~~~");
         }
         if ("Gunboat".equals(enemy.getName())) {
-            System.out.println(enemy.getName()+ "\n"
+            System.out.println(enemy.getName() + "\n"
                     + "   ^  +~+~~\n"
                     + "    ^   )`.).\n"
                     + "      )``)``) .~~\n"
@@ -137,7 +147,7 @@ public class CombatView {
                     + "  ~~~'---.____/~~~~~~~~~");
         }
         if ("Frigate".equals(enemy.getName())) {
-            System.out.println(enemy.getName()+ "\n"
+            System.out.println(enemy.getName() + "\n"
                     + "    __|__ |___| |\\\n"
                     + "    |o__| |___| | \\\n"
                     + "    |___| |___| |o \\\n"
@@ -148,7 +158,7 @@ public class CombatView {
         }
 
         if ("Galleon".equals(enemy.getName())) {
-            System.out.println(enemy.getName()+ "\n"
+            System.out.println(enemy.getName() + "\n"
                     + "              |    |    |\n"
                     + "             )_)  )_)  )_)\n"
                     + "            )___))___))___)\\\n"
@@ -160,7 +170,7 @@ public class CombatView {
                     + "         ^^^^      ^^^");
         }
         if ("Man of War".equals(enemy.getName())) {
-            System.out.println(enemy.getName()+ "\n"
+            System.out.println(enemy.getName() + "\n"
                     + "                                   .        \n"
                     + "                                  /|~~                  \n"
                     + "                             ,   / |~~\n"
@@ -199,13 +209,12 @@ public class CombatView {
 
     private void displayStats(Ship player, Ship enemy) {
 
-     
         String format = "%-20.20s %-20.20s";
         System.out.format(format, player.getName(), enemy.getName());
         //for whatever reason format adds a space on the first line, so we add a space on subsiqent lines to compensate
-        System.out.format(format, "\nHealth: " + player.getShipHealth(), " Health: " + enemy.getShipHealth() );
+        System.out.format(format, "\nHealth: " + player.getShipHealth(), " Health: " + enemy.getShipHealth());
         System.out.format(format, "\nAttack: " + player.getShipAttack(), " Attack: " + enemy.getShipAttack());
         System.out.format(format, "\nArmor: " + player.getArmor(), " Armor: " + enemy.getArmor());
-        
+
     }
 }
