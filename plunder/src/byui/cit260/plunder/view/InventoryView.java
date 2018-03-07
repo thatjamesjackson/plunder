@@ -15,6 +15,8 @@ import java.util.Scanner;
  *
  * @author abigailking
  */
+
+
 public class InventoryView {
 
     private String instructions;
