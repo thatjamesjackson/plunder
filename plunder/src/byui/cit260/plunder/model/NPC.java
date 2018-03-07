@@ -19,6 +19,7 @@ public class NPC {
     private int crewRepair;
     private String job;
     private String name;
+    private String talk;
 
     public String getName() {
         return name;
@@ -64,23 +65,29 @@ public class NPC {
         this.crewRepair = crewRepair;
     }
 
-    public Question[] getQuestions() {
-        return questions;
+    public String getTalk() {
+        return talk;
     }
 
-    public void setQuestions(Question[] questions) {
-        this.questions = questions;
+    public void setTalk(String talk) {
+        this.talk = talk;
+    }
+
+    @Override
+    public String toString() {
+        return "NPC{" + "isCrew=" + isCrew + ", crewAttack=" + crewAttack + ", crewRepair=" + crewRepair + ", job=" + job + ", name=" + name + ", talk=" + talk + ", questions=" + questions + '}';
     }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 97 * hash + (this.isCrew ? 1 : 0);
-        hash = 97 * hash + this.crewAttack;
-        hash = 97 * hash + this.crewRepair;
-        hash = 97 * hash + Objects.hashCode(this.job);
-        hash = 97 * hash + Objects.hashCode(this.name);
-        hash = 97 * hash + Arrays.deepHashCode(this.questions);
+        int hash = 7;
+        hash = 29 * hash + (this.isCrew ? 1 : 0);
+        hash = 29 * hash + this.crewAttack;
+        hash = 29 * hash + this.crewRepair;
+        hash = 29 * hash + Objects.hashCode(this.job);
+        hash = 29 * hash + Objects.hashCode(this.name);
+        hash = 29 * hash + Objects.hashCode(this.talk);
+        hash = 29 * hash + Arrays.deepHashCode(this.questions);
         return hash;
     }
 
@@ -111,17 +118,16 @@ public class NPC {
         if (!Objects.equals(this.name, other.name)) {
             return false;
         }
+        if (!Objects.equals(this.talk, other.talk)) {
+            return false;
+        }
         if (!Arrays.deepEquals(this.questions, other.questions)) {
             return false;
         }
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "NPC{" + "isCrew=" + isCrew + ", crewAttack=" + crewAttack + ", crewRepair=" + crewRepair + ", job=" + job + ", name=" + name + ", questions=" + questions + '}';
-    }
-
+    
     
 
     
