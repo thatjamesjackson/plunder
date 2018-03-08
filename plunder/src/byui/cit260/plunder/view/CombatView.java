@@ -122,7 +122,7 @@ public class CombatView {
         else{
         System.out.println("\nYeh Missed!\n");
         }
-        //enemy attackjo
+        //enemy attack
         
         if (CombatControl.doesHit(eAccuracy, pEvasion, random.nextInt(26), random.nextInt(26)) == 1) {
             double damage = CombatControl.attackDamage(eAttack, pArmor);
@@ -132,6 +132,24 @@ public class CombatView {
         else{
         System.out.println(enemy.getName() + " Missed!\n");
         }
+        
+        //repair out is only used to tell the player how much damage is repaired
+        double repairOut = 0;
+        //repair if you are still floating
+        if (player.getShipHealth() > 0) {
+            //repair
+            player.setShipHealth(player.getShipHealth() + player.getShipRepair());
+            //your hp cannot be above max
+            if(player.getShipMaxHealth() < player.getShipHealth()) {
+                System.out.println("OVERHEAL");
+                repairOut = player.getShipHealth() - player.getShipMaxHealth();
+                player.setShipHealth(player.getShipMaxHealth());
+            } else {
+                repairOut = player.getShipRepair();
+            }
+            System.out.println("Yer crew repaired " + repairOut + " damage\n" );
+        }
+
         return flee;
     }
 

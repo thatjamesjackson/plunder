@@ -59,6 +59,7 @@ public class MainMenuView {
                 shipOne.setArmor(50);
                 shipOne.setShipRepair(10);
                 shipOne.setShipHealth(100);
+                shipOne.setShipMaxHealth(100);
                 
                 Ship shipTwo = new Ship();
                 shipTwo.setName("Man of War");
@@ -67,6 +68,7 @@ public class MainMenuView {
                 shipTwo.setArmor(50);
                 shipTwo.setShipRepair(10);
                 shipTwo.setShipHealth(100);
+                
                 
                 combatView.display(shipOne, shipTwo);
                 break;
