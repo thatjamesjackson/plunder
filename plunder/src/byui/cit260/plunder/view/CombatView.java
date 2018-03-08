@@ -141,7 +141,7 @@ public class CombatView {
             player.setShipHealth(player.getShipHealth() + player.getShipRepair());
             //your hp cannot be above max
             if(player.getShipMaxHealth() < player.getShipHealth()) {
-                System.out.println("OVERHEAL");
+                
                 repairOut = player.getShipHealth() - player.getShipMaxHealth();
                 player.setShipHealth(player.getShipMaxHealth());
             } else {
