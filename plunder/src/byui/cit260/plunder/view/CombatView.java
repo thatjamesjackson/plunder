@@ -5,6 +5,8 @@
  */
 package byui.cit260.plunder.view;
 
+import java.util.Random;
+import byui.cit260.plunder.control.CombatControl;
 import byui.cit260.plunder.model.Ship;
 import java.util.Scanner;
 
@@ -42,10 +44,16 @@ public class CombatView {
         } while (endView != true);
 
         if (enemy.getShipHealth() <= 0) {
+            //enemy sank
+            System.out.println("\nYer opponent sank!");
             return 0;
         } else if (player.getShipHealth() <= 0) {
+            //you sank
+            System.out.println("\nYeh sank!");
             return 1;
         } else {
+            //you fled
+            System.out.println("\nYeh fled ya cowerdly creature!");
             return 2;
         }
 
@@ -63,53 +71,68 @@ public class CombatView {
     }
 
     private boolean doAction(String input, Ship player, Ship enemy) {
+        //players stats
         double pAttack = player.getShipAttack();
         double pArmor = player.getArmor();
-        double pHealth = player.getShipHealth();
+        int pAccuracy = 50;
+        int pEvasion = 50;
 
+        //enemy stats
         double eAttack = enemy.getShipAttack();
         double eArmor = enemy.getArmor();
-        double eHealth = enemy.getShipHealth();
+        int eAccuracy = 50;
+        int eEvasion = 50;
 
-//switch for the menu
+        //random number generator
+        Random random = new Random();
+
+        boolean flee = false;
+
+        //switch for the menu
         switch (input) {
             case "R":
-                recklessAttack();
+                pAttack = pAttack * 2;
+                pEvasion = pEvasion - 20;
                 break;
 
             case "C":
-                carefulAttack();
+                pEvasion = pEvasion + 20;
                 break;
 
             case "A":
-                aimedAttack();
+                pAccuracy = pAccuracy + 20;
                 break;
 
             case "F":
                 //take an attack and run away
-                flee();
-                return true;
+
+                flee = true;
+                break;
             default:
                 System.out.println("Invalid Menu Item");
 
         }
-        return false;
-    }
-
-    private void recklessAttack() {
-        System.out.println("reckless attack called");
-    }
-
-    private void flee() {
-        System.out.println("flee called");
-    }
-
-    private void aimedAttack() {
-        System.out.println("aimed attack called");
-    }
-
-    private void carefulAttack() {
-        System.out.println("careful attack called");
+        //player's attack
+        //random numbers must be no larger than 25 and nextint has an exclusive upper bound, so i use 26
+        if (CombatControl.doesHit(pAccuracy, eEvasion, random.nextInt(26), random.nextInt(26)) == 1 && !flee) {
+            double damage = CombatControl.attackDamage(pAttack, eArmor);
+            enemy.setShipHealth(enemy.getShipHealth() - damage);
+            System.out.println("\nYeh hit for " + damage + " damage!\n");
+        }
+        else{
+        System.out.println("\nYeh Missed!\n");
+        }
+        //enemy attackjo
+        
+        if (CombatControl.doesHit(eAccuracy, pEvasion, random.nextInt(26), random.nextInt(26)) == 1) {
+            double damage = CombatControl.attackDamage(eAttack, pArmor);
+            player.setShipHealth(player.getShipHealth() - damage);
+            System.out.println(enemy.getName() + " hit for " + damage + " damage!\n");
+        }
+        else{
+        System.out.println(enemy.getName() + " Missed!\n");
+        }
+        return flee;
     }
 
     private void displayEnemyShip(Ship enemy) {
