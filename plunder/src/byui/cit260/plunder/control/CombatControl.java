@@ -29,7 +29,7 @@ public class CombatControl {
 
     }
 
-    public static double normalAttackDamage(double attack, double armor) {
+    public static double attackDamage(double attack, double armor) {
 // attack is less than or equal to 0
         if (attack <= 0) {
             return - 1;
@@ -47,7 +47,7 @@ public class CombatControl {
 
     }
     
-    public int doesHit(int accuracy, int evasion, int chance1, int chance2) {
+    public static int doesHit(int accuracy, int evasion, int chance1, int chance2) {
         
         
         // int chance = randomGen.nextInt(26);

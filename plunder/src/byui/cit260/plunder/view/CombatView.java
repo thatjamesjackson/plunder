@@ -5,6 +5,8 @@
  */
 package byui.cit260.plunder.view;
 
+import java.util.Random;
+import byui.cit260.plunder.control.CombatControl;
 import byui.cit260.plunder.model.Ship;
 import java.util.Scanner;
 
@@ -32,7 +34,7 @@ public class CombatView {
                 continue;
             }
 
-            endView = doAction(first);
+            endView = doAction(first, player, enemy);
 
             //if either ship is sunk combat is over
             if (player.getShipHealth() <= 0 || enemy.getShipHealth() <= 0) {
@@ -40,13 +42,21 @@ public class CombatView {
             }
 
         } while (endView != true);
-        
-        if (enemy.getShipHealth() <= 0)
+
+        if (enemy.getShipHealth() <= 0) {
+            //enemy sank
+            System.out.println("\nYer opponent sank!");
             return 0;
-        else if (player.getShipHealth() <= 0 )
+        } else if (player.getShipHealth() <= 0) {
+            //you sank
+            System.out.println("\nYeh sank!");
             return 1;
-        else return 2;
-        
+        } else {
+            //you fled
+            System.out.println("\nYeh fled ya cowerdly creature!");
+            return 2;
+        }
+
     }
 
     public CombatView() {
@@ -60,65 +70,106 @@ public class CombatView {
         return inputs;
     }
 
-    private boolean doAction(String input) {
+    private boolean doAction(String input, Ship player, Ship enemy) {
+          //random number generator
+        Random random = new Random();
+        
+        //players stats
+        double pAttack = player.getShipAttack() + (double)random.nextInt(100)/10;
+        double pArmor = player.getArmor();
+        int pAccuracy = 50;
+        int pEvasion = 50;
+
+        //enemy stats
+        double eAttack = enemy.getShipAttack()+ (double)random.nextInt(100)/10;
+        double eArmor = enemy.getArmor();
+        int eAccuracy = 50;
+        int eEvasion = 50;
+
+      
+
+        boolean flee = false;
+
         //switch for the menu
         switch (input) {
             case "R":
-                recklessAttack();
+                pAttack = pAttack * 2;
+                pEvasion = pEvasion - 20;
                 break;
 
             case "C":
-                carefulAttack();
+                pEvasion = pEvasion + 20;
                 break;
 
             case "A":
-                aimedAttack();
+                pAccuracy = pAccuracy + 20;
                 break;
 
             case "F":
                 //take an attack and run away
-                flee();
-                return true;
+
+                flee = true;
+                break;
             default:
                 System.out.println("Invalid Menu Item");
 
         }
-        return false;
-    }
+        //player's attack
+        //random numbers must be no larger than 25 and nextint has an exclusive upper bound, so i use 26
+        if (CombatControl.doesHit(pAccuracy, eEvasion, random.nextInt(26), random.nextInt(26)) == 1 && !flee) {
+            double damage = CombatControl.attackDamage(pAttack, eArmor);
+            enemy.setShipHealth(enemy.getShipHealth() - damage);
+            System.out.println("\nYeh hit " + enemy.getName() + " for " + damage + " damage!\n");
+        } else {
+            System.out.println("\nYeh Missed!\n");
+        }
+        //enemy attack
 
-    private void recklessAttack() {
-        System.out.println("reckless attack called");
-    }
+        if (CombatControl.doesHit(eAccuracy, pEvasion, random.nextInt(26), random.nextInt(26)) == 1) {
+            double damage = CombatControl.attackDamage(eAttack, pArmor);
+            player.setShipHealth(player.getShipHealth() - damage);
+            System.out.println(enemy.getName() + " hit for " + damage + " damage!\n");
+        } else {
+            System.out.println(enemy.getName() + " Missed!\n");
+        }
 
-    private void flee() {
-        System.out.println("flee called");
-    }
+        //repair out is only used to tell the player how much damage is repaired
+        double repairOut = 0;
+        //repair if you are still floating
+        if (player.getShipHealth() > 0) {
+            //repair
+            player.setShipHealth(player.getShipHealth() + player.getShipRepair());
+            //your hp cannot be above max
+            if (player.getShipMaxHealth() < player.getShipHealth()) {
 
-    private void aimedAttack() {
-        System.out.println("aimed attack called");
-    }
+                repairOut = player.getShipHealth() - player.getShipMaxHealth();
+                player.setShipHealth(player.getShipMaxHealth());
+            } else {
+                repairOut = player.getShipRepair();
+            }
+            System.out.println("Yer crew repaired " + repairOut + " damage\n");
+        }
 
-    private void carefulAttack() {
-        System.out.println("careful attack called");
+        return flee;
     }
 
     private void displayEnemyShip(Ship enemy) {
 
         if ("Fishing Boat".equals(enemy.getName())) {
-            System.out.println(enemy.getName()+ "\n"
+            System.out.println(enemy.getName() + "\n"
                     + "     __/\\__\n"
                     + "  ~~~\\____/~~~~~~\n"
                     + "    ~  ~~~   ~.  ");
         }
         if ("Sail Boat".equals(enemy.getName())) {
-            System.out.println(enemy.getName()+ "\n"
+            System.out.println(enemy.getName() + "\n"
                     + "    /|\\\n"
                     + "   /_|_\\\n"
                     + " ____|____\n"
                     + " \\_o_o_o_/\n");
         }
         if ("Clipper".equals(enemy.getName())) {
-            System.out.println(enemy.getName()+ "\n"
+            System.out.println(enemy.getName() + "\n"
                     + "       _~\n"
                     + "    _~ )_)_~\n"
                     + "    )_))_))_)\n"
@@ -127,7 +178,7 @@ public class CombatView {
                     + "  ~~~~~~~~~~~~~");
         }
         if ("Gunboat".equals(enemy.getName())) {
-            System.out.println(enemy.getName()+ "\n"
+            System.out.println(enemy.getName() + "\n"
                     + "   ^  +~+~~\n"
                     + "    ^   )`.).\n"
                     + "      )``)``) .~~\n"
@@ -137,7 +188,7 @@ public class CombatView {
                     + "  ~~~'---.____/~~~~~~~~~");
         }
         if ("Frigate".equals(enemy.getName())) {
-            System.out.println(enemy.getName()+ "\n"
+            System.out.println(enemy.getName() + "\n"
                     + "    __|__ |___| |\\\n"
                     + "    |o__| |___| | \\\n"
                     + "    |___| |___| |o \\\n"
@@ -148,7 +199,7 @@ public class CombatView {
         }
 
         if ("Galleon".equals(enemy.getName())) {
-            System.out.println(enemy.getName()+ "\n"
+            System.out.println(enemy.getName() + "\n"
                     + "              |    |    |\n"
                     + "             )_)  )_)  )_)\n"
                     + "            )___))___))___)\\\n"
@@ -160,7 +211,7 @@ public class CombatView {
                     + "         ^^^^      ^^^");
         }
         if ("Man of War".equals(enemy.getName())) {
-            System.out.println(enemy.getName()+ "\n"
+            System.out.println(enemy.getName() + "\n"
                     + "                                   .        \n"
                     + "                                  /|~~                  \n"
                     + "                             ,   / |~~\n"
@@ -199,13 +250,12 @@ public class CombatView {
 
     private void displayStats(Ship player, Ship enemy) {
 
-     
         String format = "%-20.20s %-20.20s";
         System.out.format(format, player.getName(), enemy.getName());
         //for whatever reason format adds a space on the first line, so we add a space on subsiqent lines to compensate
-        System.out.format(format, "\nHealth: " + player.getShipHealth(), " Health: " + enemy.getShipHealth() );
+        System.out.format(format, "\nHealth: " + player.getShipHealth(), " Health: " + enemy.getShipHealth());
         System.out.format(format, "\nAttack: " + player.getShipAttack(), " Attack: " + enemy.getShipAttack());
         System.out.format(format, "\nArmor: " + player.getArmor(), " Armor: " + enemy.getArmor());
-        
+
     }
 }

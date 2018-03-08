@@ -14,15 +14,18 @@ import java.util.Objects;
  */
 public class Ship implements Serializable {
 
+  
+
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 59 * hash + Objects.hashCode(this.name);
-        hash = 59 * hash + (int) (Double.doubleToLongBits(this.shipAttack) ^ (Double.doubleToLongBits(this.shipAttack) >>> 32));
-        hash = 59 * hash + (int) (Double.doubleToLongBits(this.carryWeight) ^ (Double.doubleToLongBits(this.carryWeight) >>> 32));
-        hash = 59 * hash + (int) (Double.doubleToLongBits(this.armor) ^ (Double.doubleToLongBits(this.armor) >>> 32));
-        hash = 59 * hash + (int) (Double.doubleToLongBits(this.shipRepair) ^ (Double.doubleToLongBits(this.shipRepair) >>> 32));
-        hash = 59 * hash + (int) (Double.doubleToLongBits(this.shipHealth) ^ (Double.doubleToLongBits(this.shipHealth) >>> 32));
+        hash = 89 * hash + Objects.hashCode(this.name);
+        hash = 89 * hash + (int) (Double.doubleToLongBits(this.shipAttack) ^ (Double.doubleToLongBits(this.shipAttack) >>> 32));
+        hash = 89 * hash + (int) (Double.doubleToLongBits(this.carryWeight) ^ (Double.doubleToLongBits(this.carryWeight) >>> 32));
+        hash = 89 * hash + (int) (Double.doubleToLongBits(this.armor) ^ (Double.doubleToLongBits(this.armor) >>> 32));
+        hash = 89 * hash + (int) (Double.doubleToLongBits(this.shipRepair) ^ (Double.doubleToLongBits(this.shipRepair) >>> 32));
+        hash = 89 * hash + (int) (Double.doubleToLongBits(this.shipHealth) ^ (Double.doubleToLongBits(this.shipHealth) >>> 32));
+        hash = 89 * hash + (int) (Double.doubleToLongBits(this.shipMaxHealth) ^ (Double.doubleToLongBits(this.shipMaxHealth) >>> 32));
         return hash;
     }
 
@@ -53,16 +56,16 @@ public class Ship implements Serializable {
         if (Double.doubleToLongBits(this.shipHealth) != Double.doubleToLongBits(other.shipHealth)) {
             return false;
         }
+        if (Double.doubleToLongBits(this.shipMaxHealth) != Double.doubleToLongBits(other.shipMaxHealth)) {
+            return false;
+        }
         if (!Objects.equals(this.name, other.name)) {
             return false;
         }
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "Ship{" + "name=" + name + ", shipAttack=" + shipAttack + ", carryWeight=" + carryWeight + ", armor=" + armor + ", shipRepair=" + shipRepair + ", shipHealth=" + shipHealth + '}';
-    }
+    
 
     
 
@@ -77,6 +80,20 @@ public class Ship implements Serializable {
     private double armor;
     private double shipRepair;
     private double shipHealth;
+    private double shipMaxHealth;
+
+    @Override
+    public String toString() {
+        return "Ship{" + "name=" + name + ", shipAttack=" + shipAttack + ", carryWeight=" + carryWeight + ", armor=" + armor + ", shipRepair=" + shipRepair + ", shipHealth=" + shipHealth + ", shipMaxHealth=" + shipMaxHealth + '}';
+    }
+    
+      public double getShipMaxHealth() {
+        return shipMaxHealth;
+    }
+
+    public void setShipMaxHealth(double shipMaxHealth) {
+        this.shipMaxHealth = shipMaxHealth;
+    }
 
     public double getShipHealth() {
         return shipHealth;

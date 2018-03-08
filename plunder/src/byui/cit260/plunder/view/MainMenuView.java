@@ -54,52 +54,25 @@ public class MainMenuView {
                 CombatView combatView = new CombatView();
                 Ship shipOne = new Ship();
                 shipOne.setName("Salty Dog");
-                shipOne.setShipAttack(100);
+                shipOne.setShipAttack(50);
                 shipOne.setCarryWeight(500);
                 shipOne.setArmor(50);
                 shipOne.setShipRepair(10);
                 shipOne.setShipHealth(100);
+                shipOne.setShipMaxHealth(100);
                 
                 Ship shipTwo = new Ship();
                 shipTwo.setName("Man of War");
-                shipTwo.setShipAttack(100);
+                shipTwo.setShipAttack(50);
                 shipTwo.setCarryWeight(500);
                 shipTwo.setArmor(50);
                 shipTwo.setShipRepair(10);
                 shipTwo.setShipHealth(100);
                 
+                
                 combatView.display(shipOne, shipTwo);
                 break;
-                
-            case "P": 
-                NPC npc1 = new NPC();
-                npc1.setIsCrew(true);
-                npc1.setCrewAttack(100);
-                npc1.setCrewRepair(100);
-                npc1.setJob("Gunner");
-                npc1.setName("Bob");
-                npc1.setTalk("I ain't got nothin");
-                    
-                NPC npc2 = new NPC();
-                npc2.setIsCrew(false);
-                npc2.setCrewAttack(100);
-                npc2.setCrewRepair(100);
-                npc2.setJob("Gunner");
-                npc2.setName("NOT CREW");
-                    
-                NPC npc3 = new NPC();
-                npc3.setIsCrew(true);
-                npc3.setCrewAttack(100);
-                npc3.setCrewRepair(100);
-                npc3.setJob("Carpenter");
-                npc3.setName("Steven");
-                npc3.setTalk("I ain't got nothin neither");
-                
-                NPC[] arrayNPC = {npc1, npc2, npc3};
-                CrewView crewView = new CrewView();
-                crewView.display(arrayNPC);
-            
-                
+                            
             case "N":
                 startNewGame();
                 break;

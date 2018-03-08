@@ -107,7 +107,7 @@ public class CombatControlTest {
         double armor = 10.0;
         CombatControl instance = new CombatControl();
         double expResult = 9.0;
-        double result = instance.normalAttackDamage(attack, armor);
+        double result = instance.attackDamage(attack, armor);
         assertEquals(expResult, result, 0.0);
 
         System.out.println("\ttest case 2");
@@ -115,7 +115,7 @@ public class CombatControlTest {
         armor = 20.0;
         instance = new CombatControl();
         expResult = 24.0;
-        result = instance.normalAttackDamage(attack, armor);
+        result = instance.attackDamage(attack, armor);
         assertEquals(expResult, result, 0.0);
         
         System.out.println("\ttest case 3");
@@ -123,7 +123,7 @@ public class CombatControlTest {
         armor = 30.0;
         instance = new CombatControl();
         expResult = 14.0;
-        result = instance.normalAttackDamage(attack, armor);
+        result = instance.attackDamage(attack, armor);
         assertEquals(expResult, result, 0.0);
         
         System.out.println("\ttest case 4");
@@ -131,7 +131,7 @@ public class CombatControlTest {
         armor = 110.0;
         instance = new CombatControl();
         expResult = -2.0;
-        result = instance.normalAttackDamage(attack, armor);
+        result = instance.attackDamage(attack, armor);
         assertEquals(expResult, result, 0.0);
         
         System.out.println("\ttest case 5");
@@ -139,7 +139,7 @@ public class CombatControlTest {
         armor = 2.0;
         instance = new CombatControl();
         expResult = -1.0;
-        result = instance.normalAttackDamage(attack, armor);
+        result = instance.attackDamage(attack, armor);
         assertEquals(expResult, result, 0.0);
         
         System.out.println("\ttest case 6");
@@ -147,7 +147,7 @@ public class CombatControlTest {
         armor = 20.0;
         instance = new CombatControl();
         expResult = -1.0;
-        result = instance.normalAttackDamage(attack, armor);
+        result = instance.attackDamage(attack, armor);
         assertEquals(expResult, result, 0.0);
         
         System.out.println("\ttest case 7");
@@ -155,7 +155,7 @@ public class CombatControlTest {
         armor = -10.0;
         instance = new CombatControl();
         expResult = -3.0;
-        result = instance.normalAttackDamage(attack, armor);
+        result = instance.attackDamage(attack, armor);
         assertEquals(expResult, result, 0.0);
         
         System.out.println("\ttest case 8");
@@ -163,7 +163,7 @@ public class CombatControlTest {
         armor = 0.0;
         instance = new CombatControl();
         expResult = 10.0;
-        result = instance.normalAttackDamage(attack, armor);
+        result = instance.attackDamage(attack, armor);
         assertEquals(expResult, result, 0.0);
         
         System.out.println("\ttest case 9");
@@ -171,7 +171,7 @@ public class CombatControlTest {
         armor = 99.0;
         instance = new CombatControl();
         expResult = 0.1;
-        result = instance.normalAttackDamage(attack, armor);
+        result = instance.attackDamage(attack, armor);
         assertEquals(expResult, result, 0.0);
     }
     
