@@ -54,7 +54,7 @@ public class MainMenuView {
                 CombatView combatView = new CombatView();
                 Ship shipOne = new Ship();
                 shipOne.setName("Salty Dog");
-                shipOne.setShipAttack(100);
+                shipOne.setShipAttack(50);
                 shipOne.setCarryWeight(500);
                 shipOne.setArmor(50);
                 shipOne.setShipRepair(10);
@@ -63,7 +63,7 @@ public class MainMenuView {
                 
                 Ship shipTwo = new Ship();
                 shipTwo.setName("Man of War");
-                shipTwo.setShipAttack(100);
+                shipTwo.setShipAttack(50);
                 shipTwo.setCarryWeight(500);
                 shipTwo.setArmor(50);
                 shipTwo.setShipRepair(10);

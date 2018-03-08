@@ -71,20 +71,22 @@ public class CombatView {
     }
 
     private boolean doAction(String input, Ship player, Ship enemy) {
+          //random number generator
+        Random random = new Random();
+        
         //players stats
-        double pAttack = player.getShipAttack();
+        double pAttack = player.getShipAttack() + (double)random.nextInt(100)/10;
         double pArmor = player.getArmor();
         int pAccuracy = 50;
         int pEvasion = 50;
 
         //enemy stats
-        double eAttack = enemy.getShipAttack();
+        double eAttack = enemy.getShipAttack()+ (double)random.nextInt(100)/10;
         double eArmor = enemy.getArmor();
         int eAccuracy = 50;
         int eEvasion = 50;
 
-        //random number generator
-        Random random = new Random();
+      
 
         boolean flee = false;
 
@@ -117,22 +119,20 @@ public class CombatView {
         if (CombatControl.doesHit(pAccuracy, eEvasion, random.nextInt(26), random.nextInt(26)) == 1 && !flee) {
             double damage = CombatControl.attackDamage(pAttack, eArmor);
             enemy.setShipHealth(enemy.getShipHealth() - damage);
-            System.out.println("\nYeh hit for " + damage + " damage!\n");
-        }
-        else{
-        System.out.println("\nYeh Missed!\n");
+            System.out.println("\nYeh hit " + enemy.getName() + " for " + damage + " damage!\n");
+        } else {
+            System.out.println("\nYeh Missed!\n");
         }
         //enemy attack
-        
+
         if (CombatControl.doesHit(eAccuracy, pEvasion, random.nextInt(26), random.nextInt(26)) == 1) {
             double damage = CombatControl.attackDamage(eAttack, pArmor);
             player.setShipHealth(player.getShipHealth() - damage);
             System.out.println(enemy.getName() + " hit for " + damage + " damage!\n");
+        } else {
+            System.out.println(enemy.getName() + " Missed!\n");
         }
-        else{
-        System.out.println(enemy.getName() + " Missed!\n");
-        }
-        
+
         //repair out is only used to tell the player how much damage is repaired
         double repairOut = 0;
         //repair if you are still floating
@@ -140,14 +140,14 @@ public class CombatView {
             //repair
             player.setShipHealth(player.getShipHealth() + player.getShipRepair());
             //your hp cannot be above max
-            if(player.getShipMaxHealth() < player.getShipHealth()) {
-                
+            if (player.getShipMaxHealth() < player.getShipHealth()) {
+
                 repairOut = player.getShipHealth() - player.getShipMaxHealth();
                 player.setShipHealth(player.getShipMaxHealth());
             } else {
                 repairOut = player.getShipRepair();
             }
-            System.out.println("Yer crew repaired " + repairOut + " damage\n" );
+            System.out.println("Yer crew repaired " + repairOut + " damage\n");
         }
 
         return flee;
