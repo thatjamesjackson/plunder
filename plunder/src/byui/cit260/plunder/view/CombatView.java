@@ -19,7 +19,7 @@ public class CombatView {
     public int display(Ship player, Ship enemy) {
         //display the menu
         boolean endView = false;
-
+        boolean flee = false;
         do {
             displayEnemyShip(enemy);
             displayStats(player, enemy);
@@ -35,7 +35,7 @@ public class CombatView {
             }
 
             endView = doAction(first, player, enemy);
-
+            flee = endView;
             //if either ship is sunk combat is over
             if (player.getShipHealth() <= 0 || enemy.getShipHealth() <= 0) {
                 endView = true;
@@ -45,17 +45,19 @@ public class CombatView {
 
         if (enemy.getShipHealth() <= 0) {
             //enemy sank
-            System.out.println("\nYer opponent sank!");
+            System.out.println("Yer opponent sank!\n");
             return 0;
+        } else if (player.getShipHealth() <= 0 && flee) {
+            System.out.println("Yeh sank while turning tail!\n");
         } else if (player.getShipHealth() <= 0) {
             //you sank
-            System.out.println("\nYeh sank!");
+            System.out.println("Yeh sank!\n");
             return 1;
-        } else {
-            //you fled
-            System.out.println("\nYeh fled ya cowerdly creature!");
-            return 2;
         }
+
+        //you fled sucessfully
+        System.out.println("Yeh fled ya cowerdly creature!\n");
+        return 2;
 
     }
 
@@ -71,22 +73,20 @@ public class CombatView {
     }
 
     private boolean doAction(String input, Ship player, Ship enemy) {
-          //random number generator
+        //random number generator
         Random random = new Random();
-        
+
         //players stats
-        double pAttack = player.getShipAttack() + (double)random.nextInt(100)/10;
+        double pAttack = player.getShipAttack() + (double) random.nextInt(100) / 10;
         double pArmor = player.getArmor();
         int pAccuracy = 50;
         int pEvasion = 50;
 
         //enemy stats
-        double eAttack = enemy.getShipAttack()+ (double)random.nextInt(100)/10;
+        double eAttack = enemy.getShipAttack() + (double) random.nextInt(100) / 10;
         double eArmor = enemy.getArmor();
         int eAccuracy = 50;
         int eEvasion = 50;
-
-      
 
         boolean flee = false;
 
@@ -119,7 +119,8 @@ public class CombatView {
         if (CombatControl.doesHit(pAccuracy, eEvasion, random.nextInt(26), random.nextInt(26)) == 1 && !flee) {
             double damage = CombatControl.attackDamage(pAttack, eArmor);
             enemy.setShipHealth(enemy.getShipHealth() - damage);
-            System.out.println("\nYeh hit " + enemy.getName() + " for " + damage + " damage!\n");
+            //round output 
+            System.out.println("\nYeh hit " + enemy.getName() + " for " + Math.round(damage * 100.0) + " damage!\n");
         } else {
             System.out.println("\nYeh Missed!\n");
         }
@@ -128,7 +129,8 @@ public class CombatView {
         if (CombatControl.doesHit(eAccuracy, pEvasion, random.nextInt(26), random.nextInt(26)) == 1) {
             double damage = CombatControl.attackDamage(eAttack, pArmor);
             player.setShipHealth(player.getShipHealth() - damage);
-            System.out.println(enemy.getName() + " hit for " + damage + " damage!\n");
+            //round output 
+            System.out.println(enemy.getName() + " hit for " + Math.round(damage * 100.0) + " damage!\n");
         } else {
             System.out.println(enemy.getName() + " Missed!\n");
         }
@@ -253,7 +255,8 @@ public class CombatView {
         String format = "%-20.20s %-20.20s";
         System.out.format(format, player.getName(), enemy.getName());
         //for whatever reason format adds a space on the first line, so we add a space on subsiqent lines to compensate
-        System.out.format(format, "\nHealth: " + player.getShipHealth(), " Health: " + enemy.getShipHealth());
+        //round output 
+        System.out.format(format, "\nHealth: " + Math.round(player.getShipHealth() * 100.0) / 100.0, " Health: " + Math.round(enemy.getShipHealth() * 100.0) / 100.0);
         System.out.format(format, "\nAttack: " + player.getShipAttack(), " Attack: " + enemy.getShipAttack());
         System.out.format(format, "\nArmor: " + player.getArmor(), " Armor: " + enemy.getArmor());
 
