@@ -14,7 +14,6 @@ import java.util.Objects;
  */
 public class Ship implements Serializable {
 
-  
 
     @Override
     public int hashCode() {
