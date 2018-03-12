@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package byui.cit260.plunder.view;
-
 import byui.cit260.plunder.control.GameControl;
 import byui.cit260.plunder.model.Player;
 
@@ -43,6 +42,7 @@ public class StartProgramView extends View {
 
     }
 
+    @Override
     public boolean doAction(String[] inputs) {
 //        System.out.println("DO ACTION CALLED");
 //        System.out.println("\tinputs = " + inputs[0]);
@@ -55,7 +55,7 @@ public class StartProgramView extends View {
         }
 
         System.out.println("=============================================================\n"
-                         + "      Welcome " + inputs[0] + " to the seas of Paradise\n"
+                         + "      Welcome " + inputs[0] + ", to the seas of Paradise\n"
                          + "=============================================================\n");
 
         MainMenuView mainMenuView = new MainMenuView();

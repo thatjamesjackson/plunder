@@ -6,7 +6,6 @@
 package byui.cit260.plunder.view;
 
 import byui.cit260.plunder.control.InventoryControl;
-import static byui.cit260.plunder.control.InventoryControl.calculateWeight;
 import plunder.Plunder;
 import java.util.Random;
 import java.util.Scanner;
