@@ -5,8 +5,6 @@
  */
 package byui.cit260.plunder.view;
 import byui.cit260.plunder.control.GameControl;
-import byui.cit260.plunder.model.NPC;
-import byui.cit260.plunder.model.Ship;
 import java.util.Scanner;
 import plunder.Plunder;
 /**
@@ -52,25 +50,24 @@ public class MainMenuView {
         switch (input) {
             case "C":
                 CombatView combatView = new CombatView();
-                Ship shipOne = new Ship();
-                shipOne.setName("Salty Dog");
-                shipOne.setShipAttack(50);
-                shipOne.setCarryWeight(500);
-                shipOne.setArmor(50);
-                shipOne.setShipRepair(10);
-                shipOne.setShipHealth(100);
-                shipOne.setShipMaxHealth(100);
-                
-                Ship shipTwo = new Ship();
-                shipTwo.setName("Man of War");
-                shipTwo.setShipAttack(50);
-                shipTwo.setCarryWeight(500);
-                shipTwo.setArmor(50);
-                shipTwo.setShipRepair(10);
-                shipTwo.setShipHealth(100);
-                
-                
-                combatView.display(shipOne, shipTwo);
+//                Ship shipOne = new Ship();
+//                shipOne.setName("Salty Dog");
+//                shipOne.setShipAttack(50);
+//                shipOne.setCarryWeight(500);
+//                shipOne.setArmor(50);
+//                shipOne.setShipRepair(10);
+//                shipOne.setShipHealth(100);
+//                shipOne.setShipMaxHealth(100);
+//                
+//                Ship shipTwo = new Ship();
+//                shipTwo.setName("Man of War");
+//                shipTwo.setShipAttack(50);
+//                shipTwo.setCarryWeight(500);
+//                shipTwo.setArmor(50);
+//                shipTwo.setShipRepair(10);
+//                shipTwo.setShipHealth(100);
+//                
+                combatView.display();
                 break;
                             
             case "N":

@@ -169,7 +169,7 @@ public class GameMenuView {
                 //end placeholder NPCs
                 
                 CrewView crewView = new CrewView();
-                crewView.display(arrayNPC);
+                crewView.display();
     }
 
     private void checkShip() {

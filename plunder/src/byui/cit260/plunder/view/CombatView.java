@@ -14,65 +14,33 @@ import java.util.Scanner;
  *
  * @author James
  */
-public class CombatView {
-
-    public int display(Ship player, Ship enemy) {
-        //display the menu
-        boolean endView = false;
-        boolean flee = false;
-        do {
-            displayEnemyShip(enemy);
-            displayStats(player, enemy);
-            System.out.println("\n  A - Aimed Attack\n"
-                    + "  C - Careful Attack\n"
-                    + "  R - Reckless attack\n"
-                    + "  F - Flee");
-            String[] inputs = getInputs();
-            String first = inputs[0].toUpperCase();
-            if (first.length() != 1 || first.equals(" ")) {
-                System.out.println("Please enter a menu item");
-                continue;
-            }
-
-            endView = doAction(first, player, enemy);
-            flee = endView;
-            //if either ship is sunk combat is over
-            if (player.getShipHealth() <= 0 || enemy.getShipHealth() <= 0) {
-                endView = true;
-            }
-
-        } while (endView != true);
-
-        if (enemy.getShipHealth() <= 0) {
-            //enemy sank
-            System.out.println("Yer opponent sank!\n");
-            return 0;
-        } else if (player.getShipHealth() <= 0 && flee) {
-            System.out.println("Yeh sank while turning tail!\n");
-        } else if (player.getShipHealth() <= 0) {
-            //you sank
-            System.out.println("Yeh sank!\n");
-            return 1;
-        }
-
-        //you fled sucessfully
-        System.out.println("Yeh fled ya cowerdly creature!\n");
-        return 2;
-
-    }
+public class CombatView extends View{
 
     public CombatView() {
     }
 
-    private String[] getInputs() {
+    @Override
+    public String[] getInputs() {
+        System.out.println("\n  A - Aimed Attack\n"
+                + "  C - Careful Attack\n"
+                + "  R - Reckless attack\n"
+                + "  F - Flee");
         //get inputs from user
         String[] inputs = new String[1];
         Scanner scan = new Scanner(System.in);
         inputs[0] = scan.nextLine();
         return inputs;
     }
+    
+    @Override
+    public boolean doAction(String[] inputs) {
+        //get enemy and player. need to implement later
+        Ship enemy = new Ship();
+        Ship player = new Ship();
+        //display for player
+        displayEnemyShip(enemy);
+        displayStats(player, enemy);
 
-    private boolean doAction(String input, Ship player, Ship enemy) {
         //random number generator
         Random random = new Random();
 
@@ -91,7 +59,7 @@ public class CombatView {
         boolean flee = false;
 
         //switch for the menu
-        switch (input) {
+        switch (inputs[0]) {
             case "R":
                 pAttack = pAttack * 2;
                 pEvasion = pEvasion - 20;
@@ -112,8 +80,9 @@ public class CombatView {
                 break;
             default:
                 System.out.println("Invalid Menu Item");
-
         }
+       
+
         //player's attack
         //random numbers must be no larger than 25 and nextint has an exclusive upper bound, so i use 26
         if (CombatControl.doesHit(pAccuracy, eEvasion, random.nextInt(26), random.nextInt(26)) == 1 && !flee) {
@@ -136,7 +105,7 @@ public class CombatView {
         }
 
         //repair out is only used to tell the player how much damage is repaired
-        double repairOut = 0;
+        double repairOut;
         //repair if you are still floating
         if (player.getShipHealth() > 0) {
             //repair
@@ -152,7 +121,19 @@ public class CombatView {
             System.out.println("Yer crew repaired " + repairOut + " damage\n");
         }
 
-        return flee;
+         if (enemy.getShipHealth() <= 0) {
+            //enemy sank
+            System.out.println("Yer opponent sank!\n");
+            return true;
+        } else if (player.getShipHealth() <= 0 && flee) {
+            System.out.println("Yeh sank while turning tail!\n");
+            return true;
+        } else if (player.getShipHealth() <= 0) {
+            //you sank
+            System.out.println("Yeh sank!\n");
+            return true;
+            }else
+        return false;
     }
 
     private void displayEnemyShip(Ship enemy) {
@@ -261,4 +242,6 @@ public class CombatView {
         System.out.format(format, "\nArmor: " + player.getArmor(), " Armor: " + enemy.getArmor());
 
     }
+
+    
 }

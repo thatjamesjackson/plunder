@@ -12,78 +12,36 @@ import java.util.Scanner;
  *
  * @author James
  */
-public class CrewView {
+public class CrewView extends View {
 
-    public void display(NPC[] npc) {
-        //display the menu
-        boolean endView = false;
-        
-      
-        int numberOfCrew=0;
-        for (int i = 0; i < npc.length; i++) {
-            if (npc[i].getIsCrew()) {
-                numberOfCrew++;
-            }
-            
-        }
-                
-        NPC[] crew = new NPC[numberOfCrew];
-        int t = 0;
-        
-        
-        for (int i = 0; i < npc.length; i++) {
-            if (npc[i].getIsCrew()) {
-                crew[t] = npc[i];
-                t++;
-            }
-            
-        }
-        
-        do {
-            System.out.println("\nYer Crew");
-            String format = "%-20.20s %-3s %-10s %-10s %-10s %n";
-            System.out.format(format, "#" ,"Name", "Job", "Attack", "Repair");
-            System.out.println("=====================================================");
-            format = " %-3d %-20.20s %-10s %-10d %-10d %n";
-            for (int i = 0; i < crew.length  ; i++) {
-                    System.out.format(format, (i + 1), crew[i].getName(), crew[i].getJob(), crew[i].getCrewAttack(), crew[i].getCrewRepair());
-                
-            }
-            System.out.println("\nT - Talk to Crew" 
-                             + "\nA - Assign Job" 
-                             + "\nQ - Quit");
-            String[] inputs = getInputs();
-            String first = inputs[0].toUpperCase();
-            if (first.length() != 1 || first.equals(" ")) {
-                System.out.println("Please enter a menu item");
-                continue;
-            }
+    public String[] getInputs() {
+        System.out.println("\nT - Talk to Crew"
+                + "\nA - Assign Job"
+                + "\nQ - Quit");
+//get inputs from user
 
-            endView = doAction(first, crew);
-        } while (endView != true);
-    }
-
-    private String[] getInputs() {
-        //get inputs from user
         String[] inputs = new String[1];
         Scanner scan = new Scanner(System.in);
         inputs[0] = scan.nextLine();
         return inputs;
     }
 
-    private boolean doAction(String input, NPC[] npc) {
+    @Override
+    public boolean doAction(String[] inputs) {
+        NPC[] crew = getCrew();
+        getCrewMenu(crew);
         //switch for the menu
-        switch (input) {
+        switch (inputs[0]) {
             case "T":
-                crewTalk(npc);
+                crewTalk(crew);
                 break;
-            case "A": 
-                assignJob(npc);
+            case "A":
+                assignJob(crew);
                 break;
             case "Q":
                 //this is the only way to exit this loop
                 return true;
-                
+
             default:
                 System.out.println("Invalid Menu Item");
 
@@ -92,56 +50,55 @@ public class CrewView {
     }
 
     private void crewTalk(NPC[] crew) {
-       System.out.println("Which # Crew Member?\n");
+        System.out.println("Which # Crew Member?\n");
 
-        int inputInt = ( getInputCrewNumber(crew) - 1 );
-        
-        System.out.println("===============================\n" 
+        int inputInt = (getInputCrewNumber(crew) - 1);
+
+        System.out.println("===============================\n"
                 + crew[inputInt].getName() + ":\n"
-                + crew[inputInt].getTalk() 
+                + crew[inputInt].getTalk()
                 + "\n===============================\n");
-        
+
     }
 
     private void assignJob(NPC[] crew) {
-        
+
         // get the crew member
         System.out.println("Which # Crew Member?\n");
 
-        int inputInt = ( getInputCrewNumber(crew) - 1 );
-        
+        int inputInt = (getInputCrewNumber(crew) - 1);
+
         //initialize job
         String job = "Placeholder";
         //Gunner- Damage Deckhand- Repair Boatswain - evasion
         System.out.println("Which Job?\n" + "G - Gunner\n" + "D - Deackhand\n" + "B- Boatswain\n");
-        
+
         boolean valid;
-        do{
+        do {
             valid = true;
             String[] inputJob = getInputs();
             String firstInput = inputJob[0].toUpperCase();
-            
-            switch(firstInput)
-                    {
-                case "G" : 
+
+            switch (firstInput) {
+                case "G":
                     job = "Gunner";
-                break;
-                
-                case "D" : 
+                    break;
+
+                case "D":
                     job = "Deckhand";
-                break;
-                
-                case "B" :
-                    job = "Boatswain"; 
-                break;
-                
+                    break;
+
+                case "B":
+                    job = "Boatswain";
+                    break;
+
                 default:
                     valid = false;
                     System.out.println("Please enter a valid value");
             }
 
-        } while(!valid);
-                        
+        } while (!valid);
+
         crew[inputInt].setJob(job);
     }
 
@@ -159,4 +116,42 @@ public class CrewView {
 
         return input;
     }
+
+    private NPC[] getCrew() {
+        // import the list of NPCs
+        NPC[] npc = {new NPC(), new NPC(), new NPC()};
+        //get the crew using a loop
+        int numberOfCrew = 0;
+        for (int i = 0; i < npc.length; i++) {
+            if (npc[i].getIsCrew()) {
+                numberOfCrew++;
+            }
+
+        }
+
+        NPC[] crew = new NPC[numberOfCrew];
+        int t = 0;
+
+        for (int i = 0; i < npc.length; i++) {
+            if (npc[i].getIsCrew()) {
+                crew[t] = npc[i];
+                t++;
+            }
+
+        }
+        return crew;
+
+    }
+
+    private void getCrewMenu(NPC[] crew) {
+        System.out.println("\nYer Crew");
+        String format = "%-20.20s %-3s %-10s %-10s %-10s %n";
+        System.out.format(format, "#", "Name", "Job", "Attack", "Repair");
+        System.out.println("=====================================================");
+        format = " %-3d %-20.20s %-10s %-10d %-10d %n";
+        for (int i = 0; i < crew.length; i++) {
+            System.out.format(format, (i + 1), crew[i].getName(), crew[i].getJob(), crew[i].getCrewAttack(), crew[i].getCrewRepair());
+        }
+    }
+
 }
