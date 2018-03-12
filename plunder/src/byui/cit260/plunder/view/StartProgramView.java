@@ -7,25 +7,13 @@ package byui.cit260.plunder.view;
 
 import byui.cit260.plunder.control.GameControl;
 import byui.cit260.plunder.model.Player;
-import java.util.Scanner;
 
 /**
  *
  * @author James
  */
-public class StartProgramView {
-    public void display() { 
-        boolean endView = false; 
-        
-        do{
-            String[] inputs = getInputs() ;
-            String first = inputs[0].toUpperCase();
+public class StartProgramView extends View{
 
-            if (first.equals('Q')|| inputs.length < 1)
-            return;
-        endView = doAction(inputs);
-    } while(endView != true);
-}
 
     public void displayStartProgramView() {
 
@@ -33,15 +21,8 @@ public class StartProgramView {
 
     public StartProgramView() {
     }
-
-    private String[] getInputs() {
-//        System.out.println("GET INPUTS CALLED");
-//        String[] inputs = new String[1];
-//        inputs[0] = "testInput";
-
-        String[] inputs = new String[1];
-        Scanner scan = new Scanner(System.in);
-                    
+public String[] getInputs(){
+        String [] inputs = new String[1];
         System.out.println(
                 "**********************************************\n" +
                 "**********************************************\n" +
@@ -59,30 +40,12 @@ public class StartProgramView {
                 "****                                      ****\n" +
                 "**********************************************\n" +
                 "**********************************************");
-        boolean valid = false;
-        while (valid == false){
-            System.out.println("Enter the player's name");
-            
-            String name = scan.nextLine();
-            if (name.equals(" ")||name.equals("") ) {
-                System.out.println("invalid value entered");
-                continue;
-            }
-            name = name.trim();
-            String nameUpper = name.toUpperCase();
-            
-            if (name.length() < 2 && nameUpper == "Q"){
-                System.out.println("Ye must enter a longer name");
-                continue;
-            }
-            
-            inputs[0] = name;
-            valid = true;
-       }
-    return inputs;
-            }
-    
-    private boolean doAction(String[] inputs) {
+        String input = this.getInput("Enter the player's name");
+        inputs [0] = input;
+        return inputs;
+        
+}    
+    public boolean doAction(String[] inputs) {
 //        System.out.println("DO ACTION CALLED");
 //        System.out.println("\tinputs = " + inputs[0]);
         Player player = GameControl.savePlayer(inputs[0]);
