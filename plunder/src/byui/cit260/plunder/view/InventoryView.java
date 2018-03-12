@@ -15,6 +15,8 @@ import java.util.Scanner;
  *
  * @author abigailking
  */
+
+
 public class InventoryView {
 
     private String instructions;
@@ -111,7 +113,7 @@ public class InventoryView {
                 return this.dropCargo();
 
             case "R":
-                break;
+                return true;
 
             default:
                 System.out.println("Invalid Menu Item");
