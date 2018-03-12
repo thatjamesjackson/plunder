@@ -48,7 +48,7 @@ public class ExploreView extends View {
             return false;
         }
         
-        System.out.println("")
+        System.out.println("Your area of a triangle");
         return true;
     }
 }
