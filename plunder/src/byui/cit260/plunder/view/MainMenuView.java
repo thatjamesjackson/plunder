@@ -11,43 +11,28 @@ import plunder.Plunder;
  *
  * @author James
  */
-public class MainMenuView {
+public class MainMenuView extends View {
     
-    
-    public void display(){
-        //display the menu
-    boolean endView = false; 
-        
-        do{
-             System.out.println("  N - New game\n"
+    @Override
+    public String[] getInputs() {
+        //declare new
+        String [] inputs = new String[1];
+
+        //show menu options
+        System.out.println("  N - New game\n"
                     + "  R - Restart Game\n"
                     + "  H - Help\n"
                     + "  Q - Quit Program");
-            String[] inputs = getInputs();
-            String first = inputs[0].toUpperCase();
-            if (first.length() != 1 || first.equals(" ")) {
-                System.out.println("Please enter a menu item");
-                continue;
-            }
-            
-
-            
-        endView = doAction(first);
-    } while(endView != true);
-    }
-
-
-    private String[] getInputs() {
-        //get inputs from user
-        String[] inputs = new String[1];
-        Scanner scan = new Scanner(System.in);
-        inputs[0] = scan.nextLine();
+        
+        String input = this.getInput("Select a menu item");
+        inputs [0] = input;
         return inputs;
     }
-
-    private boolean doAction(String input) {
+    
+    @Override
+    public boolean doAction(String[] inputs) {
         //switch for the menu
-        switch (input) {
+        switch (inputs[0]) {
             case "C":
                 CombatView combatView = new CombatView();
 //                Ship shipOne = new Ship();
@@ -110,4 +95,5 @@ public class MainMenuView {
         HelpMenuView helpMenuView = new HelpMenuView();
         helpMenuView.display();
     }
+    
 }

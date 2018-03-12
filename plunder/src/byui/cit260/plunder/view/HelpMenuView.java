@@ -12,49 +12,34 @@ import java.util.Scanner;
  *
  * @author abigailking
  */
-public class HelpMenuView {
-    public void display() { 
-        boolean endView = false; 
-        
-        do{
-             System.out.println("  G - What is the goal of the game?\n" +
-                                "  M - How to move\n" +
-                                "  C – How to engage in combat\n" +
-                                "  T – How to trade \n" +
-                                "  S - Save game\n" +
-                                "  R - Restart game\n" +
-                                "  Q - Quit help menu");
-            String[] inputs = getInputs();
-            String first = inputs[0].toUpperCase();
-            if (first.length() != 1 || first.equals(" ")) {
-                System.out.println("Please enter a menu item");
-                continue;
-            }
-            
-
-            
-        endView = doAction(first);
-    } while(endView != true);
-}
-
-    public void displayHelpMenuView() {
-
-    }
+public class HelpMenuView extends View {
 
     public HelpMenuView() {
         
     }
 
-    private String[] getInputs() {
+    @Override
+    public String[] getInputs() {
+        //declare new
+        String [] inputs = new String[1];
+
         //retrive inputs from user
-        String[] inputs = new String[1];
-        Scanner scan = new Scanner(System.in);
-        inputs[0] = scan.nextLine();
+        System.out.println("  G - What is the goal of the game?\n" +
+                                 "  M - How to move\n" +
+                                "  C – How to engage in combat\n" +
+                                "  T – How to trade \n" +
+                                "  S - Save game\n" +
+                                "  R - Restart game\n" +
+                                "  Q - Quit help menu");
+        
+        String input = this.getInput("Select a menu item");
+        inputs [0] = input;
         return inputs;
     }
-    
-    private boolean doAction(String input) {
-     switch(input){
+
+    @Override
+    public boolean doAction(String[] inputs) {
+        switch(inputs[0]){
          case "G":
                System.out.println("============================================================\n"
                                 + "    Ye be a pirate Captain sailing the seas of Paradise. \n"
