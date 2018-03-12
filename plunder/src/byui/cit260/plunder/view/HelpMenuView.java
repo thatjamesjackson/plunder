@@ -14,10 +14,6 @@ import java.util.Scanner;
  */
 public class HelpMenuView extends View {
 
-    public void displayHelpMenuView() {
-
-    }
-
     public HelpMenuView() {
         
     }
@@ -36,6 +32,8 @@ public class HelpMenuView extends View {
                                 "  R - Restart game\n" +
                                 "  Q - Quit help menu");
         
+        String input = this.getInput("Select a menu item");
+        inputs [0] = input;
         return inputs;
     }
 

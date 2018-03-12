@@ -183,7 +183,7 @@ public class GameMenuView {
     private void loadHelp() {
         HelpMenuView gameHelp = new HelpMenuView();
         
-        gameHelp.displayHelpMenuView();
+        gameHelp.display();
     }
 
     private void saveGame() {

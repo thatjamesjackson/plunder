@@ -26,6 +26,8 @@ public class MainMenuView extends View {
                     + "  H - Help\n"
                     + "  Q - Quit Program");
         
+        String input = this.getInput("Select a menu item");
+        inputs [0] = input;
         return inputs;
     }
     
