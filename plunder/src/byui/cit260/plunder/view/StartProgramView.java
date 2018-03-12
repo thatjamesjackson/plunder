@@ -21,7 +21,8 @@ public class StartProgramView extends View{
 
     public StartProgramView() {
     }
-public String[] getInputs(){
+
+    public String[] getInputs(){
         String [] inputs = new String[1];
         System.out.println(
                 "**********************************************\n" +

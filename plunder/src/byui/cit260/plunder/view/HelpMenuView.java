@@ -12,30 +12,7 @@ import java.util.Scanner;
  *
  * @author abigailking
  */
-public class HelpMenuView {
-    public void display() { 
-        boolean endView = false; 
-        
-        do{
-             System.out.println("  G - What is the goal of the game?\n" +
-                                "  M - How to move\n" +
-                                "  C – How to engage in combat\n" +
-                                "  T – How to trade \n" +
-                                "  S - Save game\n" +
-                                "  R - Restart game\n" +
-                                "  Q - Quit help menu");
-            String[] inputs = getInputs();
-            String first = inputs[0].toUpperCase();
-            if (first.length() != 1 || first.equals(" ")) {
-                System.out.println("Please enter a menu item");
-                continue;
-            }
-            
-
-            
-        endView = doAction(first);
-    } while(endView != true);
-}
+public class HelpMenuView extends View {
 
     public void displayHelpMenuView() {
 
@@ -45,8 +22,17 @@ public class HelpMenuView {
         
     }
 
+    @Override
     private String[] getInputs() {
         //retrive inputs from user
+        System.out.println("  G - What is the goal of the game?\n" +
+                                 "  M - How to move\n" +
+                                "  C – How to engage in combat\n" +
+                                "  T – How to trade \n" +
+                                "  S - Save game\n" +
+                                "  R - Restart game\n" +
+                                "  Q - Quit help menu");
+        
         String[] inputs = new String[1];
         Scanner scan = new Scanner(System.in);
         inputs[0] = scan.nextLine();
