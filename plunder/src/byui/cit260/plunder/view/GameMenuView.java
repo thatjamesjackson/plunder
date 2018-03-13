@@ -12,13 +12,23 @@ import java.util.Scanner;
  *
  * @author James
  */
-public class GameMenuView {
+public class GameMenuView extends View {
 
     public void display(){
-        boolean endView = false; 
         
-        do {
-            System.out.println("+--+--+--+--+--+\n"
+    }
+
+    public GameMenuView() {
+
+    }
+
+    @Override
+    public String[] getInputs() {
+        //declare new
+        String [] inputs = new String[1];
+        
+        // show menu options
+        System.out.println("+--+--+--+--+--+\n"
                              + "|  |  |  |  |  |\n"
                              + "+--+--+--+--+--+\n"
                              + "|  |  |  |  |  |\n"
@@ -41,31 +51,16 @@ public class GameMenuView {
                              + "  H - Help\n"
                              + "  V - Save\n"
                              + "  X - Exit");
-            String[] inputs = getInputs();
-            String first = inputs[0].toUpperCase();
-            if (first.length() != 1 || first.equals(" ")) {
-                System.out.println("Please enter a menu item");
-                continue;
-            }
-
-            endView = doAction(first);
-        } while (endView != true);
-    }
-
-    public GameMenuView() {
-
-    }
-
-    private String[] getInputs() {
-
-        String[] inputs = new String[1];
-        Scanner scan = new Scanner(System.in);
-        inputs[0] = scan.nextLine();
+        
+        // retrieve input from user
+        String input = this.getInput("Select a menu item");
+        inputs [0] = input;
         return inputs;
     }
 
-    private boolean doAction(String input) {
-        switch (input) {
+    @Override
+    public boolean doAction(String[] inputs) {
+        switch (inputs[0]) {
             case "N":
                 travelNorth();
                 break;

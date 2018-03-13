@@ -17,39 +17,24 @@ import java.util.Scanner;
  */
 
 
-public class InventoryView {
+public class InventoryView extends View{
 
     private String instructions;
     private String promptMessage;
-
+    private String[] inputs = new String[3];
+    
     public void display() {
 
-        boolean endView = false;
-        do {
-
-            String[] inputs = getInputs();
-            String first = inputs[0].toUpperCase();
-            if (first.length() != 1 || first.equals(" ")) {
-                System.out.println("Please enter a menu item");
-                continue;
-            }
-
-            endView = doAction(inputs);
-        } while (endView != true);
     }
 
-    private String[] getInputs() {
-//        System.out.println("GET INPUTS CALLED");
-//        String[] inputs = new String[1];
-//        inputs[0] = "testInput";
+    @Override
+    public String[] getInputs() {
         Random random = new Random();
 
         double[] itemWeight = {random.nextInt(301), random.nextInt(301)};
         double[] itemQuantity = {random.nextInt(11), random.nextInt(11)};
 
         double weight = InventoryControl.calculateWeight(itemWeight, itemQuantity);
-
-        String[] inputs = new String[1];
 
         this.instructions
                 = "\n  Our ship be sitting at " + weight + "tonnes\n"
@@ -63,43 +48,13 @@ public class InventoryView {
         
         this.promptMessage = "Enter your selection below: ";
 
-        String input1 = this.getInput();
+        String input1 = this.getInput(this.promptMessage);
         
         if (input1.equals(input1.toUpperCase().equals("Q"))) {
             return inputs;
         }
-        inputs[0] = input1;
+        this.inputs[0] = input1;
         
-        return inputs;
-
-  
-    }
-
-    private String getInput() {
-        Scanner scan = new Scanner(System.in);
-        boolean valid = false;
-        String value = "";
-        
-         System.out.println(this.instructions);
-
-        while (valid == false) {
-            System.out.println(this.promptMessage);
-
-            value = scan.nextLine();
-            value = value.trim();
-
-            if (value.length() < 1) {
-                System.out.println("You must enter a value.");
-                continue;
-            }
-
-            valid = true;
-        }
-        return value;
-
-    }
-
-    private boolean doAction(String[] inputs) {
         switch (inputs[0].toUpperCase()) {
             case "L":
                 listInventory();
@@ -110,19 +65,37 @@ public class InventoryView {
                 break;
 
             case "D":
-                return this.dropCargo();
+                this.dropCargo();
+                break;
 
             case "R":
-                return true;
-
+                inputs[0] = "Q";
+                break;
+                
             default:
                 System.out.println("Invalid Menu Item");
 
         }
-        return false;
+  
+        
+        return inputs;
+  
     }
 
-    private boolean dropCargo() {
+    @Override
+    public boolean doAction(String[] inputs) {
+
+        int howMuch = InventoryControl.howMuch(itemType, p.getCurrentGame().getInventory());
+        
+        // new calculation
+        
+        int inventoryQuantity = howMuch - Integer.parseInt(this.inputs[2]);
+        InventoryControl.changeQuantity(howMuch, p.getCurrentGame().getInventory(), itemType);
+        
+        return true;
+    }
+
+    private void dropCargo() {
 
         this.instructions = "Here is your inventory. What do you wanna drop?\n"
                 + "C - cotton - 2 tonnes\n"
@@ -131,30 +104,31 @@ public class InventoryView {
         
         this.promptMessage = this.promptMessage = "Enter your selection below: ";
 
-        String itemType = this.getInput();
+        String itemType = this.getInput(this.promptMessage);
         if (itemType.equals(itemType.toUpperCase().equals("Q"))) {
-            return true;
+            return;
         }
+        
+        this.inputs[1] = itemType;
         
         // get amount
         Plunder p = new Plunder();
+        
         int howMuch = InventoryControl.howMuch(itemType, p.getCurrentGame().getInventory());
         
         this.instructions = "You have " + howMuch + " tonnes of " + itemType + " in your inventory.";
         
-        this.promptMessage = this.promptMessage = "Enter a number value of how much to drop below: ";
+        this.promptMessage = "Enter a number value of how much to drop below: ";
 
-        String amount = this.getInput();
+        String amount = this.getInput(this.promptMessage);
         if (amount.equals(amount.toUpperCase().equals("Q"))) {
-            return true;
+            return;
         }
         
-        // new calculation
+        this.inputs[2] = itemType;
         
-        int inventoryQuantity = howMuch - Integer.parseInt(amount);
-        InventoryControl.changeQuantity(howMuch, p.getCurrentGame().getInventory(), itemType);
+        return;
         
-        return true;
     }
 
     private void listInventory() {

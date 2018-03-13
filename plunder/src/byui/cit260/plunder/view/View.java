@@ -36,6 +36,7 @@ public abstract class View implements ViewInterface {
     @Override
     public String getInput(String promptMessage) {
         System.out.println(promptMessage);
+        
         //get inputs from user
         String input;
         Scanner scan = new Scanner(System.in);
