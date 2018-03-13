@@ -124,7 +124,6 @@ public class Plunder {
         itemOne.setWeight(100);
         
         ResourceScene sceneRe = new ResourceScene();
-        sceneRe.setAmount(100);
         sceneRe.setDescription("You find a weapon");
         sceneRe.setResource(itemOne);
         
