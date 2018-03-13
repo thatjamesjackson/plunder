@@ -54,6 +54,36 @@ public class InventoryView extends View{
         }
         this.inputs[0] = input1;
         
+//        switch (inputs[0].toUpperCase()) {
+//            case "L":
+//                listInventory();
+//                break;
+//
+//            case "S":
+//                sellShop();
+//                break;
+//
+//            case "D":
+//                this.dropCargo();
+//                break;
+//
+//            case "R":
+//                inputs[0] = "Q";
+//                break;
+//                
+//            default:
+//                System.out.println("Invalid Menu Item");
+//
+//        }
+//  
+//        
+        return inputs;
+  
+    }
+
+    @Override
+    public boolean doAction(String[] inputs) {
+        
         switch (inputs[0].toUpperCase()) {
             case "L":
                 listInventory();
@@ -75,21 +105,6 @@ public class InventoryView extends View{
                 System.out.println("Invalid Menu Item");
 
         }
-  
-        
-        return inputs;
-  
-    }
-
-    @Override
-    public boolean doAction(String[] inputs) {
-
-        int howMuch = InventoryControl.howMuch(itemType, p.getCurrentGame().getInventory());
-        
-        // new calculation
-        
-        int inventoryQuantity = howMuch - Integer.parseInt(this.inputs[2]);
-        InventoryControl.changeQuantity(howMuch, p.getCurrentGame().getInventory(), itemType);
         
         return true;
     }
@@ -125,6 +140,11 @@ public class InventoryView extends View{
         }
         
         this.inputs[2] = itemType;
+        
+        // new calculation
+        
+        int inventoryQuantity = howMuch - Integer.parseInt(this.inputs[2]);
+        InventoryControl.changeQuantity(howMuch, p.getCurrentGame().getInventory(), itemType);
         
         return;
         
