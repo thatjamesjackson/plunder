@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package byui.cit260.plunder.view;
-
 import byui.cit260.plunder.model.NPC;
 import java.util.Scanner;
 
@@ -15,14 +14,12 @@ import java.util.Scanner;
 public class CrewView extends View {
 
     public String[] getInputs() {
-        System.out.println("\nT - Talk to Crew"
-                + "\nA - Assign Job"
-                + "\nQ - Quit");
 //get inputs from user
 
-        String[] inputs = new String[1];
-        Scanner scan = new Scanner(System.in);
-        inputs[0] = scan.nextLine();
+         String[] inputs = new String[1];
+        inputs[0] = this.getInput("\nT - Talk to Crew"
+                + "\nA - Assign Job"
+                + "\nQ - Quit");
         return inputs;
     }
 

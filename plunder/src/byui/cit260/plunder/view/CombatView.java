@@ -4,12 +4,10 @@
  * and open the template in the editor.
  */
 package byui.cit260.plunder.view;
-
 import java.util.Random;
 import byui.cit260.plunder.control.CombatControl;
 import byui.cit260.plunder.model.Ship;
 import java.util.Scanner;
-
 /**
  *
  * @author James
@@ -21,15 +19,14 @@ public class CombatView extends View{
 
     @Override
     public String[] getInputs() {
-        System.out.println("\n  A - Aimed Attack\n"
+        //get inputs from user
+        String[] inputs = new String[1];
+        inputs[0] = this.getInput("\n  A - Aimed Attack\n"
                 + "  C - Careful Attack\n"
                 + "  R - Reckless attack\n"
                 + "  F - Flee");
-        //get inputs from user
-        String[] inputs = new String[1];
-        Scanner scan = new Scanner(System.in);
-        inputs[0] = scan.nextLine();
         return inputs;
+       
     }
     
     @Override

@@ -5,7 +5,7 @@
  */
 package byui.cit260.plunder.view;
 import byui.cit260.plunder.control.GameControl;
-import java.util.Scanner;
+
 import plunder.Plunder;
 /**
  *
