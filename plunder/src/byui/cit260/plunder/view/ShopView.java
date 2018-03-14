@@ -11,12 +11,16 @@ import java.util.Scanner;
  *
  * @author abigailking
  */
-public class ShopView {
+public class ShopView extends View {
     public void display() { 
         
-        boolean endView = false; 
-        do{
-             System.out.println("                 _____\n" +
+}
+
+    @Override
+    public String[] getInputs() {
+        
+        // display menu
+        System.out.println("                 _____\n" +
                                 "              .-\" .-. \"-.\n" +
                                 "            _/ '=(0.0)=' \\_\n" +
                                 "          /`   .='|m|'=.   `\\\n" +
@@ -34,28 +38,19 @@ public class ShopView {
                                 "            B - Buy\n" +
                                 "            S - Sell all loot\n" +
                                 "            R - Return to ship");
-            String[] inputs = getInputs();
-            String first = inputs[0].toUpperCase();
-            if (first.length() != 1 || first.equals(" ")) {
-                System.out.println("Please enter a menu item");
-                continue;
-            }
-            
-        endView = doAction(first);
-    } while(endView != true);
-}
-
-    private String[] getInputs() {
+        //declare new
+        String [] inputs = new String[1];
         
-        String[] inputs = new String[1];
-        Scanner scan = new Scanner(System.in);
-        inputs[0] = scan.nextLine();
+        // retrieve input from user
+        String input = this.getInput("Select a menu item");
+        inputs [0] = input;
         return inputs;
     }
 
-    private boolean doAction(String input) {
+    @Override
+    public boolean doAction(String[] inputs) {
         
-        switch (input) {
+        switch (inputs[0]) {
             case "B":
                 buyShop();
                 break;
