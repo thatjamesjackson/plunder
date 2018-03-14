@@ -6,7 +6,7 @@
 package byui.cit260.plunder.view;
 
 import byui.cit260.plunder.model.ResourceScene;
-import java.util.Scanner;
+import byui.cit260.plunder.model.Ship;
 
 /**
  *
@@ -16,17 +16,48 @@ public class ResourceView extends View {
 
     @Override
     public String[] getInputs() {
-        
+        //this will be replaced by an import eventually 
+        ResourceScene scene = new ResourceScene();
+
         //declare new string array
         String[] inputs = new String[1];
-        inputs[0] = this.getInput("Select a menu item");
-        return inputs;}
+        System.out.println(scene.getDescription());
+        inputs[0] = this.getInput("G - Gather Resources\n"
+                + "L - Leave Resources");
+        return inputs;
+    }
 
     @Override
     public boolean doAction(String[] inputs) {
-    ResourceScene scene = new ResourceScene();
-    
-    return true;
+        //this part needs to be imported eventually
+
+        ResourceScene scene = new ResourceScene();
+        Ship player = new Ship();
+        switch (inputs[0]) {
+
+            case "L":
+                return true;
+            case "G":
+                boolean inInventory = false;
+                //find the same item and add the two quantiies together
+                for (int i = 0; i < player.getInventory().length; i++) {
+                    if (player.getInventory()[i].getInventoryType().equals(scene.getResource().getInventoryType())) {
+                        player.getInventory()[i].setQuantityInStock(player.getInventory()[i].getQuantityInStock() + scene.getResource().getQuantityInStock());
+                        inInventory = true;
+                    }
+                }
+                //if it is not in the inventory add it
+                if (!inInventory) {
+                    player.getInventory()[player.getInventory().length] = scene.getResource();
+                }
+
+                return true;
+            default:
+                System.out.println("Invalid Menu Item");
+                return false;
+                    
+
+        }
     }
-    
+
 }

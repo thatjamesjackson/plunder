@@ -6,6 +6,7 @@
 package byui.cit260.plunder.model;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Objects;
 
 /**
@@ -14,17 +15,17 @@ import java.util.Objects;
  */
 public class Ship implements Serializable {
 
-
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 89 * hash + Objects.hashCode(this.name);
-        hash = 89 * hash + (int) (Double.doubleToLongBits(this.shipAttack) ^ (Double.doubleToLongBits(this.shipAttack) >>> 32));
-        hash = 89 * hash + (int) (Double.doubleToLongBits(this.carryWeight) ^ (Double.doubleToLongBits(this.carryWeight) >>> 32));
-        hash = 89 * hash + (int) (Double.doubleToLongBits(this.armor) ^ (Double.doubleToLongBits(this.armor) >>> 32));
-        hash = 89 * hash + (int) (Double.doubleToLongBits(this.shipRepair) ^ (Double.doubleToLongBits(this.shipRepair) >>> 32));
-        hash = 89 * hash + (int) (Double.doubleToLongBits(this.shipHealth) ^ (Double.doubleToLongBits(this.shipHealth) >>> 32));
-        hash = 89 * hash + (int) (Double.doubleToLongBits(this.shipMaxHealth) ^ (Double.doubleToLongBits(this.shipMaxHealth) >>> 32));
+        int hash = 3;
+        hash = 59 * hash + Objects.hashCode(this.name);
+        hash = 59 * hash + (int) (Double.doubleToLongBits(this.shipAttack) ^ (Double.doubleToLongBits(this.shipAttack) >>> 32));
+        hash = 59 * hash + (int) (Double.doubleToLongBits(this.carryWeight) ^ (Double.doubleToLongBits(this.carryWeight) >>> 32));
+        hash = 59 * hash + (int) (Double.doubleToLongBits(this.armor) ^ (Double.doubleToLongBits(this.armor) >>> 32));
+        hash = 59 * hash + (int) (Double.doubleToLongBits(this.shipRepair) ^ (Double.doubleToLongBits(this.shipRepair) >>> 32));
+        hash = 59 * hash + (int) (Double.doubleToLongBits(this.shipHealth) ^ (Double.doubleToLongBits(this.shipHealth) >>> 32));
+        hash = 59 * hash + (int) (Double.doubleToLongBits(this.shipMaxHealth) ^ (Double.doubleToLongBits(this.shipMaxHealth) >>> 32));
+        hash = 59 * hash + Arrays.deepHashCode(this.inventory);
         return hash;
     }
 
@@ -61,18 +62,12 @@ public class Ship implements Serializable {
         if (!Objects.equals(this.name, other.name)) {
             return false;
         }
+        if (!Arrays.deepEquals(this.inventory, other.inventory)) {
+            return false;
+        }
         return true;
     }
 
-    
-
-    
-
-   
-
-    
-
-    
     private String name;
     private double shipAttack;
     private double carryWeight;
@@ -80,14 +75,20 @@ public class Ship implements Serializable {
     private double shipRepair;
     private double shipHealth;
     private double shipMaxHealth;
+    private InventoryItem[] inventory;
 
-    @Override
-    public String toString() {
-        return "Ship{" + "name=" + name + ", shipAttack=" + shipAttack + ", carryWeight=" + carryWeight + ", armor=" + armor + ", shipRepair=" + shipRepair + ", shipHealth=" + shipHealth + ", shipMaxHealth=" + shipMaxHealth + '}';
-    }
+    
     
       public double getShipMaxHealth() {
         return shipMaxHealth;
+    }
+
+    public InventoryItem[] getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(InventoryItem[] inventory) {
+        this.inventory = inventory;
     }
 
     public void setShipMaxHealth(double shipMaxHealth) {
@@ -100,6 +101,11 @@ public class Ship implements Serializable {
 
     public void setShipHealth(double shipHealth) {
         this.shipHealth = shipHealth;
+    }
+
+    @Override
+    public String toString() {
+        return "Ship{" + "name=" + name + ", shipAttack=" + shipAttack + ", carryWeight=" + carryWeight + ", armor=" + armor + ", shipRepair=" + shipRepair + ", shipHealth=" + shipHealth + ", shipMaxHealth=" + shipMaxHealth + ", inventory=" + inventory + '}';
     }
 
     public Ship() {
