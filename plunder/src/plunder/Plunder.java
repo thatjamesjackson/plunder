@@ -5,7 +5,6 @@
  */
 package plunder;
 
-import byui.cit260.plunder.model.Actor;
 import byui.cit260.plunder.model.CombatScene;
 import byui.cit260.plunder.model.Decision;
 import byui.cit260.plunder.model.DecisionScene;
@@ -19,7 +18,6 @@ import byui.cit260.plunder.model.Map;
 import byui.cit260.plunder.model.Location;
 import byui.cit260.plunder.model.InventoryItem;
 import byui.cit260.plunder.model.NPC;
-import byui.cit260.plunder.model.Question;
 import byui.cit260.plunder.model.ShopScene;
 import byui.cit260.plunder.model.Upgrade;
 import byui.cit260.plunder.view.StartProgramView;
