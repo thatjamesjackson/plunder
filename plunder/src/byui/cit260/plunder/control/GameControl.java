@@ -5,17 +5,21 @@
  */
 package byui.cit260.plunder.control;
 
+import byui.cit260.plunder.model.Actor;
+import byui.cit260.plunder.model.Game;
+import byui.cit260.plunder.model.InventoryItem;
 import byui.cit260.plunder.model.Player;
+import java.util.ArrayList;
 import plunder.Plunder;
 
-
 public class GameControl {
+
     public static Player savePlayer(String playerName) {
         //make a new player with name based on input
         System.out.println("Save Player Called");
         //fail if there is no name
-        if (playerName.equals(" ")||playerName.equals("") ) {
-        return null;
+        if (playerName.equals(" ") || playerName.equals("")) {
+            return null;
         }
         Player player = new Player();
         player.setName(playerName);
@@ -23,20 +27,21 @@ public class GameControl {
         return player;
     }
 
-    public static void createNewGame(Player player) {
-//       if (player == null)
-//return -1
-//game = create 
-//a
-// new Game
-// object 
-//Save a reference to the Player object in the game
-//Save a reference to the game in the 
-//main class 
-//actors = createActors() 
-//Save the list of actors in the Game object 
+    public static int createNewGame(Player player) {
+        if (player == null) {
+            return -1;
+        }
+        Game game = new Game();
+        game.setPlayer(player);
+        Plunder.setCurrentGame(game);
+
+        //actors are enums
+
 //Assign an actor to the player 
-//items = create
+        player.setActor(Actor.Captain);
+        //make inventory items
+       ArrayList <InventoryItem> inventory = createItems();
+
 //Items() 
 //Save the list of items in the game 
 //map = create
@@ -45,6 +50,39 @@ public class GameControl {
 //   RETURN -1 
 //ENDIF 
 //Assign the map to the game 
-//RETURN 1 // indicates success 
+
+        return 1;
     }
+    public static ArrayList<InventoryItem> createItems(){
+     InventoryItem jewels = new InventoryItem();
+        jewels.setInventoryType("Jewels");
+        jewels.setQuantityInStock(0);
+        jewels.setValue(300);
+        jewels.setWeight(2);
+
+        InventoryItem fish = new InventoryItem();
+        fish.setInventoryType("Fish");
+        fish.setQuantityInStock(0);
+        fish.setValue(20);
+        fish.setWeight(5);
+
+        InventoryItem cotton = new InventoryItem();
+        cotton.setInventoryType("Cotton");
+        cotton.setQuantityInStock(0);
+        cotton.setValue(50);
+        cotton.setWeight(1);
+
+        InventoryItem spices = new InventoryItem();
+        spices.setInventoryType("Spices");
+        spices.setQuantityInStock(0);
+        spices.setValue(100);
+        spices.setWeight(1);
+        
+        ArrayList <InventoryItem> items = new ArrayList<InventoryItem>(){
+
+        }
+                
+        return items;
+    }
+
 }
