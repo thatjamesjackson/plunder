@@ -24,6 +24,27 @@ public class GameControl {
     }
 
     public static void createNewGame(Player player) {
-        System.out.println("create new game called");
+//       if (player == null)
+//return -1
+//game = create 
+//a
+// new Game
+// object 
+//Save a reference to the Player object in the game
+//Save a reference to the game in the 
+//main class 
+//actors = createActors() 
+//Save the list of actors in the Game object 
+//Assign an actor to the player 
+//items = create
+//Items() 
+//Save the list of items in the game 
+//map = create
+//Map(noOfRows, noOfColumns, items) 
+//IF map == null THEN 
+//   RETURN -1 
+//ENDIF 
+//Assign the map to the game 
+//RETURN 1 // indicates success 
     }
 }
