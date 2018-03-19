@@ -38,7 +38,7 @@ public class Game implements Serializable{
         this.player = player;
     }
     
-        public Map getMap() {
+    public Map getMap() {
         return map;
     }
 
