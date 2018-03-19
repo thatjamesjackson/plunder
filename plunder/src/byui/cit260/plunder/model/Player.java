@@ -19,6 +19,7 @@ public class Player implements Serializable {
     private double bestTime;
     private ArrayList<Game> games = new ArrayList<>();
     private Actor actor;
+    private Ship ship;
 
     public ArrayList<Game> getGames() {
         return games;
@@ -32,18 +33,27 @@ public class Player implements Serializable {
     public Player() {
     }
 
+    public Ship getShip() {
+        return ship;
+    }
+
+    public void setShip(Ship ship) {
+        this.ship = ship;
+    }
+
     @Override
     public String toString() {
-        return "Player{" + "name=" + name + ", bestTime=" + bestTime + ", games=" + games + ", actor=" + actor + '}';
+        return "Player{" + "name=" + name + ", bestTime=" + bestTime + ", games=" + games + ", actor=" + actor + ", ship=" + ship + '}';
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 19 * hash + Objects.hashCode(this.name);
-        hash = 19 * hash + (int) (Double.doubleToLongBits(this.bestTime) ^ (Double.doubleToLongBits(this.bestTime) >>> 32));
-        hash = 19 * hash + Objects.hashCode(this.games);
-        hash = 19 * hash + Objects.hashCode(this.actor);
+        hash = 17 * hash + Objects.hashCode(this.name);
+        hash = 17 * hash + (int) (Double.doubleToLongBits(this.bestTime) ^ (Double.doubleToLongBits(this.bestTime) >>> 32));
+        hash = 17 * hash + Objects.hashCode(this.games);
+        hash = 17 * hash + Objects.hashCode(this.actor);
+        hash = 17 * hash + Objects.hashCode(this.ship);
         return hash;
     }
 
@@ -71,9 +81,13 @@ public class Player implements Serializable {
         if (this.actor != other.actor) {
             return false;
         }
+        if (!Objects.equals(this.ship, other.ship)) {
+            return false;
+        }
         return true;
     }
 
+   
     public Actor getActor() {
         return actor;
     }

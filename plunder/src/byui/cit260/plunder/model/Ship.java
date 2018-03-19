@@ -6,7 +6,7 @@
 package byui.cit260.plunder.model;
 
 import java.io.Serializable;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -17,15 +17,15 @@ public class Ship implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 59 * hash + Objects.hashCode(this.name);
-        hash = 59 * hash + (int) (Double.doubleToLongBits(this.shipAttack) ^ (Double.doubleToLongBits(this.shipAttack) >>> 32));
-        hash = 59 * hash + (int) (Double.doubleToLongBits(this.carryWeight) ^ (Double.doubleToLongBits(this.carryWeight) >>> 32));
-        hash = 59 * hash + (int) (Double.doubleToLongBits(this.armor) ^ (Double.doubleToLongBits(this.armor) >>> 32));
-        hash = 59 * hash + (int) (Double.doubleToLongBits(this.shipRepair) ^ (Double.doubleToLongBits(this.shipRepair) >>> 32));
-        hash = 59 * hash + (int) (Double.doubleToLongBits(this.shipHealth) ^ (Double.doubleToLongBits(this.shipHealth) >>> 32));
-        hash = 59 * hash + (int) (Double.doubleToLongBits(this.shipMaxHealth) ^ (Double.doubleToLongBits(this.shipMaxHealth) >>> 32));
-        hash = 59 * hash + Arrays.deepHashCode(this.inventory);
+        int hash = 7;
+        hash = 47 * hash + Objects.hashCode(this.name);
+        hash = 47 * hash + (int) (Double.doubleToLongBits(this.shipAttack) ^ (Double.doubleToLongBits(this.shipAttack) >>> 32));
+        hash = 47 * hash + (int) (Double.doubleToLongBits(this.carryWeight) ^ (Double.doubleToLongBits(this.carryWeight) >>> 32));
+        hash = 47 * hash + (int) (Double.doubleToLongBits(this.armor) ^ (Double.doubleToLongBits(this.armor) >>> 32));
+        hash = 47 * hash + (int) (Double.doubleToLongBits(this.shipRepair) ^ (Double.doubleToLongBits(this.shipRepair) >>> 32));
+        hash = 47 * hash + (int) (Double.doubleToLongBits(this.shipHealth) ^ (Double.doubleToLongBits(this.shipHealth) >>> 32));
+        hash = 47 * hash + (int) (Double.doubleToLongBits(this.shipMaxHealth) ^ (Double.doubleToLongBits(this.shipMaxHealth) >>> 32));
+        hash = 47 * hash + Objects.hashCode(this.inventory);
         return hash;
     }
 
@@ -62,11 +62,13 @@ public class Ship implements Serializable {
         if (!Objects.equals(this.name, other.name)) {
             return false;
         }
-        if (!Arrays.deepEquals(this.inventory, other.inventory)) {
+        if (!Objects.equals(this.inventory, other.inventory)) {
             return false;
         }
         return true;
     }
+
+
 
     private String name;
     private double shipAttack;
@@ -75,7 +77,7 @@ public class Ship implements Serializable {
     private double shipRepair;
     private double shipHealth;
     private double shipMaxHealth;
-    private InventoryItem[] inventory;
+    private ArrayList <InventoryItem> inventory;
 
     
     
@@ -83,11 +85,11 @@ public class Ship implements Serializable {
         return shipMaxHealth;
     }
 
-    public InventoryItem[] getInventory() {
+    public ArrayList getInventory() {
         return inventory;
     }
 
-    public void setInventory(InventoryItem[] inventory) {
+    public void setInventory(ArrayList<InventoryItem> inventory) {
         this.inventory = inventory;
     }
 

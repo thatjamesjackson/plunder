@@ -41,14 +41,19 @@ public class GameControl {
         player.setActor(Actor.Captain);
         //make inventory items
        ArrayList <InventoryItem> inventory = createItems();
-
-//Items() 
+       
+ 
 //Save the list of items in the game 
+    game.setInventory(inventory);
+    
 //map = create
+    game.setMap(MapControl.createMap(5,5,inventory));
 //Map(noOfRows, noOfColumns, items) 
+
 //IF map == null THEN 
 //   RETURN -1 
 //ENDIF 
+
 //Assign the map to the game 
 
         return 1;
@@ -78,9 +83,12 @@ public class GameControl {
         spices.setValue(100);
         spices.setWeight(1);
         
-        ArrayList <InventoryItem> items = new ArrayList<InventoryItem>(){
-
-        }
+        ArrayList <InventoryItem> items = new ArrayList<InventoryItem>();
+       items.add(jewels);
+       items.add(fish);
+       items.add(cotton);
+       items.add(spices);
+       
                 
         return items;
     }
