@@ -32,7 +32,7 @@ public class ResourceView extends View {
         //this part needs to be imported eventually
 
         ResourceScene scene = new ResourceScene();
-        Ship player = new Ship();
+        Ship playerShip = new Ship();
         switch (inputs[0]) {
 
             case "L":
@@ -40,15 +40,15 @@ public class ResourceView extends View {
             case "G":
                 boolean inInventory = false;
                 //find the same item and add the two quantiies together
-                for (int i = 0; i < player.getInventory().length; i++) {
-                    if (player.getInventory()[i].getInventoryType().equals(scene.getResource().getInventoryType())) {
-                        player.getInventory()[i].setQuantityInStock(player.getInventory()[i].getQuantityInStock() + scene.getResource().getQuantityInStock());
+                for (int i = 0; i < playerShip.getInventory().size(); i++) {
+                    if (playerShip.getInventory().get(i).getInventoryType().equals(scene.getResource().getInventoryType())) {
+                        playerShip.getInventory().get(i).setQuantityInStock(playerShip.getInventory().get(i).getQuantityInStock() + scene.getResource().getQuantityInStock());
                         inInventory = true;
                     }
                 }
                 //if it is not in the inventory add it
                 if (!inInventory) {
-                    player.getInventory()[player.getInventory().length] = scene.getResource();
+                   playerShip.getInventory().add(scene.getResource());
                 }
 
                 return true;
