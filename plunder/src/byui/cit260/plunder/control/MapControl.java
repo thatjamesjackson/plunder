@@ -5,10 +5,15 @@
  */
 package byui.cit260.plunder.control;
 
+import byui.cit260.plunder.model.CombatScene;
+import byui.cit260.plunder.model.InventoryItem;
+import byui.cit260.plunder.model.InventoryItemType;
 import byui.cit260.plunder.model.Location;
 import byui.cit260.plunder.model.Map;
 import byui.cit260.plunder.model.Question;
 import byui.cit260.plunder.model.RegularScene;
+import byui.cit260.plunder.model.ResourceScene;
+import byui.cit260.plunder.model.SceneType;
 import java.util.ArrayList;
 
 /**
@@ -35,7 +40,7 @@ public class MapControl {
         map.setLocation(locations);
 
         //make scenes
-        RegularScene[] scenes = createScenes();
+        RegularScene[] scenes = createScenes(items);
         //make questions
         Question[] questions = createQuestions();
         //assign items and questions to scenes
@@ -49,12 +54,43 @@ public class MapControl {
     }
 
     private static Location[][] createLocations(int numRows, int numColumns) {
-        System.out.println("createLocations called");
-        return null;
+//        System.out.println("createLocations called");
+
+        if (numRows < 1 || numColumns < 1){
+            return null;
+        }
+        
+        Location[][] locations = new Location[numRows][numColumns];
+        for (int i = 0; i < locations.length; i++){
+            for (int f = 0; f < locations[i].length; f++){
+                Location currentLocation = new Location();
+                currentLocation.setRow(i);
+                currentLocation.setColumn(f);
+                currentLocation.setVisited(false);
+                
+                locations[i][f] = currentLocation;
+            }
+        }
+                   
+        return locations;
     }
 
-    private static RegularScene[] createScenes() {
-       System.out.println("createQuestions called");
+    private static RegularScene[] createScenes(ArrayList<InventoryItem> items) {
+       // System.out.println("createQuestions called");
+       
+       RegularScene[] scenes = new RegularScene[9];
+       
+       scenes[SceneType.islandRegular.ordinal()] = new RegularScene();
+       scenes[SceneType.islandRegular.ordinal()].setDescription("The hot sands surround you.");
+       
+       ResourceScene islandResourceScene = new ResourceScene();
+       islandResourceScene.setDescription("The sands");
+       islandResourceScene.setResource(items.get(InventoryItemType.fish.ordinal()));
+       scenes[SceneType.islandResource.ordinal()] = islandResourceScene;
+       
+       scenes[SceneType.seaMonster.ordinal()] = new CombatScene();
+       scenes[SceneType.shop.ordinal()] = new RegularScene();
+       
        return null;
     }
 
