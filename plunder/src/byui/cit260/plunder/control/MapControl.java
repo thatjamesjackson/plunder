@@ -84,11 +84,15 @@ public class MapControl {
        scenes[SceneType.islandRegular.ordinal()].setDescription("The hot sands surround you.");
        
        ResourceScene islandResourceScene = new ResourceScene();
-       islandResourceScene.setDescription("The sands");
+       islandResourceScene.setDescription("While you are on the island, you see some useful items here.");
        islandResourceScene.setResource(items.get(InventoryItemType.fish.ordinal()));
        scenes[SceneType.islandResource.ordinal()] = islandResourceScene;
        
-       scenes[SceneType.seaMonster.ordinal()] = new CombatScene();
+       CombatScene combatSeaMonster = new CombatScene();
+       combatSeaMonster.setDescription("From the depths you see a terrifying sea monster rise and open its jaws.");
+       // combatSeaMonster.setOpponent();
+       scenes[SceneType.seaMonster.ordinal()] = combatSeaMonster;
+      
        scenes[SceneType.shop.ordinal()] = new RegularScene();
        
        return null;
