@@ -23,8 +23,8 @@ public abstract class View implements ViewInterface {
 
         do {
             String[] inputs = getInputs();
-            String first = inputs[0].toUpperCase().trim();
-            if (1 > first.length()) {
+            inputs[0] = inputs[0].toUpperCase().trim();
+            if (1 > inputs[0].length()) {
                 System.out.println("Please enter a menu item");
                 continue;
             }
