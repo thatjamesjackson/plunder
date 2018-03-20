@@ -83,7 +83,7 @@ public class GameControl {
         spices.setValue(100);
         spices.setWeight(1);
         
-        ArrayList <InventoryItem> items = new ArrayList<InventoryItem>();
+       ArrayList <InventoryItem> items = new ArrayList<>();
        items.add(jewels);
        items.add(fish);
        items.add(cotton);

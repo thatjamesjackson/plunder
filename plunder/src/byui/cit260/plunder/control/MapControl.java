@@ -54,7 +54,8 @@ public class MapControl {
     }
 
     private static RegularScene[] createScenes() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       System.out.println("createQuestions called");
+       return null;
     }
 
     private static Question[] createQuestions() {
