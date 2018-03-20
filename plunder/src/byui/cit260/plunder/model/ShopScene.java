@@ -12,6 +12,17 @@ import java.util.Objects;
 public class ShopScene extends RegularScene{
     private Upgrade upgrade; 
 
+    public ShopScene() {
+    }
+    
+    public Upgrade getUpgrade() {
+        return upgrade;
+    }
+
+    public void setUpgrade(Upgrade upgrade) {
+        this.upgrade = upgrade;
+    }
+    
     @Override
     public String toString() {
         return "ShopScene{" + "upgrade=" + upgrade + '}';
@@ -40,17 +51,5 @@ public class ShopScene extends RegularScene{
             return false;
         }
         return true;
-    }
-
-    public Upgrade getUpgrade() {
-        return upgrade;
-    }
-
-    public void setUpgrade(Upgrade upgrade) {
-        this.upgrade = upgrade;
-    }
-    
-
-    public ShopScene() {
     }
 }
