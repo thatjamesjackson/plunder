@@ -101,8 +101,6 @@ public class Plunder {
         ShopScene sceneS = new ShopScene();
         sceneS.setUpgrade(cannonOne);
         
-        
-        
         Map mapMain = new Map();
         mapMain.setDescription("Yonder be water");
         mapMain.setRowCount(2);
