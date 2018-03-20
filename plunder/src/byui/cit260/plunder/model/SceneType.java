@@ -15,7 +15,7 @@ public enum SceneType {
     islandRegular,
     islandResource,
     seaMonster,
-    shop,
+    shopIsland,
     treasure,
     oRough,
     oCalm,
