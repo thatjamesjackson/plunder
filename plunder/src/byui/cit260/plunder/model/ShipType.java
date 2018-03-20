@@ -9,16 +9,13 @@ package byui.cit260.plunder.model;
  *
  * @author abigailking
  */
-public enum SceneType {
-    // make sure to ADD to the END
-    
-    islandRegular,
-    islandResource,
-    seaMonster,
-    shopIsland,
-    treasure,
-    oRough,
-    oCalm,
-    usOcean,
-    usLand
+public enum ShipType {
+    fishingBoat,
+    sailBoat,
+    clipper,
+    gunboat,
+    frigate,
+    galleon,
+    manOfWar,
+    seaMonster
 }

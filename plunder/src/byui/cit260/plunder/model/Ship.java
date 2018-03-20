@@ -14,7 +14,89 @@ import java.util.Objects;
  * @author James
  */
 public class Ship implements Serializable {
+    
+    private String name;
+    private double shipAttack;
+    private double carryWeight;
+    private double armor;
+    private double shipRepair;
+    private double shipHealth;
+    private double shipMaxHealth;
+    private ArrayList <InventoryItem> inventory;
 
+    public Ship() {
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getShipAttack() {
+        return shipAttack;
+    }
+
+    public void setShipAttack(double shipAttack) {
+        this.shipAttack = shipAttack;
+    }
+
+    public double getCarryWeight() {
+        return carryWeight;
+    }
+
+    public void setCarryWeight(double carryWeight) {
+        this.carryWeight = carryWeight;
+    }
+
+    public double getArmor() {
+        return armor;
+    }
+
+    public void setArmor(double armor) {
+        this.armor = armor;
+    }
+
+    public double getShipRepair() {
+        return shipRepair;
+    }
+
+    public void setShipRepair(double shipRepair) {
+        this.shipRepair = shipRepair;
+    }
+    
+    public double getShipMaxHealth() {
+        return shipMaxHealth;
+    }
+
+    public ArrayList getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(ArrayList<InventoryItem> inventory) {
+        this.inventory = inventory;
+    }
+
+    public void setShipMaxHealth(double shipMaxHealth) {
+        this.shipMaxHealth = shipMaxHealth;
+    }
+
+    public double getShipHealth() {
+        return shipHealth;
+    }
+
+    public void setShipHealth(double shipHealth) {
+        this.shipHealth = shipHealth;
+    }
+    
+    @Override
+    public String toString() {
+        return "Ship{" + "name=" + name + ", shipAttack=" + shipAttack + ", carryWeight=" + carryWeight + ", armor=" + armor + ", shipRepair=" + shipRepair + ", shipHealth=" + shipHealth + ", shipMaxHealth=" + shipMaxHealth + ", inventory=" + inventory + '}';
+    }
+    
     @Override
     public int hashCode() {
         int hash = 7;
@@ -67,93 +149,4 @@ public class Ship implements Serializable {
         }
         return true;
     }
-
-
-
-    private String name;
-    private double shipAttack;
-    private double carryWeight;
-    private double armor;
-    private double shipRepair;
-    private double shipHealth;
-    private double shipMaxHealth;
-    private ArrayList <InventoryItem> inventory;
-
-    
-    
-      public double getShipMaxHealth() {
-        return shipMaxHealth;
-    }
-
-    public ArrayList getInventory() {
-        return inventory;
-    }
-
-    public void setInventory(ArrayList<InventoryItem> inventory) {
-        this.inventory = inventory;
-    }
-
-    public void setShipMaxHealth(double shipMaxHealth) {
-        this.shipMaxHealth = shipMaxHealth;
-    }
-
-    public double getShipHealth() {
-        return shipHealth;
-    }
-
-    public void setShipHealth(double shipHealth) {
-        this.shipHealth = shipHealth;
-    }
-
-    @Override
-    public String toString() {
-        return "Ship{" + "name=" + name + ", shipAttack=" + shipAttack + ", carryWeight=" + carryWeight + ", armor=" + armor + ", shipRepair=" + shipRepair + ", shipHealth=" + shipHealth + ", shipMaxHealth=" + shipMaxHealth + ", inventory=" + inventory + '}';
-    }
-
-    public Ship() {
-    }
-
-    
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public double getShipAttack() {
-        return shipAttack;
-    }
-
-    public void setShipAttack(double shipAttack) {
-        this.shipAttack = shipAttack;
-    }
-
-    public double getCarryWeight() {
-        return carryWeight;
-    }
-
-    public void setCarryWeight(double carryWeight) {
-        this.carryWeight = carryWeight;
-    }
-
-    public double getArmor() {
-        return armor;
-    }
-
-    public void setArmor(double armor) {
-        this.armor = armor;
-    }
-
-    public double getShipRepair() {
-        return shipRepair;
-    }
-
-    public void setShipRepair(double shipRepair) {
-        this.shipRepair = shipRepair;
-    }
-    
-    
 }

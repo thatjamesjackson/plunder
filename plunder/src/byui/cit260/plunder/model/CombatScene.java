@@ -13,12 +13,25 @@ import java.util.Objects;
  */
 public class CombatScene extends RegularScene {
 
+    private Ship opponent;
+    
+    
+    public Ship getOpponent() {
+        return opponent;
+    }
+
+    public void setOpponent(Ship opponent) {
+        this.opponent = opponent;
+    }
+
+    public CombatScene() {
+    }
+    
+    
     @Override
     public String toString() {
         return "CombatScene{" + "opponent=" + opponent + super.toString() + '}';
     }
-
-
 
     @Override
     public int hashCode() {
@@ -44,16 +57,4 @@ public class CombatScene extends RegularScene {
         }
         return true;
     }
-
-    public Ship getOpponent() {
-        return opponent;
-    }
-
-    public void setOpponent(Ship opponent) {
-        this.opponent = opponent;
-    }
-
-    public CombatScene() {
-    }
-    private Ship opponent;
 }
