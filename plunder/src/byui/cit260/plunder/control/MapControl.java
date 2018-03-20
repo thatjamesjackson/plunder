@@ -14,6 +14,8 @@ import byui.cit260.plunder.model.Question;
 import byui.cit260.plunder.model.RegularScene;
 import byui.cit260.plunder.model.ResourceScene;
 import byui.cit260.plunder.model.SceneType;
+import byui.cit260.plunder.model.ShipType;
+import byui.cit260.plunder.model.ShopScene;
 import java.util.ArrayList;
 
 /**
@@ -80,8 +82,9 @@ public class MapControl {
        
        RegularScene[] scenes = new RegularScene[9];
        
-       scenes[SceneType.islandRegular.ordinal()] = new RegularScene();
-       scenes[SceneType.islandRegular.ordinal()].setDescription("The hot sands surround you.");
+       RegularScene islandRegular = new RegularScene();
+       islandRegular.setDescription("The warm welcoming sands stretch out before you. A few trees offer shade and coconuts.");
+       scenes[SceneType.islandRegular.ordinal()] = islandRegular;
        
        ResourceScene islandResourceScene = new ResourceScene();
        islandResourceScene.setDescription("While you are on the island, you see some useful items here.");
@@ -90,10 +93,13 @@ public class MapControl {
        
        CombatScene combatSeaMonster = new CombatScene();
        combatSeaMonster.setDescription("From the depths you see a terrifying sea monster rise and open its jaws.");
-       // combatSeaMonster.setOpponent();
+       combatSeaMonster.setOpponent(ShipType.seaMonster);
        scenes[SceneType.seaMonster.ordinal()] = combatSeaMonster;
-      
-       scenes[SceneType.shop.ordinal()] = new RegularScene();
+       
+       ShopScene shopIsland = new ShopScene();
+       shopIsland.setDescription("A welcoming.");
+       //shopIsland.setOpponent(ShipType.seaMonster);
+       //scenes[SceneType.shopIsland.ordinal()] = shopIsland;
        
        return null;
     }
