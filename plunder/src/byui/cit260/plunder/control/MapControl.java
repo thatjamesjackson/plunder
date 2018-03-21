@@ -97,9 +97,22 @@ public class MapControl {
        scenes[SceneType.seaMonster.ordinal()] = combatSeaMonster;
        
        ShopScene shopIsland = new ShopScene();
-       shopIsland.setDescription("A welcoming.");
-       //shopIsland.setOpponent(ShipType.seaMonster);
-       //scenes[SceneType.shopIsland.ordinal()] = shopIsland;
+       shopIsland.setDescription("A welcoming merchant offers ye up a trade.");
+       // shopIsland.setUpgrade();
+       scenes[SceneType.shopIsland.ordinal()] = shopIsland;
+       
+       ResourceScene treasure = new ResourceScene();
+       treasure.setDescription("Glittering gold, sparkling jewels, and heavy too. For a pirate, this be the most beautiful sight in the world.");
+       treasure.setResource(items.get(InventoryItemType.jewels.ordinal()));
+       scenes[SceneType.treasure.ordinal()] = treasure;
+       
+       RegularScene roughOcean = new ResourceScene();
+       roughOcean.setDescription("Careful now, we be in some rough waters.");
+       scenes[SceneType.oRough.ordinal()] = roughOcean;
+       
+       RegularScene calmOcean = new ResourceScene();
+       calmOcean.setDescription("Here there be no comotion on the ocean. Calm waters be upon us.");
+       scenes[SceneType.oCalm.ordinal()] = calmOcean;
        
        return null;
     }
