@@ -15,10 +15,17 @@ public enum SceneType {
     islandRegular,
     islandResource,
     seaMonster,
+    fishingBoat,
+    sailBoat,
+    clipper,
+    frigate,
+    manOfWar,
+    gunBoat,
     shopIsland,
     treasure,
     oRough,
     oCalm,
     usOcean,
+    oceanResource,
     usLand
 }

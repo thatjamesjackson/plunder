@@ -45,7 +45,7 @@ public class CombatControl {
             enemy.setShipHealth(200);
             enemy.setShipMaxHealth(enemy.getShipHealth());
         }
-        if (danger == ShipType.gunboat.ordinal()) {
+        if (danger == ShipType.gunBoat.ordinal()) {
             enemy.setName("Gunboat");
             enemy.setShipAttack(75);
             enemy.setCarryWeight(500);

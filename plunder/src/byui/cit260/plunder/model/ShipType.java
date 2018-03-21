@@ -13,7 +13,7 @@ public enum ShipType {
     fishingBoat,
     sailBoat,
     clipper,
-    gunboat,
+    gunBoat,
     frigate,
     galleon,
     manOfWar,
