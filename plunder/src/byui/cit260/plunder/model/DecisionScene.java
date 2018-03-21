@@ -12,11 +12,7 @@ import java.util.Objects;
  * @author James
  */
 public class DecisionScene extends RegularScene{
-
-    @Override
-    public String toString() {
-        return "DecisionScene{" + "ask=" + ask + ", consequnce=" + consequnce + super.toString() + '}';
-    }
+    
     private String ask;
     private Decision consequnce;
 
@@ -39,6 +35,11 @@ public class DecisionScene extends RegularScene{
         this.consequnce = consequnce;
     }
 
+    @Override
+    public String toString() {
+        return "DecisionScene{" + "ask=" + ask + ", consequnce=" + consequnce + super.toString() + '}';
+    }
+    
     @Override
     public int hashCode() {
         int hash = 5;

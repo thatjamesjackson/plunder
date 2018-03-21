@@ -98,7 +98,7 @@ public class MapControl {
        
        ShopScene shopIsland = new ShopScene();
        shopIsland.setDescription("A welcoming merchant offers ye up a trade.");
-       // shopIsland.setUpgrade();
+       shopIsland.setUpgrade();
        scenes[SceneType.shopIsland.ordinal()] = shopIsland;
        
        ResourceScene treasure = new ResourceScene();
@@ -118,7 +118,14 @@ public class MapControl {
     }
 
     private static Question[] createQuestions() {
-        System.out.println("createQuestions called");
+        // System.out.println("createQuestions called");
+        
+        Question[] scenes = new Question[9];
+       
+        Question ir = new RegularScene();
+        islandRegular.setDescription("The warm welcoming sands stretch out before you. A few trees offer shade and coconuts.");
+        scenes[SceneType.islandRegular.ordinal()] = islandRegular;
+       
         return null;}
 
     private static void assignQuestionsToScenes(Question[] questions, RegularScene[] scenes) {

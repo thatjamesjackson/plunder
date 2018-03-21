@@ -5,17 +5,17 @@
  */
 package byui.cit260.plunder.model;
 
-import java.util.Objects;
-
 /**
  *
  * @author abigailking
  */
-public class Question {
+public enum QuestionType {
     
-    private String question;
-    private String response;
-    
-    
-    
+    keepExploring,
+    dig,
+    bribe,
+    engage,
+    runAway,
+    harvest,
+    enter;
 }
