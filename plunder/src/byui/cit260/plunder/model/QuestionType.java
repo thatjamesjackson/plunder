@@ -7,8 +7,15 @@ package byui.cit260.plunder.model;
 
 /**
  *
- * @author James
+ * @author abigailking
  */
 public enum QuestionType {
-
+    
+    keepExploring,
+    dig,
+    bribe,
+    engage,
+    runAway,
+    harvest,
+    enter;
 }

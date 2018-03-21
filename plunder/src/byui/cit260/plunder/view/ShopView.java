@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class ShopView extends View {
     public void display() { 
         
-}
+    }
 
     @Override
     public String[] getInputs() {
