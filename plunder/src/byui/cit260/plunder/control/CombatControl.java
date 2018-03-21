@@ -6,7 +6,7 @@
 package byui.cit260.plunder.control;
 
 import byui.cit260.plunder.model.Ship;
-import java.util.Random;
+import byui.cit260.plunder.model.ShipType;
 
 /**
  *
@@ -16,11 +16,9 @@ public class CombatControl {
 
     public static Ship enemyShipConstructor(int danger) {
         Ship enemy = new Ship();
-        Random random = new Random();
-        danger += random.nextInt(3);
 
         //create enemies
-        if (danger <= 0) {
+        if (danger == ShipType.fishingBoat.ordinal()) {
             enemy.setName("Fishing Boat");
             enemy.setShipAttack(10);
             enemy.setCarryWeight(500);
@@ -29,7 +27,7 @@ public class CombatControl {
             enemy.setShipHealth(50);
             enemy.setShipMaxHealth(enemy.getShipHealth());
         }
-        if (danger == 1) {
+        if (danger == ShipType.sailBoat.ordinal()) {
             enemy.setName("Sail Boat");
             enemy.setShipAttack(20);
             enemy.setCarryWeight(500);
@@ -38,7 +36,7 @@ public class CombatControl {
             enemy.setShipHealth(100);
             enemy.setShipMaxHealth(enemy.getShipHealth());
         }
-        if (danger == 2) {
+        if (danger == ShipType.clipper.ordinal()) {
             enemy.setName("Clipper");
             enemy.setShipAttack(45);
             enemy.setCarryWeight(500);
@@ -47,7 +45,7 @@ public class CombatControl {
             enemy.setShipHealth(200);
             enemy.setShipMaxHealth(enemy.getShipHealth());
         }
-        if (danger == 3) {
+        if (danger == ShipType.gunboat.ordinal()) {
             enemy.setName("Gunboat");
             enemy.setShipAttack(75);
             enemy.setCarryWeight(500);
@@ -56,7 +54,7 @@ public class CombatControl {
             enemy.setShipHealth(300);
            enemy.setShipMaxHealth(enemy.getShipHealth());
         }
-        if (danger == 4) {
+        if (danger == ShipType.frigate.ordinal()) {
             enemy.setName("Frigate");
             enemy.setShipAttack(100);
             enemy.setCarryWeight(500);
@@ -65,7 +63,7 @@ public class CombatControl {
             enemy.setShipHealth(400);
             enemy.setShipMaxHealth(enemy.getShipHealth());
         }
-        if (danger == 5) {
+        if (danger == ShipType.galleon.ordinal()) {
             enemy.setName("Galleon");
             enemy.setShipAttack(120);
             enemy.setCarryWeight(500);
@@ -74,7 +72,7 @@ public class CombatControl {
             enemy.setShipHealth(600);
             enemy.setShipMaxHealth(enemy.getShipHealth());
         }
-        if (danger == 6) {
+        if (danger == ShipType.manOfWar.ordinal()) {
             enemy.setName("Man of War");
             enemy.setShipAttack(160);
             enemy.setCarryWeight(500);
@@ -83,7 +81,7 @@ public class CombatControl {
             enemy.setShipHealth(800);
             enemy.setShipMaxHealth(enemy.getShipHealth());
         }
-        if (danger == 7) {
+        if (danger == ShipType.seaMonster.ordinal()) {
             enemy.setName("Sea Monster");
             enemy.setShipAttack(200);
             enemy.setCarryWeight(500);

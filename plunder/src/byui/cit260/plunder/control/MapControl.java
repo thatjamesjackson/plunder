@@ -93,7 +93,7 @@ public class MapControl {
        
        CombatScene combatSeaMonster = new CombatScene();
        combatSeaMonster.setDescription("From the depths you see a terrifying sea monster rise and open its jaws.");
-       combatSeaMonster.setOpponent(ShipType.seaMonster);
+       combatSeaMonster.setOpponent(CombatControl.enemyShipConstructor(ShipType.seaMonster.ordinal()));
        scenes[SceneType.seaMonster.ordinal()] = combatSeaMonster;
        
        ShopScene shopIsland = new ShopScene();

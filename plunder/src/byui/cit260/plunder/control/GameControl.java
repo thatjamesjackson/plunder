@@ -8,6 +8,7 @@ package byui.cit260.plunder.control;
 import byui.cit260.plunder.model.Actor;
 import byui.cit260.plunder.model.Game;
 import byui.cit260.plunder.model.InventoryItem;
+import byui.cit260.plunder.model.InventoryItemType;
 import byui.cit260.plunder.model.Player;
 import java.util.ArrayList;
 import plunder.Plunder;
@@ -84,10 +85,10 @@ public class GameControl {
         spices.setWeight(1);
         
        ArrayList <InventoryItem> items = new ArrayList<>();
-       items.add(jewels);
-       items.add(fish);
-       items.add(cotton);
-       items.add(spices);
+       items.add(InventoryItemType.jewels.ordinal(), jewels);
+       items.add(InventoryItemType.fish.ordinal(),fish);
+       items.add(InventoryItemType.cotton.ordinal(), cotton);
+       items.add(InventoryItemType.spices.ordinal(), spices);
        
                 
         return items;
