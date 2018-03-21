@@ -13,38 +13,38 @@ import java.util.Objects;
  */
 public class DecisionScene extends RegularScene{
     
-    private String ask;
-    private Decision consequnce;
+    private String Ask;
+    private String Options;
 
     public DecisionScene() {
     }
 
     public String getAsk() {
-        return ask;
+        return Ask;
     }
 
-    public void setAsk(String ask) {
-        this.ask = ask;
+    public void setAsk(String Ask) {
+        this.Ask = Ask;
     }
 
-    public Decision getConsequnce() {
-        return consequnce;
+    public String getOptions() {
+        return Options;
     }
 
-    public void setConsequnce(Decision consequnce) {
-        this.consequnce = consequnce;
+    public void setOptions(String Options) {
+        this.Options = Options;
     }
 
     @Override
     public String toString() {
-        return "DecisionScene{" + "ask=" + ask + ", consequnce=" + consequnce + super.toString() + '}';
+        return "DecisionScene{" + "Ask=" + Ask + ", Options=" + Options + '}';
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 37 * hash + Objects.hashCode(this.ask);
-        hash = 37 * hash + Objects.hashCode(this.consequnce);
+        hash = 13 * hash + Objects.hashCode(this.Ask);
+        hash = 13 * hash + Objects.hashCode(this.Options);
         return hash;
     }
 
@@ -60,14 +60,13 @@ public class DecisionScene extends RegularScene{
             return false;
         }
         final DecisionScene other = (DecisionScene) obj;
-        if (!Objects.equals(this.ask, other.ask)) {
+        if (!Objects.equals(this.Ask, other.Ask)) {
             return false;
         }
-        if (!Objects.equals(this.consequnce, other.consequnce)) {
+        if (!Objects.equals(this.Options, other.Options)) {
             return false;
         }
         return true;
     }
-    
-    
+
 }
