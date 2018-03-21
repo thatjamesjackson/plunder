@@ -58,79 +58,80 @@ public class MapControl {
     private static Location[][] createLocations(int numRows, int numColumns) {
 //        System.out.println("createLocations called");
 
-        if (numRows < 1 || numColumns < 1){
+        if (numRows < 1 || numColumns < 1) {
             return null;
         }
-        
+
         Location[][] locations = new Location[numRows][numColumns];
-        for (int i = 0; i < locations.length; i++){
-            for (int f = 0; f < locations[i].length; f++){
+        for (int i = 0; i < locations.length; i++) {
+            for (int f = 0; f < locations[i].length; f++) {
                 Location currentLocation = new Location();
                 currentLocation.setRow(i);
                 currentLocation.setColumn(f);
                 currentLocation.setVisited(false);
-                
+
                 locations[i][f] = currentLocation;
             }
         }
-                   
+
         return locations;
     }
 
     private static RegularScene[] createScenes(ArrayList<InventoryItem> items) {
-       // System.out.println("createQuestions called");
-       
-       RegularScene[] scenes = new RegularScene[9];
-       
-       RegularScene islandRegular = new RegularScene();
-       islandRegular.setDescription("The warm welcoming sands stretch out before you. A few trees offer shade and coconuts.");
-       scenes[SceneType.islandRegular.ordinal()] = islandRegular;
-       
-       ResourceScene islandResourceScene = new ResourceScene();
-       islandResourceScene.setDescription("While you are on the island, you see some useful items here.");
-       islandResourceScene.setResource(items.get(InventoryItemType.fish.ordinal()));
-       scenes[SceneType.islandResource.ordinal()] = islandResourceScene;
-       
-       CombatScene combatSeaMonster = new CombatScene();
-       combatSeaMonster.setDescription("From the depths you see a terrifying sea monster rise and open its jaws.");
-       combatSeaMonster.setOpponent(CombatControl.enemyShipConstructor(ShipType.seaMonster.ordinal()));
-       scenes[SceneType.seaMonster.ordinal()] = combatSeaMonster;
-       
-       ShopScene shopIsland = new ShopScene();
-       shopIsland.setDescription("A welcoming merchant offers ye up a trade.");
-       // shopIsland.setUpgrade();
-       scenes[SceneType.shopIsland.ordinal()] = shopIsland;
-       
-       ResourceScene treasure = new ResourceScene();
-       treasure.setDescription("Glittering gold, sparkling jewels, and heavy too. For a pirate, this be the most beautiful sight in the world.");
-       treasure.setResource(items.get(InventoryItemType.jewels.ordinal()));
-       scenes[SceneType.treasure.ordinal()] = treasure;
-       
-       RegularScene roughOcean = new ResourceScene();
-       roughOcean.setDescription("Careful now, we be in some rough waters.");
-       scenes[SceneType.oRough.ordinal()] = roughOcean;
-       
-       RegularScene calmOcean = new ResourceScene();
-       calmOcean.setDescription("Here there be no comotion on the ocean. Calm waters be upon us.");
-       scenes[SceneType.oCalm.ordinal()] = calmOcean;
-       
-       return null;
+        // System.out.println("createQuestions called");
+
+        RegularScene[] scenes = new RegularScene[9];
+
+        RegularScene islandRegular = new RegularScene();
+        islandRegular.setDescription("The warm welcoming sands stretch out before you. A few trees offer shade and coconuts.");
+        scenes[SceneType.islandRegular.ordinal()] = islandRegular;
+
+        ResourceScene islandResourceScene = new ResourceScene();
+        islandResourceScene.setDescription("While you are on the island, you see some useful items here.");
+        islandResourceScene.setResource(items.get(InventoryItemType.fish.ordinal()));
+        scenes[SceneType.islandResource.ordinal()] = islandResourceScene;
+
+        CombatScene combatSeaMonster = new CombatScene();
+        combatSeaMonster.setDescription("From the depths you see a terrifying sea monster rise and open its jaws.");
+        combatSeaMonster.setOpponent(CombatControl.enemyShipConstructor(ShipType.seaMonster.ordinal()));
+        scenes[SceneType.seaMonster.ordinal()] = combatSeaMonster;
+
+        ShopScene shopIsland = new ShopScene();
+        shopIsland.setDescription("A welcoming merchant offers ye up a trade.");
+        // shopIsland.setUpgrade();
+        scenes[SceneType.shopIsland.ordinal()] = shopIsland;
+
+        ResourceScene treasure = new ResourceScene();
+        treasure.setDescription("Glittering gold, sparkling jewels, and heavy too. For a pirate, this be the most beautiful sight in the world.");
+        treasure.setResource(items.get(InventoryItemType.jewels.ordinal()));
+        scenes[SceneType.treasure.ordinal()] = treasure;
+
+        RegularScene roughOcean = new ResourceScene();
+        roughOcean.setDescription("Careful now, we be in some rough waters.");
+        scenes[SceneType.oRough.ordinal()] = roughOcean;
+
+        RegularScene calmOcean = new ResourceScene();
+        calmOcean.setDescription("Here there be no comotion on the ocean. Calm waters be upon us.");
+        scenes[SceneType.oCalm.ordinal()] = calmOcean;
+
+        return null;
     }
 
     private static Question[] createQuestions() {
         System.out.println("createQuestions called");
-        return null;}
+        return null;
+    }
 
     private static void assignQuestionsToScenes(Question[] questions, RegularScene[] scenes) {
         System.out.println("assignQuestionsToScenes called");
-       }
+    }
 
     private static void assignItemsToScenes(ArrayList items, RegularScene[] scenes) {
-      System.out.println("assignItemsToScenes called");
-       }
+        System.out.println("assignItemsToScenes called");
+    }
 
     private static void assignScenesToLocations(RegularScene[] scenes, Location[][] locations) {
-         System.out.println("assignScenesToLocations called");
-       }
+        System.out.println("assignScenesToLocations called");
+    }
 
 }

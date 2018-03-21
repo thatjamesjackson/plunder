@@ -9,6 +9,7 @@ import byui.cit260.plunder.model.Actor;
 import byui.cit260.plunder.model.Game;
 import byui.cit260.plunder.model.InventoryItem;
 import byui.cit260.plunder.model.InventoryItemType;
+import byui.cit260.plunder.model.Map;
 import byui.cit260.plunder.model.Player;
 import java.util.ArrayList;
 import plunder.Plunder;
@@ -37,30 +38,27 @@ public class GameControl {
         Plunder.setCurrentGame(game);
 
         //actors are enums
-
 //Assign an actor to the player 
         player.setActor(Actor.Captain);
         //make inventory items
-       ArrayList <InventoryItem> inventory = createItems();
-       
- 
-//Save the list of items in the game 
-    game.setInventory(inventory);
-    
-//map = create
-    game.setMap(MapControl.createMap(5,5,inventory));
-//Map(noOfRows, noOfColumns, items) 
+        ArrayList<InventoryItem> inventory = createItems();
 
-//IF map == null THEN 
-//   RETURN -1 
-//ENDIF 
+//Save the list of items in the game 
+        game.setInventory(inventory);
+        //map = create
+        //Map(noOfRows, noOfColumns, items) 
+        Map map = MapControl.createMap(5, 5, inventory);
+        if (map == null) {
+            return -1;
+        }
 
 //Assign the map to the game 
-
+        game.setMap(map);
         return 1;
     }
-    public static ArrayList<InventoryItem> createItems(){
-     InventoryItem jewels = new InventoryItem();
+
+    public static ArrayList<InventoryItem> createItems() {
+        InventoryItem jewels = new InventoryItem();
         jewels.setInventoryType("Jewels");
         jewels.setQuantityInStock(0);
         jewels.setValue(300);
@@ -83,14 +81,13 @@ public class GameControl {
         spices.setQuantityInStock(0);
         spices.setValue(100);
         spices.setWeight(1);
-        
-       ArrayList <InventoryItem> items = new ArrayList<>();
-       items.add(InventoryItemType.jewels.ordinal(), jewels);
-       items.add(InventoryItemType.fish.ordinal(),fish);
-       items.add(InventoryItemType.cotton.ordinal(), cotton);
-       items.add(InventoryItemType.spices.ordinal(), spices);
-       
-                
+
+        ArrayList<InventoryItem> items = new ArrayList<>();
+        items.add(InventoryItemType.jewels.ordinal(), jewels);
+        items.add(InventoryItemType.fish.ordinal(), fish);
+        items.add(InventoryItemType.cotton.ordinal(), cotton);
+        items.add(InventoryItemType.spices.ordinal(), spices);
+
         return items;
     }
 
