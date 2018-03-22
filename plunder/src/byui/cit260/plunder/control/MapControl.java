@@ -172,6 +172,7 @@ public class MapControl {
     }
 
     private static void assignScenesToLocations(RegularScene[] scenes, Location[][] locations) {
+        //creates the map [x][y]
         locations[0][0].setScene(scenes[SceneType.oCalm.ordinal()]);
         locations[1][0].setScene(scenes[SceneType.oceanResource.ordinal()]);
         locations[2][0].setScene(scenes[SceneType.gunBoat.ordinal()]);
@@ -197,15 +198,7 @@ public class MapControl {
         locations[2][4].setScene(scenes[SceneType.frigate.ordinal()]);
         locations[3][4].setScene(scenes[SceneType.seaMonster.ordinal()]);
         locations[4][4].setScene(scenes[SceneType.treasure.ordinal()]);
-        
-        
-        
-        
-        
-        
-        
-        
-        
+      
     }
 
 }
