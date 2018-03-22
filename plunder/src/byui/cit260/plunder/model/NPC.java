@@ -14,6 +14,9 @@ import java.util.Objects;
  */
 public class NPC {
 
+    private Question[] questions;
+    
+    
     private boolean isCrew;
     private int crewAttack;
     private int crewRepair;
@@ -21,26 +24,9 @@ public class NPC {
     private String name;
     private String talk;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getJob() {
-        return job;
-    }
-
-    public void setJob(String job) {
-        this.job = job;
-    }
-    private Question[] questions;
-    
     public NPC() {
     }
-
+    
     public boolean getIsCrew() {
         return isCrew;
     }
@@ -48,7 +34,7 @@ public class NPC {
     public void setIsCrew(boolean isCrew) {
         this.isCrew = isCrew;
     }
-
+    
     public int getCrewAttack() {
         return crewAttack;
     }
@@ -56,13 +42,29 @@ public class NPC {
     public void setCrewAttack(int crewAttack) {
         this.crewAttack = crewAttack;
     }
-
+    
     public int getCrewRepair() {
         return crewRepair;
     }
 
     public void setCrewRepair(int crewRepair) {
         this.crewRepair = crewRepair;
+    }
+    
+    public String getJob() {
+        return job;
+    }
+
+    public void setJob(String job) {
+        this.job = job;
+    }
+    
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getTalk() {

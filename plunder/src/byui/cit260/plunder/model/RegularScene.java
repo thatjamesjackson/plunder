@@ -12,7 +12,18 @@ import java.util.Objects;
  */
 public class RegularScene implements Serializable{
     private String description;
+    
+    public RegularScene() {
+    }
+        
+    public String getDescription() {
+        return description;
+    }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    
     @Override
     public String toString() {
         return "regularScene{" + "description=" + description + '}';
@@ -41,16 +52,5 @@ public class RegularScene implements Serializable{
             return false;
         }
         return true;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public RegularScene() {
     }
 }

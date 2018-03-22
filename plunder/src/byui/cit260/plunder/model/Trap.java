@@ -12,6 +12,17 @@ package byui.cit260.plunder.model;
 public class Trap extends DecisionScene{
     private double lostHealth;
 
+    public Trap() {
+    }
+    
+    public double getLostHealth() {
+        return lostHealth;
+    }
+
+    public void setLostHealth(double lostHealth) {
+        this.lostHealth = lostHealth;
+    }
+    
     @Override
     public String toString() {
         return "Trap{" + "lostHealth=" + lostHealth + super.toString() + '}';
@@ -40,16 +51,5 @@ public class Trap extends DecisionScene{
             return false;
         }
         return true;
-    }
-
-    public double getLostHealth() {
-        return lostHealth;
-    }
-
-    public void setLostHealth(double lostHealth) {
-        this.lostHealth = lostHealth;
-    }
-
-    public Trap() {
     }
 }

@@ -21,6 +21,25 @@ public class Player implements Serializable {
     private Actor actor;
     private Ship ship;
 
+    public Player() {
+    }
+    
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getBestTime() {
+        return bestTime;
+    }
+
+    public void setBestTime(double bestTime) {
+        this.bestTime = bestTime;
+    }
+    
     public ArrayList<Game> getGames() {
         return games;
     }
@@ -28,9 +47,13 @@ public class Player implements Serializable {
     public void setGames(ArrayList<Game> games) {
         this.games = games;
     }
+    
+    public Actor getActor() {
+        return actor;
+    }
 
-
-    public Player() {
+    public void setActor(Actor actor) {
+        this.actor = actor;
     }
 
     public Ship getShip() {
@@ -49,11 +72,11 @@ public class Player implements Serializable {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 17 * hash + Objects.hashCode(this.name);
-        hash = 17 * hash + (int) (Double.doubleToLongBits(this.bestTime) ^ (Double.doubleToLongBits(this.bestTime) >>> 32));
-        hash = 17 * hash + Objects.hashCode(this.games);
-        hash = 17 * hash + Objects.hashCode(this.actor);
-        hash = 17 * hash + Objects.hashCode(this.ship);
+        hash = 23 * hash + Objects.hashCode(this.name);
+        hash = 23 * hash + (int) (Double.doubleToLongBits(this.bestTime) ^ (Double.doubleToLongBits(this.bestTime) >>> 32));
+        hash = 23 * hash + Objects.hashCode(this.games);
+        hash = 23 * hash + Objects.hashCode(this.actor);
+        hash = 23 * hash + Objects.hashCode(this.ship);
         return hash;
     }
 
@@ -87,30 +110,4 @@ public class Player implements Serializable {
         return true;
     }
 
-   
-    public Actor getActor() {
-        return actor;
-    }
-
-    public void setActor(Actor actor) {
-        this.actor = actor;
-    }
-
-    
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public double getBestTime() {
-        return bestTime;
-    }
-
-    public void setBestTime(double bestTime) {
-        this.bestTime = bestTime;
-    }
 }

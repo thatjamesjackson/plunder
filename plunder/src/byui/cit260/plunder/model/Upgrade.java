@@ -14,11 +14,13 @@ import java.util.Objects;
  */
 public class Upgrade implements Serializable {
 
-    @Override
-    public String toString() {
-        return "Upgrade{" + "type=" + type + ", cost=" + cost + ", statBoost=" + statBoost + '}';
+    private String type;
+    private double cost;
+    private double statBoost;
+    
+    public Upgrade() {
     }
-
+    
     public String getType() {
         return type;
     }
@@ -41,6 +43,11 @@ public class Upgrade implements Serializable {
 
     public void setStatBoost(double statBoost) {
         this.statBoost = statBoost;
+    }
+    
+    @Override
+    public String toString() {
+        return "Upgrade{" + "type=" + type + ", cost=" + cost + ", statBoost=" + statBoost + '}';
     }
 
     @Override
@@ -76,9 +83,4 @@ public class Upgrade implements Serializable {
         return true;
     }
 
-    public Upgrade() {
-    }
-    private String type;
-    private double cost;
-    private double statBoost;
 }

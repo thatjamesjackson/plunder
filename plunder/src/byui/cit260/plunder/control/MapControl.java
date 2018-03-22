@@ -197,6 +197,10 @@ public class MapControl {
         // Assign questions to the first question scene
         DecisionScene islandRegularScene = (DecisionScene) scenes[SceneType.islandRegular.ordinal()];
         islandRegularScene.setDecision(choices[QuestionType.dig.ordinal()]);
+        
+        // Assign questions to the first question scene
+        DecisionScene islandRegularScene = (DecisionScene) scenes[SceneType.islandRegular.ordinal()];
+        islandRegularScene.setDecision(choices[QuestionType.dig.ordinal()]);
 
     }
 
@@ -205,6 +209,7 @@ public class MapControl {
     }
 
     private static void assignScenesToLocations(RegularScene[] scenes, Location[][] locations) {
+        //creates the map [x][y]
         locations[0][0].setScene(scenes[SceneType.oCalm.ordinal()]);
         locations[1][0].setScene(scenes[SceneType.oceanResource.ordinal()]);
         locations[2][0].setScene(scenes[SceneType.gunBoat.ordinal()]);

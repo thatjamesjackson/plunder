@@ -20,6 +20,7 @@ public class InventoryItem {
     private double weight;
 
     public InventoryItem() {
+        
     }
 
     public String getInventoryType() {
@@ -64,17 +65,17 @@ public class InventoryItem {
 
     @Override
     public String toString() {
-        return "InventoryItem{" + "inventoryType=" + inventoryType + ", quantityInStock=" + quantityInStock + ", value=" + value + ", weight=" + weight + '}';
+        return "InventoryItem{" + "inventoryType=" + inventoryType + ", typeName=" + typeName + ", quantityInStock=" + quantityInStock + ", value=" + value + ", weight=" + weight + '}';
     }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 89 * hash + Objects.hashCode(this.inventoryType);
-        hash = 89 * hash + Objects.hashCode(this.typeName);
-        hash = 89 * hash + (int) (Double.doubleToLongBits(this.quantityInStock) ^ (Double.doubleToLongBits(this.quantityInStock) >>> 32));
-        hash = 89 * hash + (int) (Double.doubleToLongBits(this.value) ^ (Double.doubleToLongBits(this.value) >>> 32));
-        hash = 89 * hash + (int) (Double.doubleToLongBits(this.weight) ^ (Double.doubleToLongBits(this.weight) >>> 32));
+        int hash = 7;
+        hash = 43 * hash + Objects.hashCode(this.inventoryType);
+        hash = 43 * hash + Objects.hashCode(this.typeName);
+        hash = 43 * hash + this.quantityInStock;
+        hash = 43 * hash + (int) (Double.doubleToLongBits(this.value) ^ (Double.doubleToLongBits(this.value) >>> 32));
+        hash = 43 * hash + (int) (Double.doubleToLongBits(this.weight) ^ (Double.doubleToLongBits(this.weight) >>> 32));
         return hash;
     }
 
@@ -90,7 +91,7 @@ public class InventoryItem {
             return false;
         }
         final InventoryItem other = (InventoryItem) obj;
-        if (Double.doubleToLongBits(this.quantityInStock) != Double.doubleToLongBits(other.quantityInStock)) {
+        if (this.quantityInStock != other.quantityInStock) {
             return false;
         }
         if (Double.doubleToLongBits(this.value) != Double.doubleToLongBits(other.value)) {
@@ -100,6 +101,9 @@ public class InventoryItem {
             return false;
         }
         if (!Objects.equals(this.inventoryType, other.inventoryType)) {
+            return false;
+        }
+        if (!Objects.equals(this.typeName, other.typeName)) {
             return false;
         }
         return true;
