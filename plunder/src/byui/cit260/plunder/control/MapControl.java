@@ -197,10 +197,6 @@ public class MapControl {
         // Assign questions to the first question scene
         DecisionScene islandRegularScene = (DecisionScene) scenes[SceneType.islandRegular.ordinal()];
         islandRegularScene.setDecision(choices[QuestionType.dig.ordinal()]);
-        
-        // Assign questions to the first question scene
-        DecisionScene islandRegularScene = (DecisionScene) scenes[SceneType.islandRegular.ordinal()];
-        islandRegularScene.setDecision(choices[QuestionType.dig.ordinal()]);
 
     }
 
