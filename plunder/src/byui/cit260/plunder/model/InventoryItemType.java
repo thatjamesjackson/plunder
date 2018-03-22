@@ -13,6 +13,7 @@ public enum InventoryItemType {
     fish,
     jewels,
     cotton,
+    coconut,
     spices;
     
 }

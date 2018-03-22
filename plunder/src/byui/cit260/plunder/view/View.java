@@ -15,7 +15,7 @@ public abstract class View implements ViewInterface {
 
     public View() {
     }
-    
+
     @Override
     public void display() {
         //display the menu
@@ -28,15 +28,14 @@ public abstract class View implements ViewInterface {
                 System.out.println("Please enter a menu item");
                 continue;
             }
-            
             endView = doAction(inputs);
         } while (endView != true);
     }
-    
+
     @Override
     public String getInput(String promptMessage) {
         System.out.println(promptMessage);
-        
+
         //get inputs from user
         String input;
         Scanner scan = new Scanner(System.in);
