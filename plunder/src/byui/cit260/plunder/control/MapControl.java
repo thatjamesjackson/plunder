@@ -48,7 +48,6 @@ public class MapControl {
         DecisionScene[] choices = createQuestions();
         //assign items and questions to scenes
         assignQuestionsToScenes(choices, scenes);
-        assignItemsToScenes(items, scenes);
 
         //put scenes into locations
         assignScenesToLocations(scenes, locations);
@@ -170,7 +169,7 @@ public class MapControl {
     private static DecisionScene[] createQuestions() {
         // System.out.println("createQuestions called");
 
-        DecisionScene[] choices = new DecisionScene[6];
+        DecisionScene[] choices = new DecisionScene[QuestionType.values().length];
 
         DecisionScene explore = new DecisionScene();
         explore.setAsk("Do you want to keep exploring?");
@@ -214,12 +213,8 @@ public class MapControl {
 
     }
 
-    private static void assignItemsToScenes(ArrayList items, RegularScene[] scenes) {
-        System.out.println("assignItemsToScenes called");
-    }
-
     private static void assignScenesToLocations(RegularScene[] scenes, Location[][] locations) {
-        //creates the map [x][y]
+        //creates the map [y][x] coodinates
         locations[0][0].setScene(scenes[SceneType.oCalm.ordinal()]);
         locations[1][0].setScene(scenes[SceneType.oResource.ordinal()]);
         locations[2][0].setScene(scenes[SceneType.gunBoat.ordinal()]);

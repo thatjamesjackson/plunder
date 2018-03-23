@@ -82,16 +82,16 @@ public class Plunder {
         Decision resultTwo = new Decision();
         resultTwo.setResult("You get hit by some darts");
         
-        DecisionScene sceneD = new DecisionScene();
-        sceneD.setDescription("a ship blocks your path");
-        sceneD.setConsequnce(resultOne);
-        sceneD.setAsk("Run Away?");
-        
-        Trap sceneT = new Trap();
-        sceneT.setDescription("you hear a click");
-        sceneT.setAsk("duck?");
-        sceneT.setConsequnce(resultTwo);
-        sceneT.setLostHealth(12);
+//        DecisionScene sceneD = new DecisionScene();
+//        sceneD.setDescription("a ship blocks your path");
+//        sceneD.setConsequnce(resultOne);
+//        sceneD.setAsk("Run Away?");
+//        
+//        Trap sceneT = new Trap();
+//        sceneT.setDescription("you hear a click");
+//        sceneT.setAsk("duck?");
+//        sceneT.setConsequnce(resultTwo);
+//        sceneT.setLostHealth(12);
         
         Upgrade cannonOne = new Upgrade();
         cannonOne.setType("attack");

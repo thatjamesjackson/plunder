@@ -51,7 +51,7 @@ public class InventoryControl {
         int verMuch = 0;
         
         for (InventoryItem i: inventoryItems){
-            if (i.getInventoryType() == displayLetter){
+            if (i.getInventoryType().equals(displayLetter)){
                 verMuch = i.getQuantityInStock();
             }
         }
@@ -64,7 +64,7 @@ public class InventoryControl {
         int verMuch = 0;
         
         for (InventoryItem i: inventoryItems){
-            if (i.getInventoryType() == displayLetter){
+            if (i.getInventoryType().equals(displayLetter)){
                 verMuch = i.getQuantityInStock();
             }
         }
@@ -75,7 +75,7 @@ public class InventoryControl {
     public static void changeQuantity(int amount, ArrayList<InventoryItem> inventoryItems, String type) {
 
         for (InventoryItem i: inventoryItems){
-            if (i.getInventoryType() == type){
+            if (i.getInventoryType().equals(type)){
                 i.setQuantityInStock(amount);
             }
         }
