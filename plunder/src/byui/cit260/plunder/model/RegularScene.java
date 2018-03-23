@@ -15,6 +15,11 @@ public class RegularScene implements Serializable{
     
     public RegularScene() {
     }
+
+    public RegularScene(String description) {
+        this.description = description;
+    }
+    
         
     public String getDescription() {
         return description;

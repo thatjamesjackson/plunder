@@ -71,6 +71,7 @@ public class ShopView extends View {
 
     private void buyShop() {
         
+        
     }
 
     private void sellShop() {
