@@ -13,6 +13,7 @@ import java.util.Scanner;
  */
 public class CrewView extends View {
 
+    @Override
     public String[] getInputs() {
 //get inputs from user
 
@@ -119,22 +120,20 @@ public class CrewView extends View {
         NPC[] npc = {new NPC(), new NPC(), new NPC()};
         //get the crew using a loop
         int numberOfCrew = 0;
-        for (int i = 0; i < npc.length; i++) {
-            if (npc[i].getIsCrew()) {
+        for (NPC npc1 : npc) {
+            if (npc1.getIsCrew()) {
                 numberOfCrew++;
             }
-
         }
 
         NPC[] crew = new NPC[numberOfCrew];
         int t = 0;
 
-        for (int i = 0; i < npc.length; i++) {
-            if (npc[i].getIsCrew()) {
-                crew[t] = npc[i];
+        for (NPC npc1 : npc) {
+            if (npc1.getIsCrew()) {
+                crew[t] = npc1;
                 t++;
             }
-
         }
         return crew;
 
