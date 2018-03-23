@@ -12,6 +12,52 @@ import java.util.Objects;
  * @author abigailking
  */
 public class Location {
+    
+    private int row;
+    private int column;
+    private boolean visited;
+    private RegularScene scene;
+    
+    public Location() {
+        
+    }
+    
+    public int getRow() {
+        return row;
+    }
+
+    public void setRow(int row) {
+        this.row = row;
+    }
+    
+    public int getColumn() {
+        return column;
+    }
+
+    public void setColumn(int column) {
+        this.column = column;
+    }
+
+    public boolean isVisited() {
+        return visited;
+    }
+
+    public void setVisited(boolean visited) {
+        this.visited = visited;
+    }
+    
+    public RegularScene getScene() {
+        return scene;
+    }
+
+    public void setScene(RegularScene scene) {
+        this.scene = scene;
+    }
+
+    @Override
+    public String toString() {
+        return "Location{" + "row=" + row + ", column=" + column + ", visited=" + visited + ", scene=" + scene + '}';
+    }
 
     @Override
     public int hashCode() {
@@ -49,24 +95,6 @@ public class Location {
         }
         return true;
     }
-
-    @Override
-    public String toString() {
-        return "Location{" + "row=" + row + ", column=" + column + ", visited=" + visited + ", scene=" + scene + '}';
-    }
-
-    public RegularScene getScene() {
-        return scene;
-    }
-
-    public void setScene(RegularScene scene) {
-        this.scene = scene;
-    }
- 
-    private int row;
-    private int column;
-    private boolean visited;
-    private RegularScene scene;
     
     public Location() {
     }

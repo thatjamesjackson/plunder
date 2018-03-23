@@ -14,10 +14,6 @@ import java.util.Objects;
  */
 public class Decision implements Serializable{
 
-    @Override
-    public String toString() {
-        return "Decision{" + "result=" + result + '}';
-    }
     private String result;
 
     public Decision() {
@@ -29,6 +25,11 @@ public class Decision implements Serializable{
 
     public void setResult(String result) {
         this.result = result;
+    }
+    
+    @Override
+    public String toString() {
+        return "Decision{" + "result=" + result + '}';
     }
 
     @Override
@@ -55,6 +56,5 @@ public class Decision implements Serializable{
         }
         return true;
     }
-
     
 }

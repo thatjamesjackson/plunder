@@ -10,6 +10,7 @@ package byui.cit260.plunder.model;
  * @author abigailking
  */
 public enum ShipType {
+    
     fishingBoat,
     sailBoat,
     clipper,

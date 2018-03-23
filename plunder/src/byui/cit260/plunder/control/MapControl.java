@@ -6,11 +6,12 @@
 package byui.cit260.plunder.control;
 
 import byui.cit260.plunder.model.CombatScene;
+import byui.cit260.plunder.model.DecisionScene;
 import byui.cit260.plunder.model.InventoryItem;
 import byui.cit260.plunder.model.InventoryItemType;
 import byui.cit260.plunder.model.Location;
 import byui.cit260.plunder.model.Map;
-import byui.cit260.plunder.model.Question;
+import byui.cit260.plunder.model.QuestionType;
 import byui.cit260.plunder.model.RegularScene;
 import byui.cit260.plunder.model.ResourceScene;
 import byui.cit260.plunder.model.SceneType;
@@ -44,9 +45,9 @@ public class MapControl {
         //make scenes
         RegularScene[] scenes = createScenes(items);
         //make questions
-        Question[] questions = createQuestions();
+        DecisionScene[] choices = createQuestions();
         //assign items and questions to scenes
-        assignQuestionsToScenes(questions, scenes);
+        assignQuestionsToScenes(choices, scenes);
         assignItemsToScenes(items, scenes);
 
         //put scenes into locations
@@ -163,19 +164,54 @@ public class MapControl {
         calmOcean.setSymbol("~~~");
         scenes[SceneType.oCalm.ordinal()] = calmOcean;
 
-        return null;
+        return scenes;
     }
 
-    private static Question[] createQuestions() {
+    private static DecisionScene[] createQuestions() {
         // System.out.println("createQuestions called");
 
-        Question[] scenes = new Question[9];
+        DecisionScene[] choices = new DecisionScene[6];
 
-        return null;
+        DecisionScene explore = new DecisionScene();
+        explore.setAsk("Do you want to keep exploring?");
+        explore.setOptions("Yea or nae?");
+        choices[QuestionType.keepExploring.ordinal()] = explore;
+
+        DecisionScene dig = new DecisionScene();
+        dig.setAsk("Want to dig and try to find some items?");
+        dig.setOptions("Yea or nae?");
+        choices[QuestionType.dig.ordinal()] = dig;
+
+        DecisionScene bribeCombat = new DecisionScene();
+        bribeCombat.setAsk("Would ye rather bribe them in hopes they won't attack?");
+        bribeCombat.setOptions("Yea or nae?");
+        choices[QuestionType.bribe.ordinal()] = bribeCombat;
+
+        DecisionScene engageCombat = new DecisionScene();
+        engageCombat.setAsk("Want to blow it out of the sea?");
+        engageCombat.setOptions("Aye aye or nae?");
+        choices[QuestionType.engage.ordinal()] = engageCombat;
+
+        DecisionScene runCombat = new DecisionScene();
+        runCombat.setAsk("Would ye rather run from this fight?");
+        runCombat.setOptions("Yea or nae?");
+        choices[QuestionType.runAway.ordinal()] = runCombat;
+
+        DecisionScene harvestMaterial = new DecisionScene();
+        harvestMaterial.setAsk("Is this worth keeping? Want to take it?");
+        harvestMaterial.setOptions("Take it or leave it?");
+        choices[QuestionType.harvest.ordinal()] = harvestMaterial;
+
+        return choices;
     }
 
-    private static void assignQuestionsToScenes(Question[] questions, RegularScene[] scenes) {
-        System.out.println("assignQuestionsToScenes called");
+    private static void assignQuestionsToScenes(DecisionScene[] choices, RegularScene[] scenes) {
+        // System.out.println("assignQuestionsToScenes called");
+
+        // Assign questions to the first question scene
+        DecisionScene islandRegularScene = (DecisionScene) scenes[SceneType.islandRegular.ordinal()];
+        islandRegularScene.setDecision(choices[QuestionType.dig.ordinal()]);
+
     }
 
     private static void assignItemsToScenes(ArrayList items, RegularScene[] scenes) {

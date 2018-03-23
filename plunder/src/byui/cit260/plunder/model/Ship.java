@@ -71,15 +71,7 @@ public class Ship implements Serializable {
     public double getShipMaxHealth() {
         return shipMaxHealth;
     }
-
-    public ArrayList getInventory() {
-        return inventory;
-    }
-
-    public void setInventory(ArrayList<InventoryItem> inventory) {
-        this.inventory = inventory;
-    }
-
+    
     public void setShipMaxHealth(double shipMaxHealth) {
         this.shipMaxHealth = shipMaxHealth;
     }
@@ -92,22 +84,30 @@ public class Ship implements Serializable {
         this.shipHealth = shipHealth;
     }
     
+    public ArrayList getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(ArrayList<InventoryItem> inventory) {
+        this.inventory = inventory;
+    }
+
     @Override
     public String toString() {
         return "Ship{" + "name=" + name + ", shipAttack=" + shipAttack + ", carryWeight=" + carryWeight + ", armor=" + armor + ", shipRepair=" + shipRepair + ", shipHealth=" + shipHealth + ", shipMaxHealth=" + shipMaxHealth + ", inventory=" + inventory + '}';
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 47 * hash + Objects.hashCode(this.name);
-        hash = 47 * hash + (int) (Double.doubleToLongBits(this.shipAttack) ^ (Double.doubleToLongBits(this.shipAttack) >>> 32));
-        hash = 47 * hash + (int) (Double.doubleToLongBits(this.carryWeight) ^ (Double.doubleToLongBits(this.carryWeight) >>> 32));
-        hash = 47 * hash + (int) (Double.doubleToLongBits(this.armor) ^ (Double.doubleToLongBits(this.armor) >>> 32));
-        hash = 47 * hash + (int) (Double.doubleToLongBits(this.shipRepair) ^ (Double.doubleToLongBits(this.shipRepair) >>> 32));
-        hash = 47 * hash + (int) (Double.doubleToLongBits(this.shipHealth) ^ (Double.doubleToLongBits(this.shipHealth) >>> 32));
-        hash = 47 * hash + (int) (Double.doubleToLongBits(this.shipMaxHealth) ^ (Double.doubleToLongBits(this.shipMaxHealth) >>> 32));
-        hash = 47 * hash + Objects.hashCode(this.inventory);
+        hash = 97 * hash + Objects.hashCode(this.name);
+        hash = 97 * hash + (int) (Double.doubleToLongBits(this.shipAttack) ^ (Double.doubleToLongBits(this.shipAttack) >>> 32));
+        hash = 97 * hash + (int) (Double.doubleToLongBits(this.carryWeight) ^ (Double.doubleToLongBits(this.carryWeight) >>> 32));
+        hash = 97 * hash + (int) (Double.doubleToLongBits(this.armor) ^ (Double.doubleToLongBits(this.armor) >>> 32));
+        hash = 97 * hash + (int) (Double.doubleToLongBits(this.shipRepair) ^ (Double.doubleToLongBits(this.shipRepair) >>> 32));
+        hash = 97 * hash + (int) (Double.doubleToLongBits(this.shipHealth) ^ (Double.doubleToLongBits(this.shipHealth) >>> 32));
+        hash = 97 * hash + (int) (Double.doubleToLongBits(this.shipMaxHealth) ^ (Double.doubleToLongBits(this.shipMaxHealth) >>> 32));
+        hash = 97 * hash + Objects.hashCode(this.inventory);
         return hash;
     }
 
@@ -149,4 +149,6 @@ public class Ship implements Serializable {
         }
         return true;
     }
+    
+    
 }

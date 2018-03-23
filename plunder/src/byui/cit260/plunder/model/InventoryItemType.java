@@ -10,10 +10,10 @@ package byui.cit260.plunder.model;
  * @author abigailking
  */
 public enum InventoryItemType {
+    
     fish,
     jewels,
     cotton,
     coconut,
     spices;
-    
 }

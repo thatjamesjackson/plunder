@@ -5,17 +5,18 @@
  */
 package byui.cit260.plunder.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author abigailking
  */
-public enum QuestionType {
+public enum QuestionType implements Serializable {
     
     keepExploring,
     dig,
     bribe,
     engage,
     runAway,
-    harvest,
-    enter;
+    harvest;
 }

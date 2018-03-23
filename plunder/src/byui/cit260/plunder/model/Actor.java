@@ -12,12 +12,11 @@ import java.awt.Point;
  * @author James
  */
 public enum Actor {
-    Captain("Bob", "A pirate capatin in search of treasure", new Point(1,1));
+    Captain("Bob", "A pirate capatin in search of treasure", new Point(1, 1));
 
-    @Override
-    public String toString() {
-        return "Actor{" + "name=" + name + ", description=" + description + ", coordinates=" + coordinates + '}';
-    }
+    private String name;
+    private String description;
+    private Point coordinates;
 
     public String getName() {
         return name;
@@ -30,15 +29,16 @@ public enum Actor {
     public Point getCoordinates() {
         return coordinates;
     }
-   
-    private String name;
-    private String description;
-    private Point coordinates;
 
- private Actor(String name, String description, Point coordinates) {
-    this.name = name;
-    this.description = description;
-    this.coordinates = coordinates;
+    @Override
+    public String toString() {
+        return "Actor{" + "name=" + name + ", description=" + description + ", coordinates=" + coordinates + '}';
+    }
+
+    private Actor(String name, String description, Point coordinates) {
+        this.name = name;
+        this.description = description;
+        this.coordinates = coordinates;
     }
 
 }

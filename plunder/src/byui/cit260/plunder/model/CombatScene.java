@@ -15,6 +15,9 @@ public class CombatScene extends RegularScene {
 
     private Ship opponent;
     
+    public CombatScene() {
+        
+    }
     
     public Ship getOpponent() {
         return opponent;
@@ -23,10 +26,6 @@ public class CombatScene extends RegularScene {
     public void setOpponent(Ship opponent) {
         this.opponent = opponent;
     }
-
-    public CombatScene() {
-    }
-    
     
     @Override
     public String toString() {

@@ -14,6 +14,22 @@ import java.util.Objects;
 public class ResourceScene extends RegularScene{
     private InventoryItem resource;
 
+    public ResourceScene() {
+    }
+    
+    public InventoryItem getResource() {
+        return resource;
+    }
+
+    public void setResource(InventoryItem resource) {
+        this.resource = resource;
+    }
+    
+    @Override
+    public String toString() {
+        return "ResourceScene{" + "resource=" + resource + '}';
+    }
+    
     @Override
     public int hashCode() {
         int hash = 7;
@@ -39,22 +55,4 @@ public class ResourceScene extends RegularScene{
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "ResourceScene{" + "resource=" + resource + '}';
-    }
-
-    
-    public ResourceScene() {
-    }
-    
-    public InventoryItem getResource() {
-        return resource;
-    }
-
-    public void setResource(InventoryItem resource) {
-        this.resource = resource;
-    }
-
-  
 }

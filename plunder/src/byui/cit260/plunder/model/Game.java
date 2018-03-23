@@ -21,21 +21,40 @@ public class Game implements Serializable{
     private ArrayList <InventoryItem> inventory = new ArrayList <InventoryItem>();
     private NPC[] npc;
     
-
-    public double getMoney() {
-        return money;
+    public Game() {
+        
+    }
+    
+    public double getTotalTime() {
+        return totalTime;
     }
 
-    public void setMoney(double money) {
-        this.money = money;
+    public void setTotalTime(double totalTime) {
+        this.totalTime = totalTime;
+    }
+    
+    public double getProgress() {
+        return progress;
     }
 
+    public void setProgress(double progress) {
+        this.progress = progress;
+    }
+    
     public Player getPlayer() {
         return player;
     }
 
     public void setPlayer(Player player) {
         this.player = player;
+    }
+    
+    public double getMoney() {
+        return money;
+    }
+
+    public void setMoney(double money) {
+        this.money = money;
     }
     
     public Map getMap() {
@@ -67,7 +86,6 @@ public class Game implements Serializable{
         return "Game{" + "totalTime=" + totalTime + ", progress=" + progress + ", player=" + player + ", money=" + money + '}';
     }
 
-
     @Override
     public int hashCode() {
         int hash = 3;
@@ -96,23 +114,5 @@ public class Game implements Serializable{
         }
         return true;
     }
-
-    public double getTotalTime() {
-        return totalTime;
-    }
-
-    public void setTotalTime(double totalTime) {
-        this.totalTime = totalTime;
-    }
-
-    public double getProgress() {
-        return progress;
-    }
-
-    public void setProgress(double progress) {
-        this.progress = progress;
-    }
-
-    public Game() {
-    }
+    
 }
