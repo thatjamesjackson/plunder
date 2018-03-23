@@ -12,17 +12,27 @@ import java.util.Objects;
  */
 public class RegularScene implements Serializable{
     private String description;
+    private String symbol;
 
-    @Override
-    public String toString() {
-        return "regularScene{" + "description=" + description + '}';
+    public String getSymbol() {
+        return symbol;
+    }
+
+    public void setSymbol(String symbol) {
+        this.symbol = symbol;
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 13 * hash + Objects.hashCode(this.description);
+        int hash = 5;
+        hash = 97 * hash + Objects.hashCode(this.description);
+        hash = 97 * hash + Objects.hashCode(this.symbol);
         return hash;
+    }
+
+    @Override
+    public String toString() {
+        return "RegularScene{" + "description=" + description + ", symbol=" + symbol + '}';
     }
 
     @Override
@@ -40,8 +50,15 @@ public class RegularScene implements Serializable{
         if (!Objects.equals(this.description, other.description)) {
             return false;
         }
+        if (!Objects.equals(this.symbol, other.symbol)) {
+            return false;
+        }
         return true;
     }
+
+
+
+      
 
     public String getDescription() {
         return description;

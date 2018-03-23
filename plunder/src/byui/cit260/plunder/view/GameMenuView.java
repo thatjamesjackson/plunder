@@ -26,20 +26,10 @@ public class GameMenuView extends View {
     public String[] getInputs() {
         //declare new
         String [] inputs = new String[1];
-        
+                MapView mapView = new MapView();
+                mapView.displayMapView();
         // show menu options
-        System.out.println("+--+--+--+--+--+\n"
-                         + "|  |  |  |  |  |\n"
-                         + "+--+--+--+--+--+\n"
-                         + "|  |  |  |  |  |\n"
-                         + "+--+--+--+--+--+\n"
-                         + "|  |  |  |  |  |\n"
-                         + "+--+--+--+--+--+\n"
-                         + "|  |  |  |  |  |\n"
-                         + "+--+--+--+--+--+\n"
-                         + "|  |  |  |  |  |\n"
-                         + "+--+--+--+--+--+\n"
-                         + "\n"
+        System.out.println( "\n"
                          + "  N - Travel North\n"
                          + "  W - Travel West\n"
                          + "  E - Travel East\n"

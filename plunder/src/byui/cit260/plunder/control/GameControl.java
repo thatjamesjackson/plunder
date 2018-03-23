@@ -81,7 +81,7 @@ public class GameControl {
         spices.setQuantityInStock(0);
         spices.setValue(100);
         spices.setWeight(1);
-        
+
         InventoryItem coconut = new InventoryItem();
         spices.setInventoryType("Coconuts");
         spices.setQuantityInStock(0);
@@ -89,8 +89,8 @@ public class GameControl {
         spices.setWeight(1);
 
         ArrayList<InventoryItem> items = new ArrayList<>();
-        items.add(InventoryItemType.jewels.ordinal(), jewels);
         items.add(InventoryItemType.fish.ordinal(), fish);
+        items.add(InventoryItemType.jewels.ordinal(), jewels);
         items.add(InventoryItemType.cotton.ordinal(), cotton);
         items.add(InventoryItemType.coconut.ordinal(), coconut);
         items.add(InventoryItemType.spices.ordinal(), spices);

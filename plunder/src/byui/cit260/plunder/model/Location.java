@@ -87,7 +87,7 @@ public class Location {
         this.column = column;
     }
 
-    public boolean isVisited() {
+    public boolean getVisited() {
         return visited;
     }
 
