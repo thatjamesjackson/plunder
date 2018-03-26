@@ -26,6 +26,6 @@ public enum SceneType {
     oRough,
     oCalm,
     usOcean,
-    oceanResource,
+    oResource,
     usLand
 }

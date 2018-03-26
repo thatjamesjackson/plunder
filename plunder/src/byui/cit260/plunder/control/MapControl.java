@@ -53,6 +53,9 @@ public class MapControl {
 //        assignQuestionsToScenes(choices, scenes);
         assignItemsToScenes(items, scenes);
 
+        //make questions
+        DecisionScene[] choices = createQuestions();
+
         //put scenes into locations
         assignScenesToLocations(scenes, locations);
 
@@ -84,140 +87,105 @@ public class MapControl {
     private static RegularScene[] createScenes(ArrayList<InventoryItem> items) {
         // System.out.println("createQuestions called");
 
-        RegularScene[] scenes = new RegularScene[9];
+        RegularScene[] scenes = new RegularScene[SceneType.values().length];
 
         DecisionScene islandRegular = new DecisionScene(
-                 "The warm welcoming sands stretch out before you. A few trees offer shade and coconuts.",
-                 new GameMenuView());
+                "The warm welcoming sands stretch out before you. A few trees offer shade and coconuts.",
+                new GameMenuView());
         scenes[SceneType.islandRegular.ordinal()] = islandRegular;
 
         DecisionScene islandResourceScene = new DecisionScene(
-                 "While you are on the island, you see some useful items here.",
-                 new ResourceView());
+                "While you are on the island, you see some useful items here.",
+                new ResourceView());
         scenes[SceneType.islandResource.ordinal()] = islandResourceScene;
-       
 
         CombatScene combatFBoat = new CombatScene();
         combatFBoat.setDescription("A fishing vessel lies over yonder");
         combatFBoat.setOpponent(CombatControl.enemyShipConstructor(ShipType.fishingBoat.ordinal()));
+        combatFBoat.setSymbol("~p~");
         scenes[SceneType.fishingBoat.ordinal()] = combatFBoat;
 
         CombatScene combatSBoat = new CombatScene();
         combatSBoat.setDescription("A sailing boat aproaches");
         combatSBoat.setOpponent(CombatControl.enemyShipConstructor(ShipType.sailBoat.ordinal()));
+        combatSBoat.setSymbol("~p~");
         scenes[SceneType.sailBoat.ordinal()] = combatSBoat;
 
         CombatScene combatClipper = new CombatScene();
         combatClipper.setDescription("A clipper speeds across the water");
         combatClipper.setOpponent(CombatControl.enemyShipConstructor(ShipType.clipper.ordinal()));
+        combatClipper.setSymbol("~p~");
         scenes[SceneType.clipper.ordinal()] = combatClipper;
 
         CombatScene combatFrigate = new CombatScene();
         combatFrigate.setDescription("A frigate aproaches and fires a warning shot");
         combatFrigate.setOpponent(CombatControl.enemyShipConstructor(ShipType.frigate.ordinal()));
+        combatFrigate.setSymbol("~p~");
         scenes[SceneType.frigate.ordinal()] = combatFrigate;
 
         CombatScene combatGunBoat = new CombatScene();
         combatGunBoat.setDescription("A Gunboat sets course for you");
         combatGunBoat.setOpponent(CombatControl.enemyShipConstructor(ShipType.gunBoat.ordinal()));
+        combatGunBoat.setSymbol("~p~");
         scenes[SceneType.gunBoat.ordinal()] = combatGunBoat;
 
         CombatScene combatManOfWar = new CombatScene();
         combatManOfWar.setDescription("A Man of War has ye in it's sights, prepare for a tough fight");
         combatManOfWar.setOpponent(CombatControl.enemyShipConstructor(ShipType.manOfWar.ordinal()));
+        combatManOfWar.setSymbol("~p~");
         scenes[SceneType.manOfWar.ordinal()] = combatManOfWar;
 
         CombatScene combatSeaMonster = new CombatScene();
         combatSeaMonster.setDescription("From the depths you see a terrifying sea monster rise and open its jaws.");
         combatSeaMonster.setOpponent(CombatControl.enemyShipConstructor(ShipType.seaMonster.ordinal()));
+        combatSeaMonster.setSymbol("~S~");
         scenes[SceneType.seaMonster.ordinal()] = combatSeaMonster;
 
         DecisionScene shopIsland = new DecisionScene(
-                 "A welcoming merchant offers ye up a trade.",
-                 new ShopView());
+                "A welcoming merchant offers ye up a trade.",
+                new ShopView());
         scenes[SceneType.shopIsland.ordinal()] = shopIsland;
 
-        
-         DecisionScene treasure = new DecisionScene(
-                 "Glittering gold, sparkling jewels, and heavy too. For a pirate, this be the most beautiful sight in the world.",
-                 new WinGameView());
-        scenes[SceneType.treasure.ordinal()] = shopIsland; 
-        
-        
+        DecisionScene treasure = new DecisionScene(
+                "Glittering gold, sparkling jewels, and heavy too. For a pirate, this be the most beautiful sight in the world.",
+                new WinGameView());
+        scenes[SceneType.treasure.ordinal()] = treasure;
+
         ResourceScene oceanResource = new ResourceScene();
         oceanResource.setDescription("There be many fish in these waters");
         oceanResource.setResource(items.get(InventoryItemType.fish.ordinal()));
-        scenes[SceneType.oceanResource.ordinal()] = oceanResource;
+        oceanResource.setSymbol("<#<");
+        scenes[SceneType.oResource.ordinal()] = oceanResource;
 
         RegularScene roughOcean = new RegularScene();
         roughOcean.setDescription("Careful now, we be in some rough waters.");
+        roughOcean.setSymbol("###");
         scenes[SceneType.oRough.ordinal()] = roughOcean;
 
         RegularScene calmOcean = new RegularScene();
         calmOcean.setDescription("Here there be no comotion on the ocean. Calm waters be upon us.");
+        calmOcean.setSymbol("~~~");
         scenes[SceneType.oCalm.ordinal()] = calmOcean;
 
         return scenes;
     }
 
-//    private static DecisionScene[] createDecisionScenes() {
-//        // System.out.println("createQuestions called");
-//
-//        DecisionScene[] decisionScenes = new DecisionScene[6];
-//
-//        DecisionScene explore = new DecisionScene("a");
-//        explore.setAsk("Do you want to keep exploring?");
-//        explore.setOptions("Yea or nae?");
-//        choices[QuestionType.keepExploring.ordinal()] = explore;
-//
-//        DecisionScene dig = new DecisionScene();
-//        dig.setAsk("Want to dig and try to find some items?");
-//        dig.setOptions("Yea or nae?");
-//        choices[QuestionType.dig.ordinal()] = dig;
-//
-//        DecisionScene bribeCombat = new DecisionScene();
-//        bribeCombat.setAsk("Would ye rather bribe them in hopes they won't attack?");
-//        bribeCombat.setOptions("Yea or nae?");
-//        choices[QuestionType.bribe.ordinal()] = bribeCombat;
-//
-//        DecisionScene engageCombat = new DecisionScene();
-//        engageCombat.setAsk("Want to blow it out of the sea?");
-//        engageCombat.setOptions("Aye aye or nae?");
-//        choices[QuestionType.engage.ordinal()] = engageCombat;
-//
-//        DecisionScene runCombat = new DecisionScene();
-//        runCombat.setAsk("Would ye rather run from this fight?");
-//        runCombat.setOptions("Yea or nae?");
-//        choices[QuestionType.runAway.ordinal()] = runCombat;
-//
-//        DecisionScene harvestMaterial = new DecisionScene();
-//        harvestMaterial.setAsk("Is this worth keeping? Want to take it?");
-//        harvestMaterial.setOptions("Take it or leave it?");
-//        choices[QuestionType.harvest.ordinal()] = harvestMaterial;
-//
-//        return choices;
-//    }
-
-    private static void assignItemsToScenes(ArrayList items, RegularScene[] scenes) {
-        System.out.println("assignItemsToScenes called");
-    }
-
     private static void assignScenesToLocations(RegularScene[] scenes, Location[][] locations) {
-        //creates the map [x][y]
+        //creates the map [y][x] coodinates
         locations[0][0].setScene(scenes[SceneType.oCalm.ordinal()]);
-        locations[1][0].setScene(scenes[SceneType.oceanResource.ordinal()]);
+        locations[1][0].setScene(scenes[SceneType.oResource.ordinal()]);
         locations[2][0].setScene(scenes[SceneType.gunBoat.ordinal()]);
         locations[3][0].setScene(scenes[SceneType.oRough.ordinal()]);
         locations[4][0].setScene(scenes[SceneType.oCalm.ordinal()]);
         locations[0][1].setScene(scenes[SceneType.shopIsland.ordinal()]);
         locations[1][1].setScene(scenes[SceneType.fishingBoat.ordinal()]);
-        locations[2][1].setScene(scenes[SceneType.oceanResource.ordinal()]);
+        locations[2][1].setScene(scenes[SceneType.oResource.ordinal()]);
         locations[3][1].setScene(scenes[SceneType.islandResource.ordinal()]);
         locations[4][1].setScene(scenes[SceneType.oCalm.ordinal()]);
         locations[0][2].setScene(scenes[SceneType.clipper.ordinal()]);
         locations[1][2].setScene(scenes[SceneType.sailBoat.ordinal()]);
         locations[2][2].setScene(scenes[SceneType.manOfWar.ordinal()]);
-        locations[3][2].setScene(scenes[SceneType.oceanResource.ordinal()]);
+        locations[3][2].setScene(scenes[SceneType.oResource.ordinal()]);
         locations[4][2].setScene(scenes[SceneType.seaMonster.ordinal()]);
         locations[0][3].setScene(scenes[SceneType.oRough.ordinal()]);
         locations[1][3].setScene(scenes[SceneType.islandRegular.ordinal()]);

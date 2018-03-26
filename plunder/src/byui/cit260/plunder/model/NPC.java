@@ -5,7 +5,6 @@
  */
 package byui.cit260.plunder.model;
 
-import java.util.Arrays;
 import java.util.Objects;
 
 /**
@@ -14,7 +13,7 @@ import java.util.Objects;
  */
 public class NPC {
 
-    private Question[] questions;
+   
     
     
     private boolean isCrew;
@@ -77,7 +76,7 @@ public class NPC {
 
     @Override
     public String toString() {
-        return "NPC{" + "isCrew=" + isCrew + ", crewAttack=" + crewAttack + ", crewRepair=" + crewRepair + ", job=" + job + ", name=" + name + ", talk=" + talk + ", questions=" + questions + '}';
+        return "NPC{" + "isCrew=" + isCrew + ", crewAttack=" + crewAttack + ", crewRepair=" + crewRepair + ", job=" + job + ", name=" + name + ", talk=" + talk + '}';
     }
 
     @Override
@@ -89,7 +88,6 @@ public class NPC {
         hash = 29 * hash + Objects.hashCode(this.job);
         hash = 29 * hash + Objects.hashCode(this.name);
         hash = 29 * hash + Objects.hashCode(this.talk);
-        hash = 29 * hash + Arrays.deepHashCode(this.questions);
         return hash;
     }
 
@@ -123,9 +121,7 @@ public class NPC {
         if (!Objects.equals(this.talk, other.talk)) {
             return false;
         }
-        if (!Arrays.deepEquals(this.questions, other.questions)) {
-            return false;
-        }
+        
         return true;
     }
 
