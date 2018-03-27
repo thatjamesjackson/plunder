@@ -213,7 +213,6 @@ public class MapControl {
         locations[2][4].setScene(scenes[SceneType.frigate.ordinal()]);
         locations[3][4].setScene(scenes[SceneType.seaMonster.ordinal()]);
         locations[4][4].setScene(scenes[SceneType.treasure.ordinal()]);
-
     }
 
 }

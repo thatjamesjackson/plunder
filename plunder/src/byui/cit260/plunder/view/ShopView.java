@@ -5,16 +5,17 @@
  */
 package byui.cit260.plunder.view;
 
-import java.util.Scanner;
+import byui.cit260.plunder.control.InventoryControl;
+import byui.cit260.plunder.model.Game;
+import byui.cit260.plunder.model.Player;
+import byui.cit260.plunder.model.Ship;
 
 /**
  *
  * @author abigailking
  */
 public class ShopView extends View {
-    public void display() { 
-        
-    }
+
 
     @Override
     public String[] getInputs() {
@@ -69,13 +70,15 @@ public class ShopView extends View {
         return false; 
     }
 
-    private void buyShop() {
+    private void buyShop(Game game) {
+        Ship ship = game.getPlayer().getShip();
         
         
     }
 
-    private void sellShop() {
-        
+    private void sellShop(Game game) {
+        Double gold = InventoryControl.sellAll(game.getPlayer().getShip());
+        game.setMoney(game.getMoney() + gold);
     }
     
     
