@@ -7,8 +7,8 @@ package byui.cit260.plunder.view;
 
 import byui.cit260.plunder.control.InventoryControl;
 import byui.cit260.plunder.model.Game;
-import byui.cit260.plunder.model.Player;
 import byui.cit260.plunder.model.Ship;
+import plunder.Plunder;
 
 /**
  *
@@ -50,14 +50,14 @@ public class ShopView extends View {
 
     @Override
     public boolean doAction(String[] inputs) {
-        
+        Game game = Plunder.getCurrentGame();
         switch (inputs[0]) {
             case "B":
-                buyShop();
+                buyShop(game);
                 break;
 
             case "S":
-                sellShop();
+                sellShop(game);
                 break;
 
             case "R":

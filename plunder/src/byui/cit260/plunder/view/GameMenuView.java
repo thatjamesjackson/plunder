@@ -6,17 +6,12 @@
 package byui.cit260.plunder.view;
 
 import byui.cit260.plunder.model.NPC;
-import java.util.Scanner;
 
 /**
  *
  * @author James
  */
 public class GameMenuView extends View {
-
-    public void display(){
-        
-    }
 
     public GameMenuView() {
 

@@ -7,18 +7,15 @@ package plunder;
 
 import byui.cit260.plunder.model.CombatScene;
 import byui.cit260.plunder.model.Decision;
-import byui.cit260.plunder.model.DecisionScene;
 import byui.cit260.plunder.model.Game;
 import byui.cit260.plunder.model.Player;
 import byui.cit260.plunder.model.RegularScene;
 import byui.cit260.plunder.model.ResourceScene;
 import byui.cit260.plunder.model.Ship;
-import byui.cit260.plunder.model.Trap;
 import byui.cit260.plunder.model.Map;
 import byui.cit260.plunder.model.Location;
 import byui.cit260.plunder.model.InventoryItem;
 import byui.cit260.plunder.model.NPC;
-import byui.cit260.plunder.model.ShopScene;
 import byui.cit260.plunder.model.Upgrade;
 import byui.cit260.plunder.view.StartProgramView;
 
@@ -98,8 +95,6 @@ public class Plunder {
         cannonOne.setCost(200);
         cannonOne.setStatBoost(30);
         
-        ShopScene sceneS = new ShopScene();
-        sceneS.setUpgrade(cannonOne);
         
         Map mapMain = new Map();
         mapMain.setDescription("Yonder be water");
