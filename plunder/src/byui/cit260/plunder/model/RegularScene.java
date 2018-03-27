@@ -14,6 +14,22 @@ public class RegularScene implements Serializable{
     private String description;
     private String symbol;
 
+    public RegularScene() {
+    }
+
+    public RegularScene(String description, String symbol) {
+        this.description = description;
+        this.symbol = symbol;
+    }
+    
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    
     public String getSymbol() {
         return symbol;
     }
@@ -56,18 +72,4 @@ public class RegularScene implements Serializable{
         return true;
     }
 
-
-
-      
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public RegularScene() {
-    }
 }

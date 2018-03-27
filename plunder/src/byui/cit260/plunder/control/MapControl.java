@@ -88,11 +88,13 @@ public class MapControl {
 
         DecisionScene islandRegular = new DecisionScene(
                 "The warm welcoming sands stretch out before you. A few trees offer shade and coconuts.",
+                "...",
                 new GameMenuView());
         scenes[SceneType.islandRegular.ordinal()] = islandRegular;
 
         DecisionScene islandResourceScene = new DecisionScene(
                 "While you are on the island, you see some useful items here.",
+                ".u.",
                 new ResourceView());
         scenes[SceneType.islandResource.ordinal()] = islandResourceScene;
         
@@ -140,11 +142,13 @@ public class MapControl {
 
         DecisionScene shopIsland = new DecisionScene(
                 "A welcoming merchant offers ye up a trade.",
+                ".@.",
                 new ShopView());
         scenes[SceneType.shopIsland.ordinal()] = shopIsland;
 
         DecisionScene treasure = new DecisionScene(
                 "Glittering gold, sparkling jewels, and heavy too. For a pirate, this be the most beautiful sight in the world.",
+                ".T.",
                 new WinGameView());
         scenes[SceneType.treasure.ordinal()] = treasure;
 
