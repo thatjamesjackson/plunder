@@ -5,7 +5,7 @@
  */
 package byui.cit260.plunder.view;
 import byui.cit260.plunder.control.GameControl;
-import byui.cit260.plunder.control.InventoryControlTest;
+
 
 import plunder.Plunder;
 /**
@@ -66,10 +66,6 @@ public class MainMenuView extends View {
 
             case "H":
                 getHelp();
-                break;
-                
-            case "T":
-                InventoryControlTest.sellAll();
                 break;
 
             case "Q":
