@@ -20,6 +20,8 @@ public class InventoryControl {
         ArrayList inventory = ship.getInventory();
         for (Object curItem : inventory) {
             InventoryItem item = (InventoryItem) curItem;
+            if(item.getQuantityInStock() < 0 || item.getValue() < 0)
+                return -1;
             gold = gold + (item.getQuantityInStock() * item.getValue());
             item.setQuantityInStock(0);
         }
