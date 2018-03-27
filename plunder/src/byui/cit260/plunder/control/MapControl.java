@@ -6,6 +6,7 @@
 package byui.cit260.plunder.control;
 
 import byui.cit260.plunder.model.CombatScene;
+import byui.cit260.plunder.model.Decision;
 import byui.cit260.plunder.model.DecisionScene;
 import byui.cit260.plunder.model.InventoryItem;
 import byui.cit260.plunder.model.InventoryItemType;
@@ -16,7 +17,10 @@ import byui.cit260.plunder.model.RegularScene;
 import byui.cit260.plunder.model.ResourceScene;
 import byui.cit260.plunder.model.SceneType;
 import byui.cit260.plunder.model.ShipType;
-import byui.cit260.plunder.model.ShopScene;
+import byui.cit260.plunder.view.GameMenuView;
+import byui.cit260.plunder.view.ResourceView;
+import byui.cit260.plunder.view.ShopView;
+import byui.cit260.plunder.view.WinGameView;
 import java.util.ArrayList;
 
 /**
@@ -44,10 +48,10 @@ public class MapControl {
 
         //make scenes
         RegularScene[] scenes = createScenes(items);
-        //make questions
-        DecisionScene[] choices = createQuestions();
-        //assign items and questions to scenes
-        assignQuestionsToScenes(choices, scenes);
+//        //make questions
+//        DecisionScene[] choices = createQuestions();
+//        //assign items and questions to scenes
+//        assignQuestionsToScenes(choices, scenes);
 
         //put scenes into locations
         assignScenesToLocations(scenes, locations);
@@ -82,17 +86,18 @@ public class MapControl {
 
         RegularScene[] scenes = new RegularScene[SceneType.values().length];
 
-        RegularScene islandRegular = new RegularScene();
-        islandRegular.setDescription("The warm welcoming sands stretch out before you. A few trees offer shade and coconuts.");
-        islandRegular.setSymbol("...");
+        DecisionScene islandRegular = new DecisionScene(
+                "The warm welcoming sands stretch out before you. A few trees offer shade and coconuts.",
+                "...",
+                new GameMenuView());
         scenes[SceneType.islandRegular.ordinal()] = islandRegular;
 
-        ResourceScene islandResourceScene = new ResourceScene();
-        islandResourceScene.setDescription("While you are on the island, you see some useful items here.");
-        islandResourceScene.setResource(items.get(InventoryItemType.coconut.ordinal()));
-        islandResourceScene.setSymbol(".T.");
+        DecisionScene islandResourceScene = new DecisionScene(
+                "While you are on the island, you see some useful items here.",
+                ".u.",
+                new ResourceView());
         scenes[SceneType.islandResource.ordinal()] = islandResourceScene;
-
+        
         CombatScene combatFBoat = new CombatScene();
         combatFBoat.setDescription("A fishing vessel lies over yonder");
         combatFBoat.setOpponent(CombatControl.enemyShipConstructor(ShipType.fishingBoat.ordinal()));
@@ -135,16 +140,16 @@ public class MapControl {
         combatSeaMonster.setSymbol("~S~");
         scenes[SceneType.seaMonster.ordinal()] = combatSeaMonster;
 
-        ShopScene shopIsland = new ShopScene();
-        shopIsland.setDescription("A welcoming merchant offers ye up a trade.");
-        shopIsland.setSymbol(".@.");
-        // shopIsland.setUpgrade();
+        DecisionScene shopIsland = new DecisionScene(
+                "A welcoming merchant offers ye up a trade.",
+                ".@.",
+                new ShopView());
         scenes[SceneType.shopIsland.ordinal()] = shopIsland;
 
-        ResourceScene treasure = new ResourceScene();
-        treasure.setDescription("Glittering gold, sparkling jewels, and heavy too. For a pirate, this be the most beautiful sight in the world.");
-        treasure.setResource(items.get(InventoryItemType.jewels.ordinal()));
-        treasure.setSymbol("...");
+        DecisionScene treasure = new DecisionScene(
+                "Glittering gold, sparkling jewels, and heavy too. For a pirate, this be the most beautiful sight in the world.",
+                ".T.",
+                new WinGameView());
         scenes[SceneType.treasure.ordinal()] = treasure;
 
         ResourceScene oceanResource = new ResourceScene();
@@ -164,53 +169,6 @@ public class MapControl {
         scenes[SceneType.oCalm.ordinal()] = calmOcean;
 
         return scenes;
-    }
-
-    private static DecisionScene[] createQuestions() {
-        // System.out.println("createQuestions called");
-
-        DecisionScene[] choices = new DecisionScene[QuestionType.values().length];
-
-        DecisionScene explore = new DecisionScene();
-        explore.setAsk("Do you want to keep exploring?");
-        explore.setOptions("Yea or nae?");
-        choices[QuestionType.keepExploring.ordinal()] = explore;
-
-        DecisionScene dig = new DecisionScene();
-        dig.setAsk("Want to dig and try to find some items?");
-        dig.setOptions("Yea or nae?");
-        choices[QuestionType.dig.ordinal()] = dig;
-
-        DecisionScene bribeCombat = new DecisionScene();
-        bribeCombat.setAsk("Would ye rather bribe them in hopes they won't attack?");
-        bribeCombat.setOptions("Yea or nae?");
-        choices[QuestionType.bribe.ordinal()] = bribeCombat;
-
-        DecisionScene engageCombat = new DecisionScene();
-        engageCombat.setAsk("Want to blow it out of the sea?");
-        engageCombat.setOptions("Aye aye or nae?");
-        choices[QuestionType.engage.ordinal()] = engageCombat;
-
-        DecisionScene runCombat = new DecisionScene();
-        runCombat.setAsk("Would ye rather run from this fight?");
-        runCombat.setOptions("Yea or nae?");
-        choices[QuestionType.runAway.ordinal()] = runCombat;
-
-        DecisionScene harvestMaterial = new DecisionScene();
-        harvestMaterial.setAsk("Is this worth keeping? Want to take it?");
-        harvestMaterial.setOptions("Take it or leave it?");
-        choices[QuestionType.harvest.ordinal()] = harvestMaterial;
-
-        return choices;
-    }
-
-    private static void assignQuestionsToScenes(DecisionScene[] choices, RegularScene[] scenes) {
-        // System.out.println("assignQuestionsToScenes called");
-
-        // Assign questions to the first question scene
-        DecisionScene islandRegularScene = (DecisionScene) scenes[SceneType.islandRegular.ordinal()];
-        islandRegularScene.setDecision(choices[QuestionType.dig.ordinal()]);
-
     }
 
     private static void assignScenesToLocations(RegularScene[] scenes, Location[][] locations) {

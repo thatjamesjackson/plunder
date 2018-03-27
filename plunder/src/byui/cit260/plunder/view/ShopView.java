@@ -73,6 +73,7 @@ public class ShopView extends View {
     private void buyShop(Game game) {
         Ship ship = game.getPlayer().getShip();
         
+        
     }
 
     private void sellShop(Game game) {
