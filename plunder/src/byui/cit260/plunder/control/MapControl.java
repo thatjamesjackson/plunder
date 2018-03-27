@@ -98,7 +98,7 @@ public class MapControl {
 
         DecisionScene islandResourceScene = new DecisionScene(
                 "While you are on the island, you see some useful items here.",
-                ".u.",
+                ".T.",
                 new ResourceView());
         scenes[SceneType.islandResource.ordinal()] = islandResourceScene;
         
@@ -159,7 +159,7 @@ public class MapControl {
 
         DecisionScene treasure = new DecisionScene(
                 "Glittering gold, sparkling jewels, and heavy too. For a pirate, this be the most beautiful sight in the world.",
-                ".x.",
+                "<x>",
                 new WinGameView());
         scenes[SceneType.treasure.ordinal()] = treasure;
 
