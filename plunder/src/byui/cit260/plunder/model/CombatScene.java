@@ -5,18 +5,28 @@
  */
 package byui.cit260.plunder.model;
 
+import byui.cit260.plunder.view.View;
 import java.util.Objects;
 
 /**
  *
  * @author James
  */
-public class CombatScene extends RegularScene {
+public class CombatScene extends DecisionScene {
 
     private Ship opponent;
     
     public CombatScene() {
         
+    }
+
+    public CombatScene(Ship opponent) {
+        this.opponent = opponent;
+    }
+
+    public CombatScene(Ship opponent, String description, String mapSymbol, View nextView) {
+        super(description, mapSymbol, nextView);
+        this.opponent = opponent;
     }
     
     public Ship getOpponent() {
