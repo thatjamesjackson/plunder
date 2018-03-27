@@ -7,7 +7,6 @@ package byui.cit260.plunder.view;
 
 import byui.cit260.plunder.model.Location;
 import byui.cit260.plunder.model.Map;
-import byui.cit260.plunder.model.SceneType;
 import plunder.Plunder;
 
 /**
@@ -25,19 +24,21 @@ public class MapView {
         //map is 5x5 in 3X1 squares
         //using x and y coordinates
         //21 total map length in chars
-        System.out.print("\n---------------------\n");
-        for (int y = locations.length; y > 0; y--) {
+        System.out.print("\n-------------------------------\n");
+        //count backwards to go down for y coordinates
+        for (int y = locations.length - 1; y >= 0; y--) {
             System.out.print("|");
-            for (int x = locations[y].length; x > 0; x--) {
+            //count up to go across for x coordinates
+            for (int x = 0; x < locations[y].length; x++) {
 //                if (locations[y][x].getVisited() == true) {
-                    System.out.print(locations[y][x].getScene().getSymbol());
+                    System.out.print(" " + locations[y][x].getScene().getSymbol() + " ");
 //                }
 //            else{
 //                    System.out.print("???");
 //                    }
             System.out.print("|");
         }
-        System.out.println("\n---------------------\n");
+        System.out.print("\n-------------------------------\n");
 
     }
 
