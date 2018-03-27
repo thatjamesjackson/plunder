@@ -17,9 +17,10 @@ import byui.cit260.plunder.model.RegularScene;
 import byui.cit260.plunder.model.ResourceScene;
 import byui.cit260.plunder.model.SceneType;
 import byui.cit260.plunder.model.ShipType;
-import byui.cit260.plunder.model.ShopScene;
 import byui.cit260.plunder.view.GameMenuView;
+import byui.cit260.plunder.view.ResourceView;
 import byui.cit260.plunder.view.ShopView;
+import byui.cit260.plunder.view.WinGameView;
 import java.util.ArrayList;
 
 /**
@@ -51,10 +52,6 @@ public class MapControl {
 //        DecisionScene[] choices = createQuestions();
 //        //assign items and questions to scenes
 //        assignQuestionsToScenes(choices, scenes);
-        assignItemsToScenes(items, scenes);
-
-        //make questions
-        DecisionScene[] choices = createQuestions();
 
         //put scenes into locations
         assignScenesToLocations(scenes, locations);
@@ -98,7 +95,7 @@ public class MapControl {
                 "While you are on the island, you see some useful items here.",
                 new ResourceView());
         scenes[SceneType.islandResource.ordinal()] = islandResourceScene;
-
+        
         CombatScene combatFBoat = new CombatScene();
         combatFBoat.setDescription("A fishing vessel lies over yonder");
         combatFBoat.setOpponent(CombatControl.enemyShipConstructor(ShipType.fishingBoat.ordinal()));

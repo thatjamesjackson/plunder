@@ -31,6 +31,7 @@ public class WinGameView extends View {
     @Override
     public boolean doAction(String[] inputs) {
         // do things
+        return false;
     }
     
 }
