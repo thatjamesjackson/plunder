@@ -5,20 +5,24 @@
  */
 package byui.cit260.plunder.control;
 
+import byui.cit260.plunder.model.Location;
+import byui.cit260.plunder.model.Map;
 import byui.cit260.plunder.model.CombatScene;
 import byui.cit260.plunder.model.Decision;
 import byui.cit260.plunder.model.DecisionScene;
 import byui.cit260.plunder.model.InventoryItem;
 import byui.cit260.plunder.model.InventoryItemType;
-import byui.cit260.plunder.model.Location;
-import byui.cit260.plunder.model.Map;
 import byui.cit260.plunder.model.QuestionType;
 import byui.cit260.plunder.model.RegularScene;
 import byui.cit260.plunder.model.ResourceScene;
 import byui.cit260.plunder.model.SceneType;
 import byui.cit260.plunder.model.ShipType;
+import byui.cit260.plunder.view.CalmOceanView;
+import byui.cit260.plunder.view.CombatView;
 import byui.cit260.plunder.view.GameMenuView;
+import byui.cit260.plunder.view.OceanResourceView;
 import byui.cit260.plunder.view.ResourceView;
+import byui.cit260.plunder.view.RoughOceanView;
 import byui.cit260.plunder.view.ShopView;
 import byui.cit260.plunder.view.WinGameView;
 import java.util.ArrayList;
@@ -98,46 +102,53 @@ public class MapControl {
                 new ResourceView());
         scenes[SceneType.islandResource.ordinal()] = islandResourceScene;
         
-        CombatScene combatFBoat = new CombatScene();
-        combatFBoat.setDescription("A fishing vessel lies over yonder");
-        combatFBoat.setOpponent(CombatControl.enemyShipConstructor(ShipType.fishingBoat.ordinal()));
-        combatFBoat.setSymbol("~p~");
+        CombatScene combatFBoat = new CombatScene(
+                CombatControl.enemyShipConstructor(ShipType.fishingBoat.ordinal()),
+                "A fishing vessel lies over yonder.",
+                "~p~",
+                new CombatView());
         scenes[SceneType.fishingBoat.ordinal()] = combatFBoat;
-
-        CombatScene combatSBoat = new CombatScene();
-        combatSBoat.setDescription("A sailing boat aproaches");
-        combatSBoat.setOpponent(CombatControl.enemyShipConstructor(ShipType.sailBoat.ordinal()));
-        combatSBoat.setSymbol("~p~");
+        
+        CombatScene combatSBoat = new CombatScene(
+                CombatControl.enemyShipConstructor(ShipType.sailBoat.ordinal()),
+                "A sailing boat aproaches.",
+                "~p~",
+                new CombatView());
         scenes[SceneType.sailBoat.ordinal()] = combatSBoat;
-
-        CombatScene combatClipper = new CombatScene();
-        combatClipper.setDescription("A clipper speeds across the water");
-        combatClipper.setOpponent(CombatControl.enemyShipConstructor(ShipType.clipper.ordinal()));
-        combatClipper.setSymbol("~p~");
+        
+        CombatScene combatClipper = new CombatScene(
+                CombatControl.enemyShipConstructor(ShipType.clipper.ordinal()),
+                "A clipper speeds across the water.",
+                "~p~",
+                new CombatView());
         scenes[SceneType.clipper.ordinal()] = combatClipper;
 
-        CombatScene combatFrigate = new CombatScene();
-        combatFrigate.setDescription("A frigate aproaches and fires a warning shot");
-        combatFrigate.setOpponent(CombatControl.enemyShipConstructor(ShipType.frigate.ordinal()));
-        combatFrigate.setSymbol("~p~");
+        CombatScene combatFrigate = new CombatScene(
+                CombatControl.enemyShipConstructor(ShipType.frigate.ordinal()),
+                "A frigate aproaches and fires a warning shot.",
+                "~p~",
+                new CombatView());
         scenes[SceneType.frigate.ordinal()] = combatFrigate;
 
-        CombatScene combatGunBoat = new CombatScene();
-        combatGunBoat.setDescription("A Gunboat sets course for you");
-        combatGunBoat.setOpponent(CombatControl.enemyShipConstructor(ShipType.gunBoat.ordinal()));
-        combatGunBoat.setSymbol("~p~");
+        CombatScene combatGunBoat = new CombatScene(
+                CombatControl.enemyShipConstructor(ShipType.gunBoat.ordinal()),
+                "A gunboat sets course for you.",
+                "~p~",
+                new CombatView());
         scenes[SceneType.gunBoat.ordinal()] = combatGunBoat;
 
-        CombatScene combatManOfWar = new CombatScene();
-        combatManOfWar.setDescription("A Man of War has ye in it's sights, prepare for a tough fight");
-        combatManOfWar.setOpponent(CombatControl.enemyShipConstructor(ShipType.manOfWar.ordinal()));
-        combatManOfWar.setSymbol("~p~");
+        CombatScene combatManOfWar = new CombatScene(
+                CombatControl.enemyShipConstructor(ShipType.manOfWar.ordinal()),
+                "A Man of War has ye in it's sights, prepare for a tough fight.",
+                "~p~",
+                new CombatView());
         scenes[SceneType.manOfWar.ordinal()] = combatManOfWar;
-
-        CombatScene combatSeaMonster = new CombatScene();
-        combatSeaMonster.setDescription("From the depths you see a terrifying sea monster rise and open its jaws.");
-        combatSeaMonster.setOpponent(CombatControl.enemyShipConstructor(ShipType.seaMonster.ordinal()));
-        combatSeaMonster.setSymbol("~S~");
+        
+        CombatScene combatSeaMonster = new CombatScene(
+                CombatControl.enemyShipConstructor(ShipType.seaMonster.ordinal()),
+                "From the depths you see a terrifying sea monster rise and open its jaws.",
+                "~S~",
+                new CombatView());
         scenes[SceneType.seaMonster.ordinal()] = combatSeaMonster;
 
         DecisionScene shopIsland = new DecisionScene(
@@ -148,25 +159,29 @@ public class MapControl {
 
         DecisionScene treasure = new DecisionScene(
                 "Glittering gold, sparkling jewels, and heavy too. For a pirate, this be the most beautiful sight in the world.",
-                ".T.",
+                ".x.",
                 new WinGameView());
         scenes[SceneType.treasure.ordinal()] = treasure;
 
-        ResourceScene oceanResource = new ResourceScene();
-        oceanResource.setDescription("There be many fish in these waters");
-        oceanResource.setResource(items.get(InventoryItemType.fish.ordinal()));
-        oceanResource.setSymbol("<#<");
+        DecisionScene oceanResource = new DecisionScene(
+                "There be many fish in these waters.",
+                "<#<",
+                new OceanResourceView());
         scenes[SceneType.oResource.ordinal()] = oceanResource;
+        
+        //oceanResource.setResource(items.get(InventoryItemType.fish.ordinal()));
 
-        RegularScene roughOcean = new RegularScene();
-        roughOcean.setDescription("Careful now, we be in some rough waters.");
-        roughOcean.setSymbol("###");
-        scenes[SceneType.oRough.ordinal()] = roughOcean;
-
-        RegularScene calmOcean = new RegularScene();
-        calmOcean.setDescription("Here there be no comotion on the ocean. Calm waters be upon us.");
-        calmOcean.setSymbol("~~~");
-        scenes[SceneType.oCalm.ordinal()] = calmOcean;
+        DecisionScene roughOcean = new DecisionScene(
+                "Careful now, we be in some rough waters.",
+                "###",
+                new RoughOceanView());
+        scenes[SceneType.treasure.ordinal()] = roughOcean;
+        
+        DecisionScene calmOcean = new DecisionScene(
+                "Here there be no comotion on the ocean. Calm waters be upon us.",
+                "~~~",
+                new CalmOceanView());
+        scenes[SceneType.treasure.ordinal()] = calmOcean;
 
         return scenes;
     }
