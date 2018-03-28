@@ -8,13 +8,9 @@ package byui.cit260.plunder.control;
 import byui.cit260.plunder.model.Location;
 import byui.cit260.plunder.model.Map;
 import byui.cit260.plunder.model.CombatScene;
-import byui.cit260.plunder.model.Decision;
 import byui.cit260.plunder.model.DecisionScene;
 import byui.cit260.plunder.model.InventoryItem;
-import byui.cit260.plunder.model.InventoryItemType;
-import byui.cit260.plunder.model.QuestionType;
 import byui.cit260.plunder.model.RegularScene;
-import byui.cit260.plunder.model.ResourceScene;
 import byui.cit260.plunder.model.SceneType;
 import byui.cit260.plunder.model.ShipType;
 import byui.cit260.plunder.view.CalmOceanView;
@@ -25,6 +21,7 @@ import byui.cit260.plunder.view.ResourceView;
 import byui.cit260.plunder.view.RoughOceanView;
 import byui.cit260.plunder.view.ShopView;
 import byui.cit260.plunder.view.WinGameView;
+import exceptions.MapControlExeption;
 import java.util.ArrayList;
 
 /**
@@ -33,13 +30,13 @@ import java.util.ArrayList;
  */
 public class MapControl {
 
-    public static Map createMap(int numRows, int numColumns, ArrayList items) {
+    public static Map createMap(int numRows, int numColumns, ArrayList items) throws MapControlExeption {
         //check invalid input
         if (numRows < 1 || numColumns < 1) {
-            return null;
+            throw new MapControlExeption("Cannot have less than one row or column");
         }
         if (items.size() < 1) {
-            return null;
+            throw new MapControlExeption("Items array cannot be fewer than one element");
         }
         //new map
         Map map = new Map();
@@ -63,11 +60,11 @@ public class MapControl {
         return map;
     }
 
-    private static Location[][] createLocations(int numRows, int numColumns) {
+    private static Location[][] createLocations(int numRows, int numColumns) throws MapControlExeption {
 //        System.out.println("createLocations called");
 
         if (numRows < 1 || numColumns < 1) {
-            return null;
+            throw new MapControlExeption("Cannot have less than one row or column");
         }
 
         Location[][] locations = new Location[numRows][numColumns];
@@ -175,13 +172,13 @@ public class MapControl {
                 "Careful now, we be in some rough waters.",
                 "###",
                 new RoughOceanView());
-        scenes[SceneType.treasure.ordinal()] = roughOcean;
+        scenes[SceneType.oRough.ordinal()] = roughOcean;
         
         DecisionScene calmOcean = new DecisionScene(
                 "Here there be no comotion on the ocean. Calm waters be upon us.",
                 "~~~",
                 new CalmOceanView());
-        scenes[SceneType.treasure.ordinal()] = calmOcean;
+        scenes[SceneType.oCalm.ordinal()] = calmOcean;
 
         return scenes;
     }

@@ -8,6 +8,9 @@ package byui.cit260.plunder.view;
 import byui.cit260.plunder.control.InventoryControl;
 import byui.cit260.plunder.model.Game;
 import byui.cit260.plunder.model.Ship;
+import exceptions.InventoryControlException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import plunder.Plunder;
 
 /**
@@ -16,35 +19,34 @@ import plunder.Plunder;
  */
 public class ShopView extends View {
 
-
     @Override
     public String[] getInputs() {
-        
+
         // display menu
-        System.out.println("                 _____\n" +
-                                "              .-\" .-. \"-.\n" +
-                                "            _/ '=(0.0)=' \\_\n" +
-                                "          /`   .='|m|'=.   `\\\n" +
-                                "          \\________________ /\n" +
-                                "      .--.__///`'-,__~\\\\~`\n" +
-                                "     / /6|__\\/ a (__)-\\\\n" +
-                                "     \\ \\--`((  ._\\   ,)))\n" +
-                                "     /  \\\\  ))\\  -==-  (O)(\n" +
-                                "    /    )\\((((\\   .  /)))))\n" +
-                                "   /    _.' /  __(`~~~~`)__\n" +
-                                "  //\"\\\\,-'-\"` `~~~~\\\\~~`\"-.\n" +
-                                " //  /`\"              `      `\\\n" +
-                                "========================================\n" +
-                                "          What do ya want?\n" +
-                                "            B - Buy\n" +
-                                "            S - Sell all loot\n" +
-                                "            R - Return to ship");
+        System.out.println("                 _____\n"
+                + "              .-\" .-. \"-.\n"
+                + "            _/ '=(0.0)=' \\_\n"
+                + "          /`   .='|m|'=.   `\\\n"
+                + "          \\________________ /\n"
+                + "      .--.__///`'-,__~\\\\~`\n"
+                + "     / /6|__\\/ a (__)-\\\\n"
+                + "     \\ \\--`((  ._\\   ,)))\n"
+                + "     /  \\\\  ))\\  -==-  (O)(\n"
+                + "    /    )\\((((\\   .  /)))))\n"
+                + "   /    _.' /  __(`~~~~`)__\n"
+                + "  //\"\\\\,-'-\"` `~~~~\\\\~~`\"-.\n"
+                + " //  /`\"              `      `\\\n"
+                + "========================================\n"
+                + "          What do ya want?\n"
+                + "            B - Buy\n"
+                + "            S - Sell all loot\n"
+                + "            R - Return to ship");
         //declare new
-        String [] inputs = new String[1];
-        
+        String[] inputs = new String[1];
+
         // retrieve input from user
         String input = this.getInput("Select a menu item");
-        inputs [0] = input;
+        inputs[0] = input;
         return inputs;
     }
 
@@ -56,9 +58,15 @@ public class ShopView extends View {
                 buyShop(game);
                 break;
 
-            case "S":
-                sellShop(game);
-                break;
+            case "S": {
+                try {
+                    sellShop(game);
+                } catch (InventoryControlException ex) {
+                    Logger.getLogger(ShopView.class.getName()).log(Level.SEVERE, null, ex);
+                    System.out.println("Error Selling Items");
+                }
+            }
+            break;
 
             case "R":
                 return true;
@@ -67,19 +75,17 @@ public class ShopView extends View {
                 System.out.println("Invalid Menu Item");
 
         }
-        return false; 
+        return false;
     }
 
     private void buyShop(Game game) {
         Ship ship = game.getPlayer().getShip();
-        
-        
+
     }
 
-    private void sellShop(Game game) {
+    private void sellShop(Game game) throws InventoryControlException {
         Double gold = InventoryControl.sellAll(game.getPlayer().getShip());
         game.setMoney(game.getMoney() + gold);
     }
-    
-    
+
 }

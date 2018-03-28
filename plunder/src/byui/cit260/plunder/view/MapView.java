@@ -3,8 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package byui.cit260.plunder.view;
 
+package byui.cit260.plunder.view;
 import byui.cit260.plunder.model.Location;
 import byui.cit260.plunder.model.Map;
 import plunder.Plunder;

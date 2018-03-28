@@ -7,6 +7,7 @@ package byui.cit260.plunder.control;
 
 import byui.cit260.plunder.model.InventoryItem;
 import byui.cit260.plunder.model.Ship;
+import exceptions.InventoryControlException;
 import java.util.ArrayList;
 
 /**
@@ -15,51 +16,32 @@ import java.util.ArrayList;
  */
 public class InventoryControl {
 
-    public static double sellAll(Ship ship) {
+    public static double sellAll(Ship ship) throws InventoryControlException {
         double gold = 0;
         ArrayList inventory = ship.getInventory();
         for (Object curItem : inventory) {
             InventoryItem item = (InventoryItem) curItem;
             if(item.getQuantityInStock() < 0 || item.getValue() < 0)
-                return -1;
+                throw new InventoryControlException("Quantity and/ or value is less than 0");
             gold = gold + (item.getQuantityInStock() * item.getValue());
             item.setQuantityInStock(0);
         }
         return gold;
     }
 
-    public static double calculateWeight(double[] itemWeight, double[] itemQuantity) {
+    public static double calculateWeight(Ship ship) throws InventoryControlException {
 
-        // check all weights are not less than 0
-        for (int i = 0; i < itemWeight.length; i++) {
-            if (itemWeight[i] < 0) {
-                return - 1;
-            }
-        }
-
-        // check all quantities are not less than 0
-        for (int i = 0; i < itemQuantity.length; i++) {
-            if (itemQuantity[i] < 0) {
-                return - 2;
-            }
-        }
-
-        //this can’t go on the test table, but both arrays have to be the same length
-        if (itemWeight.length != itemQuantity.length) {
-            return - 3;
-        }
-
-        //declare weight
-        double weight = 0;
-
-        /*calculate weight it does not matter which array 
-         * length you use as we just checked they were the same length*/
-        for (int i = 0; i < itemWeight.length; i++) {
-            weight += itemQuantity[i] * itemWeight[i];
+               double weight = 0;
+        ArrayList inventory = ship.getInventory();
+        for (Object curItem : inventory) {
+            InventoryItem item = (InventoryItem) curItem;
+            if(item.getQuantityInStock() < 0 || item.getWeight() < 0)
+                throw new InventoryControlException("Quantity and/ or weight is less than 0");
+            weight = weight + (item.getQuantityInStock() * item.getWeight());
         }
         return weight;
     }
-
+    
     public static int howMuch(String displayLetter, ArrayList<InventoryItem> inventoryItems) {
 
         int verMuch = 0;
