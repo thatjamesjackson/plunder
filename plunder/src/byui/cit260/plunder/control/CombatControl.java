@@ -7,6 +7,7 @@ package byui.cit260.plunder.control;
 
 import byui.cit260.plunder.model.Ship;
 import byui.cit260.plunder.model.ShipType;
+import exceptions.CombatControlException;
 
 /**
  *
@@ -94,53 +95,53 @@ public class CombatControl {
         return enemy;
     }
 
-    public static double recklessAttackDamage(double attack, double armor) {
+    public static double recklessAttackDamage(double attack, double armor) throws CombatControlException {
 // attack is less than or equal to 0
         if (attack <= 0) {
-            return - 1;
+            throw new CombatControlException("The attack can not be zero.");
         }
 //defender has too much armor
         if (armor >= 100) {
-            return - 2;
+            throw new CombatControlException("The defender has too much armor.");
         }
 //defender has negative armor
         if (armor < 0) {
-            return -3;
+            throw new CombatControlException("The defender has a negavtive value for armor.");
         }
         double damage = attack * 2 * (100 - armor) / 100;
         return damage;
 
     }
 
-    public static double attackDamage(double attack, double armor) {
+    public static double attackDamage(double attack, double armor) throws CombatControlException {
 // attack is less than or equal to 0
         if (attack <= 0) {
-            return - 1;
+            throw new CombatControlException("The attack is less than or equal to zero.");
         }
 //defender has too much armor
         if (armor >= 100) {
-            return - 2;
+            throw new CombatControlException("The defender has too much armor.");
         }
 //defender has negative armor
         if (armor < 0) {
-            return -3;
+            throw new CombatControlException("The defender has a negative value for armor.");
         }
         double damage = attack * (100 - armor) / 100;
         return damage;
 
     }
 
-    public static int doesHit(int accuracy, int evasion, int chance1, int chance2) {
+    public static int doesHit(int accuracy, int evasion, int chance1, int chance2) throws CombatControlException {
 
         // int chance = randomGen.nextInt(26);
 // limit negative numbers
         if (accuracy < 0 || evasion < 0) {
-            return -1;
+            throw new CombatControlException("The value can not be a negative .");
         }
 
 // limit chance between 0 and 25
         if (chance1 < 0 || chance1 > 25 && chance2 < 0 || chance2 > 25) {
-            return -2;
+            throw new CombatControlException("Must limit chance between 0 and 25.");
         }
 
 // evaluate for hit even if happen to be equal

@@ -11,17 +11,18 @@ import byui.cit260.plunder.model.InventoryItem;
 import byui.cit260.plunder.model.InventoryItemType;
 import byui.cit260.plunder.model.Map;
 import byui.cit260.plunder.model.Player;
+import exceptions.GameControlException;
 import java.util.ArrayList;
 import plunder.Plunder;
 
 public class GameControl {
 
-    public static Player savePlayer(String playerName) {
+    public static Player savePlayer(String playerName) throws GameControlException {
         //make a new player with name based on input
         System.out.println("Save Player Called");
         //fail if there is no name
         if (playerName.equals(" ") || playerName.equals("")) {
-            return null;
+            throw new GameControlException("Please enter a name for your player.");
         }
         Player player = new Player();
         player.setName(playerName);
