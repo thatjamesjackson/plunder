@@ -12,6 +12,7 @@ import byui.cit260.plunder.model.InventoryItemType;
 import byui.cit260.plunder.model.Map;
 import byui.cit260.plunder.model.Player;
 import exceptions.GameControlException;
+import exceptions.MapControlExeption;
 import java.util.ArrayList;
 import plunder.Plunder;
 
@@ -30,7 +31,7 @@ public class GameControl {
         return player;
     }
 
-    public static int createNewGame(Player player) {
+    public static int createNewGame(Player player) throws MapControlExeption {
         if (player == null) {
             return -1;
         }

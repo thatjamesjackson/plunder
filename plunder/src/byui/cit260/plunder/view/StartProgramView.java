@@ -6,6 +6,9 @@
 package byui.cit260.plunder.view;
 import byui.cit260.plunder.control.GameControl;
 import byui.cit260.plunder.model.Player;
+import exceptions.GameControlException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -46,7 +49,12 @@ public class StartProgramView extends View {
     public boolean doAction(String[] inputs) {
 //        System.out.println("DO ACTION CALLED");
 //        System.out.println("\tinputs = " + inputs[0]);
-        Player player = GameControl.savePlayer(inputs[0]);
+        Player player = null;
+        try {
+            player = GameControl.savePlayer(inputs[0]);
+        } catch (GameControlException ex) {
+            Logger.getLogger(StartProgramView.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         if (player == null) {
             System.out.println("Could not create the player "

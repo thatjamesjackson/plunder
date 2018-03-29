@@ -5,6 +5,9 @@
  */
 package byui.cit260.plunder.view;
 import byui.cit260.plunder.control.GameControl;
+import exceptions.MapControlExeption;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 import plunder.Plunder;
@@ -79,8 +82,13 @@ public class MainMenuView extends View {
     }
 
     private void startNewGame() {
-    //Create a new Game 
-    GameControl.createNewGame(Plunder.getPlayer());
+        try {
+            //Create a new Game
+            GameControl.createNewGame(Plunder.getPlayer());
+        } catch (MapControlExeption ex) {
+            Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error making game");
+        }
     GameMenuView gameMenuView =  new GameMenuView();
     gameMenuView.display();
     }
