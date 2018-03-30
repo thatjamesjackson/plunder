@@ -61,7 +61,7 @@ public class GameMenuView extends View {
                 break;
 
             case "I":
-                checkInventory();
+                this.checkInventory();
                 break;
 
             case "C":
