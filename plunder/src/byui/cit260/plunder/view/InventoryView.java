@@ -10,7 +10,6 @@ import byui.cit260.plunder.model.Ship;
 import exceptions.InventoryControlException;
 import plunder.Plunder;
 import java.util.Random;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -24,9 +23,6 @@ public class InventoryView extends View {
     private String promptMessage;
     private String[] inputs = new String[3];
 
-    public void display() {
-
-    }
 
     @Override
     public String[] getInputs() {

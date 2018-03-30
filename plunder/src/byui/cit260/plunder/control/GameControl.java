@@ -10,7 +10,9 @@ import byui.cit260.plunder.model.Game;
 import byui.cit260.plunder.model.InventoryItem;
 import byui.cit260.plunder.model.InventoryItemType;
 import byui.cit260.plunder.model.Map;
+import byui.cit260.plunder.model.NPC;
 import byui.cit260.plunder.model.Player;
+import byui.cit260.plunder.model.Ship;
 import exceptions.GameControlException;
 import exceptions.MapControlExeption;
 import java.util.ArrayList;
@@ -44,6 +46,10 @@ public class GameControl {
         player.setActor(Actor.Captain);
         //make inventory items
         ArrayList<InventoryItem> inventory = createItems();
+        
+        //make npc list
+        NPC[] npc = CrewControl.createNPC();
+        game.setNPC(npc);
 
 //Save the list of items in the game 
         game.setInventory(inventory);
@@ -56,37 +62,54 @@ public class GameControl {
 
 //Assign the map to the game 
         game.setMap(map);
+        
+        //give player a ship and in inventory
+        Ship ship = new Ship();
+        ship.setArmor(0);
+        ship.setCarryWeight(200);
+        ship.setShipMaxHealth(100);
+        ship.setShipHealth(100);
+        ship.setShipRepair(0);
+        ship.setName("The Salty Dog");
+        ship.setShipAttack(10);
+        
+        ship.setInventory(inventory);
+        
+        player.setShip(ship);
+        
+        
         return 1;
     }
 
     public static ArrayList<InventoryItem> createItems() {
+        //start the player off with a few items
         InventoryItem jewels = new InventoryItem();
         jewels.setInventoryType("Jewels");
-        jewels.setQuantityInStock(0);
+        jewels.setQuantityInStock(2);
         jewels.setValue(300);
         jewels.setWeight(2);
 
         InventoryItem fish = new InventoryItem();
         fish.setInventoryType("Fish");
-        fish.setQuantityInStock(0);
+        fish.setQuantityInStock(50);
         fish.setValue(20);
         fish.setWeight(5);
 
         InventoryItem cotton = new InventoryItem();
         cotton.setInventoryType("Cotton");
-        cotton.setQuantityInStock(0);
+        cotton.setQuantityInStock(5);
         cotton.setValue(50);
         cotton.setWeight(1);
 
         InventoryItem spices = new InventoryItem();
         spices.setInventoryType("Spices");
-        spices.setQuantityInStock(0);
+        spices.setQuantityInStock(3);
         spices.setValue(100);
         spices.setWeight(1);
 
         InventoryItem coconut = new InventoryItem();
         spices.setInventoryType("Coconuts");
-        spices.setQuantityInStock(0);
+        spices.setQuantityInStock(10);
         spices.setValue(10);
         spices.setWeight(1);
 

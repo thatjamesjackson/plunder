@@ -4,8 +4,14 @@
  * and open the template in the editor.
  */
 package byui.cit260.plunder.view;
+
+import byui.cit260.plunder.control.CrewControl;
+import static byui.cit260.plunder.control.CrewControl.getCrew;
+import static byui.cit260.plunder.control.CrewControl.getInputCrewNumber;
 import byui.cit260.plunder.model.NPC;
-import java.util.Scanner;
+import exceptions.CrewControlException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -16,8 +22,9 @@ public class CrewView extends View {
     @Override
     public String[] getInputs() {
 //get inputs from user
-
-         String[] inputs = new String[1];
+        NPC[] crew = getCrew();
+        getCrewMenu(crew);
+        String[] inputs = new String[1];
         inputs[0] = this.getInput("\nT - Talk to Crew"
                 + "\nA - Assign Job"
                 + "\nQ - Quit");
@@ -28,6 +35,7 @@ public class CrewView extends View {
     public boolean doAction(String[] inputs) {
         NPC[] crew = getCrew();
         getCrewMenu(crew);
+        inputs[0] = inputs[0].toUpperCase().trim();
         //switch for the menu
         switch (inputs[0]) {
             case "T":
@@ -42,6 +50,7 @@ public class CrewView extends View {
 
             default:
                 System.out.println("Invalid Menu Item");
+                        
 
         }
         return false;
@@ -50,98 +59,66 @@ public class CrewView extends View {
     private void crewTalk(NPC[] crew) {
         System.out.println("Which # Crew Member?\n");
 
-        int inputInt = (getInputCrewNumber(crew) - 1);
-
-        System.out.println("===============================\n"
-                + crew[inputInt].getName() + ":\n"
-                + crew[inputInt].getTalk()
-                + "\n===============================\n");
+        int inputInt;
+        try {
+            inputInt = (getInputCrewNumber(crew) - 1);
+            System.out.println("=================================================================\n"
+                    + crew[inputInt].getName() + ":\n"
+                    + crew[inputInt].getTalk()
+                    + "\n=================================================================\n");
+        } catch (CrewControlException ex) {
+            Logger.getLogger(CrewView.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("No crew error");
+        }
 
     }
 
     private void assignJob(NPC[] crew) {
 
-        // get the crew member
-        System.out.println("Which # Crew Member?\n");
+        try {
+            // get the crew member
+            System.out.println("Which # Crew Member?\n");
 
-        int inputInt = (getInputCrewNumber(crew) - 1);
+            int inputInt = (CrewControl.getInputCrewNumber(crew) - 1);
 
-        //initialize job
-        String job = "Placeholder";
-        //Gunner- Damage Deckhand- Repair Boatswain - evasion
-        System.out.println("Which Job?\n" + "G - Gunner\n" + "D - Deackhand\n" + "B- Boatswain\n");
+            //initialize job
+            String job = "Placeholder";
+            //Gunner- Damage Deckhand- Repair 
+            System.out.println("Which Job?\n" + "G - Gunner\n" + "D - Deackhand\n" + "B- Boatswain\n");
 
-        boolean valid;
-        do {
-            valid = true;
-            String[] inputJob = getInputs();
-            String firstInput = inputJob[0].toUpperCase();
+            boolean valid;
+            do {
+                
+                String inputJob = this.getInput("");
+                
+                switch (inputJob) {
+                    case "G":
+                        job = "Gunner";
+                        valid = true;
+                        break;
 
-            switch (firstInput) {
-                case "G":
-                    job = "Gunner";
-                    break;
+                    case "D":
+                        job = "Deckhand";
+                        valid = true;
+                        break;
 
-                case "D":
-                    job = "Deckhand";
-                    break;
+                    default:
+                        valid = false;
+                        System.out.println("Please enter a valid value");
+                }
 
-                case "B":
-                    job = "Boatswain";
-                    break;
+            } while (!valid);
 
-                default:
-                    valid = false;
-                    System.out.println("Please enter a valid value");
-            }
+            crew[inputInt].setJob(job);
 
-        } while (!valid);
-
-        crew[inputInt].setJob(job);
-    }
-
-    private int getInputCrewNumber(NPC[] crew) {
-        Scanner scanNum = new Scanner(System.in);
-        int input = 0;
-        //loop while there is no int, or if the int is not on the crew list
-        do {
-            if (scanNum.hasNextInt()) {
-                input = scanNum.nextInt();
-            } else {
-                System.out.println("Please enter the number of a crew member");
-            }
-        } while (input < 1 || input > crew.length);
-
-        return input;
-    }
-
-    private NPC[] getCrew() {
-        // import the list of NPCs
-        NPC[] npc = {new NPC(), new NPC(), new NPC()};
-        //get the crew using a loop
-        int numberOfCrew = 0;
-        for (NPC npc1 : npc) {
-            if (npc1.getIsCrew()) {
-                numberOfCrew++;
-            }
+        } catch (CrewControlException ex) {
+            Logger.getLogger(CrewView.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("You have no crew");
         }
-
-        NPC[] crew = new NPC[numberOfCrew];
-        int t = 0;
-
-        for (NPC npc1 : npc) {
-            if (npc1.getIsCrew()) {
-                crew[t] = npc1;
-                t++;
-            }
-        }
-        return crew;
-
     }
 
     private void getCrewMenu(NPC[] crew) {
-        System.out.println("\nYer Crew");
-        String format = "%-20.20s %-3s %-10s %-10s %-10s %n";
+        String format = "%-3s %-20.20s %-10s %-10s %-10s %n";
         System.out.format(format, "#", "Name", "Job", "Attack", "Repair");
         System.out.println("=====================================================");
         format = " %-3d %-20.20s %-10s %-10d %-10d %n";

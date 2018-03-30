@@ -73,11 +73,11 @@ public class Game implements Serializable{
         this.inventory = inventory;
     }
 
-    public NPC[] getNpc() {
+    public NPC[] getNPC() {
         return npc;
     }
 
-    public void setNpc(NPC[] npc) {
+    public void setNPC(NPC[] npc) {
         this.npc = npc;
     }
 
