@@ -6,6 +6,8 @@
 package byui.cit260.plunder.view;
 
 import byui.cit260.plunder.model.Actor;
+import byui.cit260.plunder.model.SceneType;
+import java.awt.Point;
 import plunder.Plunder;
 
 /**
@@ -77,7 +79,7 @@ public class GameMenuView extends View {
                 break;
 
             case "P":
-                doExplore();
+                doExplore(actor);
                 break;
 
             case "H":
@@ -142,8 +144,74 @@ public class GameMenuView extends View {
         System.out.println("Our ship looks yar");
     }
 
-    private void doExplore() {
+    private void doExplore(Actor actor) {
         System.out.println("Here be water");
+        int playerX = (int) actor.getCoordinates().getX();
+        int playerY = (int) actor.getCoordinates().getY();
+        int type = Plunder.getCurrentGame().getMap().getLocation()[playerY][playerX].getScene().getType();
+        //switch statement is incompatible with ordinal so multiple if statments required
+
+        if (type == SceneType.islandRegular.ordinal()) {
+            
+        }
+
+        if (type == SceneType.islandResource.ordinal()) {
+
+        }
+        if(type == SceneType.seaMonster.ordinal()){
+        
+        }
+        if(type == SceneType.fishingBoat.ordinal()){
+        
+        }
+        if(type == SceneType.sailBoat.ordinal()){
+        
+        }
+        
+        if(type == SceneType.clipper.ordinal()){
+        
+        }
+        
+        if(type == SceneType.frigate.ordinal()){
+        
+        }
+        
+        if(type == SceneType.manOfWar.ordinal()){
+        
+        }
+        
+        if(type == SceneType.gunBoat.ordinal()){
+        
+        }
+        if(type == SceneType.shopIsland.ordinal()){
+            ShopView shop = new ShopView();
+        shop.display();
+        }
+        
+        if (type == SceneType.treasure.ordinal()) {
+
+        }
+
+        if (type == SceneType.oRough.ordinal()) {
+
+        }
+
+        if (type == SceneType.oCalm.ordinal()) {
+
+        }
+        if(type == SceneType.usOcean.ordinal()){
+        
+        }
+        if(type == SceneType.oResource.ordinal()){
+        
+        }
+        if(type == SceneType.usLand.ordinal()){
+        
+        }
+        
+        
+        
+
     }
 
     private void loadHelp() {
@@ -157,7 +225,8 @@ public class GameMenuView extends View {
     }
 
     private void travel(Actor actor, int y, int x) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        actor.setCoordinates(new Point(x, y));
+
     }
 
 }

@@ -7,6 +7,7 @@
 package byui.cit260.plunder.view;
 import byui.cit260.plunder.model.Location;
 import byui.cit260.plunder.model.Map;
+import java.awt.Point;
 import plunder.Plunder;
 
 /**
@@ -31,10 +32,16 @@ public class MapView {
             //count up to go across for x coordinates
             for (int x = 0; x < locations[y].length; x++) {
 //                if (locations[y][x].getVisited() == true) {
+            Point here = Plunder.getCurrentGame().getPlayer().getActor().getCoordinates();
+                  if ((int)here.getX() == x && (int)here.getY() == y){
+                      System.out.print("[" + locations[y][x].getScene().getSymbol() + "]");
+                  }
+                  else{
                     System.out.print(" " + locations[y][x].getScene().getSymbol() + " ");
+                  }
 //                }
 //            else{
-//                    System.out.print("???");
+//                    System.out.print(" ??? ");
 //                    }
             System.out.print("|");
         }

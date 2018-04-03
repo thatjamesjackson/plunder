@@ -13,15 +13,23 @@ import java.util.Objects;
 public class RegularScene implements Serializable{
     private String description;
     private String symbol;
+    private int type;
 
     public RegularScene() {
     }
 
-    public RegularScene(String description, String symbol) {
+    public RegularScene(String description, String symbol, int type) {
         this.description = description;
         this.symbol = symbol;
+        this.type = type;
     }
     
+
+    @Override
+    public String toString() {
+        return "RegularScene{" + "description=" + description + ", symbol=" + symbol + ", type=" + type + '}';
+    }
+
     public String getDescription() {
         return description;
     }
@@ -29,7 +37,7 @@ public class RegularScene implements Serializable{
     public void setDescription(String description) {
         this.description = description;
     }
-    
+
     public String getSymbol() {
         return symbol;
     }
@@ -38,17 +46,21 @@ public class RegularScene implements Serializable{
         this.symbol = symbol;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 97 * hash + Objects.hashCode(this.description);
-        hash = 97 * hash + Objects.hashCode(this.symbol);
-        return hash;
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 
     @Override
-    public String toString() {
-        return "RegularScene{" + "description=" + description + ", symbol=" + symbol + '}';
+    public int hashCode() {
+        int hash = 3;
+        hash = 29 * hash + Objects.hashCode(this.description);
+        hash = 29 * hash + Objects.hashCode(this.symbol);
+        hash = 29 * hash + this.type;
+        return hash;
     }
 
     @Override
@@ -63,6 +75,9 @@ public class RegularScene implements Serializable{
             return false;
         }
         final RegularScene other = (RegularScene) obj;
+        if (this.type != other.type) {
+            return false;
+        }
         if (!Objects.equals(this.description, other.description)) {
             return false;
         }

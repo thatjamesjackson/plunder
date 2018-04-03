@@ -90,12 +90,14 @@ public class MapControl {
         DecisionScene islandRegular = new DecisionScene(
                 "The warm welcoming sands stretch out before you. A few trees offer shade and coconuts.",
                 "...",
+                SceneType.islandRegular.ordinal(),
                 new GameMenuView());
         scenes[SceneType.islandRegular.ordinal()] = islandRegular;
 
         DecisionScene islandResourceScene = new DecisionScene(
                 "While you are on the island, you see some useful items here.",
                 ".T.",
+                SceneType.islandResource.ordinal(),
                 new ResourceView());
         scenes[SceneType.islandResource.ordinal()] = islandResourceScene;
         
@@ -103,6 +105,7 @@ public class MapControl {
                 CombatControl.enemyShipConstructor(ShipType.fishingBoat.ordinal()),
                 "A fishing vessel lies over yonder.",
                 "~p~",
+                SceneType.fishingBoat.ordinal(),
                 new CombatView());
         scenes[SceneType.fishingBoat.ordinal()] = combatFBoat;
         
@@ -110,6 +113,7 @@ public class MapControl {
                 CombatControl.enemyShipConstructor(ShipType.sailBoat.ordinal()),
                 "A sailing boat aproaches.",
                 "~p~",
+                SceneType.sailBoat.ordinal(),
                 new CombatView());
         scenes[SceneType.sailBoat.ordinal()] = combatSBoat;
         
@@ -117,6 +121,7 @@ public class MapControl {
                 CombatControl.enemyShipConstructor(ShipType.clipper.ordinal()),
                 "A clipper speeds across the water.",
                 "~p~",
+                SceneType.clipper.ordinal(),
                 new CombatView());
         scenes[SceneType.clipper.ordinal()] = combatClipper;
 
@@ -124,6 +129,7 @@ public class MapControl {
                 CombatControl.enemyShipConstructor(ShipType.frigate.ordinal()),
                 "A frigate aproaches and fires a warning shot.",
                 "~p~",
+                SceneType.frigate.ordinal(),
                 new CombatView());
         scenes[SceneType.frigate.ordinal()] = combatFrigate;
 
@@ -131,6 +137,7 @@ public class MapControl {
                 CombatControl.enemyShipConstructor(ShipType.gunBoat.ordinal()),
                 "A gunboat sets course for you.",
                 "~p~",
+                SceneType.gunBoat.ordinal(),
                 new CombatView());
         scenes[SceneType.gunBoat.ordinal()] = combatGunBoat;
 
@@ -138,6 +145,7 @@ public class MapControl {
                 CombatControl.enemyShipConstructor(ShipType.manOfWar.ordinal()),
                 "A Man of War has ye in it's sights, prepare for a tough fight.",
                 "~p~",
+                SceneType.manOfWar.ordinal(),
                 new CombatView());
         scenes[SceneType.manOfWar.ordinal()] = combatManOfWar;
         
@@ -145,24 +153,28 @@ public class MapControl {
                 CombatControl.enemyShipConstructor(ShipType.seaMonster.ordinal()),
                 "From the depths you see a terrifying sea monster rise and open its jaws.",
                 "~S~",
+                SceneType.seaMonster.ordinal(),
                 new CombatView());
         scenes[SceneType.seaMonster.ordinal()] = combatSeaMonster;
 
         DecisionScene shopIsland = new DecisionScene(
                 "A welcoming merchant offers ye up a trade.",
                 ".@.",
+                SceneType.shopIsland.ordinal(),
                 new ShopView());
         scenes[SceneType.shopIsland.ordinal()] = shopIsland;
 
         DecisionScene treasure = new DecisionScene(
                 "Glittering gold, sparkling jewels, and heavy too. For a pirate, this be the most beautiful sight in the world.",
                 "<x>",
+                SceneType.treasure.ordinal(),
                 new WinGameView());
         scenes[SceneType.treasure.ordinal()] = treasure;
 
         DecisionScene oceanResource = new DecisionScene(
                 "There be many fish in these waters.",
                 "<#<",
+                SceneType.oResource.ordinal(),
                 new OceanResourceView());
         scenes[SceneType.oResource.ordinal()] = oceanResource;
         
@@ -171,12 +183,14 @@ public class MapControl {
         DecisionScene roughOcean = new DecisionScene(
                 "Careful now, we be in some rough waters.",
                 "###",
+                SceneType.oRough.ordinal(),
                 new RoughOceanView());
         scenes[SceneType.oRough.ordinal()] = roughOcean;
         
         DecisionScene calmOcean = new DecisionScene(
                 "Here there be no comotion on the ocean. Calm waters be upon us.",
                 "~~~",
+                SceneType.oCalm.ordinal(),
                 new CalmOceanView());
         scenes[SceneType.oCalm.ordinal()] = calmOcean;
 
