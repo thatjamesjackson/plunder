@@ -5,6 +5,9 @@
  */
 package byui.cit260.plunder.view;
 
+import byui.cit260.plunder.model.Actor;
+import plunder.Plunder;
+
 /**
  *
  * @author James
@@ -18,46 +21,47 @@ public class GameMenuView extends View {
     @Override
     public String[] getInputs() {
         //declare new
-        String [] inputs = new String[1];
-                MapView mapView = new MapView();
-                mapView.displayMapView();
+        String[] inputs = new String[1];
+        MapView mapView = new MapView();
+        mapView.displayMapView();
         // show menu options
-        System.out.println( "\n"
-                         + "  N - Travel North\n"
-                         + "  W - Travel West\n"
-                         + "  E - Travel East\n"
-                         + "  S - Travel South\n"
-                         + "  I - Check Inventory\n"
-                         + "  C - Check Crew\n"
-                         + "  B - Check Ship\n"
-                         + "  P - Explore\n"
-                         + "  H - Help\n"
-                         + "  V - Save\n"
-                         + "  X - Exit");
-        
+        System.out.println("\n"
+                + "  N - Travel North\n"
+                + "  W - Travel West\n"
+                + "  E - Travel East\n"
+                + "  S - Travel South\n"
+                + "  I - Check Inventory\n"
+                + "  C - Check Crew\n"
+                + "  B - Check Ship\n"
+                + "  P - Explore\n"
+                + "  H - Help\n"
+                + "  V - Save\n"
+                + "  X - Exit");
+
         // retrieve input from user
         String input = this.getInput("Select a menu item");
-        inputs [0] = input;
+        inputs[0] = input;
         return inputs;
     }
 
     @Override
     public boolean doAction(String[] inputs) {
+        Actor actor = Plunder.getPlayer().getActor();
         switch (inputs[0]) {
             case "N":
-                travelNorth();
+                travel(actor, (int) actor.getCoordinates().getY() + 1, (int) actor.getCoordinates().getX());
                 break;
 
             case "W":
-                travelWest();
+                travel(actor, (int) actor.getCoordinates().getY(), (int) actor.getCoordinates().getX() - 1);
                 break;
 
             case "E":
-                travelEast();
+                travel(actor, (int) actor.getCoordinates().getY(), (int) actor.getCoordinates().getX() + 1);
                 break;
 
             case "S":
-                travelSouth();
+                travel(actor, (int) actor.getCoordinates().getY() - 1, (int) actor.getCoordinates().getX());
                 break;
 
             case "I":
@@ -94,25 +98,9 @@ public class GameMenuView extends View {
         return false;
     }
 
-    private void travelNorth() {
-        System.out.println("You are traveling North");
-    }
-
-    private void travelWest() {
-        System.out.println("You are traveling West");
-    }
-
-    private void travelEast() {
-        System.out.println("You are traveling East");
-    }
-
-    private void travelSouth() {
-        System.out.println("You are traveling South");
-    }
-
     private void checkInventory() {
         System.out.println("Let's see what we have here on the boat");
-        
+
         InventoryView checkInventory = new InventoryView();
         checkInventory.display();
     }
@@ -146,8 +134,8 @@ public class GameMenuView extends View {
 //                NPC[] arrayNPC = {npc1, npc2, npc3};
 //                //end placeholder NPCs
 //                
-                CrewView crewView = new CrewView();
-                crewView.display();
+        CrewView crewView = new CrewView();
+        crewView.display();
     }
 
     private void checkShip() {
@@ -157,15 +145,19 @@ public class GameMenuView extends View {
     private void doExplore() {
         System.out.println("Here be water");
     }
-    
+
     private void loadHelp() {
         HelpMenuView gameHelp = new HelpMenuView();
-        
+
         gameHelp.display();
     }
 
     private void saveGame() {
-        
+
+    }
+
+    private void travel(Actor actor, int y, int x) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
