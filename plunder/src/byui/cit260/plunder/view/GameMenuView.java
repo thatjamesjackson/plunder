@@ -55,49 +55,45 @@ public class GameMenuView extends View {
         Map map = Plunder.getCurrentGame().getMap();
         Actor actor = Plunder.getPlayer().getActor();
         switch (inputs[0]) {
-            case "N":
-        {
-            try {
-                travel(actor, map, (int) actor.getCoordinates().getY() + 1, (int) actor.getCoordinates().getX());
-            } catch (MapControlExeption ex) {
-                Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
-                return false;
+            case "N": {
+                try {
+                    travel(actor, map, (int) actor.getCoordinates().getY() + 1, (int) actor.getCoordinates().getX());
+                } catch (MapControlExeption ex) {
+                    Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
+                    return false;
+                }
             }
-        }
-                break;
+            break;
 
-            case "W":
-        {
-            try {
-                travel(actor, map, (int) actor.getCoordinates().getY(), (int) actor.getCoordinates().getX() - 1);
-            } catch (MapControlExeption ex) {
-                Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
-                return false;
+            case "W": {
+                try {
+                    travel(actor, map, (int) actor.getCoordinates().getY(), (int) actor.getCoordinates().getX() - 1);
+                } catch (MapControlExeption ex) {
+                    Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
+                    return false;
+                }
             }
-        }
-                break;
+            break;
 
-            case "E":
-        {
-            try {
-                travel(actor, map, (int) actor.getCoordinates().getY(), (int) actor.getCoordinates().getX() + 1);
-            } catch (MapControlExeption ex) {
-                Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
-                return false;
+            case "E": {
+                try {
+                    travel(actor, map, (int) actor.getCoordinates().getY(), (int) actor.getCoordinates().getX() + 1);
+                } catch (MapControlExeption ex) {
+                    Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
+                    return false;
+                }
             }
-        }
-                break;
+            break;
 
-            case "S":
-        {
-            try {
-                travel(actor, map, (int) actor.getCoordinates().getY() - 1, (int) actor.getCoordinates().getX());
-            } catch (MapControlExeption ex) {
-                Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
-                return false;
+            case "S": {
+                try {
+                    travel(actor, map, (int) actor.getCoordinates().getY() - 1, (int) actor.getCoordinates().getX());
+                } catch (MapControlExeption ex) {
+                    Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
+                    return false;
+                }
             }
-        }
-                break;
+            break;
 
             case "I":
                 this.checkInventory();
@@ -151,36 +147,35 @@ public class GameMenuView extends View {
     }
 
     private void doExplore(Actor actor) {
-        System.out.println("Here be water");
         int playerX = (int) actor.getCoordinates().getX();
         int playerY = (int) actor.getCoordinates().getY();
         int type = Plunder.getCurrentGame().getMap().getLocation()[playerY][playerX].getScene().getType();
         //switch statement is incompatible with ordinal so multiple if statments required
 
         if (type == SceneType.islandRegular.ordinal()) {
-            
+
         }
 
         if (type == SceneType.islandResource.ordinal()) {
 
         }
-        if(type == SceneType.fishingBoat.ordinal() 
+        if (type == SceneType.fishingBoat.ordinal()
                 || type == SceneType.seaMonster.ordinal()
                 || type == SceneType.sailBoat.ordinal()
                 || type == SceneType.clipper.ordinal()
                 || type == SceneType.frigate.ordinal()
                 || type == SceneType.gunBoat.ordinal()
-                || type == SceneType.manOfWar.ordinal()){
-        
-        CombatView combat = new CombatView();
-        combat.display();
-     
+                || type == SceneType.manOfWar.ordinal()) {
+
+            CombatView combat = new CombatView();
+            combat.display();
+
         }
-        if(type == SceneType.shopIsland.ordinal()){
+        if (type == SceneType.shopIsland.ordinal()) {
             ShopView shop = new ShopView();
-        shop.display();
+            shop.display();
         }
-        
+
         if (type == SceneType.treasure.ordinal()) {
 
         }
@@ -190,20 +185,18 @@ public class GameMenuView extends View {
         }
 
         if (type == SceneType.oCalm.ordinal()) {
+            CalmOceanView calm = new CalmOceanView();
+            calm.display();
+        }
+        if (type == SceneType.usOcean.ordinal()) {
 
         }
-        if(type == SceneType.usOcean.ordinal()){
-        
+        if (type == SceneType.oResource.ordinal()) {
+
         }
-        if(type == SceneType.oResource.ordinal()){
-        
+        if (type == SceneType.usLand.ordinal()) {
+
         }
-        if(type == SceneType.usLand.ordinal()){
-        
-        }
-        
-        
-        
 
     }
 
@@ -218,10 +211,10 @@ public class GameMenuView extends View {
     }
 
     private void travel(Actor actor, Map map, int y, int x) throws MapControlExeption {
-        
-        if(y < 0 || y > map.getRowCount()|| x < 0 || x > map.getColumnCount()){
+
+        if (y < 0 || y > map.getRowCount() || x < 0 || x > map.getColumnCount()) {
             throw new MapControlExeption("You cannot go that way");
-                        }
+        }
         actor.setCoordinates(new Point(x, y));
 
     }
