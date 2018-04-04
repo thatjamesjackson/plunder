@@ -70,11 +70,11 @@ captain.setDescription("A pirate of some renown");
         
         //give player a ship and in inventory
         Ship ship = new Ship();
-        ship.setArmor(0);
+        ship.setArmor(1);
         ship.setCarryWeight(200);
         ship.setShipMaxHealth(100);
         ship.setShipHealth(100);
-        ship.setShipRepair(0);
+        ship.setShipRepair(5);
         ship.setName("The Salty Dog");
         ship.setShipAttack(10);
         

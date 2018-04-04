@@ -6,9 +6,13 @@
 package byui.cit260.plunder.view;
 
 import byui.cit260.plunder.model.Actor;
+import byui.cit260.plunder.model.Map;
 import byui.cit260.plunder.model.SceneType;
 import java.awt.Point;
 import plunder.Plunder;
+import exceptions.MapControlExeption;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -38,7 +42,7 @@ public class GameMenuView extends View {
                 + "  P - Explore\n"
                 + "  H - Help\n"
                 + "  V - Save\n"
-                + "  X - Exit");
+                + "  Q - Quit");
 
         // retrieve input from user
         String input = this.getInput("Select a menu item");
@@ -48,22 +52,51 @@ public class GameMenuView extends View {
 
     @Override
     public boolean doAction(String[] inputs) {
+        Map map = Plunder.getCurrentGame().getMap();
         Actor actor = Plunder.getPlayer().getActor();
         switch (inputs[0]) {
             case "N":
-                travel(actor, (int) actor.getCoordinates().getY() + 1, (int) actor.getCoordinates().getX());
+        {
+            try {
+                travel(actor, map, (int) actor.getCoordinates().getY() + 1, (int) actor.getCoordinates().getX());
+            } catch (MapControlExeption ex) {
+                Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
+                return false;
+            }
+        }
                 break;
 
             case "W":
-                travel(actor, (int) actor.getCoordinates().getY(), (int) actor.getCoordinates().getX() - 1);
+        {
+            try {
+                travel(actor, map, (int) actor.getCoordinates().getY(), (int) actor.getCoordinates().getX() - 1);
+            } catch (MapControlExeption ex) {
+                Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
+                return false;
+            }
+        }
                 break;
 
             case "E":
-                travel(actor, (int) actor.getCoordinates().getY(), (int) actor.getCoordinates().getX() + 1);
+        {
+            try {
+                travel(actor, map, (int) actor.getCoordinates().getY(), (int) actor.getCoordinates().getX() + 1);
+            } catch (MapControlExeption ex) {
+                Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
+                return false;
+            }
+        }
                 break;
 
             case "S":
-                travel(actor, (int) actor.getCoordinates().getY() - 1, (int) actor.getCoordinates().getX());
+        {
+            try {
+                travel(actor, map, (int) actor.getCoordinates().getY() - 1, (int) actor.getCoordinates().getX());
+            } catch (MapControlExeption ex) {
+                Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
+                return false;
+            }
+        }
                 break;
 
             case "I":
@@ -90,7 +123,7 @@ public class GameMenuView extends View {
                 saveGame();
                 break;
 
-            case "X":
+            case "Q":
                 return true;
 
             default:
@@ -109,33 +142,6 @@ public class GameMenuView extends View {
 
     private void checkCrew() {
         System.out.println("\nAttention! Sound off");
-        //begin placeholder NPCS
-//        NPC npc1 = new NPC();
-//                npc1.setIsCrew(true);
-//                npc1.setCrewAttack(100);
-//                npc1.setCrewRepair(100);
-//                npc1.setJob("Gunner");
-//                npc1.setName("Bob");
-//                npc1.setTalk("I ain't got nothin");
-//                    
-//                NPC npc2 = new NPC();
-//                npc2.setIsCrew(false);
-//                npc2.setCrewAttack(100);
-//                npc2.setCrewRepair(100);
-//                npc2.setJob("Gunner");
-//                npc2.setName("NOT CREW");
-//                    
-//                NPC npc3 = new NPC();
-//                npc3.setIsCrew(true);
-//                npc3.setCrewAttack(100);
-//                npc3.setCrewRepair(100);
-//                npc3.setJob("Carpenter");
-//                npc3.setName("Steven");
-//                npc3.setTalk("I ain't got nothin neither");
-//                
-//                NPC[] arrayNPC = {npc1, npc2, npc3};
-//                //end placeholder NPCs
-//                
         CrewView crewView = new CrewView();
         crewView.display();
     }
@@ -158,30 +164,17 @@ public class GameMenuView extends View {
         if (type == SceneType.islandResource.ordinal()) {
 
         }
-        if(type == SceneType.seaMonster.ordinal()){
+        if(type == SceneType.fishingBoat.ordinal() 
+                || type == SceneType.seaMonster.ordinal()
+                || type == SceneType.sailBoat.ordinal()
+                || type == SceneType.clipper.ordinal()
+                || type == SceneType.frigate.ordinal()
+                || type == SceneType.gunBoat.ordinal()
+                || type == SceneType.manOfWar.ordinal()){
         
-        }
-        if(type == SceneType.fishingBoat.ordinal()){
-        
-        }
-        if(type == SceneType.sailBoat.ordinal()){
-        
-        }
-        
-        if(type == SceneType.clipper.ordinal()){
-        
-        }
-        
-        if(type == SceneType.frigate.ordinal()){
-        
-        }
-        
-        if(type == SceneType.manOfWar.ordinal()){
-        
-        }
-        
-        if(type == SceneType.gunBoat.ordinal()){
-        
+        CombatView combat = new CombatView();
+        combat.display();
+     
         }
         if(type == SceneType.shopIsland.ordinal()){
             ShopView shop = new ShopView();
@@ -224,7 +217,11 @@ public class GameMenuView extends View {
 
     }
 
-    private void travel(Actor actor, int y, int x) {
+    private void travel(Actor actor, Map map, int y, int x) throws MapControlExeption {
+        
+        if(y < 0 || y > map.getRowCount()|| x < 0 || x > map.getColumnCount()){
+            throw new MapControlExeption("You cannot go that way");
+                        }
         actor.setCoordinates(new Point(x, y));
 
     }
