@@ -39,7 +39,7 @@ public class ShopView extends View {
         System.out.println("========================================\n"
                 + "          What do ya want?\n"
                 + "            B - Buy\n"
-                + "            S - Sell all loot\n"
+                + "            S - Sell all yer loot\n"
                 + "            Q - Return to ship");
         //declare new
         String[] inputs = new String[1];
