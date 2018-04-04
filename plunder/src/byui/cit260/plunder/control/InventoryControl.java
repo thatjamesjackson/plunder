@@ -21,9 +21,17 @@ public class InventoryControl {
         ArrayList inventory = ship.getInventory();
         for (Object curItem : inventory) {
             InventoryItem item = (InventoryItem) curItem;
-            if(item.getQuantityInStock() < 0 || item.getValue() < 0)
+            if (item.getQuantityInStock() < 0 || item.getValue() < 0) {
                 throw new InventoryControlException("Quantity and/ or value is less than 0");
-            gold = gold + (item.getQuantityInStock() * item.getValue());
+            }
+            if(item.getQuantityInStock() == 0){
+            continue;
+            }
+            double addedValue = (item.getQuantityInStock() * item.getValue());
+            gold += addedValue;
+            System.out.println("Sold " + item.getQuantityInStock()
+                    + " " + item.getInventoryType()
+                    + " for " + addedValue + " gold");
             item.setQuantityInStock(0);
         }
         return gold;
@@ -31,17 +39,18 @@ public class InventoryControl {
 
     public static double calculateWeight(Ship ship) throws InventoryControlException {
 
-               double weight = 0;
+        double weight = 0;
         ArrayList inventory = ship.getInventory();
         for (Object curItem : inventory) {
             InventoryItem item = (InventoryItem) curItem;
-            if(item.getQuantityInStock() < 0 || item.getWeight() < 0)
+            if (item.getQuantityInStock() < 0 || item.getWeight() < 0) {
                 throw new InventoryControlException("Quantity and/ or weight is less than 0");
+            }
             weight = weight + (item.getQuantityInStock() * item.getWeight());
         }
         return weight;
     }
-    
+
     public static int howMuch(String displayLetter, ArrayList<InventoryItem> inventoryItems) {
 
         int verMuch = 0;

@@ -6,17 +6,18 @@
 package byui.cit260.plunder.model;
 
 import java.awt.Point;
+import java.io.Serializable;
 
 /**
  *
  * @author James
  */
-public enum Actor {
-    Captain("Bob", "A pirate capatin in search of treasure", new Point(1, 1));
-
-    private String name;
+public class Actor implements Serializable{
+      private String name;
     private String description;
     private Point coordinates;
+
+    
 
     public String getName() {
         return name;
@@ -30,15 +31,25 @@ public enum Actor {
         return coordinates;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setCoordinates(Point coordinates) {
+        this.coordinates = coordinates;
+    }
+
     @Override
     public String toString() {
         return "Actor{" + "name=" + name + ", description=" + description + ", coordinates=" + coordinates + '}';
     }
 
-    private Actor(String name, String description, Point coordinates) {
-        this.name = name;
-        this.description = description;
-        this.coordinates = coordinates;
+    public Actor() {
     }
 
+  
 }

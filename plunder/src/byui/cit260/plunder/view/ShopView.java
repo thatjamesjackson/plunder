@@ -40,7 +40,7 @@ public class ShopView extends View {
                 + "          What do ya want?\n"
                 + "            B - Buy\n"
                 + "            S - Sell all loot\n"
-                + "            R - Return to ship");
+                + "            Q - Return to ship");
         //declare new
         String[] inputs = new String[1];
 
@@ -55,7 +55,8 @@ public class ShopView extends View {
         Game game = Plunder.getCurrentGame();
         switch (inputs[0]) {
             case "B":
-                buyShop(game);
+                BuyShopView buy = new BuyShopView();
+                buy.display();
                 break;
 
             case "S": {
@@ -68,7 +69,7 @@ public class ShopView extends View {
             }
             break;
 
-            case "R":
+            case "Q":
                 return true;
 
             default:
@@ -78,10 +79,6 @@ public class ShopView extends View {
         return false;
     }
 
-    private void buyShop(Game game) {
-        Ship ship = game.getPlayer().getShip();
-
-    }
 
     private void sellShop(Game game) throws InventoryControlException {
         Double gold = InventoryControl.sellAll(game.getPlayer().getShip());

@@ -21,11 +21,13 @@ public class CrewControl {
         if (crew.length == 0) {
             throw new CrewControlException("No crew");
         }
-
-        Scanner scanNum = new Scanner(System.in);
         int input = 0;
-        //loop while there is no int, or if the int is not on the crew list
+        
         do {
+            Scanner scanNum = new Scanner(System.in);
+            
+            //loop while there is no int, or if the int is not on the crew list
+
             if (scanNum.hasNextInt()) {
                 input = scanNum.nextInt();
             } else {

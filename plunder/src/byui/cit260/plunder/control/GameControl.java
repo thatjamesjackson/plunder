@@ -17,6 +17,7 @@ import exceptions.GameControlException;
 import exceptions.MapControlExeption;
 import java.util.ArrayList;
 import plunder.Plunder;
+import java.awt.Point;
 
 public class GameControl {
 
@@ -43,7 +44,11 @@ public class GameControl {
 
         //actors are enums
 //Assign an actor to the player 
-        player.setActor(Actor.Captain);
+Actor captain = new Actor();
+captain.setCoordinates(new Point(0,0));
+captain.setName(player.getName());
+captain.setDescription("A pirate of some renown");
+        player.setActor(captain);
         //make inventory items
         ArrayList<InventoryItem> inventory = createItems();
         
@@ -65,11 +70,11 @@ public class GameControl {
         
         //give player a ship and in inventory
         Ship ship = new Ship();
-        ship.setArmor(0);
+        ship.setArmor(1);
         ship.setCarryWeight(200);
         ship.setShipMaxHealth(100);
         ship.setShipHealth(100);
-        ship.setShipRepair(0);
+        ship.setShipRepair(5);
         ship.setName("The Salty Dog");
         ship.setShipAttack(10);
         

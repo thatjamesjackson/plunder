@@ -9,7 +9,6 @@ import byui.cit260.plunder.control.InventoryControl;
 import byui.cit260.plunder.model.Ship;
 import exceptions.InventoryControlException;
 import plunder.Plunder;
-import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -26,8 +25,6 @@ public class InventoryView extends View {
 
     @Override
     public String[] getInputs() {
-        Random random = new Random();
-
         Ship ship = Plunder.getCurrentGame().getPlayer().getShip();
 
         double weight = 0;
