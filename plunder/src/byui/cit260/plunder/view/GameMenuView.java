@@ -177,7 +177,8 @@ public class GameMenuView extends View {
         }
 
         if (type == SceneType.treasure.ordinal()) {
-
+            TrapView trap = new TrapView();
+            trap.display();
         }
 
         if (type == SceneType.oRough.ordinal()) {
