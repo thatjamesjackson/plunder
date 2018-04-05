@@ -121,7 +121,7 @@ public class TrapView extends View {
                       "  You see three curious doors each leads to a different fate.\n"
                     + "              One of the doors be made of pure gold, \n"
                     + "            the other of silver, and the last of wood."
-                    + "==============================================================\n"
+                    + "===============================================================\n"
                     + "                   T  -  Talk to yer crew\n"
                     + "                   G  -  Open the gold door\n"
                     + "                   S  -  Open the silver door\n"
