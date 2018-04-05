@@ -14,7 +14,7 @@ import java.util.Objects;
  * @author James
  */
 public class Ship implements Serializable {
-    
+
     private String name;
     private double shipAttack;
     private double carryWeight;
@@ -22,11 +22,21 @@ public class Ship implements Serializable {
     private double shipRepair;
     private double shipHealth;
     private double shipMaxHealth;
-    private ArrayList <InventoryItem> inventory;
+    private ArrayList<InventoryItem> inventory;
 
     public Ship() {
     }
-
+//clone constructor
+    public Ship(Ship ship) {
+        this.name = ship.getName();
+        this.shipAttack = ship.getShipAttack();
+        this.armor = ship.getArmor();
+        this.carryWeight = ship.carryWeight;
+        this.inventory = ship.getInventory();
+        this.shipHealth = ship.getShipHealth();
+        this.shipMaxHealth = ship.getShipMaxHealth();
+        this.shipRepair = ship.getShipRepair();
+    }
 
     public String getName() {
         return name;
@@ -67,11 +77,11 @@ public class Ship implements Serializable {
     public void setShipRepair(double shipRepair) {
         this.shipRepair = shipRepair;
     }
-    
+
     public double getShipMaxHealth() {
         return shipMaxHealth;
     }
-    
+
     public void setShipMaxHealth(double shipMaxHealth) {
         this.shipMaxHealth = shipMaxHealth;
     }
@@ -83,7 +93,7 @@ public class Ship implements Serializable {
     public void setShipHealth(double shipHealth) {
         this.shipHealth = shipHealth;
     }
-    
+
     public ArrayList getInventory() {
         return inventory;
     }
@@ -149,6 +159,5 @@ public class Ship implements Serializable {
         }
         return true;
     }
-    
-    
+
 }

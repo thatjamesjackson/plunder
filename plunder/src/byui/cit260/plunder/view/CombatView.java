@@ -128,7 +128,7 @@ public class CombatView extends View {
                 } else {
                     repairOut = player.getShipRepair();
                 }
-                System.out.println("Yer crew repaired " + Math.round(repairOut*100)/100 + " damage\n");
+                System.out.println("Yer crew repaired " + Math.round(repairOut * 100) / 100 + " damage\n");
             }
 
         } catch (CombatControlException ex) {
@@ -138,13 +138,20 @@ public class CombatView extends View {
         if (enemy.getShipHealth() <= 0) {
             //enemy sank
             System.out.println("Yer opponent sank!\n");
+            enemy.setShipHealth(enemy.getShipMaxHealth());
             return true;
         } else if (player.getShipHealth() <= 0 && flee) {
             System.out.println("Yeh sank while turning tail!\n");
+            enemy.setShipHealth(enemy.getShipMaxHealth());
             return true;
         } else if (player.getShipHealth() <= 0) {
             //you sank
             System.out.println("Yeh sank!\n");
+            enemy.setShipHealth(enemy.getShipMaxHealth());
+            return true;
+        } else if (flee) {
+            System.out.println("Yeh ran you coward!\n");
+            enemy.setShipHealth(enemy.getShipMaxHealth());
             return true;
         } else {
             return false;

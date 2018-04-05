@@ -10,9 +10,7 @@ package byui.cit260.plunder.view;
  * @author abigailking
  */
 public class CalmOceanView extends View{
-    public void display() { 
-        
-    }
+    
 
     @Override
     public String[] getInputs() {

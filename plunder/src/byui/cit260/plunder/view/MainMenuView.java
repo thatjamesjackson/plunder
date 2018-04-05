@@ -90,6 +90,7 @@ public class MainMenuView extends View {
             System.out.println("Error making game");
         }
     GameMenuView gameMenuView =  new GameMenuView();
+    
     gameMenuView.display();
     }
 
