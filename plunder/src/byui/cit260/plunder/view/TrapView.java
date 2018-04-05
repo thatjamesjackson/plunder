@@ -136,15 +136,18 @@ public class TrapView extends View {
             case "G":
                 System.out.println("Behind the door you see your ship. You turn \n"
                         + "back around and you see the front of the Temple of the Siren. Rats.");
-                break;
+                continue;
             
             case "S":
                 System.out.println("Wolfgang gets sick and starts to screech in pain.\n"
                         + "Closing the door does nothing to help. You rush back to the ship.");
-                break;
-
+                continue;
+                // set wolfgang to 1
+                
             case "W":
                 win = true;
+                WinGameView winner = new WinGameView();
+                winner.display();
                 break;
 
             default:

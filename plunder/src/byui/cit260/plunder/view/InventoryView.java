@@ -6,6 +6,7 @@
 package byui.cit260.plunder.view;
 
 import byui.cit260.plunder.control.InventoryControl;
+import static byui.cit260.plunder.control.InventoryControl.sortInventory;
 import byui.cit260.plunder.model.Ship;
 import exceptions.InventoryControlException;
 import plunder.Plunder;
@@ -145,7 +146,17 @@ public class InventoryView extends View {
     }
 
     private void listInventory() {
-
+        Plunder p = new Plunder();
+        InventoryControl ic = new InventoryControl();
+        ic.sortInventory(p.getCurrentGame().getInventory());
+        
+        for (int i = 0; i < p.getCurrentGame().getInventory().size(); i++){
+            System.out.println(p.getCurrentGame().getInventory().get(i).getTypeName() + "  -  "
+            + p.getCurrentGame().getInventory().get(i).getInventoryType() + "  -  "
+            + p.getCurrentGame().getInventory().get(i).getQuantityInStock() + " units  -  worth "
+            + p.getCurrentGame().getInventory().get(i).getValue() + "  -  "
+            + p.getCurrentGame().getInventory().get(i).getWeight() + " tonnes");
+        }
     }
 
 }

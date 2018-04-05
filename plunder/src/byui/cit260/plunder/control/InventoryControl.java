@@ -85,5 +85,26 @@ public class InventoryControl {
             }
         }
     }
+    
+    public static void sortInventory(ArrayList<InventoryItem> inventoryItems){
+    
+       for (int i = 0; i < inventoryItems.size(); i++){
+           char first = inventoryItems.get(i).getTypeName().charAt(0);
+           char second = inventoryItems.get(i++).getTypeName().charAt(0);
+           
+           if (first > second) {
+               swapNumbers(i, i++, inventoryItems);
+           }
+       }
+       
+    }
+    
+    private static void swapNumbers(int i, int j, ArrayList<InventoryItem> inventoryItems) {
+  
+        InventoryItem temp = inventoryItems.get(i);
+        InventoryItem tempTwo = inventoryItems.get(j);
+        inventoryItems.set(j, temp);
+        inventoryItems.set(i, tempTwo);
+    }
 
 }
