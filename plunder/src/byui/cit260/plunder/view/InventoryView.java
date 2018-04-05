@@ -36,16 +36,15 @@ public class InventoryView extends View {
             Logger.getLogger(InventoryView.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        this.instructions
-                = "\n  Our ship be sitting at " + weight + "tonnes\n"
+        this.promptMessage
+                = "\n  Our ship be sitting at " + weight + " tonnes\n"
                 + "===============================================\n"
                 + "           What do ya want to do?\n"
                 + "              L - List Inventory\n"
                 + "              D - Drop Cargo\n"
                 + "              R - Return to navigation\n"
-                + "===============================================\n";
-
-        this.promptMessage = "Enter your selection below: ";
+                + "===============================================\n"
+                + "           Enter your selection below: ";
 
         String input1 = this.getInput(this.promptMessage);
 
