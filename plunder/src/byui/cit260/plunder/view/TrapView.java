@@ -120,7 +120,7 @@ public class TrapView extends View {
                     "  You see three curious doors each leads to a different fate.\n"
                     + "              One of the doors be made of pure gold, \n"
                     + "            the other of silver, and the last of wood."
-                    + "==============================================================\n"
+                    + "===============================================================\n"
                     + "                   T  -  Talk to yer crew\n"
                     + "                   G  -  Open the gold door\n"
                     + "                   S  -  Open the silver door\n"
@@ -132,19 +132,24 @@ public class TrapView extends View {
                     talkTo.display();
                     break;
 
-                case "G":
-                    System.out.println("Behind the door you see your ship. You turn \n"
-                            + "back around and you see the front of the Temple of the Siren. Rats.");
-                    break;
+            case "G":
+                System.out.println("Behind the door you see your ship. You turn \n"
+                        + "back around and you see the front of the Temple of the Siren. Rats.");
+                continue;
+            
+            case "S":
+                System.out.println("Wolfgang gets sick and starts to screech in pain.\n"
+                        + "Closing the door does nothing to help. You rush back to the ship.");
+                continue;
+                // set wolfgang to 1
+                
+            case "W":
+                win = true;
+                WinGameView winner = new WinGameView();
+                winner.display();
+                break;
 
-                case "S":
-                    System.out.println("Wolfgang gets sick and starts to groan in pain.\n"
-                            + "Closing the door does nothing to help. You rush back to the ship.");
-                    break;
 
-                case "W":
-                    win = true;
-                    break;
 
                 default:
                     System.out.println("Invalid Menu Item");
