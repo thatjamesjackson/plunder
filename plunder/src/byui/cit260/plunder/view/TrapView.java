@@ -5,13 +5,12 @@
  */
 package byui.cit260.plunder.view;
 
-import java.util.Scanner;
-
 /**
  *
  * @author abigailking
  */
 public class TrapView extends View {
+
     @Override
     public String[] getInputs() {
 
@@ -29,66 +28,66 @@ public class TrapView extends View {
 
     @Override
     public boolean doAction(String[] inputs) {
-        
+
         // declare needed variables for loop
         boolean win = false;
         CrewView talkTo = new CrewView();
-        
+
         // loop through booby traps
         do { // enter booby trap and treasure
             System.out.println("Do ye want to: \n"
-                + "E  -  Enter the temple \n"
-                + "S  -  Leave to ship \n"
-                + "C  -  Check yer crew\n");
+                    + "E  -  Enter the temple \n"
+                    + "S  -  Leave to ship \n"
+                    + "C  -  Check yer crew\n");
             String[] choice = getInputs();
-            
+
             switch (choice[0]) {
-            case "E":
-                System.out.println("You and yer crew enter the temple. Don't forget, \n"
-                        + "yer crew may know more than ye do about this here temple.");
-                break;
+                case "E":
+                    System.out.println("You and yer crew enter the temple. Don't forget, \n"
+                            + "yer crew may know more than ye do about this here temple.");
+                    break;
 
-            case "S":
-                return true;
+                case "S":
+                    return true;
 
-            case "C":
-                talkTo.display();
+                case "C":
+                    talkTo.display();
 
-            default:
-                System.out.println("Invalid Menu Item");
+                default:
+                    System.out.println("Invalid Menu Item");
 
-        }
+            }
             // booby trap 1
             System.out.println(
                     "     You see a siren mural scrawled across the walls of the hallway. \n"
                     + "                As ye step inside and hear a click. \n"
                     + " You've stepped on a pressure plate. Be careful with your next move. \n"
                     + "======================================================================\n"
-                            + "T  -  Talk to yer crew"
-                            + "K  -  Keep walking, the click was probably nothing.\n"
-                            + "B  -  Take a step back off the pressure plate before continuing.");
+                    + "T  -  Talk to yer crew"
+                    + "K  -  Keep walking, the click was probably nothing.\n"
+                    + "B  -  Take a step back off the pressure plate before continuing.");
             choice = getInputs();
-            
+
             switch (choice[0]) {
-            case "T":
-                talkTo.display();
-                break;
+                case "T":
+                    talkTo.display();
+                    break;
 
-            case "K":
-                System.out.println("Ouch! Ye got shot in the leg as a dart came shooting \n"
-                        + "from the Siren's eyes in the mural beside ye. \n"
-                        + "You and yer crew return to the front of the temple.");
-                continue;
+                case "K":
+                    System.out.println("Ouch! Ye got shot in the leg as a dart came shooting \n"
+                            + "from the Siren's eyes in the mural beside ye. \n"
+                            + "You and yer crew return to the front of the temple.");
+                    continue;
 
-            case "B":
-                System.out.println("Ye made it safely. The Siren's stare follows ye \n"
-                        + "down the hall, but ye make it safely forward.");
-                break;
+                case "B":
+                    System.out.println("Ye made it safely. The Siren's stare follows ye \n"
+                            + "down the hall, but ye make it safely forward.");
+                    break;
 
-            default:
-                System.out.println("Invalid Menu Item");
+                default:
+                    System.out.println("Invalid Menu Item");
 
-        }
+            }
             // booby trap 2
             System.out.println(
                     "           The long hallway forks two ways. \n"
@@ -99,26 +98,26 @@ public class TrapView extends View {
                     + "               L  -  Go left\n"
                     + "               R  -  Go right\n");
             choice = getInputs();
-            
+
             switch (choice[0]) {
-            case "T":
-                talkTo.display();
-                break;
+                case "T":
+                    talkTo.display();
+                    break;
 
-            case "G":
-                
-                break;
+                case "G":
 
-            case "R":
-                return true;
+                    break;
 
-            default:
-                System.out.println("Invalid Menu Item");
+                case "R":
+                    return true;
 
-        }
+                default:
+                    System.out.println("Invalid Menu Item");
+
+            }
             // booby trap 3
             System.out.println(
-                      "  You see three curious doors each leads to a different fate.\n"
+                    "  You see three curious doors each leads to a different fate.\n"
                     + "              One of the doors be made of pure gold, \n"
                     + "            the other of silver, and the last of wood."
                     + "==============================================================\n"
@@ -127,31 +126,33 @@ public class TrapView extends View {
                     + "                   S  -  Open the silver door\n"
                     + "                   W  -  Open the wood door");
             choice = getInputs();
-            
+
             switch (choice[0]) {
-            case "T":
-                talkTo.display();
-                break;
+                case "T":
+                    talkTo.display();
+                    break;
 
-            case "G":
-                System.out.println("Behind the door you see your ship. You turn \n"
-                        + "back around and you see the front of the Temple of the Siren. Rats.");
-                break;
-            
-            case "S":
-                System.out.println("Wolfgang gets sick and starts to screech in pain.\n"
-                        + "Closing the door does nothing to help. You rush back to the ship.");
-                break;
+                case "G":
+                    System.out.println("Behind the door you see your ship. You turn \n"
+                            + "back around and you see the front of the Temple of the Siren. Rats.");
+                    break;
 
-            case "W":
-                win = true;
-                break;
+                case "S":
+                    System.out.println("Wolfgang gets sick and starts to groan in pain.\n"
+                            + "Closing the door does nothing to help. You rush back to the ship.");
+                    break;
 
-            default:
-                System.out.println("Invalid Menu Item");
+                case "W":
+                    win = true;
+                    break;
 
-        }
+                default:
+                    System.out.println("Invalid Menu Item");
+
+            }
 
         } while (win == false);
-        
+        return true;
+
+    }
 }

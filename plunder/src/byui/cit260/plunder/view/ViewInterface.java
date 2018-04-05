@@ -5,8 +5,6 @@
  */
 package byui.cit260.plunder.view;
 
-import java.util.Scanner;
-
 /**
  *
  * @author James
