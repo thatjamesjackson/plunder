@@ -5,6 +5,7 @@
  */
 package byui.cit260.plunder.control;
 
+import byui.cit260.plunder.model.Actor;
 import byui.cit260.plunder.model.Location;
 import byui.cit260.plunder.model.Map;
 import byui.cit260.plunder.model.CombatScene;
@@ -22,6 +23,7 @@ import byui.cit260.plunder.view.RoughOceanView;
 import byui.cit260.plunder.view.ShopView;
 import byui.cit260.plunder.view.WinGameView;
 import exceptions.MapControlExeption;
+import java.awt.Point;
 import java.util.ArrayList;
 
 /**
@@ -29,7 +31,14 @@ import java.util.ArrayList;
  * @author abigailking
  */
 public class MapControl {
+public static void travel(Actor actor, Map map, int y, int x) throws MapControlExeption {
 
+        if (y < 0 || y > map.getRowCount() || x < 0 || x > map.getColumnCount()) {
+            throw new MapControlExeption("You cannot go that way");
+        }
+        actor.setCoordinates(new Point(x, y));
+
+    }
     public static Map createMap(int numRows, int numColumns, ArrayList items) throws MapControlExeption {
         //check invalid input
         if (numRows < 1 || numColumns < 1) {
@@ -94,7 +103,7 @@ public class MapControl {
                 new GameMenuView());
         scenes[SceneType.islandRegular.ordinal()] = islandRegular;
 
-        DecisionScene islandResourceScene = new DecisionScene(
+        ResourceScene islandResourceScene = new DecisionScene(
                 "While you are on the island, you see some useful items here.",
                 ".T.",
                 SceneType.islandResource.ordinal(),

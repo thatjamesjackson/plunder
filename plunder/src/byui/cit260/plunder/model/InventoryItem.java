@@ -14,7 +14,6 @@ import java.util.Objects;
 public class InventoryItem {
 
     private String inventoryType;
-    private String typeName;
     private int quantityInStock;
     private double value;
     private double weight;
@@ -30,14 +29,7 @@ public class InventoryItem {
     public void setInventoryType(String inventoryType) {
         this.inventoryType = inventoryType;
     }
-    
-    public String getTypeName() {
-        return typeName;
-    }
-
-    public void setTypeName(String typeName) {
-        this.typeName = typeName;
-    }
+   
 
     public int getQuantityInStock() {
         return quantityInStock;
@@ -65,14 +57,13 @@ public class InventoryItem {
 
     @Override
     public String toString() {
-        return "InventoryItem{" + "inventoryType=" + inventoryType + ", typeName=" + typeName + ", quantityInStock=" + quantityInStock + ", value=" + value + ", weight=" + weight + '}';
+        return "InventoryItem{" + "inventoryType=" + inventoryType + ", quantityInStock=" + quantityInStock + ", value=" + value + ", weight=" + weight + '}';
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
         hash = 43 * hash + Objects.hashCode(this.inventoryType);
-        hash = 43 * hash + Objects.hashCode(this.typeName);
         hash = 43 * hash + this.quantityInStock;
         hash = 43 * hash + (int) (Double.doubleToLongBits(this.value) ^ (Double.doubleToLongBits(this.value) >>> 32));
         hash = 43 * hash + (int) (Double.doubleToLongBits(this.weight) ^ (Double.doubleToLongBits(this.weight) >>> 32));
@@ -103,9 +94,7 @@ public class InventoryItem {
         if (!Objects.equals(this.inventoryType, other.inventoryType)) {
             return false;
         }
-        if (!Objects.equals(this.typeName, other.typeName)) {
-            return false;
-        }
+        
         return true;
     }
    

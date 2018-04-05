@@ -151,7 +151,7 @@ public class InventoryView extends View {
         ic.sortInventory(p.getCurrentGame().getInventory());
         
         for (int i = 0; i < p.getCurrentGame().getInventory().size(); i++){
-            System.out.println(p.getCurrentGame().getInventory().get(i).getTypeName() + "  -  "
+            System.out.println(p.getCurrentGame().getInventory().get(i).getInventoryType() + "  -  "
             + p.getCurrentGame().getInventory().get(i).getInventoryType() + "  -  "
             + p.getCurrentGame().getInventory().get(i).getQuantityInStock() + " units  -  worth "
             + p.getCurrentGame().getInventory().get(i).getValue() + "  -  "

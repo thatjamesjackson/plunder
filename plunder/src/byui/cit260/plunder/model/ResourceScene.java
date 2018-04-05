@@ -17,6 +17,11 @@ public class ResourceScene extends RegularScene{
     public ResourceScene() {
     }
     
+    public ResourceScene( String description, String mapSymbol, int sceneType,  ) {
+        super(description, mapSymbol, sceneType);
+        
+    }
+    
     public InventoryItem getResource() {
         return resource;
     }

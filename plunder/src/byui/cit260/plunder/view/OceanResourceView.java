@@ -5,49 +5,67 @@
  */
 package byui.cit260.plunder.view;
 
+import byui.cit260.plunder.model.Actor;
+import byui.cit260.plunder.model.InventoryItem;
+import byui.cit260.plunder.model.ResourceScene;
+import byui.cit260.plunder.model.Ship;
+import java.util.Random;
+import java.util.ArrayList;
+import plunder.Plunder;
+
 /**
  *
  * @author abigailking
  */
-public class OceanResourceView extends View{
-    public void display() { 
-        
-    }
+public class OceanResourceView extends View {
 
     @Override
     public String[] getInputs() {
-        
+
         // display menu
-        System.out.println("  H - Attempt to harvest here"
-                + "  E - Keep exploring");
+        System.out.println("  H - Attempt to harvest here\n"
+                + "  Q - Return to previous menu\n");
         //declare new
-        String [] inputs = new String[1];
-        
+        String[] inputs = new String[1];
+
         // retrieve input from user
         String input = this.getInput("Select a menu item");
-        inputs [0] = input;
+        inputs[0] = input;
         return inputs;
     }
 
     @Override
     public boolean doAction(String[] inputs) {
-        
+
         switch (inputs[0]) {
             case "H":
                 harvest();
                 break;
 
-            case "E":
+            case "Q":
                 return true;
 
             default:
                 System.out.println("Invalid Menu Item");
 
         }
-        return false; 
+        return false;
     }
 
     private void harvest() {
-        System.out.println("You harvested");
+        Actor actor = Plunder.getPlayer().getActor();
+        int playerX = (int) actor.getCoordinates().getX();
+        int playerY = (int) actor.getCoordinates().getY();
+        ResourceScene scene = (ResourceScene) Plunder.getCurrentGame().getMap().getLocation()[playerY][playerX].getScene();
+        InventoryItem resource = scene.getResource();
+        Ship ship = Plunder.getPlayer().getShip();
+        ArrayList inventory = ship.getInventory();
+        Random random = new Random();
+        for(Object curItem : inventory){
+            InventoryItem item = (InventoryItem) curItem;
+            if (item.getInventoryType().equals(resource.getInventoryType())){
+                item.setQuantityInStock(item.getQuantityInStock() + random.nextInt(30));
+            }
+        }
     }
 }

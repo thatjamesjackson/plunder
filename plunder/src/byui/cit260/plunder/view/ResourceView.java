@@ -5,10 +5,13 @@
  */
 package byui.cit260.plunder.view;
 
+import byui.cit260.plunder.model.Actor;
 import byui.cit260.plunder.model.InventoryItem;
 import byui.cit260.plunder.model.ResourceScene;
 import byui.cit260.plunder.model.Ship;
 import java.util.ArrayList;
+import java.util.Random;
+import plunder.Plunder;
 
 /**
  *
@@ -18,50 +21,58 @@ public class ResourceView extends View {
 
     @Override
     public String[] getInputs() {
-        //this will be replaced by an import eventually 
-        ResourceScene scene = new ResourceScene();
 
-        //declare new string array
+        // display menu
+        System.out.println("  H - Attempt to harvest here\n"
+                + "  Q - Return to previous menu\n");
+        //declare new
         String[] inputs = new String[1];
-        System.out.println(scene.getDescription());
-        inputs[0] = this.getInput("G - Gather Resources\n"
-                + "L - Leave Resources");
+
+        // retrieve input from user
+        String input = this.getInput("Select a menu item");
+        inputs[0] = input;
         return inputs;
     }
 
     @Override
     public boolean doAction(String[] inputs) {
-        //this part needs to be imported eventually
 
-        ResourceScene scene = new ResourceScene();
-        Ship playerShip = new Ship();
         switch (inputs[0]) {
+            case "H":
+                harvest();
+                break;
 
-            case "L":
+            case "Q":
                 return true;
-            case "G":
-                boolean inInventory = false;
-                //find the same item and add the two quantiies together
-                for (int i = 0; i < playerShip.getInventory().size(); i++) {
-                   ArrayList<InventoryItem> items = playerShip.getInventory();
-                   InventoryItem item = items.get(i);
-                   
-                    if (item.getInventoryType().equals(scene.getResource().getInventoryType())) {
-                        item.setQuantityInStock(item.getQuantityInStock() + scene.getResource().getQuantityInStock());
-                        inInventory = true;
-                    }
-                }
-                //if it is not in the inventory add it
-                if (!inInventory) {
-                   playerShip.getInventory().add(scene.getResource());
-                }
 
-                return true;
             default:
                 System.out.println("Invalid Menu Item");
-                return false;
-                    
 
+        }
+        return false;
+    }
+
+    private void harvest() {
+        Actor actor = Plunder.getPlayer().getActor();
+        int playerX = (int) actor.getCoordinates().getX();
+        int playerY = (int) actor.getCoordinates().getY();
+        ResourceScene scene = (ResourceScene) Plunder.getCurrentGame().getMap().getLocation()[playerY][playerX].getScene();
+        InventoryItem resource = scene.getResource();
+        Ship ship = Plunder.getPlayer().getShip();
+        ArrayList inventory = ship.getInventory();
+        Random random = new Random();
+        boolean inInventory = false;
+        
+        for (Object curItem : inventory) {
+            InventoryItem item = (InventoryItem) curItem;
+            if (item.getInventoryType().equals(resource.getInventoryType())) {
+                item.setQuantityInStock(item.getQuantityInStock() + random.nextInt(30));
+                inInventory = true;
+            }
+        }
+        if (!inInventory){
+            resource.setQuantityInStock(random.nextInt(30));
+            inventory.add(resource);
         }
     }
 
