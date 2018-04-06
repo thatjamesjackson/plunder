@@ -42,7 +42,7 @@ public class TrapView3 extends View {
                 break;
 
             case "G":
-                System.out.println("Wise choice matey.");
+                System.out.println("Wise choice matey.\n\n");
                 TrapView4 moveOn = new TrapView4();
                 moveOn.display();
 
@@ -50,12 +50,12 @@ public class TrapView3 extends View {
                 System.out.println(
                           "    What's this? It seems that this way looped \n"
                         + "you and yer crew back to the entrance of the shrine. \n"
-                        + " This here place must be cursed. Carefully now.");
+                        + " This here place must be cursed. Carefully now.\n\n");
                 TrapView moveBack = new TrapView();
                 moveBack.display();
 
             default:
-                System.out.println("Invalid Menu Item");
+                System.out.println("Invalid Menu Item\n");
 
         }
         return true;

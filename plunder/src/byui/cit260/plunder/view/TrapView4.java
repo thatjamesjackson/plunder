@@ -23,7 +23,7 @@ public class TrapView4 extends View {
                     + "                   C  -  Check yer crew\n"
                     + "                   G  -  Open the gold door\n"
                     + "                   S  -  Open the silver door\n"
-                    + "                   W  -  Open the wood door");
+                    + "                   W  -  Open the wood door\n");
         //declare new
         String[] inputs = new String[1];
 
@@ -46,7 +46,7 @@ public class TrapView4 extends View {
             case "G":
                 System.out.println(
                           "Behind the door you see your ship. You turn back around \n"
-                        + "and you see the front of the Temple of the Siren. Rats.");
+                        + "and you see the front of the Temple of the Siren. Rats.\n\n");
                 TrapView moveBack = new TrapView();
                 moveBack.display();
             
@@ -54,7 +54,7 @@ public class TrapView4 extends View {
                 System.out.println(
                           "       Wolfgang gets sick and starts to howls in pain.\n"
                         + "          Closing the door does nothing to help.\n"
-                        + "You rush him back the ship, then return to the shrine entrance.");
+                        + "You rush him back the ship, then return to the shrine entrance.\n\n");
                 TrapView moveBack2 = new TrapView();
                 moveBack2.display();
                 // set wolfgang to 1
