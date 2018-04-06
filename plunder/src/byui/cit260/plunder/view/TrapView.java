@@ -37,7 +37,7 @@ public class TrapView extends View {
 
         // declare needed variables for loop
         boolean win = false;
-        CrewView talkTo = new CrewView();
+        
         
         switch (inputs[0]) {
                 case "E":
@@ -52,7 +52,9 @@ public class TrapView extends View {
                     return true;
 
                 case "C":
+                    CrewView talkTo = new CrewView();
                     talkTo.display();
+                    return false;
 
                 default:
                     System.out.println("Invalid Menu Item");
