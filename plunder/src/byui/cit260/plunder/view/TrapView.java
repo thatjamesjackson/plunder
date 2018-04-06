@@ -43,6 +43,7 @@ public class TrapView extends View {
                 case "E":
                     System.out.println("You and yer crew enter the temple. Don't forget, \n"
                             + "yer crew may know more than ye do about this here temple.\n\n");
+                    
                     TrapView2 moveOn = new TrapView2();
                     moveOn.display();
                     break;
