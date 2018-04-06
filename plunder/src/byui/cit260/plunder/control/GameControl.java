@@ -44,19 +44,19 @@ public class GameControl {
 
         //actors are enums
 //Assign an actor to the player 
-Actor captain = new Actor();
-captain.setCoordinates(new Point(0,0));
-captain.setName(player.getName());
-captain.setDescription("A pirate of some renown");
+        Actor captain = new Actor();
+        captain.setCoordinates(new Point(0, 0));
+        captain.setName(player.getName());
+        captain.setDescription("A pirate of some renown");
         player.setActor(captain);
         //make inventory items
         ArrayList<InventoryItem> inventory = createItems();
-        
+
         //make npc list
         NPC[] npc = CrewControl.createNPC();
         game.setNPC(npc);
 
-//Save the list of items in the game 
+        //Save the list of items in the game 
         game.setInventory(inventory);
         //map = create
         //Map(noOfRows, noOfColumns, items) 
@@ -65,9 +65,9 @@ captain.setDescription("A pirate of some renown");
             return -1;
         }
 
-//Assign the map to the game 
+        //Assign the map to the game 
         game.setMap(map);
-        
+
         //give player a ship and in inventory
         Ship ship = new Ship();
         ship.setArmor(1);
@@ -77,12 +77,11 @@ captain.setDescription("A pirate of some renown");
         ship.setShipRepair(5);
         ship.setName("The Salty Dog");
         ship.setShipAttack(10);
-        
+
         ship.setInventory(inventory);
-        
+
         player.setShip(ship);
-        
-        
+
         return 1;
     }
 
