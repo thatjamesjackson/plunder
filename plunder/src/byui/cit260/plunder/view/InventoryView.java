@@ -53,31 +53,7 @@ public class InventoryView extends View {
         if (input1.equals(input1.toUpperCase().equals("Q"))) {
             return inputs;
         }
-        this.inputs[0] = input1;
-
-//        switch (inputs[0].toUpperCase()) {
-//            case "L":
-//                listInventory();
-//                break;
-//
-//            case "S":
-//                sellShop();
-//                break;
-//
-//            case "D":
-//                this.dropCargo();
-//                break;
-//
-//            case "R":
-//                inputs[0] = "Q";
-//                break;
-//                
-//            default:
-//                System.out.println("Invalid Menu Item");
-//
-//        }
-//  
-//        
+        this.inputs[0] = input1;       
         return inputs;
 
     }
@@ -113,7 +89,9 @@ public class InventoryView extends View {
                 + "G - gold - 10 tonnes\n"
                 + "B - cannon balls - 20 tonnes";
 
-        this.promptMessage = this.promptMessage = "Enter your selection below: ";
+        this.promptMessage = "Here is your inventory. What do you wanna drop?\n"
+//                + this.listInventory() 
+                + "Enter your selection below: ";
 
         String itemType = this.getInput(this.promptMessage);
         if (itemType.equals(itemType.toUpperCase().equals("Q"))) {
@@ -150,7 +128,7 @@ public class InventoryView extends View {
         Plunder p = new Plunder();
         ArrayList<InventoryItem> items = InventoryControl.sortInventory(p.getCurrentGame().getInventory());
         for (InventoryItem item : items) {
-            System.out.println(item.getTypeName() + "  -  "
+            System.out.println(item.getTypeAbr() + "  -  "
             + item.getInventoryType() + "  -  "
             + item.getQuantityInStock() + " units  -  worth "
             + item.getValue() + "  -  "

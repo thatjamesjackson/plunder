@@ -90,35 +90,35 @@ captain.setDescription("A pirate of some renown");
         //start the player off with a few items
         InventoryItem jewels = new InventoryItem();
         jewels.setInventoryType("Jewels");
-        jewels.setTypeName("J");
+        jewels.setTypeAbr("J");
         jewels.setQuantityInStock(2);
         jewels.setValue(300);
         jewels.setWeight(2);
 
         InventoryItem fish = new InventoryItem();
         fish.setInventoryType("Fish");
-        fish.setTypeName("F");
+        fish.setTypeAbr("F");
         fish.setQuantityInStock(50);
         fish.setValue(20);
         fish.setWeight(5);
 
         InventoryItem cotton = new InventoryItem();
         cotton.setInventoryType("Cotton");
-        cotton.setTypeName("C");
+        cotton.setTypeAbr("C");
         cotton.setQuantityInStock(5);
         cotton.setValue(50);
         cotton.setWeight(1);
 
         InventoryItem spices = new InventoryItem();
         spices.setInventoryType("Spices");
-        spices.setTypeName("S");
+        spices.setTypeAbr("S");
         spices.setQuantityInStock(3);
         spices.setValue(100);
         spices.setWeight(1);
 
         InventoryItem coconut = new InventoryItem();
         coconut.setInventoryType("Coconuts");
-        coconut.setTypeName("O");
+        coconut.setTypeAbr("O");
         coconut.setQuantityInStock(10);
         coconut.setValue(10);
         coconut.setWeight(1);

@@ -93,8 +93,8 @@ public class InventoryControl {
         for (int m = n; m >= 0; m--) {
             for (int i = 0; i < n - 1; i++) {
                 k = i + 1;
-                String first = items.get(i).getTypeName();
-                String second = items.get(k).getTypeName();
+                String first = items.get(i).getTypeAbr();
+                String second = items.get(k).getTypeAbr();
                 if (first.compareTo(second) > 0) {
                     InventoryControl.swapNumbers(i, k, items);
                 }
