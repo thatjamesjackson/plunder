@@ -7,8 +7,10 @@ package byui.cit260.plunder.view;
 
 import byui.cit260.plunder.control.InventoryControl;
 import static byui.cit260.plunder.control.InventoryControl.sortInventory;
+import byui.cit260.plunder.model.InventoryItem;
 import byui.cit260.plunder.model.Ship;
 import exceptions.InventoryControlException;
+import java.util.ArrayList;
 import plunder.Plunder;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,47 +38,22 @@ public class InventoryView extends View {
             Logger.getLogger(InventoryView.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        this.instructions
-                = "\n  Our ship be sitting at " + weight + "tonnes\n"
+        this.promptMessage
+                = "\n  Our ship be sitting at " + weight + " tonnes\n"
                 + "===============================================\n"
                 + "           What do ya want to do?\n"
                 + "              L - List Inventory\n"
                 + "              D - Drop Cargo\n"
                 + "              R - Return to navigation\n"
-                + "===============================================\n";
-
-        this.promptMessage = "Enter your selection below: ";
+                + "===============================================\n"
+                + "           Enter your selection below: ";
 
         String input1 = this.getInput(this.promptMessage);
 
         if (input1.equals(input1.toUpperCase().equals("Q"))) {
             return inputs;
         }
-        this.inputs[0] = input1;
-
-//        switch (inputs[0].toUpperCase()) {
-//            case "L":
-//                listInventory();
-//                break;
-//
-//            case "S":
-//                sellShop();
-//                break;
-//
-//            case "D":
-//                this.dropCargo();
-//                break;
-//
-//            case "R":
-//                inputs[0] = "Q";
-//                break;
-//                
-//            default:
-//                System.out.println("Invalid Menu Item");
-//
-//        }
-//  
-//        
+        this.inputs[0] = input1;       
         return inputs;
 
     }
@@ -112,7 +89,9 @@ public class InventoryView extends View {
                 + "G - gold - 10 tonnes\n"
                 + "B - cannon balls - 20 tonnes";
 
-        this.promptMessage = this.promptMessage = "Enter your selection below: ";
+        this.promptMessage = "Here is your inventory. What do you wanna drop?\n"
+//                + this.listInventory() 
+                + "Enter your selection below: ";
 
         String itemType = this.getInput(this.promptMessage);
         if (itemType.equals(itemType.toUpperCase().equals("Q"))) {
@@ -147,15 +126,13 @@ public class InventoryView extends View {
 
     private void listInventory() {
         Plunder p = new Plunder();
-        InventoryControl ic = new InventoryControl();
-        ic.sortInventory(p.getCurrentGame().getInventory());
-        
-        for (int i = 0; i < p.getCurrentGame().getInventory().size(); i++){
-            System.out.println(p.getCurrentGame().getInventory().get(i).getInventoryType() + "  -  "
-            + p.getCurrentGame().getInventory().get(i).getInventoryType() + "  -  "
-            + p.getCurrentGame().getInventory().get(i).getQuantityInStock() + " units  -  worth "
-            + p.getCurrentGame().getInventory().get(i).getValue() + "  -  "
-            + p.getCurrentGame().getInventory().get(i).getWeight() + " tonnes");
+        ArrayList<InventoryItem> items = InventoryControl.sortInventory(p.getCurrentGame().getInventory());
+        for (InventoryItem item : items) {
+            System.out.println(item.getTypeAbr() + "  -  "
+            + item.getInventoryType() + "  -  "
+            + item.getQuantityInStock() + " units  -  worth "
+            + item.getValue() + "  -  "
+            + item.getWeight() + " tonnes");
         }
     }
 

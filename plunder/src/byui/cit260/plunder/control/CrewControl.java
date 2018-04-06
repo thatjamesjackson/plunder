@@ -105,7 +105,7 @@ public class CrewControl {
         wolfgang.setCrewAttack(3);
         wolfgang.setCrewRepair(14);
         wolfgang.setIsCrew(true);
-        wolfgang.setTalk("I hope the treseure is all gold and jewels!\n"
+        wolfgang.setTalk("I hope the treasure is all gold and jewels!\n"
                 + "I'm not a big fan of silver");
         wolfgang.setName("Wolfgang");
         wolfgang.setJob("Gunner");
