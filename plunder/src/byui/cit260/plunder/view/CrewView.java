@@ -41,6 +41,7 @@ public class CrewView extends View {
             case "T":
                 crewTalk(crew);
                 break;
+                
             case "A":
                 assignJob(crew);
                 break;

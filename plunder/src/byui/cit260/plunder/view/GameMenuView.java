@@ -11,7 +11,7 @@ import byui.cit260.plunder.model.Map;
 import byui.cit260.plunder.model.SceneType;
 import java.awt.Point;
 import plunder.Plunder;
-import exceptions.MapControlExeption;
+import exceptions.MapControlException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -59,7 +59,7 @@ public class GameMenuView extends View {
             case "N": {
                 try {
                     MapControl.travel(actor, map, (int) actor.getCoordinates().getY() + 1, (int) actor.getCoordinates().getX());
-                } catch (MapControlExeption ex) {
+                } catch (MapControlException ex) {
                     Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
                     return false;
                 }
@@ -69,7 +69,7 @@ public class GameMenuView extends View {
             case "W": {
                 try {
                     MapControl.travel(actor, map, (int) actor.getCoordinates().getY(), (int) actor.getCoordinates().getX() - 1);
-                } catch (MapControlExeption ex) {
+                } catch (MapControlException ex) {
                     Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
                     return false;
                 }
@@ -79,7 +79,7 @@ public class GameMenuView extends View {
             case "E": {
                 try {
                    MapControl.travel(actor, map, (int) actor.getCoordinates().getY(), (int) actor.getCoordinates().getX() + 1);
-                } catch (MapControlExeption ex) {
+                } catch (MapControlException ex) {
                     Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
                     return false;
                 }
@@ -89,7 +89,7 @@ public class GameMenuView extends View {
             case "S": {
                 try {
                     MapControl.travel(actor, map, (int) actor.getCoordinates().getY() - 1, (int) actor.getCoordinates().getX());
-                } catch (MapControlExeption ex) {
+                } catch (MapControlException ex) {
                     Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
                     return false;
                 }

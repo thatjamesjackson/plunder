@@ -37,17 +37,16 @@ public class InventoryView extends View {
         } catch (InventoryControlException ex) {
             Logger.getLogger(InventoryView.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+listInventory();
         this.promptMessage
                 = "\n  Our ship be sitting at " + weight + " tonnes\n"
                 + "===============================================\n"
                 + "           What do ya want to do?\n"
-                + "              L - List Inventory\n"
                 + "              D - Drop Cargo\n"
                 + "              R - Return to navigation\n"
                 + "===============================================\n"
                 + "           Enter your selection below: ";
-
+        
         String input1 = this.getInput(this.promptMessage);
 
         if (input1.equals(input1.toUpperCase().equals("Q"))) {
@@ -62,12 +61,9 @@ public class InventoryView extends View {
     public boolean doAction(String[] inputs) {
 
         switch (inputs[0].toUpperCase()) {
-            case "L":
-                listInventory();
-                break;
-
             case "D":
-                this.dropCargo();
+                DropCargoView d = new DropCargoView();
+                d.display();
                 break;
 
             case "R":
@@ -82,53 +78,7 @@ public class InventoryView extends View {
         return true;
     }
 
-    private void dropCargo() {
-
-        this.promptMessage = "Here is your inventory. What do you wanna drop?\n" + "Enter your selection below: ";
-        this.listInventory();
-
-        String displayLetter = this.getInput(this.promptMessage);
-        if (itemType.equals(itemType.toUpperCase().equals("Q"))) {
-            return;
-        }
-
-        this.inputs[1] = displayLetter;
-
-        ArrayList<InventoryItem> inventory = Plunder.getCurrentGame().getInventory();
-        // get amount
-
-        int howMuch = InventoryControl.howMuch(displayLetter, Plunder.getCurrentGame().getInventory());
-
-        this.promptMessage = "You have " + howMuch + " tonnes of " + itemType + " in your inventory.\n"
-                + "Enter a number value of how much to drop below: ";
-
-        String amount = this.getInput(this.promptMessage);
-        if (amount.equals(amount.toUpperCase().equals("Q"))) {
-            return;
-        }
-
-        this.inputs[2] = amount;
-
-        int amountInt = parseInt(this.inputs[2]);
-        // new calculation
-        boolean inInventory = false;
-        for (InventoryItem curItem : inventory) {
-            if (curItem.getTypeAbr().equals(this.inputs[1])) {
-                if (curItem.getQuantityInStock() >= amountInt) {
-                    curItem.setQuantityInStock(curItem.getQuantityInStock() - amountInt);
-                    System.out.println("Heave ho! " + curItem.getInventoryType() + " be gone!");
-                } else {
-                    System.out.println("Ye do not have that much to drop");
-                }
-                inInventory = true;
-            }
-
-        }
-        if (!inInventory) {
-            System.out.println("Ye have not that item");
-        }
-
-    }
+    
 
     private void listInventory() {
         Plunder p = new Plunder();

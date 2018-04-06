@@ -14,7 +14,7 @@ import byui.cit260.plunder.model.NPC;
 import byui.cit260.plunder.model.Player;
 import byui.cit260.plunder.model.Ship;
 import exceptions.GameControlException;
-import exceptions.MapControlExeption;
+import exceptions.MapControlException;
 import java.util.ArrayList;
 import plunder.Plunder;
 import java.awt.Point;
@@ -34,16 +34,16 @@ public class GameControl {
         return player;
     }
 
-    public static int createNewGame(Player player) throws MapControlExeption {
+    public static int createNewGame(Player player) throws MapControlException, GameControlException{
         if (player == null) {
-            return -1;
+            throw new GameControlException("Error creating new game, please try again.");
         }
         Game game = new Game();
         game.setPlayer(player);
         Plunder.setCurrentGame(game);
 
         //actors are enums
-//Assign an actor to the player 
+        //Assign an actor to the player 
         Actor captain = new Actor();
         captain.setCoordinates(new Point(0, 0));
         captain.setName(player.getName());
@@ -62,7 +62,7 @@ public class GameControl {
         //Map(noOfRows, noOfColumns, items) 
         Map map = MapControl.createMap(5, 5, inventory);
         if (map == null) {
-            return -1;
+            throw new MapControlException("Error loading in map.");
         }
 
         //Assign the map to the game 

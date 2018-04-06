@@ -51,12 +51,12 @@ public class InventoryControl {
         return weight;
     }
 
-    public static int howMuch(String displayLetter, ArrayList<InventoryItem> inventoryItems) {
+    public static int howMuch(String typeAbr, ArrayList<InventoryItem> inventoryItems) {
 
         int verMuch = 0;
 
         for (InventoryItem i : inventoryItems) {
-            if (i.getInventoryType().equals(displayLetter)) {
+            if (i.getTypeAbr().equals(typeAbr)) {
                 verMuch = i.getQuantityInStock();
             }
         }
@@ -64,12 +64,12 @@ public class InventoryControl {
         return verMuch;
     }
 
-    public static int itemSearch(String displayLetter, ArrayList<InventoryItem> inventoryItems) {
+    public static int itemSearch(String typeAbr, ArrayList<InventoryItem> inventoryItems) {
 
         int verMuch = 0;
 
         for (InventoryItem i : inventoryItems) {
-            if (i.getInventoryType().equals(displayLetter)) {
+            if (i.getInventoryType().equals(typeAbr)) {
                 verMuch = i.getQuantityInStock();
             }
         }

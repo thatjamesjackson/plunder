@@ -24,7 +24,7 @@ import byui.cit260.plunder.view.ResourceView;
 import byui.cit260.plunder.view.RoughOceanView;
 import byui.cit260.plunder.view.ShopView;
 import byui.cit260.plunder.view.WinGameView;
-import exceptions.MapControlExeption;
+import exceptions.MapControlException;
 import java.awt.Point;
 import java.util.ArrayList;
 
@@ -33,21 +33,21 @@ import java.util.ArrayList;
  * @author abigailking
  */
 public class MapControl {
-public static void travel(Actor actor, Map map, int y, int x) throws MapControlExeption {
+public static void travel(Actor actor, Map map, int y, int x) throws MapControlException {
 
         if (y < 0 || y > map.getRowCount() - 1 || x < 0 || x > map.getColumnCount() - 1) {
-            throw new MapControlExeption("You cannot go that way");
+            throw new MapControlException("You cannot go that way");
         }
         actor.setCoordinates(new Point(x, y));
 
     }
-    public static Map createMap(int numRows, int numColumns, ArrayList items) throws MapControlExeption {
+    public static Map createMap(int numRows, int numColumns, ArrayList items) throws MapControlException {
         //check invalid input
         if (numRows < 1 || numColumns < 1) {
-            throw new MapControlExeption("Cannot have less than one row or column");
+            throw new MapControlException("Cannot have less than one row or column");
         }
         if (items.size() < 1) {
-            throw new MapControlExeption("Items array cannot be fewer than one element");
+            throw new MapControlException("Items array cannot be fewer than one element");
         }
         //new map
         Map map = new Map();
@@ -71,11 +71,11 @@ public static void travel(Actor actor, Map map, int y, int x) throws MapControlE
         return map;
     }
 
-    private static Location[][] createLocations(int numRows, int numColumns) throws MapControlExeption {
+    private static Location[][] createLocations(int numRows, int numColumns) throws MapControlException {
 //        System.out.println("createLocations called");
 
         if (numRows < 1 || numColumns < 1) {
-            throw new MapControlExeption("Cannot have less than one row or column");
+            throw new MapControlException("Cannot have less than one row or column");
         }
 
         Location[][] locations = new Location[numRows][numColumns];
