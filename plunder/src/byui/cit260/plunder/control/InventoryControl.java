@@ -24,8 +24,8 @@ public class InventoryControl {
             if (item.getQuantityInStock() < 0 || item.getValue() < 0) {
                 throw new InventoryControlException("Quantity and/ or value is less than 0");
             }
-            if(item.getQuantityInStock() == 0){
-            continue;
+            if (item.getQuantityInStock() == 0) {
+                continue;
             }
             double addedValue = (item.getQuantityInStock() * item.getValue());
             gold += addedValue;
@@ -85,21 +85,25 @@ public class InventoryControl {
             }
         }
     }
-    
-    public static void sortInventory(ArrayList<InventoryItem> inventoryItems){
-    
-       for (int i = 0; i < inventoryItems.size(); i++){
-           char first = inventoryItems.get(i).getTypeName().charAt(0);
-           char second = inventoryItems.get(i++).getTypeName().charAt(0);
-           
-           if (first > second) {
-               swapNumbers(i, i++, inventoryItems);
-           }
-       }
-       
+
+    public static ArrayList<InventoryItem> sortInventory(ArrayList<InventoryItem> inventoryItems) {
+        ArrayList<InventoryItem> items = (ArrayList<InventoryItem>) inventoryItems.clone();
+        int n = items.size();
+        int k;
+        for (int m = n; m >= 0; m--) {
+            for (int i = 0; i < n - 1; i++) {
+                k = i + 1;
+                String first = items.get(i).getTypeName();
+                String second = items.get(k).getTypeName();
+                if (first.compareTo(second) > 0) {
+                    InventoryControl.swapNumbers(i, k, items);
+                }
+            }
+        }
+        return items;
     }
-    
-    private static void swapNumbers(int i, int j, ArrayList<InventoryItem> inventoryItems) {
+
+private static void swapNumbers(int i, int j, ArrayList<InventoryItem> inventoryItems) {
   
         InventoryItem temp = inventoryItems.get(i);
         InventoryItem tempTwo = inventoryItems.get(j);

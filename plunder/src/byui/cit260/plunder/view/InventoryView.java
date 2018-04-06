@@ -7,8 +7,10 @@ package byui.cit260.plunder.view;
 
 import byui.cit260.plunder.control.InventoryControl;
 import static byui.cit260.plunder.control.InventoryControl.sortInventory;
+import byui.cit260.plunder.model.InventoryItem;
 import byui.cit260.plunder.model.Ship;
 import exceptions.InventoryControlException;
+import java.util.ArrayList;
 import plunder.Plunder;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -146,15 +148,13 @@ public class InventoryView extends View {
 
     private void listInventory() {
         Plunder p = new Plunder();
-        InventoryControl ic = new InventoryControl();
-        ic.sortInventory(p.getCurrentGame().getInventory());
-        
-        for (int i = 0; i < p.getCurrentGame().getInventory().size(); i++){
-            System.out.println(p.getCurrentGame().getInventory().get(i).getTypeName() + "  -  "
-            + p.getCurrentGame().getInventory().get(i).getInventoryType() + "  -  "
-            + p.getCurrentGame().getInventory().get(i).getQuantityInStock() + " units  -  worth "
-            + p.getCurrentGame().getInventory().get(i).getValue() + "  -  "
-            + p.getCurrentGame().getInventory().get(i).getWeight() + " tonnes");
+        ArrayList<InventoryItem> items = InventoryControl.sortInventory(p.getCurrentGame().getInventory());
+        for (InventoryItem item : items) {
+            System.out.println(item.getTypeName() + "  -  "
+            + item.getInventoryType() + "  -  "
+            + item.getQuantityInStock() + " units  -  worth "
+            + item.getValue() + "  -  "
+            + item.getWeight() + " tonnes");
         }
     }
 
