@@ -10,6 +10,7 @@ import static byui.cit260.plunder.control.InventoryControl.sortInventory;
 import byui.cit260.plunder.model.InventoryItem;
 import byui.cit260.plunder.model.Ship;
 import exceptions.InventoryControlException;
+import static java.lang.Integer.parseInt;
 import java.util.ArrayList;
 import plunder.Plunder;
 import java.util.logging.Level;
@@ -24,7 +25,6 @@ public class InventoryView extends View {
     private String instructions;
     private String promptMessage;
     private String[] inputs = new String[3];
-
 
     @Override
     public String[] getInputs() {
@@ -53,7 +53,7 @@ public class InventoryView extends View {
         if (input1.equals(input1.toUpperCase().equals("Q"))) {
             return inputs;
         }
-        this.inputs[0] = input1;       
+        this.inputs[0] = input1;
         return inputs;
 
     }
@@ -84,43 +84,49 @@ public class InventoryView extends View {
 
     private void dropCargo() {
 
-        this.instructions = "Here is your inventory. What do you wanna drop?\n"
-                + "C - cotton - 2 tonnes\n"
-                + "G - gold - 10 tonnes\n"
-                + "B - cannon balls - 20 tonnes";
+        this.promptMessage = "Here is your inventory. What do you wanna drop?\n" + "Enter your selection below: ";
+        this.listInventory();
 
-        this.promptMessage = "Here is your inventory. What do you wanna drop?\n"
-//                + this.listInventory() 
-                + "Enter your selection below: ";
-
-        String itemType = this.getInput(this.promptMessage);
+        String displayLetter = this.getInput(this.promptMessage);
         if (itemType.equals(itemType.toUpperCase().equals("Q"))) {
             return;
         }
 
-        this.inputs[1] = itemType;
+        this.inputs[1] = displayLetter;
 
+        ArrayList<InventoryItem> inventory = Plunder.getCurrentGame().getInventory();
         // get amount
-        Plunder p = new Plunder();
 
-        int howMuch = InventoryControl.howMuch(itemType, Plunder.getCurrentGame().getInventory());
+        int howMuch = InventoryControl.howMuch(displayLetter, Plunder.getCurrentGame().getInventory());
 
-        this.instructions = "You have " + howMuch + " tonnes of " + itemType + " in your inventory.";
-
-        this.promptMessage = "Enter a number value of how much to drop below: ";
+        this.promptMessage = "You have " + howMuch + " tonnes of " + itemType + " in your inventory.\n"
+                + "Enter a number value of how much to drop below: ";
 
         String amount = this.getInput(this.promptMessage);
         if (amount.equals(amount.toUpperCase().equals("Q"))) {
             return;
         }
 
-        this.inputs[2] = itemType;
+        this.inputs[2] = amount;
 
+        int amountInt = parseInt(this.inputs[2]);
         // new calculation
-        int inventoryQuantity = howMuch - Integer.parseInt(this.inputs[2]);
-        InventoryControl.changeQuantity(howMuch, Plunder.getCurrentGame().getInventory(), itemType);
+        boolean inInventory = false;
+        for (InventoryItem curItem : inventory) {
+            if (curItem.getTypeAbr().equals(this.inputs[1])) {
+                if (curItem.getQuantityInStock() >= amountInt) {
+                    curItem.setQuantityInStock(curItem.getQuantityInStock() - amountInt);
+                    System.out.println("Heave ho! " + curItem.getInventoryType() + " be gone!");
+                } else {
+                    System.out.println("Ye do not have that much to drop");
+                }
+                inInventory = true;
+            }
 
-        return;
+        }
+        if (!inInventory) {
+            System.out.println("Ye have not that item");
+        }
 
     }
 
@@ -129,10 +135,10 @@ public class InventoryView extends View {
         ArrayList<InventoryItem> items = InventoryControl.sortInventory(p.getCurrentGame().getInventory());
         for (InventoryItem item : items) {
             System.out.println(item.getTypeAbr() + "  -  "
-            + item.getInventoryType() + "  -  "
-            + item.getQuantityInStock() + " units  -  worth "
-            + item.getValue() + "  -  "
-            + item.getWeight() + " tonnes");
+                    + item.getInventoryType() + "  -  "
+                    + item.getQuantityInStock() + " units  -  worth "
+                    + item.getValue() + "  -  "
+                    + item.getWeight() + " tonnes");
         }
     }
 
