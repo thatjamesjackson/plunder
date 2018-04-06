@@ -11,7 +11,9 @@ import byui.cit260.plunder.model.Map;
 import byui.cit260.plunder.model.CombatScene;
 import byui.cit260.plunder.model.DecisionScene;
 import byui.cit260.plunder.model.InventoryItem;
+import byui.cit260.plunder.model.InventoryItemType;
 import byui.cit260.plunder.model.RegularScene;
+import byui.cit260.plunder.model.ResourceScene;
 import byui.cit260.plunder.model.SceneType;
 import byui.cit260.plunder.model.ShipType;
 import byui.cit260.plunder.view.CalmOceanView;
@@ -103,11 +105,11 @@ public static void travel(Actor actor, Map map, int y, int x) throws MapControlE
                 new GameMenuView());
         scenes[SceneType.islandRegular.ordinal()] = islandRegular;
 
-        ResourceScene islandResourceScene = new DecisionScene(
+        ResourceScene islandResourceScene = new ResourceScene(
                 "While you are on the island, you see some useful items here.",
                 ".T.",
                 SceneType.islandResource.ordinal(),
-                new ResourceView());
+                items.get(InventoryItemType.coconut.ordinal()));
         scenes[SceneType.islandResource.ordinal()] = islandResourceScene;
         
         CombatScene combatFBoat = new CombatScene(
@@ -180,11 +182,11 @@ public static void travel(Actor actor, Map map, int y, int x) throws MapControlE
                 new WinGameView());
         scenes[SceneType.treasure.ordinal()] = treasure;
 
-        DecisionScene oceanResource = new DecisionScene(
+        ResourceScene oceanResource = new ResourceScene(
                 "There be many fish in these waters.",
                 "<#<",
                 SceneType.oResource.ordinal(),
-                new OceanResourceView());
+               items.get(InventoryItemType.fish.ordinal()));
         scenes[SceneType.oResource.ordinal()] = oceanResource;
         
         //oceanResource.setResource(items.get(InventoryItemType.fish.ordinal()));
