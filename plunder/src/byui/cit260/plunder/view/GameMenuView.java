@@ -5,6 +5,7 @@
  */
 package byui.cit260.plunder.view;
 
+import byui.cit260.plunder.control.MapControl;
 import byui.cit260.plunder.model.Actor;
 import byui.cit260.plunder.model.Map;
 import byui.cit260.plunder.model.SceneType;
@@ -57,7 +58,7 @@ public class GameMenuView extends View {
         switch (inputs[0]) {
             case "N": {
                 try {
-                    travel(actor, map, (int) actor.getCoordinates().getY() + 1, (int) actor.getCoordinates().getX());
+                    MapControl.travel(actor, map, (int) actor.getCoordinates().getY() + 1, (int) actor.getCoordinates().getX());
                 } catch (MapControlExeption ex) {
                     Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
                     return false;
@@ -67,7 +68,7 @@ public class GameMenuView extends View {
 
             case "W": {
                 try {
-                    travel(actor, map, (int) actor.getCoordinates().getY(), (int) actor.getCoordinates().getX() - 1);
+                    MapControl.travel(actor, map, (int) actor.getCoordinates().getY(), (int) actor.getCoordinates().getX() - 1);
                 } catch (MapControlExeption ex) {
                     Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
                     return false;
@@ -77,7 +78,7 @@ public class GameMenuView extends View {
 
             case "E": {
                 try {
-                    travel(actor, map, (int) actor.getCoordinates().getY(), (int) actor.getCoordinates().getX() + 1);
+                   MapControl.travel(actor, map, (int) actor.getCoordinates().getY(), (int) actor.getCoordinates().getX() + 1);
                 } catch (MapControlExeption ex) {
                     Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
                     return false;
@@ -87,7 +88,7 @@ public class GameMenuView extends View {
 
             case "S": {
                 try {
-                    travel(actor, map, (int) actor.getCoordinates().getY() - 1, (int) actor.getCoordinates().getX());
+                    MapControl.travel(actor, map, (int) actor.getCoordinates().getY() - 1, (int) actor.getCoordinates().getX());
                 } catch (MapControlExeption ex) {
                     Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
                     return false;
@@ -153,7 +154,7 @@ public class GameMenuView extends View {
         //switch statement is incompatible with ordinal so multiple if statments required
 
         if (type == SceneType.islandRegular.ordinal()) {
-
+            
         }
 
         if (type == SceneType.islandResource.ordinal()) {
@@ -189,15 +190,12 @@ public class GameMenuView extends View {
             CalmOceanView calm = new CalmOceanView();
             calm.display();
         }
-        if (type == SceneType.usOcean.ordinal()) {
-
-        }
+        
         if (type == SceneType.oResource.ordinal()) {
-
+            OceanResourceView oResource = new OceanResourceView();
+            oResource.display();
         }
-        if (type == SceneType.usLand.ordinal()) {
-
-        }
+        
 
     }
 
@@ -211,13 +209,6 @@ public class GameMenuView extends View {
 
     }
 
-    private void travel(Actor actor, Map map, int y, int x) throws MapControlExeption {
-
-        if (y < 0 || y > map.getRowCount() - 1 || x < 0 || x > map.getColumnCount() - 1) {
-            throw new MapControlExeption("You cannot go that way");
-        }
-        actor.setCoordinates(new Point(x, y));
-
-    }
+    
 
 }
