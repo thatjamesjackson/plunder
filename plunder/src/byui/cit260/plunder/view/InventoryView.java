@@ -84,13 +84,8 @@ public class InventoryView extends View {
 
     private void dropCargo() {
 
-        this.instructions = "Here is your inventory. What do you wanna drop?\n"
-                + "C - cotton - 2 tonnes\n"
-                + "G - gold - 10 tonnes\n"
-                + "B - cannon balls - 20 tonnes";
-
         this.promptMessage = "Here is your inventory. What do you wanna drop?\n"
-//                + this.listInventory() 
+//                + this.listInventory()
                 + "Enter your selection below: ";
 
         String itemType = this.getInput(this.promptMessage);
