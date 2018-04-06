@@ -213,7 +213,7 @@ public class GameMenuView extends View {
 
     private void travel(Actor actor, Map map, int y, int x) throws MapControlExeption {
 
-        if (y < 0 || y > map.getRowCount() || x < 0 || x > map.getColumnCount()) {
+        if (y < 0 || y > map.getRowCount() - 1 || x < 0 || x > map.getColumnCount() - 1) {
             throw new MapControlExeption("You cannot go that way");
         }
         actor.setCoordinates(new Point(x, y));
