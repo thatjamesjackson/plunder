@@ -24,8 +24,7 @@ public class DropView extends View {
     public String[] getInputs() {
 
         //get inputs from user
-//        NPC[] crew = getCrew();
-//        getCrewMenu(crew);
+
         InventoryView checkInventory = new InventoryView();
 
         String[] inputs = new String[1];
@@ -42,8 +41,7 @@ public class DropView extends View {
 
     @Override
     public boolean doAction(String[] inputs) {
-        // NPC[] crew = getCrew();
-        // getCrewMenu(crew);
+        
         ArrayList<InventoryItem> yerInventory = Plunder.getCurrentGame().getInventory();
         inputs[0] = inputs[0].toUpperCase().trim();
 
@@ -79,8 +77,7 @@ public class DropView extends View {
         try {
             item = inventory.get(InventoryControl.itemSearch(input, inventory));
         } catch (InventoryControlException ex) {
-            Logger.getLogger(DropView.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Ye do not have an item such as that");
+            System.out.println(ex.getMessage());
             return;
         }
         //if they try and drop more than they have, just drop all

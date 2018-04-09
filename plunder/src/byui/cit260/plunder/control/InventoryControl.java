@@ -80,7 +80,7 @@ public class InventoryControl {
         if (inInventory == true) {
             return location;
         } else {
-            throw new InventoryControlException("Item not in inventory");
+            throw new InventoryControlException("Ye do not have an item such as that");
         }
     }
 
