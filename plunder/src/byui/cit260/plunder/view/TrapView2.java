@@ -20,9 +20,9 @@ public class TrapView2 extends View {
                     + "                As ye step inside and hear a click. \n"
                     + " You've stepped on a pressure plate. Be careful with your next move. \n"
                     + "======================================================================\n"
-                            + "C  -  Check yer crew\n"
-                            + "K  -  Keep walking, the click was probably nothing.\n"
-                            + "B  -  Take a step back off the pressure plate before continuing.\n");
+                    + "     C  -  Check yer crew\n"
+                    + "     K  -  Keep walking, the click was probably nothing.\n"
+                    + "     B  -  Take a step back off the pressure plate before continuing.\n");
         //declare new
         String[] inputs = new String[1];
 
