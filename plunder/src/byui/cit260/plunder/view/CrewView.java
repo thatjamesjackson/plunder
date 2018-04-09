@@ -21,7 +21,8 @@ public class CrewView extends View {
 
     @Override
     public String[] getInputs() {
-//get inputs from user
+
+        //get inputs from user
         NPC[] crew = getCrew();
         getCrewMenu(crew);
         String[] inputs = new String[1];
