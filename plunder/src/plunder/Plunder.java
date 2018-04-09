@@ -18,6 +18,10 @@ import byui.cit260.plunder.model.InventoryItem;
 import byui.cit260.plunder.model.NPC;
 import byui.cit260.plunder.model.Upgrade;
 import byui.cit260.plunder.view.StartProgramView;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 
 
 /**
@@ -31,6 +35,9 @@ public class Plunder {
      */
     private static Game currentGame = null;
     private static Player player = null;
+    
+    private static PrintWriter outFile = null;
+    private static BufferedReader inFile = null;
 
     public static Game getCurrentGame() {
         return currentGame;
@@ -46,6 +53,22 @@ public class Plunder {
 
     public static void setPlayer(Player player) {
         Plunder.player = player;
+    }
+    
+    public static PrintWriter getOutFile() {
+        return outFile;
+    }
+
+    public static void setOutFile(PrintWriter outFile) {
+        Plunder.outFile = outFile;
+    }
+
+    public static BufferedReader getInFile() {
+        return inFile;
+    }
+
+    public static void setInFile(BufferedReader inFile) {
+        Plunder.inFile = inFile;
     }
     
     public static void main(String[] args) {
@@ -123,8 +146,36 @@ public class Plunder {
         npcOne.setCrewAttack(3);
         npcOne.setCrewRepair(2);
         
-        StartProgramView startProgramView = new StartProgramView();
-        startProgramView.display();
+//        StartProgramView startProgramView = new StartProgramView();
+//        startProgramView.display();
+        
+        try {
+        
+            //open character stream files for end user input and output
+            Plunder.inFile =
+                        new BufferedReader(new InputStreamReader(System.in));
+            Plunder.outFile = new PrintWriter(System.out, true);
+            
+            //create StartProgramView and start the program
+            StartProgramView startProgramView = new StartProgramView();
+            startProgramView.display();
+        } catch (Throwable e) {
+            
+            System.out.println("Exception: " + e.toString() +
+                               "\n Cause: " + e.getCause() +
+                               "\nMessage: " + e.getMessage());
+            
+            e.printStackTrace();
+        } finally {
+           
+            if(outFile != null){
+                try {
+                    outFile.close(); //close the file
+                } catch (IOException ex2){
+                    System.out.println("Error closing file");
+                }
+            }
+        }
         
 //        Question questionOne = new Question();
 //        questionOne.setAskNPC("Have you been here before?");
