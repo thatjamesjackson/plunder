@@ -122,7 +122,9 @@ public class CrewView extends View {
     private void getCrewMenu(NPC[] crew) {
         String format = "%-3s %-20.20s %-10s %-10s %-10s %n";
         System.out.format(format, "#", "Name", "Job", "Attack", "Repair");
+        
         System.out.println("=====================================================");
+        
         format = " %-3d %-20.20s %-10s %-10d %-10d %n";
         for (int i = 0; i < crew.length; i++) {
             System.out.format(format, (i + 1), crew[i].getName(), crew[i].getJob(), crew[i].getCrewAttack(), crew[i].getCrewRepair());
