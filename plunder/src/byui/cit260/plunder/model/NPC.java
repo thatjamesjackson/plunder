@@ -12,9 +12,6 @@ import java.util.Objects;
  * @author abigailking
  */
 public class NPC {
-
-   
-    
     
     private boolean isCrew;
     private int crewAttack;
@@ -125,10 +122,5 @@ public class NPC {
         return true;
     }
 
-    
-    
-
-    
-    
-    
+  
 }

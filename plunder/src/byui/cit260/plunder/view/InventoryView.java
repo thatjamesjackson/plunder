@@ -62,7 +62,8 @@ listInventory();
 
         switch (inputs[0].toUpperCase()) {
             case "D":
-                DropCargoView d = new DropCargoView();
+//                DropCargoView d = new DropCargoView();
+                DropView d = new DropView();
                 d.display();
                 break;
 

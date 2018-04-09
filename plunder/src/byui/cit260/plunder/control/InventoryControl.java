@@ -51,6 +51,7 @@ public class InventoryControl {
         return weight;
     }
 
+    // equation 1 for dropping inventory
     public static int howMuch(String typeAbr, ArrayList<InventoryItem> inventoryItems) {
 
         int verMuch = 0;
@@ -63,7 +64,8 @@ public class InventoryControl {
 
         return verMuch;
     }
-
+    
+    // equation 2 for dropping inventory
     public static int itemSearch(String typeAbr, ArrayList<InventoryItem> inventoryItems) {
 
         int verMuch = 0;
@@ -77,6 +79,7 @@ public class InventoryControl {
         return verMuch;
     }
 
+    // equation 3 for dropping inventory
     public static void changeQuantity(int amount, ArrayList<InventoryItem> inventoryItems, String type) {
 
         for (InventoryItem i : inventoryItems) {
@@ -86,6 +89,7 @@ public class InventoryControl {
         }
     }
 
+    // equation 1 for sorting inventory
     public static ArrayList<InventoryItem> sortInventory(ArrayList<InventoryItem> inventoryItems) {
         ArrayList<InventoryItem> items = (ArrayList<InventoryItem>) inventoryItems.clone();
         int n = items.size();
@@ -103,7 +107,8 @@ public class InventoryControl {
         return items;
     }
 
-private static void swapNumbers(int i, int j, ArrayList<InventoryItem> inventoryItems) {
+    // equation 2 for sorting inventory
+    private static void swapNumbers(int i, int j, ArrayList<InventoryItem> inventoryItems) {
   
         InventoryItem temp = inventoryItems.get(i);
         InventoryItem tempTwo = inventoryItems.get(j);
