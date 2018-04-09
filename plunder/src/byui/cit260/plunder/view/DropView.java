@@ -4,15 +4,22 @@
  * and open the template in the editor.
  */
 package byui.cit260.plunder.view;
+
 import byui.cit260.plunder.control.InventoryControl;
 import byui.cit260.plunder.model.InventoryItem;
+import exceptions.InventoryControlException;
+import static java.lang.Integer.parseInt;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import plunder.Plunder;
 
 /**
  *
  * @author abigailking
  */
 public class DropView extends View {
-    
+
     @Override
     public String[] getInputs() {
 
@@ -20,7 +27,7 @@ public class DropView extends View {
 //        NPC[] crew = getCrew();
 //        getCrewMenu(crew);
         InventoryView checkInventory = new InventoryView();
-        
+
         String[] inputs = new String[1];
         inputs[0] = this.getInput(
                 "        Here be yer inventory. \n"
@@ -28,7 +35,6 @@ public class DropView extends View {
                 + "================================ \n"
                 + "        Do ye want to:\n"
                 + "   A  - Drop all of an item\n"
-                + "   H  - Drop half of an item\n"
                 + "   P  - Drop part of an item\n"
                 + "   Q  - Quit \n");
         return inputs;
@@ -38,18 +44,14 @@ public class DropView extends View {
     public boolean doAction(String[] inputs) {
         // NPC[] crew = getCrew();
         // getCrewMenu(crew);
-        InventoryItem yerInventory = new InventoryItem();
-
+        ArrayList<InventoryItem> yerInventory = Plunder.getCurrentGame().getInventory();
         inputs[0] = inputs[0].toUpperCase().trim();
+
         switch (inputs[0]) {
             case "A":
                 allDrop(yerInventory);
                 break;
 
-            case "H":
-                halfDrop(yerInventory);
-                break;
-                
             case "P":
                 partDrop(yerInventory);
 
@@ -61,18 +63,31 @@ public class DropView extends View {
         return true;
     }
 
-    private void allDrop(InventoryItem yerInventory) {
-        System.out.println("Which item do ye want to get all rid of?");
+    private void allDrop(ArrayList<InventoryItem> inventory) {
+        InventoryView inv = new InventoryView();
+        inv.listInventory();
+        String input = getInput("Which item do ye want to get all rid of?");
+        InventoryControl.changeQuantity(0, inventory, input);
     }
 
-    private void halfDrop(InventoryItem yerInventory) {
-        System.out.println("Which item do ye want to get rid of half yer portion?");
+    private void partDrop(ArrayList<InventoryItem> inventory) {
+        InventoryView inv = new InventoryView();
+        inv.listInventory();
+        String input = getInput("What item do ye want to drop a certain part of?");
+        int num = parseInt(getInput("How much do ye want to drop?"));
+        InventoryItem item;
+        try {
+            item = inventory.get(InventoryControl.itemSearch(input, inventory));
+        } catch (InventoryControlException ex) {
+            Logger.getLogger(DropView.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Ye do not have an item such as that");
+            return;
+        }
+        //if they try and drop more than they have, just drop all
+        if(num > item.getQuantityInStock()){
+            num = item.getQuantityInStock();
+        }
+        InventoryControl.changeQuantity(item.getQuantityInStock() - num, inventory, input);
     }
 
-    private void partDrop(InventoryItem yerInventory) {
-        System.out.println("What item do ye want to drop a certain part of?");
-        
-//        System.out.println("How much of " + inventoryitem + " do ye want to drop?");
-    }
-    
 }

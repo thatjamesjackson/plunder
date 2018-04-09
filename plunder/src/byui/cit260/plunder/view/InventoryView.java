@@ -81,7 +81,7 @@ listInventory();
 
     
 
-    private void listInventory() {
+    public void listInventory() {
         Plunder p = new Plunder();
         ArrayList<InventoryItem> items = InventoryControl.sortInventory(p.getCurrentGame().getInventory());
 //        for (InventoryItem item : items) {

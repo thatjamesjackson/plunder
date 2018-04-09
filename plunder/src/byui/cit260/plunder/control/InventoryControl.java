@@ -64,19 +64,24 @@ public class InventoryControl {
 
         return verMuch;
     }
-    
+
     // equation 2 for dropping inventory
-    public static int itemSearch(String typeAbr, ArrayList<InventoryItem> inventoryItems) {
+    public static int itemSearch(String typeAbr, ArrayList<InventoryItem> inventory) throws InventoryControlException {
 
-        int verMuch = 0;
+        int location = 0;
 
-        for (InventoryItem i : inventoryItems) {
-            if (i.getInventoryType().equals(typeAbr)) {
-                verMuch = i.getQuantityInStock();
+        boolean inInventory = false;
+        for (int i = 0; i < inventory.size(); i++) {
+            if (inventory.get(i).equals(typeAbr)) {
+                location = i;
+                inInventory = true;
             }
         }
-
-        return verMuch;
+        if (inInventory == true) {
+            return location;
+        } else {
+            throw new InventoryControlException("Item not in inventory");
+        }
     }
 
     // equation 3 for dropping inventory
@@ -109,7 +114,7 @@ public class InventoryControl {
 
     // equation 2 for sorting inventory
     private static void swapNumbers(int i, int j, ArrayList<InventoryItem> inventoryItems) {
-  
+
         InventoryItem temp = inventoryItems.get(i);
         InventoryItem tempTwo = inventoryItems.get(j);
         inventoryItems.set(j, temp);
