@@ -18,7 +18,7 @@ public class TrapView3 extends View {
         System.out.println(
                     "           The long hallway forks two ways. \n"
                     + "  To the right ye see a faint mysterious green glow. \n"
-                    + "         To the left ye see a warm orange glow."
+                    + "         To the left ye see a warm orange glow.\n"
                     + "======================================================\n"
                     + "               C  -  Check yer crew \n"
                     + "               L  -  Go left\n"
@@ -41,7 +41,7 @@ public class TrapView3 extends View {
                 talkTo.display();
                 break;
 
-            case "G":
+            case "L":
                 System.out.println("Wise choice matey.\n\n");
                 TrapView4 moveOn = new TrapView4();
                 moveOn.display();

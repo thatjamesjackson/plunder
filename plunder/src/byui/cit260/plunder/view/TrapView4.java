@@ -18,7 +18,7 @@ public class TrapView4 extends View {
         System.out.println(
                       "  You see three curious doors each leads to a different fate.\n"
                     + "              One of the doors be made of pure gold, \n"
-                    + "            the other of silver, and the last of wood."
+                    + "            the other of silver, and the last of wood.\n"
                     + "===============================================================\n"
                     + "                   C  -  Check yer crew\n"
                     + "                   G  -  Open the gold door\n"
