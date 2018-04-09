@@ -60,7 +60,7 @@ public class GameMenuView extends View {
                 try {
                     MapControl.travel(actor, map, (int) actor.getCoordinates().getY() + 1, (int) actor.getCoordinates().getX());
                 } catch (MapControlException ex) {
-                    Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
+                    System.out.println(ex.getMessage());
                     return false;
                 }
             }
@@ -70,7 +70,7 @@ public class GameMenuView extends View {
                 try {
                     MapControl.travel(actor, map, (int) actor.getCoordinates().getY(), (int) actor.getCoordinates().getX() - 1);
                 } catch (MapControlException ex) {
-                    Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
+                    System.out.println(ex.getMessage());
                     return false;
                 }
             }
@@ -80,7 +80,7 @@ public class GameMenuView extends View {
                 try {
                    MapControl.travel(actor, map, (int) actor.getCoordinates().getY(), (int) actor.getCoordinates().getX() + 1);
                 } catch (MapControlException ex) {
-                    Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
+                    System.out.println(ex.getMessage());
                     return false;
                 }
             }
@@ -90,7 +90,7 @@ public class GameMenuView extends View {
                 try {
                     MapControl.travel(actor, map, (int) actor.getCoordinates().getY() - 1, (int) actor.getCoordinates().getX());
                 } catch (MapControlException ex) {
-                    Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
+                    System.out.println(ex.getMessage());
                     return false;
                 }
             }

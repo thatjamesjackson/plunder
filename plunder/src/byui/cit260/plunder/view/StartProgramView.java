@@ -53,7 +53,7 @@ public class StartProgramView extends View {
         try {
             player = GameControl.savePlayer(inputs[0]);
         } catch (GameControlException ex) {
-            Logger.getLogger(StartProgramView.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
 
         if (player == null) {

@@ -35,7 +35,7 @@ public class InventoryView extends View {
         try {
             weight = InventoryControl.calculateWeight(ship);
         } catch (InventoryControlException ex) {
-            Logger.getLogger(InventoryView.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
 listInventory();
         this.promptMessage
