@@ -23,7 +23,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 
-
 /**
  *
  * @author James
@@ -35,7 +34,7 @@ public class Plunder {
      */
     private static Game currentGame = null;
     private static Player player = null;
-    
+
     private static PrintWriter outFile = null;
     private static BufferedReader inFile = null;
 
@@ -54,7 +53,7 @@ public class Plunder {
     public static void setPlayer(Player player) {
         Plunder.player = player;
     }
-    
+
     public static PrintWriter getOutFile() {
         return outFile;
     }
@@ -70,38 +69,38 @@ public class Plunder {
     public static void setInFile(BufferedReader inFile) {
         Plunder.inFile = inFile;
     }
-    
+
     public static void main(String[] args) {
         Player playerOne = new Player();
         playerOne.setName("John");
         playerOne.setBestTime(9999.99);
-        
+
         Game gameOne = new Game();
         gameOne.setTotalTime(1);
         gameOne.setMoney(100);
         gameOne.setPlayer(playerOne);
         gameOne.setProgress(2);
-        
+
         Ship shipOne = new Ship();
-        shipOne.setName( "Salty Dog" );
+        shipOne.setName("Salty Dog");
         shipOne.setShipAttack(100);
         shipOne.setCarryWeight(500);
         shipOne.setArmor(50);
         shipOne.setShipRepair(10);
-       
+
         RegularScene sceneR = new RegularScene();
         sceneR.setDescription("This is regular");
-        
+
         CombatScene sceneC = new CombatScene();
         sceneC.setDescription("This is combat");
         sceneC.setOpponent(shipOne);
-        
+
         Decision resultOne = new Decision();
         resultOne.setResult("YOU LOSE");
-        
+
         Decision resultTwo = new Decision();
         resultTwo.setResult("You get hit by some darts");
-        
+
 //        DecisionScene sceneD = new DecisionScene();
 //        sceneD.setDescription("a ship blocks your path");
 //        sceneD.setConsequnce(resultOne);
@@ -112,71 +111,64 @@ public class Plunder {
 //        sceneT.setAsk("duck?");
 //        sceneT.setConsequnce(resultTwo);
 //        sceneT.setLostHealth(12);
-        
         Upgrade cannonOne = new Upgrade();
         cannonOne.setType("attack");
         cannonOne.setCost(200);
         cannonOne.setStatBoost(30);
-        
-        
+
         Map mapMain = new Map();
         mapMain.setDescription("Yonder be water");
         mapMain.setRowCount(2);
         mapMain.setColumnCount(2);
         mapMain.setCurrentRow(2);
         mapMain.setCurrentColumn(2);
-        
+
         Location locationOne = new Location();
         locationOne.setRow(2);
         locationOne.setColumn(2);
         locationOne.setVisited(true);
-        
+
         InventoryItem itemOne = new InventoryItem();
         itemOne.setInventoryType("weapon");
         itemOne.setQuantityInStock(1);
         itemOne.setValue(200);
         itemOne.setWeight(100);
-        
+
         ResourceScene sceneRe = new ResourceScene();
         sceneRe.setDescription("You find a weapon");
         sceneRe.setResource(itemOne);
-        
+
         NPC npcOne = new NPC();
         npcOne.setIsCrew(true);
         npcOne.setCrewAttack(3);
         npcOne.setCrewRepair(2);
-        
+
 //        StartProgramView startProgramView = new StartProgramView();
 //        startProgramView.display();
-        
         try {
-        
+
             //open character stream files for end user input and output
-            Plunder.inFile =
-                        new BufferedReader(new InputStreamReader(System.in));
+            Plunder.inFile
+                    = new BufferedReader(new InputStreamReader(System.in));
             Plunder.outFile = new PrintWriter(System.out, true);
-            
+
             //create StartProgramView and start the program
             StartProgramView startProgramView = new StartProgramView();
             startProgramView.display();
         } catch (Throwable e) {
-            
-            System.out.println("Exception: " + e.toString() +
-                               "\n Cause: " + e.getCause() +
-                               "\nMessage: " + e.getMessage());
-            
+
+            System.out.println("Exception: " + e.toString()
+                    + "\n Cause: " + e.getCause()
+                    + "\nMessage: " + e.getMessage());
+
             e.printStackTrace();
         } finally {
-           
-            if(outFile != null){
-                try {
-                    outFile.close(); //close the file
-                } catch (IOException ex2){
-                    System.out.println("Error closing file");
-                }
+
+            if (Plunder.outFile != null) {
+                Plunder.outFile.close(); //close the file
             }
         }
-        
+
 //        Question questionOne = new Question();
 //        questionOne.setAskNPC("Have you been here before?");
 //        questionOne.setNpcResponse("Yes, I know these seas well.");
@@ -198,7 +190,6 @@ public class Plunder {
 //        System.out.println(sceneS.toString());
 //        System.out.println(cannonOne.toString());
 //        System.out.println(sceneRe.toString());
-         
     }
-    
+
 }
