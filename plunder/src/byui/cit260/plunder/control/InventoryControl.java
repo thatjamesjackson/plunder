@@ -80,10 +80,10 @@ public class InventoryControl {
     }
 
     // equation 3 for dropping inventory
-    public static void changeQuantity(int amount, ArrayList<InventoryItem> inventoryItems, String type) {
+    public static void changeQuantity(int amount, ArrayList<InventoryItem> inventoryItems, String typeAbr) {
 
         for (InventoryItem i : inventoryItems) {
-            if (i.getInventoryType().equals(type)) {
+            if (i.getInventoryType().equals(typeAbr)) {
                 i.setQuantityInStock(amount);
             }
         }
