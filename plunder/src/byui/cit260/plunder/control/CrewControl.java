@@ -19,7 +19,7 @@ public class CrewControl {
 
     public static int getInputCrewNumber(NPC[] crew) throws CrewControlException {
         if (crew.length == 0) {
-            throw new CrewControlException("No crew");
+            throw new CrewControlException("You have no crew");
         }
         int input = 0;
         

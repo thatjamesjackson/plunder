@@ -63,7 +63,7 @@ public class ShopView extends View {
                 try {
                     sellShop(game);
                 } catch (InventoryControlException ex) {
-                    Logger.getLogger(ShopView.class.getName()).log(Level.SEVERE, null, ex);
+                    System.out.println(ex.getMessage());
                     System.out.println("Error Selling Items");
                 }
             }

@@ -114,8 +114,7 @@ public class CrewView extends View {
             crew[inputInt].setJob(job);
 
         } catch (CrewControlException ex) {
-            Logger.getLogger(CrewView.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("You have no crew");
+            System.out.println(ex.getMessage());
         }
     }
 

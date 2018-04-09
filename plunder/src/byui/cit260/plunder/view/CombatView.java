@@ -132,8 +132,7 @@ public class CombatView extends View {
             }
 
         } catch (CombatControlException ex) {
-            Logger.getLogger(CombatView.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Combat Error");
+            System.out.println(ex.getMessage());
         }
         if (enemy.getShipHealth() <= 0) {
             //enemy sank
