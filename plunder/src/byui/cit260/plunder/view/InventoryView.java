@@ -84,12 +84,23 @@ listInventory();
     private void listInventory() {
         Plunder p = new Plunder();
         ArrayList<InventoryItem> items = InventoryControl.sortInventory(p.getCurrentGame().getInventory());
-        for (InventoryItem item : items) {
-            System.out.println(item.getTypeAbr() + "  -  "
-                    + item.getInventoryType() + "  -  "
-                    + item.getQuantityInStock() + " units  -  worth "
-                    + item.getValue() + "  -  "
-                    + item.getWeight() + " tonnes");
+//        for (InventoryItem item : items) {
+//            System.out.println(item.getTypeAbr() + "  -  "
+//                    + item.getInventoryType() + "  -  "
+//                    + item.getQuantityInStock() + " units  -  worth "
+//                    + item.getValue() + "  -  "
+//                    + item.getWeight() + " tonnes");
+//        }
+        
+        String format = "%-3s %-20.20s %-10s %-10s %-10s % -15s %-15s %n";
+        System.out.format(format, "Abr", "Name", "Amount", "Weight", "Value", "Total Weight", "Total Value");
+        System.out.println("=====================================================");
+        format = " %-3s %-20.20s %-10d %-10d %-10d %-10d %-10d %n";
+        for (int i = 0; i < items.size(); i++) {
+            System.out.format(format, items.get(i).getTypeAbr(), items.get(i).getInventoryType(), 
+                    items.get(i).getQuantityInStock(), items.get(i).getWeight(), items.get(i).getValue(),
+                    items.get(i).getQuantityInStock() * items.get(i).getWeight(),
+                    items.get(i).getQuantityInStock() * items.get(i).getValue());
         }
     }
 

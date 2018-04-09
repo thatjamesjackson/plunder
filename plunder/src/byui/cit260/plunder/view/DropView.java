@@ -38,7 +38,7 @@ public class DropView extends View {
     public boolean doAction(String[] inputs) {
         // NPC[] crew = getCrew();
         // getCrewMenu(crew);
-        InventoryItem yerInventory = new InventoryItem
+        InventoryItem yerInventory = new InventoryItem();
 
         inputs[0] = inputs[0].toUpperCase().trim();
         switch (inputs[0]) {
