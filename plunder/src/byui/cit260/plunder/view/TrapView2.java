@@ -15,7 +15,7 @@ public class TrapView2 extends View {
     public String[] getInputs() { 
         
         // display menu
-        System.out.println(
+        this.console.println(
                     "     You see a siren mural scrawled across the walls of the hallway. \n"
                     + "                As ye step inside and hear a click. \n"
                     + " You've stepped on a pressure plate. Be careful with your next move. \n"
@@ -46,7 +46,7 @@ public class TrapView2 extends View {
                 break;
 
             case "K":
-                System.out.println(
+                this.console.println(
                         " Ouch! Ye got shot in the leg as a dart came shooting \n"
                       + "   from the Siren's eyes in the mural beside ye. \n"
                       + "  You and yer crew return to the front of the shrine.\n\n");
@@ -54,7 +54,7 @@ public class TrapView2 extends View {
                 moveBack.display();
 
             case "B":
-                System.out.println(
+                this.console.println(
                           "Ye made it safely. The Siren's stare follows ye \n"
                         + " down the hall, but ye make it safely forward.\n\n");
                 TrapView3 moveOn = new TrapView3();

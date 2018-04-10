@@ -15,7 +15,7 @@ public class TrapView3 extends View {
     public String[] getInputs() {
         
         // display menu
-        System.out.println(
+        this.console.println(
                     "           The long hallway forks two ways. \n"
                     + "  To the right ye see a faint mysterious green glow. \n"
                     + "         To the left ye see a warm orange glow.\n"
@@ -42,12 +42,12 @@ public class TrapView3 extends View {
                 break;
 
             case "L":
-                System.out.println("Wise choice matey.\n\n");
+                this.console.println("Wise choice matey.\n\n");
                 TrapView4 moveOn = new TrapView4();
                 moveOn.display();
 
             case "R":
-                System.out.println(
+                this.console.println(
                           "    What's this? It seems that this way looped \n"
                         + "you and yer crew back to the entrance of the shrine. \n"
                         + " This here place must be cursed. Carefully now.\n\n");

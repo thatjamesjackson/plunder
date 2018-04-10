@@ -15,7 +15,7 @@ public class TrapView4 extends View {
     @Override
     public String[] getInputs() {
         // display menu
-        System.out.println(
+        this.console.println(
                       "  You see three curious doors each leads to a different fate.\n"
                     + "              One of the doors be made of pure gold, \n"
                     + "            the other of silver, and the last of wood.\n"
@@ -44,14 +44,14 @@ public class TrapView4 extends View {
                 break;
 
             case "G":
-                System.out.println(
+                this.console.println(
                           "Behind the door you see your ship. You turn back around \n"
                         + "and you see the front of the Temple of the Siren. Rats.\n\n");
                 TrapView moveBack = new TrapView();
                 moveBack.display();
             
             case "S":
-                System.out.println(
+                this.console.println(
                           "       Wolfgang gets sick and starts to howls in pain.\n"
                         + "          Closing the door does nothing to help.\n"
                         + "You rush him back the ship, then return to the shrine entrance.\n\n");
