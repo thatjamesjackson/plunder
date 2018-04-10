@@ -22,7 +22,7 @@ public class StartProgramView extends View {
     @Override
     public String[] getInputs() {
         String[] inputs = new String[1];
-        System.out.println(
+        this.console.println(
                   "**********************************************\n"
                 + "**********************************************\n"
                 + "****                                      ****\n"
@@ -47,8 +47,8 @@ public class StartProgramView extends View {
 
     @Override
     public boolean doAction(String[] inputs) {
-//        System.out.println("DO ACTION CALLED");
-//        System.out.println("\tinputs = " + inputs[0]);
+//        this.console.println("DO ACTION CALLED");
+//        this.console.println("\tinputs = " + inputs[0]);
         Player player = null;
         try {
             player = GameControl.savePlayer(inputs[0]);
@@ -62,7 +62,7 @@ public class StartProgramView extends View {
             return false;
         }
 
-        System.out.println("=============================================================\n"
+        this.console.println("=============================================================\n"
                          + "      Welcome " + inputs[0] + ", to the seas of Paradise\n"
                          + "=============================================================\n");
 

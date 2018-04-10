@@ -21,19 +21,19 @@ public class BuyShopView extends View {
         Ship ship = game.getPlayer().getShip();
 
         // display menu
-        System.out.println("What do ya have the coin for?");
+        this.console.println("What do ya have the coin for?");
 
         String format = "%-3s %-30.30s %-10s %n";
-        System.out.format(format, "#", "Upgrade", "Cost");
-        System.out.println("=========================================");
+        this.console.format(format, "#", "Upgrade", "Cost");
+        this.console.println("=========================================");
         //costs are based off current stat
-        System.out.format(format, "1", "More Cannons", ship.getShipAttack() * 10);
-        System.out.format(format, "2", "Reinforce Hull", ship.getArmor()* 50);
-        System.out.format(format, "3", "Thicker Hull", ship.getShipMaxHealth()* 20);
-        System.out.format(format, "4", "Larger Cargo Hold", ship.getCarryWeight()* 5);
-        System.out.format(format, "5", "Improved Carpentry Shop", ship.getShipRepair()* 10);
-        System.out.println("\nYe have " + game.getMoney() + " gold");
-        System.out.println("\nQ - Quit to shop");
+       this.console.format(format, "1", "More Cannons", ship.getShipAttack() * 10);
+        this.console.format(format, "2", "Reinforce Hull", ship.getArmor()* 50);
+        this.console.format(format, "3", "Thicker Hull", ship.getShipMaxHealth()* 20);
+        this.console.format(format, "4", "Larger Cargo Hold", ship.getCarryWeight()* 5);
+        this.console.format(format, "5", "Improved Carpentry Shop", ship.getShipRepair()* 10);
+        this.console.println("\nYe have " + game.getMoney() + " gold");
+        this.console.println("\nQ - Quit to shop");
         //declare new
         String[] inputs = new String[1];
 
@@ -52,7 +52,7 @@ public class BuyShopView extends View {
             case "1":
                 cost = ship.getShipAttack()* 10;
                 if(cost > game.getMoney()){
-                    System.out.println("Ye lack enough gold");
+                    this.console.println("Ye lack enough gold");
                     
                 }
                 else{

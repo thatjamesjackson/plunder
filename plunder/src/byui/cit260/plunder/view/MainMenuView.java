@@ -24,7 +24,7 @@ public class MainMenuView extends View {
         String [] inputs = new String[1];
 
         //show menu options
-        System.out.println("  N - New game\n"
+        this.console.println("  N - New game\n"
                     + "  R - Restart Game\n"
                     + "  H - Help\n"
                     + "  Q - Quit Program");

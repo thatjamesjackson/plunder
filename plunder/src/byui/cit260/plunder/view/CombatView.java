@@ -99,9 +99,9 @@ public class CombatView extends View {
                 damage = CombatControl.attackDamage(pAttack, eArmor);
                 enemy.setShipHealth(enemy.getShipHealth() - damage);
                 //round output
-                System.out.println("\nYeh hit " + enemy.getName() + " for " + Math.round(damage * 100.0) / 100.0 + " damage!\n");
+                this.console.println("\nYeh hit " + enemy.getName() + " for " + Math.round(damage * 100.0) / 100.0 + " damage!\n");
             } else {
-                System.out.println("\nYeh Missed!\n");
+                this.console.println("\nYeh Missed!\n");
             }
             //enemy attack
 
@@ -109,9 +109,9 @@ public class CombatView extends View {
                 damage = CombatControl.attackDamage(eAttack, pArmor);
                 player.setShipHealth(player.getShipHealth() - damage);
                 //round output
-                System.out.println(enemy.getName() + " hit for " + Math.round(damage * 100.0) / 100.0 + " damage!\n");
+                this.console.println(enemy.getName() + " hit for " + Math.round(damage * 100.0) / 100.0 + " damage!\n");
             } else {
-                System.out.println(enemy.getName() + " Missed!\n");
+                this.console.println(enemy.getName() + " Missed!\n");
             }
 
             //repair out is only used to tell the player how much damage is repaired
@@ -128,7 +128,7 @@ public class CombatView extends View {
                 } else {
                     repairOut = player.getShipRepair();
                 }
-                System.out.println("Yer crew repaired " + Math.round(repairOut * 100) / 100 + " damage\n");
+                this.console.println("Yer crew repaired " + Math.round(repairOut * 100) / 100 + " damage\n");
             }
 
         } catch (CombatControlException ex) {
@@ -136,20 +136,20 @@ public class CombatView extends View {
         }
         if (enemy.getShipHealth() <= 0) {
             //enemy sank
-            System.out.println("Yer opponent sank!\n");
+            this.console.println("Yer opponent sank!\n");
             enemy.setShipHealth(enemy.getShipMaxHealth());
             return true;
         } else if (player.getShipHealth() <= 0 && flee) {
-            System.out.println("Yeh sank while turning tail!\n");
+            this.console.println("Yeh sank while turning tail!\n");
             enemy.setShipHealth(enemy.getShipMaxHealth());
             return true;
         } else if (player.getShipHealth() <= 0) {
             //you sank
-            System.out.println("Yeh sank!\n");
+            this.console.println("Yeh sank!\n");
             enemy.setShipHealth(enemy.getShipMaxHealth());
             return true;
         } else if (flee) {
-            System.out.println("Yeh ran you coward!\n");
+            this.console.println("Yeh ran you coward!\n");
             enemy.setShipHealth(enemy.getShipMaxHealth());
             return true;
         } else {
@@ -160,20 +160,20 @@ public class CombatView extends View {
     private void displayEnemyShip(Ship enemy) {
 
         if ("Fishing Boat".equals(enemy.getName())) {
-            System.out.println(enemy.getName() + "\n"
+            this.console.println(enemy.getName() + "\n"
                     + "     __/\\__\n"
                     + "  ~~~\\____/~~~~~~\n"
                     + "    ~  ~~~   ~.  ");
         }
         if ("Sail Boat".equals(enemy.getName())) {
-            System.out.println(enemy.getName() + "\n"
+            this.console.println(enemy.getName() + "\n"
                     + "    /|\\\n"
                     + "   /_|_\\\n"
                     + " ____|____\n"
                     + " \\_o_o_o_/\n");
         }
         if ("Clipper".equals(enemy.getName())) {
-            System.out.println(enemy.getName() + "\n"
+            this.console.println(enemy.getName() + "\n"
                     + "       _~\n"
                     + "    _~ )_)_~\n"
                     + "    )_))_))_)\n"
@@ -182,7 +182,7 @@ public class CombatView extends View {
                     + "  ~~~~~~~~~~~~~");
         }
         if ("Gunboat".equals(enemy.getName())) {
-            System.out.println(enemy.getName() + "\n"
+            this.console.println(enemy.getName() + "\n"
                     + "   ^  +~+~~\n"
                     + "    ^   )`.).\n"
                     + "      )``)``) .~~\n"
@@ -192,7 +192,7 @@ public class CombatView extends View {
                     + "  ~~~'---.____/~~~~~~~~~");
         }
         if ("Frigate".equals(enemy.getName())) {
-            System.out.println(enemy.getName() + "\n"
+            this.console.println(enemy.getName() + "\n"
                     + "    __|__ |___| |\\\n"
                     + "    |o__| |___| | \\\n"
                     + "    |___| |___| |o \\\n"
@@ -203,7 +203,7 @@ public class CombatView extends View {
         }
 
         if ("Galleon".equals(enemy.getName())) {
-            System.out.println(enemy.getName() + "\n"
+            this.console.println(enemy.getName() + "\n"
                     + "              |    |    |\n"
                     + "             )_)  )_)  )_)\n"
                     + "            )___))___))___)\\\n"
@@ -215,7 +215,7 @@ public class CombatView extends View {
                     + "         ^^^^      ^^^");
         }
         if ("Man of War".equals(enemy.getName())) {
-            System.out.println(enemy.getName() + "\n"
+            this.console.println(enemy.getName() + "\n"
                     + "                                   .        \n"
                     + "                                  /|~~                  \n"
                     + "                             ,   / |~~\n"
@@ -235,7 +235,7 @@ public class CombatView extends View {
         }
 
         if ("Sea Monster".equals(enemy.getName())) {
-            System.out.println(enemy.getName() + "\n"
+            this.console.println(enemy.getName() + "\n"
                     + "                       _..--+~/c-~--.\n"
                     + "                   _-=~      (  .   '\n"
                     + "                _-~     _.--=.\\ \\''''\n"
@@ -255,12 +255,12 @@ public class CombatView extends View {
     private void displayStats(Ship player, Ship enemy) {
 
         String format = "%-20.20s %-20.20s";
-        System.out.format(format, player.getName(), enemy.getName());
+        this.console.format(format, player.getName(), enemy.getName());
         //for whatever reason format adds a space on the first line, so we add a space on subsiqent lines to compensate
         //round output 
-        System.out.format(format, "\nHealth: " + Math.round(player.getShipHealth() * 100.0) / 100.0, " Health: " + Math.round(enemy.getShipHealth() * 100.0) / 100.0);
-        System.out.format(format, "\nAttack: " + player.getShipAttack(), " Attack: " + enemy.getShipAttack());
-        System.out.format(format, "\nArmor: " + player.getArmor(), " Armor: " + enemy.getArmor());
+        this.console.format(format, "\nHealth: " + Math.round(player.getShipHealth() * 100.0) / 100.0, " Health: " + Math.round(enemy.getShipHealth() * 100.0) / 100.0);
+        this.console.format(format, "\nAttack: " + player.getShipAttack(), " Attack: " + enemy.getShipAttack());
+        this.console.format(format, "\nArmor: " + player.getArmor(), " Armor: " + enemy.getArmor());
 
     }
 

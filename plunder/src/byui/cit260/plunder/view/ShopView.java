@@ -23,7 +23,7 @@ public class ShopView extends View {
     public String[] getInputs() {
 
         // display menu
-        System.out.println("                 _____\n" +
+        this.console.println("                 _____\n" +
 "              .-\" .-. \"-.\n" +
 "            _/ '=(0.0)=' \\_\n" +
 "          /`   .='|m|'=.   `\\\n" +
@@ -36,7 +36,7 @@ public class ShopView extends View {
 "   /  _.' /  __(`~~~~`)__\n" +
 "  //\"\\\\,-'-\"`   `~~~~\\\\~~`\"-.\n" +
 " //  /`\"              `      `\\");
-        System.out.println("========================================\n"
+        this.console.println("========================================\n"
                 + "          What do ya want?\n"
                 + "            B - Buy\n"
                 + "            S - Sell all yer loot\n"

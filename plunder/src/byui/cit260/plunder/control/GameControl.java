@@ -23,7 +23,7 @@ public class GameControl {
 
     public static Player savePlayer(String playerName) throws GameControlException {
         //make a new player with name based on input
-        System.out.println("Save Player Called");
+       
         //fail if there is no name
         if (playerName.equals(" ") || playerName.equals("")) {
             throw new GameControlException("Please enter a name for your player.");
