@@ -39,7 +39,7 @@ public class CalmOceanView extends View{
                 return true;
 
             default:
-                System.out.println("Invalid Menu Item");
+                ErrorView.display(this.getClass().getName(), "Invalid option");
 
         }
         return false; 

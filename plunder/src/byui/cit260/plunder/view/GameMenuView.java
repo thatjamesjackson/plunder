@@ -61,7 +61,7 @@ public class GameMenuView extends View {
                 try {
                     MapControl.travel(actor, map, (int) actor.getCoordinates().getY() + 1, (int) actor.getCoordinates().getX());
                 } catch (MapControlException|InventoryControlException ex) {
-                    System.out.println(ex.getMessage());
+                    ErrorView.display(this.getClass().getName(), ex.getMessage());
                     return false;
                 }
             }
@@ -71,7 +71,7 @@ public class GameMenuView extends View {
                 try {
                     MapControl.travel(actor, map, (int) actor.getCoordinates().getY(), (int) actor.getCoordinates().getX() - 1);
                 } catch (MapControlException|InventoryControlException ex) {
-                    System.out.println(ex.getMessage());
+                    ErrorView.display(this.getClass().getName(), ex.getMessage());
                     return false;
                 }
             }
@@ -81,7 +81,7 @@ public class GameMenuView extends View {
                 try {
                    MapControl.travel(actor, map, (int) actor.getCoordinates().getY(), (int) actor.getCoordinates().getX() + 1);
                 } catch (MapControlException|InventoryControlException ex) {
-                    System.out.println(ex.getMessage());
+                    ErrorView.display(this.getClass().getName(), ex.getMessage());
                     return false;
                 }
             }
@@ -91,7 +91,7 @@ public class GameMenuView extends View {
                 try {
                     MapControl.travel(actor, map, (int) actor.getCoordinates().getY() - 1, (int) actor.getCoordinates().getX());
                 } catch (MapControlException|InventoryControlException ex) {
-                    System.out.println(ex.getMessage());
+                    ErrorView.display(this.getClass().getName(), ex.getMessage());
                     return false;
                 }
             }
@@ -125,7 +125,7 @@ public class GameMenuView extends View {
                 return true;
 
             default:
-                System.out.println("Invalid Menu Item");
+                ErrorView.display(this.getClass().getName(), "Invalid Menu Item");
 
         }
         return false;

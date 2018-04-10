@@ -69,7 +69,7 @@ public class InventoryView extends View {
                 return true;
 
             default:
-                System.out.println("Invalid Menu Item");
+                ErrorView.display(this.getClass().getName(), "Invalid Menu Item");
 
         }
         return false;

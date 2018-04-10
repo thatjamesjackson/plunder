@@ -90,7 +90,7 @@ public class CombatView extends View {
                     flee = true;
                     break;
                 default:
-                    System.out.println("Invalid Menu Item");
+                    ErrorView.display(this.getClass().getName(), "Invalid option");
             }
 
             //player's attack

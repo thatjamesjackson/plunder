@@ -49,7 +49,7 @@ public class DropView extends View {
                 partDrop(yerInventory);
 
             default:
-                System.out.println("Invalid Menu Item");
+                ErrorView.display(this.getClass().getName(), "Invalid option");
 
         }
 
@@ -73,7 +73,7 @@ public class DropView extends View {
         try {
             num = parseInt(getInput("How much do ye want to drop?"));
         } catch (NumberFormatException ex) {
-            System.out.println("Ye must enter a number");
+            ErrorView.display(this.getClass().getName(), "Ye must enter a number");
             return;
         }
         InventoryItem item;
