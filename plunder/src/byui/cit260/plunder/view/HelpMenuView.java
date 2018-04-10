@@ -21,7 +21,7 @@ public class HelpMenuView extends View {
         String [] inputs = new String[1];
 
         //retrive inputs from user
-        System.out.println("  G - What is the goal of the game?\n" +
+        this.console.println("  G - What is the goal of the game?\n" +
                                  "  M - How to move\n" +
                                 "  C – How to engage in combat\n" +
                                 "  T – How to trade \n" +
@@ -38,7 +38,7 @@ public class HelpMenuView extends View {
     public boolean doAction(String[] inputs) {
         switch(inputs[0]){
          case "G":
-               System.out.println("============================================================\n"
+               this.console.println("============================================================\n"
                                 + "    Ye be a pirate Captain sailing the seas of Paradise. \n"
                                 + "  Others on yer ship tell tales of treasure on a near by \n"
                                 + "      island. Yer goal is to take the treasure first,  \n"
@@ -47,7 +47,7 @@ public class HelpMenuView extends View {
              break;
 
          case "M":
-               System.out.println("============================================================\n"
+               this.console.println("============================================================\n"
                                 + "    Yer ship is the method that ye can explore the map. \n"
                                 + "        Gander at yer map and choose a direction. \n"
                                 + "   Input the cardinal direction ye desire and off ye go.  \n"
@@ -55,7 +55,7 @@ public class HelpMenuView extends View {
              break;
 
          case "C":
-               System.out.println("=================================================================\n"
+               this.console.println("=================================================================\n"
                                 + "   If perchance ye find something in the waters of Paradise, \n"
                                 + "     ye can blast them out of the water with yer cannons on \n"
                                 + "           board, simply choose how ye will attack.\n"
@@ -67,7 +67,7 @@ public class HelpMenuView extends View {
              break;
 
          case "T":
-               System.out.println("============================================================\n"
+               this.console.println("============================================================\n"
                                 + "    On the islands there may be a trader for ye to see \n"
                                 + "        If ye have any booty, ye may sell it for gold. \n"
                                 + "Look around to see what the trader may have for ye. \n"
@@ -76,7 +76,7 @@ public class HelpMenuView extends View {
              break;
 
          case "S":
-               System.out.println("============================================================\n"
+               this.console.println("============================================================\n"
                                 + "  This be simple. Open the main menu and chose to save. \n"
                                 + "    Yer time, yer map, yer discoveries be waiting for ya, \n"
                                 + "   for the next time ye return to the waters of Paradise.  \n"
@@ -84,7 +84,7 @@ public class HelpMenuView extends View {
              break;
 
          case "R":
-               System.out.println("============================================================\n"
+               this.console.println("============================================================\n"
                                 + "  Treasure, adventure, and all yer discoveries from before \n"
                                 + "    await ye on the main menu. Load a previous game \n"
                                 + "   and contine on! Have fun! We are glad ye are back.  \n"
@@ -95,7 +95,7 @@ public class HelpMenuView extends View {
              return true;
              
          default:
-             System.out.println("Invalid Menu Item");
+             this.console.println("Invalid Menu Item");
                     
         }
      return false;

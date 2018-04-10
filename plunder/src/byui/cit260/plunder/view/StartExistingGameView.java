@@ -12,7 +12,7 @@ package byui.cit260.plunder.view;
 class StartExistingGameView {
 
     void display() {
-       System.out.println("displayStartExistingGameView called");
+       this.console.println("displayStartExistingGameView called");
     }
     
 }

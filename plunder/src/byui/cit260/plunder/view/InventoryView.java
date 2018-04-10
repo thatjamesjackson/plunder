@@ -69,7 +69,7 @@ public class InventoryView extends View {
                 return true;
 
             default:
-                System.out.println("Invalid Menu Item");
+                this.console.println("Invalid Menu Item");
 
         }
         return false;
@@ -80,7 +80,7 @@ public class InventoryView extends View {
         Plunder p = new Plunder();
         ArrayList<InventoryItem> items = InventoryControl.sortInventory(p.getCurrentGame().getInventory());
 //        for (InventoryItem item : items) {
-//            System.out.println(item.getTypeAbr() + "  -  "
+//            this.console.println(item.getTypeAbr() + "  -  "
 //                    + item.getInventoryType() + "  -  "
 //                    + item.getQuantityInStock() + " units  -  worth "
 //                    + item.getValue() + "  -  "
@@ -88,14 +88,14 @@ public class InventoryView extends View {
 //        }
 
         String format = "%-6s %-15.20s %-10s %-10s %-10s %-15s %-15s %n";
-        System.out.format(format, "Abr", "Name", "Amount", "Weight", "Value", "Total Weight", "Total Value");
+        this.console.format(format, "Abr", "Name", "Amount", "Weight", "Value", "Total Weight", "Total Value");
         for (int i = 0; i < 83; i++) {
-            System.out.print("=");
+            this.console.print("=");
         }
-        System.out.print("\n");
+        this.console.print("\n");
         format = "%-6s %-15.20s %-10d %-10.00f %-10.00f %-15.00f %-15.00f %n";
         for (int i = 0; i < items.size(); i++) {
-            System.out.format(format,
+            this.console.format(format,
                     items.get(i).getTypeAbr(),
                     items.get(i).getInventoryType(),
                     items.get(i).getQuantityInStock(),

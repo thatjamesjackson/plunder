@@ -72,7 +72,7 @@ public class CrewView extends View {
                     + "\n=================================================================\n");
         } catch (CrewControlException ex) {
             Logger.getLogger(CrewView.class.getName()).log(Level.SEVERE, null, ex);
-            ErrorView.diplay(this.getClass().getName(), "No crew error");
+            ErrorView.display(this.getClass().getName(), "No crew error");
         }
 
     }
@@ -115,7 +115,7 @@ public class CrewView extends View {
             crew[inputInt].setJob(job);
 
         } catch (CrewControlException ex) {
-            ErrorView.diplay(this.getClass().getName(), ex.getMessage());
+            ErrorView.display(this.getClass().getName(), ex.getMessage());
         }
     }
 

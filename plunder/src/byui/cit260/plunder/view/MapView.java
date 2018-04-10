@@ -14,40 +14,51 @@ import plunder.Plunder;
  *
  * @author James
  */
-public class MapView {
+public class MapView extends View{
 
     public MapView() {
     }
 
-    public void displayMapView() {
+    public void displayMapView () {
         Map map = Plunder.getCurrentGame().getMap();
         Location[][] locations = map.getLocation();
         //map is 5x5 in 3X1 squares
         //using x and y coordinates
         //21 total map length in chars
-        System.out.print("\n-------------------------------\n");
+        this.console.print("\n-------------------------------\n");
         //count backwards to go down for y coordinates
         for (int y = locations.length - 1; y >= 0; y--) {
-            System.out.print("|");
+            this.console.print("|");
             //count up to go across for x coordinates
             for (int x = 0; x < locations[y].length; x++) {
 //                if (locations[y][x].getVisited() == true) {
             Point here = Plunder.getCurrentGame().getPlayer().getActor().getCoordinates();
                   if ((int)here.getX() == x && (int)here.getY() == y){
-                      System.out.print("[" + locations[y][x].getScene().getSymbol() + "]");
+                      this.console.print("[" + locations[y][x].getScene().getSymbol() + "]");
                   }
                   else{
-                    System.out.print(" " + locations[y][x].getScene().getSymbol() + " ");
+                    this.console.print(" " + locations[y][x].getScene().getSymbol() + " ");
                   }
 //                }
 //            else{
-//                    System.out.print(" ??? ");
+//                    this.console.print(" ??? ");
 //                    }
-            System.out.print("|");
+            this.console.print("|");
         }
-        System.out.print("\n-------------------------------\n");
+        this.console.print("\n-------------------------------\n");
 
     }
 
 }
+
+    @Override
+    public String[] getInputs() {
+        String[] strings = {"Not", "Supported"};
+    return strings;    
+    }
+
+    @Override
+    public boolean doAction(String[] inputs) {
+        return true;
+    }
 }

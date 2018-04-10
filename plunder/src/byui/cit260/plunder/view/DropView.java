@@ -49,7 +49,7 @@ public class DropView extends View {
                 partDrop(yerInventory);
 
             default:
-                System.out.println("Invalid Menu Item");
+                this.console.println("Invalid Menu Item");
 
         }
 

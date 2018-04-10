@@ -16,7 +16,7 @@ public class CalmOceanView extends View{
     public String[] getInputs() {
         
         // display menu
-        System.out.println("  H - Attempt to harvest here"
+        this.console.println("  H - Attempt to harvest here"
                 + "  E - Keep exploring");
         //declare new
         String [] inputs = new String[1];
@@ -39,13 +39,13 @@ public class CalmOceanView extends View{
                 return true;
 
             default:
-                System.out.println("Invalid Menu Item");
+                this.console.println("Invalid Menu Item");
 
         }
         return false; 
     }
 
     private void harvest() {
-        System.out.println("You harvested");
+        this.console.println("You harvested");
     }
 }

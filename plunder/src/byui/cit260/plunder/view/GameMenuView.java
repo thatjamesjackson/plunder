@@ -33,7 +33,7 @@ public class GameMenuView extends View {
         MapView mapView = new MapView();
         mapView.displayMapView();
         // show menu options
-        System.out.println("\n"
+        this.console.println("\n"
                 + "  N - Travel North\n"
                 + "  W - Travel West\n"
                 + "  E - Travel East\n"
@@ -125,27 +125,27 @@ public class GameMenuView extends View {
                 return true;
 
             default:
-                System.out.println("Invalid Menu Item");
+                this.console.println("Invalid Menu Item");
 
         }
         return false;
     }
 
     private void checkInventory() {
-        System.out.println("Let's see what we have here on the boat");
+        this.console.println("Let's see what we have here on the boat");
 
         InventoryView checkInventory = new InventoryView();
         checkInventory.display();
     }
 
     private void checkCrew() {
-        System.out.println("\nAttention! Sound off");
+        this.console.println("\nAttention! Sound off");
         CrewView crewView = new CrewView();
         crewView.display();
     }
 
     private void checkShip() {
-        System.out.println("Our ship looks yar");
+        this.console.println("Our ship looks yar");
     }
 
     private void doExplore(Actor actor) {

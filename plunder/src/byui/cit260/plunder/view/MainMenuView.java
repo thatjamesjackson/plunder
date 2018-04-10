@@ -24,7 +24,7 @@ public class MainMenuView extends View {
         String [] inputs = new String[1];
 
         //show menu options
-        System.out.println("  N - New game\n"
+        this.console.println("  N - New game\n"
                     + "  R - Restart Game\n"
                     + "  H - Help\n"
                     + "  Q - Quit Program");
@@ -76,7 +76,7 @@ public class MainMenuView extends View {
                 //this is the only way to exit this loop
                 return true;
             default:
-                System.out.println("Invalid Menu Item");
+                this.console.println("Invalid Menu Item");
 
         }
      return false;
