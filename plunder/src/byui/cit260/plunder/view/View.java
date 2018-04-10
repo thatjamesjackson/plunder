@@ -5,7 +5,10 @@
  */
 package byui.cit260.plunder.view;
 
+import java.io.BufferedReader;
+import java.io.PrintWriter;
 import java.util.Scanner;
+import plunder.Plunder;
 
 /**
  *
@@ -13,6 +16,10 @@ import java.util.Scanner;
  */
 public abstract class View implements ViewInterface {
 
+    
+    protected final BufferedReader keyboard = Plunder.getInFile();
+    protected final PrintWriter console = Plunder.getOutFile();
+    
     public View() {
     }
 
@@ -36,10 +43,28 @@ public abstract class View implements ViewInterface {
     public String getInput(String promptMessage) {
         System.out.println(promptMessage);
 
-        //get inputs from user
-        String input;
-        Scanner scan = new Scanner(System.in);
-        input = scan.nextLine();
-        return input;
+        boolean valid = false;
+        String selection = null;
+        
+        try{
+            //while a valid name has not been retrieved
+            while(!valid) {
+                
+                // get the value entered from the keyboard
+                selection = this.keyboard.readLine();
+                selection = selection.trim();
+                
+                if (selection.length() < 1){ // blank value entered
+                    System.out.println("You must enter a value.");
+                    continue;
+                }
+                break;
+            }
+        } catch (Exception e) {
+            System.out.println("Error reading input: " + e.getMessage());
+        }
+        
+        return selection;
     }
+
 }
