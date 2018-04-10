@@ -9,10 +9,17 @@ package byui.cit260.plunder.view;
  *
  * @author James
  */
-class StartExistingGameView {
+class StartExistingGameView extends View{
 
-    void display() {
-       this.console.println("displayStartExistingGameView called");
+
+    @Override
+    public String[] getInputs() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean doAction(String[] inputs) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

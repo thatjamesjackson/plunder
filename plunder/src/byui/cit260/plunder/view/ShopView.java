@@ -63,8 +63,8 @@ public class ShopView extends View {
                 try {
                     sellShop(game);
                 } catch (InventoryControlException ex) {
-                    System.out.println(ex.getMessage());
-                    System.out.println("Error Selling Items");
+                    ErrorView.display(this.getClass().getName(), ex.getMessage());
+                    ErrorView.display(this.getClass().getName(), "Error Selling Items");
                 }
             }
             break;
@@ -73,7 +73,7 @@ public class ShopView extends View {
                 return true;
 
             default:
-                this.console.println("Invalid Menu Item");
+                ErrorView.display(this.getClass().getName(), "Invalid Menu Item");
 
         }
         return false;

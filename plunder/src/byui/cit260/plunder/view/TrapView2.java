@@ -61,7 +61,7 @@ public class TrapView2 extends View {
                 moveOn.display();
 
             default:
-                System.out.println("Invalid Menu Item\n");
+                ErrorView.display(this.getClass().getName(), "Invalid Menu Item");
 
         }
         return true;

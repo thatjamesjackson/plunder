@@ -63,7 +63,7 @@ public class BuyShopView extends View {
             case "2":
                 cost = ship.getArmor()* 50;
                 if(cost > game.getMoney()){
-                    this.console.println("Ye lack enough gold");
+                    ErrorView.display(this.getClass().getName(), "Ye lack enough gold.");
                     
                 }
                 else{
@@ -74,7 +74,7 @@ public class BuyShopView extends View {
             case "3":
                 cost = ship.getShipMaxHealth()* 20;
                 if(cost > game.getMoney()){
-                    this.console.println("Ye lack enough gold");
+                    ErrorView.display(this.getClass().getName(), "Ye lack enough gold.");
                     
                 }
                 else{
@@ -85,7 +85,7 @@ public class BuyShopView extends View {
             case "4":
                 cost = ship.getCarryWeight()* 5;
                 if(cost > game.getMoney()){
-                    this.console.println("Ye lack enough gold");
+                    ErrorView.display(this.getClass().getName(), "Ye lack enough gold.");
                     
                 }
                 else{
@@ -96,7 +96,7 @@ public class BuyShopView extends View {
             case "5":
                 cost = ship.getShipRepair()* 10;
                 if(cost > game.getMoney()){
-                    this.console.println("Ye lack enough gold");
+                    ErrorView.display(this.getClass().getName(), "Ye lack enough gold.");
                     
                 }
                 else{
@@ -107,7 +107,7 @@ public class BuyShopView extends View {
             case "Q":
                 return true;
             default:
-                this.console.println("Invalid Option");
+                ErrorView.display(this.getClass().getName(), "Invalid option");
                 
 
         }

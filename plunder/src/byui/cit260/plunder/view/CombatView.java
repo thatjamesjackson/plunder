@@ -90,7 +90,7 @@ public class CombatView extends View {
                     flee = true;
                     break;
                 default:
-                    this.console.println("Invalid Menu Item");
+                    ErrorView.display(this.getClass().getName(), "Invalid option");
             }
 
             //player's attack
@@ -132,7 +132,7 @@ public class CombatView extends View {
             }
 
         } catch (CombatControlException ex) {
-            System.out.println(ex.getMessage());
+            ErrorView.display(this.getClass().getName(), ex.getMessage());
         }
         if (enemy.getShipHealth() <= 0) {
             //enemy sank

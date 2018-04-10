@@ -49,7 +49,7 @@ public class DropView extends View {
                 partDrop(yerInventory);
 
             default:
-                this.console.println("Invalid Menu Item");
+                ErrorView.display(this.getClass().getName(), "Invalid option");
 
         }
 
@@ -73,14 +73,14 @@ public class DropView extends View {
         try {
             num = parseInt(getInput("How much do ye want to drop?"));
         } catch (NumberFormatException ex) {
-            System.out.println("Ye must enter a number");
+            ErrorView.display(this.getClass().getName(), "Ye must enter a number");
             return;
         }
         InventoryItem item;
         try {
             item = inventory.get(InventoryControl.itemSearch(input, inventory));
         } catch (InventoryControlException ex) {
-            System.out.println(ex.getMessage());
+            ErrorView.display(this.getClass().getName(), ex.getMessage());
             return;
         }
         //if they try and drop more than they have, just drop all

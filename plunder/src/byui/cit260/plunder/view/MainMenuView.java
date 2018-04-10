@@ -76,7 +76,7 @@ public class MainMenuView extends View {
                 //this is the only way to exit this loop
                 return true;
             default:
-                this.console.println("Invalid Menu Item");
+                ErrorView.display(this.getClass().getName(), "Invalid Menu Item");
 
         }
      return false;
@@ -88,11 +88,11 @@ public class MainMenuView extends View {
                 //Create a new Game
                 GameControl.createNewGame(Plunder.getPlayer());
             } catch (GameControlException ex) {
-                Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
+                ErrorView.display(this.getClass().getName(), ex.getMessage());
             }
         } catch (MapControlException ex) {
             Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Error making game");
+            ErrorView.display(this.getClass().getName(), "Error making game");
         }
     GameMenuView gameMenuView =  new GameMenuView();
     

@@ -46,7 +46,7 @@ public class OceanResourceView extends View {
                 return true;
 
             default:
-                this.console.println("Invalid Menu Item");
+                ErrorView.display(this.getClass().getName(), "Invalid Menu Item");
 
         }
         return false;
