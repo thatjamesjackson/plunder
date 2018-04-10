@@ -7,9 +7,11 @@ package byui.cit260.plunder.view;
 
 import byui.cit260.plunder.control.CrewControl;
 import static byui.cit260.plunder.control.CrewControl.getCrew;
-import static byui.cit260.plunder.control.CrewControl.getInputCrewNumber;
 import byui.cit260.plunder.model.NPC;
 import exceptions.CrewControlException;
+import java.io.IOException;
+import static java.lang.Integer.parseInt;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -51,7 +53,7 @@ public class CrewView extends View {
                 return true;
 
             default:
-                System.out.println("Invalid Menu Item");
+                this.console.println("Invalid Menu Item");
                         
 
         }
@@ -59,18 +61,18 @@ public class CrewView extends View {
     }
 
     private void crewTalk(NPC[] crew) {
-        System.out.println("Which # Crew Member?\n");
+        this.console.println("Which # Crew Member?\n");
 
         int inputInt;
         try {
             inputInt = (getInputCrewNumber(crew) - 1);
-            System.out.println("=================================================================\n"
+            this.console.println("=================================================================\n"
                     + crew[inputInt].getName() + ":\n"
                     + crew[inputInt].getTalk()
                     + "\n=================================================================\n");
         } catch (CrewControlException ex) {
             Logger.getLogger(CrewView.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("No crew error");
+            ErrorView.diplay(this.getClass().getName(), "No crew error");
         }
 
     }
@@ -79,14 +81,13 @@ public class CrewView extends View {
 
         try {
             // get the crew member
-            System.out.println("Which # Crew Member?\n");
 
-            int inputInt = (CrewControl.getInputCrewNumber(crew) - 1);
+            int inputInt = (getInputCrewNumber(crew) - 1);
 
             //initialize job
             String job = "Placeholder";
             //Gunner- Damage Deckhand- Repair 
-            System.out.println("Which Job?\n" + "G - Gunner\n" + "D - Deackhand\n" + "B- Boatswain\n");
+            this.console.println("Which Job?\n" + "G - Gunner\n" + "D - Deackhand\n" + "B- Boatswain\n");
 
             boolean valid;
             do {
@@ -106,7 +107,7 @@ public class CrewView extends View {
 
                     default:
                         valid = false;
-                        System.out.println("Please enter a valid value");
+                        this.console.println("Please enter a valid value");
                 }
 
             } while (!valid);
@@ -114,20 +115,42 @@ public class CrewView extends View {
             crew[inputInt].setJob(job);
 
         } catch (CrewControlException ex) {
-            System.out.println(ex.getMessage());
+            ErrorView.diplay(this.getClass().getName(), ex.getMessage());
         }
     }
 
     private void getCrewMenu(NPC[] crew) {
         String format = "%-3s %-20.20s %-10s %-10s %-10s %n";
-        System.out.format(format, "#", "Name", "Job", "Attack", "Repair");
+        this.console.format(format, "#", "Name", "Job", "Attack", "Repair");
         
-        System.out.println("=====================================================");
+       this.console.println("=====================================================");
         
         format = " %-3d %-20.20s %-10s %-10d %-10d %n";
         for (int i = 0; i < crew.length; i++) {
-            System.out.format(format, (i + 1), crew[i].getName(), crew[i].getJob(), crew[i].getCrewAttack(), crew[i].getCrewRepair());
+            this.console.format(format, (i + 1), crew[i].getName(), crew[i].getJob(), crew[i].getCrewAttack(), crew[i].getCrewRepair());
         }
+    }
+    private int getInputCrewNumber(NPC[] crew) throws CrewControlException {
+        if (crew.length == 0) {
+            throw new CrewControlException("You have no crew");
+        }
+        int input = 0;
+        
+        do {
+            String selection;
+            try {
+                 selection = getInput("Which # Crew Member?\n");
+                 parseInt(selection);
+            } catch (NumberFormatException ex) {
+                Logger.getLogger(CrewView.class.getName()).log(Level.SEVERE, null, ex);
+                this.console.println("Ye must enter a number");
+            }
+            
+            //loop while there is no int, or if the int is not on the crew list
+
+        } while (input < 1 || input > crew.length);
+
+        return input;
     }
 
 }

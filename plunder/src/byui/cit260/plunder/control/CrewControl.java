@@ -17,26 +17,7 @@ import plunder.Plunder;
  */
 public class CrewControl {
 
-    public static int getInputCrewNumber(NPC[] crew) throws CrewControlException {
-        if (crew.length == 0) {
-            throw new CrewControlException("You have no crew");
-        }
-        int input = 0;
-        
-        do {
-            Scanner scanNum = new Scanner(System.in);
-            
-            //loop while there is no int, or if the int is not on the crew list
-
-            if (scanNum.hasNextInt()) {
-                input = scanNum.nextInt();
-            } else {
-                System.out.println("Please enter the number of a crew member");
-            }
-        } while (input < 1 || input > crew.length);
-
-        return input;
-    }
+    
 
     public static NPC[] getCrew() {
         // import the list of NPCs
