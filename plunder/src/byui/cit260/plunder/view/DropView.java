@@ -80,7 +80,7 @@ public class DropView extends View {
         try {
             item = inventory.get(InventoryControl.itemSearch(input, inventory));
         } catch (InventoryControlException ex) {
-            System.out.println(ex.getMessage());
+            ErrorView.display(this.getClass().getName(), ex.getMessage());
             return;
         }
         //if they try and drop more than they have, just drop all
