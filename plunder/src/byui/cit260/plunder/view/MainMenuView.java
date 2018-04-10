@@ -88,7 +88,7 @@ public class MainMenuView extends View {
                 //Create a new Game
                 GameControl.createNewGame(Plunder.getPlayer());
             } catch (GameControlException ex) {
-                Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
+                ErrorView.display(this.getClass().getName(), ex.getMessage());
             }
         } catch (MapControlException ex) {
             Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
