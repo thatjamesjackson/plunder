@@ -23,7 +23,7 @@ public class ResourceView extends View {
     public String[] getInputs() {
 
         // display menu
-        System.out.println("  H - Attempt to harvest here\n"
+        this.console.println("  H - Attempt to harvest here\n"
                 + "  Q - Return to previous menu\n");
         //declare new
         String[] inputs = new String[1];

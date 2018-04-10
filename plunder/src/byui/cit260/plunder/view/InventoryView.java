@@ -57,7 +57,9 @@ public class InventoryView extends View {
 
     @Override
     public boolean doAction(String[] inputs) {
-
+        
+        //logFile();
+        
         switch (inputs[0].toUpperCase()) {
             case "D":
                 listInventory();
@@ -105,5 +107,5 @@ public class InventoryView extends View {
                     items.get(i).getQuantityInStock() * items.get(i).getValue());
         }
     }
-
+   
 }

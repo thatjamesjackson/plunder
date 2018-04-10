@@ -199,18 +199,18 @@ public static void travel(Actor actor, Map map, int y, int x) throws MapControlE
         
         //oceanResource.setResource(items.get(InventoryItemType.fish.ordinal()));
 
-        DecisionScene roughOcean = new DecisionScene(
+        ResourceScene roughOcean = new ResourceScene(
                 "Careful now, we be in some rough waters.",
                 "###",
                 SceneType.oRough.ordinal(),
-                new RoughOceanView());
+                items.get(InventoryItemType.fish.ordinal()));
         scenes[SceneType.oRough.ordinal()] = roughOcean;
         
-        DecisionScene calmOcean = new DecisionScene(
+        ResourceScene calmOcean = new ResourceScene(
                 "Here there be no comotion on the ocean. Calm waters be upon us.",
                 "~~~",
                 SceneType.oCalm.ordinal(),
-                new CalmOceanView());
+                items.get(InventoryItemType.fish.ordinal()));
         scenes[SceneType.oCalm.ordinal()] = calmOcean;
 
         return scenes;

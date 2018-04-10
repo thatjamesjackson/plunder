@@ -132,4 +132,7 @@ public class GameControl {
         return items;
     }
 
+    public static void saveGame(Game game, String filePath){
+        //print "saveGame() in GameControl class"
+    }
 }
