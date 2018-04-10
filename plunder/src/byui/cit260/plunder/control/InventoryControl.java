@@ -72,7 +72,7 @@ public class InventoryControl {
 
         boolean inInventory = false;
         for (int i = 0; i < inventory.size(); i++) {
-            if (inventory.get(i).equals(typeAbr)) {
+            if (inventory.get(i).getTypeAbr().equals(typeAbr)) {
                 location = i;
                 inInventory = true;
             }
@@ -88,7 +88,7 @@ public class InventoryControl {
     public static void changeQuantity(int amount, ArrayList<InventoryItem> inventoryItems, String typeAbr) {
 
         for (InventoryItem i : inventoryItems) {
-            if (i.getInventoryType().equals(typeAbr)) {
+            if (i.getTypeAbr().equals(typeAbr)) {
                 i.setQuantityInStock(amount);
             }
         }

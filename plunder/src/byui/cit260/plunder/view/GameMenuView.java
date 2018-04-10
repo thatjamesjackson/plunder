@@ -12,6 +12,7 @@ import byui.cit260.plunder.model.SceneType;
 import java.awt.Point;
 import plunder.Plunder;
 import exceptions.MapControlException;
+import exceptions.InventoryControlException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -59,7 +60,7 @@ public class GameMenuView extends View {
             case "N": {
                 try {
                     MapControl.travel(actor, map, (int) actor.getCoordinates().getY() + 1, (int) actor.getCoordinates().getX());
-                } catch (MapControlException ex) {
+                } catch (MapControlException|InventoryControlException ex) {
                     System.out.println(ex.getMessage());
                     return false;
                 }
@@ -69,7 +70,7 @@ public class GameMenuView extends View {
             case "W": {
                 try {
                     MapControl.travel(actor, map, (int) actor.getCoordinates().getY(), (int) actor.getCoordinates().getX() - 1);
-                } catch (MapControlException ex) {
+                } catch (MapControlException|InventoryControlException ex) {
                     System.out.println(ex.getMessage());
                     return false;
                 }
@@ -79,7 +80,7 @@ public class GameMenuView extends View {
             case "E": {
                 try {
                    MapControl.travel(actor, map, (int) actor.getCoordinates().getY(), (int) actor.getCoordinates().getX() + 1);
-                } catch (MapControlException ex) {
+                } catch (MapControlException|InventoryControlException ex) {
                     System.out.println(ex.getMessage());
                     return false;
                 }
@@ -89,7 +90,7 @@ public class GameMenuView extends View {
             case "S": {
                 try {
                     MapControl.travel(actor, map, (int) actor.getCoordinates().getY() - 1, (int) actor.getCoordinates().getX());
-                } catch (MapControlException ex) {
+                } catch (MapControlException|InventoryControlException ex) {
                     System.out.println(ex.getMessage());
                     return false;
                 }

@@ -71,7 +71,7 @@ public class GameControl {
         //give player a ship and in inventory
         Ship ship = new Ship();
         ship.setArmor(1);
-        ship.setCarryWeight(200);
+        ship.setCarryWeight(300);
         ship.setShipMaxHealth(100);
         ship.setShipHealth(100);
         ship.setShipRepair(5);
