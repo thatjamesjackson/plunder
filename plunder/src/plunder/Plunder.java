@@ -22,6 +22,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -34,6 +36,7 @@ public class Plunder {
      */
     private static Game currentGame = null;
     private static Player player = null;
+    private static PrintWriter logFile = null;
 
     private static PrintWriter outFile = null;
     private static BufferedReader inFile = null;
@@ -68,6 +71,14 @@ public class Plunder {
 
     public static void setInFile(BufferedReader inFile) {
         Plunder.inFile = inFile;
+    }
+
+    public static PrintWriter getLogFile() {
+        return logFile;
+    }
+
+    public static void setLogFile(PrintWriter logFile) {
+        Plunder.logFile = logFile;
     }
 
     public static void main(String[] args) {
@@ -151,6 +162,7 @@ public class Plunder {
             Plunder.inFile
                     = new BufferedReader(new InputStreamReader(System.in));
             Plunder.outFile = new PrintWriter(System.out, true);
+            logFile = new PrintWriter("logFile.txt");
 
             //create StartProgramView and start the program
             StartProgramView startProgramView = new StartProgramView();
@@ -163,9 +175,18 @@ public class Plunder {
 
             e.printStackTrace();
         } finally {
-
-            if (Plunder.outFile != null) {
-                Plunder.outFile.close(); //close the file
+            try {
+                if (Plunder.inFile != null) {
+                    Plunder.inFile.close(); //close the file
+                }
+                if (Plunder.outFile != null) {
+                    Plunder.outFile.close(); //close the file
+                }
+                if (logFile != null){
+                    logFile.close();
+                }
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
             }
         }
 
