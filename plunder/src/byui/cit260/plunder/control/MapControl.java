@@ -20,8 +20,6 @@ import byui.cit260.plunder.model.ShipType;
 import byui.cit260.plunder.view.CalmOceanView;
 import byui.cit260.plunder.view.CombatView;
 import byui.cit260.plunder.view.GameMenuView;
-import byui.cit260.plunder.view.OceanResourceView;
-import byui.cit260.plunder.view.ResourceView;
 import byui.cit260.plunder.view.RoughOceanView;
 import byui.cit260.plunder.view.ShopView;
 import byui.cit260.plunder.view.WinGameView;
@@ -44,9 +42,10 @@ public static void travel(Actor actor, Map map, int y, int x) throws MapControlE
         Ship ship = Plunder.getCurrentGame().getPlayer().getShip();
         if (InventoryControl.calculateWeight(ship) > Plunder.getCurrentGame().getPlayer().getShip().getCarryWeight()){
             throw new InventoryControlException("The ship be too heavy, toss some cargo overboard");
-          
-        }
-        actor.setCoordinates(new Point(x, y));
+                  }
+                actor.setCoordinates(new Point(x, y));
+                Location loc = Plunder.getCurrentGame().getMap().getLocation()[y][x];
+                loc.setVisited(true);
 
     }
     public static Map createMap(int numRows, int numColumns, ArrayList items) throws MapControlException {
@@ -97,6 +96,8 @@ public static void travel(Actor actor, Map map, int y, int x) throws MapControlE
                 locations[i][f] = currentLocation;
             }
         }
+        //start location is visited
+        locations[0][0].setVisited(true);
 
         return locations;
     }

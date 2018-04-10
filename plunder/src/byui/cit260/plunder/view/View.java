@@ -32,7 +32,7 @@ public abstract class View implements ViewInterface {
             String[] inputs = getInputs();
             inputs[0] = inputs[0].toUpperCase().trim();
             if (1 > inputs[0].length()) {
-                System.out.println("Please enter a menu item");
+                this.console.println("Please enter a menu item");
                 continue;
             }
             endView = doAction(inputs);
@@ -41,7 +41,7 @@ public abstract class View implements ViewInterface {
 
     @Override
     public String getInput(String promptMessage) {
-        System.out.println(promptMessage);
+        this.console.println(promptMessage);
 
         boolean valid = false;
         String selection = null;
@@ -55,13 +55,13 @@ public abstract class View implements ViewInterface {
                 selection = selection.trim();
                 
                 if (selection.length() < 1){ // blank value entered
-                    System.out.println("You must enter a value.");
+                    this.console.println("You must enter a value.");
                     continue;
                 }
                 break;
             }
         } catch (Exception e) {
-            System.out.println("Error reading input: " + e.getMessage());
+             ErrorView.display(this.getClass().getName(), "Error reading input: " + e.getMessage());
         }
         
         return selection;

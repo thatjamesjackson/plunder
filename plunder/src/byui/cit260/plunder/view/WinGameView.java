@@ -18,7 +18,7 @@ public class WinGameView extends View {
     @Override
     public String[] getInputs() {
         // display menu
-        System.out.println(" Are ya gonna take the treasure for yerself?");
+        this.console.println(" Are ya gonna take the treasure for yerself?");
         //declare new
         String [] inputs = new String[1];
         

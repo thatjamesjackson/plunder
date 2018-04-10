@@ -31,7 +31,7 @@ public class MapView extends View{
             this.console.print("|");
             //count up to go across for x coordinates
             for (int x = 0; x < locations[y].length; x++) {
-//                if (locations[y][x].getVisited() == true) {
+                if (locations[y][x].isVisited() == true) {
             Point here = Plunder.getCurrentGame().getPlayer().getActor().getCoordinates();
                   if ((int)here.getX() == x && (int)here.getY() == y){
                       this.console.print("[" + locations[y][x].getScene().getSymbol() + "]");
@@ -39,10 +39,10 @@ public class MapView extends View{
                   else{
                     this.console.print(" " + locations[y][x].getScene().getSymbol() + " ");
                   }
-//                }
-//            else{
-//                    this.console.print(" ??? ");
-//                    }
+                }
+           else{
+                    this.console.print(" ??? ");
+                   }
             this.console.print("|");
         }
         this.console.print("\n-------------------------------\n");

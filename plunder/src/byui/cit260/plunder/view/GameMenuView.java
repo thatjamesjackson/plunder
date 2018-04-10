@@ -9,12 +9,9 @@ import byui.cit260.plunder.control.MapControl;
 import byui.cit260.plunder.model.Actor;
 import byui.cit260.plunder.model.Map;
 import byui.cit260.plunder.model.SceneType;
-import java.awt.Point;
 import plunder.Plunder;
 import exceptions.MapControlException;
 import exceptions.InventoryControlException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -193,8 +190,8 @@ public class GameMenuView extends View {
         }
         
         if (type == SceneType.oResource.ordinal()) {
-            OceanResourceView oResource = new OceanResourceView();
-            oResource.display();
+            ResourceView resource = new ResourceView();
+            resource.display();
         }
         
 

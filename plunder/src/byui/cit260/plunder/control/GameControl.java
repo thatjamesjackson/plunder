@@ -99,7 +99,7 @@ public class GameControl {
         fish.setTypeAbr("F");
         fish.setQuantityInStock(50);
         fish.setValue(20);
-        fish.setWeight(5);
+        fish.setWeight(1);
 
         InventoryItem cotton = new InventoryItem();
         cotton.setInventoryType("Cotton");
