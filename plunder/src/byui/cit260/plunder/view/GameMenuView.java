@@ -204,7 +204,8 @@ public class GameMenuView extends View {
     }
 
     private void saveGame() {
-
+        SaveGameView saving = new SaveGameView();
+        saving.display();
     }
 
     
