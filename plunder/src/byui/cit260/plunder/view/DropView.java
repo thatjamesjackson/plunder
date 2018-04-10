@@ -24,14 +24,9 @@ public class DropView extends View {
     public String[] getInputs() {
 
         //get inputs from user
-
-        InventoryView checkInventory = new InventoryView();
-
         String[] inputs = new String[1];
         inputs[0] = this.getInput(
-                "        Here be yer inventory. \n"
-                // checkInventory.display();
-                + "================================ \n"
+                "================================ \n"
                 + "        Do ye want to:\n"
                 + "   A  - Drop all of an item\n"
                 + "   P  - Drop part of an item\n"
@@ -41,7 +36,7 @@ public class DropView extends View {
 
     @Override
     public boolean doAction(String[] inputs) {
-        
+
         ArrayList<InventoryItem> yerInventory = Plunder.getCurrentGame().getInventory();
         inputs[0] = inputs[0].toUpperCase().trim();
 
@@ -65,6 +60,7 @@ public class DropView extends View {
         InventoryView inv = new InventoryView();
         inv.listInventory();
         String input = getInput("Which item do ye want to get all rid of?");
+        input = input.toUpperCase().trim();
         InventoryControl.changeQuantity(0, inventory, input);
     }
 
@@ -72,7 +68,14 @@ public class DropView extends View {
         InventoryView inv = new InventoryView();
         inv.listInventory();
         String input = getInput("What item do ye want to drop a certain part of?");
-        int num = parseInt(getInput("How much do ye want to drop?"));
+        input = input.toUpperCase().trim();
+        int num;
+        try {
+            num = parseInt(getInput("How much do ye want to drop?"));
+        } catch (NumberFormatException ex) {
+            System.out.println("Ye must enter a number");
+            return;
+        }
         InventoryItem item;
         try {
             item = inventory.get(InventoryControl.itemSearch(input, inventory));
@@ -81,10 +84,11 @@ public class DropView extends View {
             return;
         }
         //if they try and drop more than they have, just drop all
-        if(num > item.getQuantityInStock()){
+        if (num > item.getQuantityInStock()) {
             num = item.getQuantityInStock();
         }
         InventoryControl.changeQuantity(item.getQuantityInStock() - num, inventory, input);
+
     }
 
 }

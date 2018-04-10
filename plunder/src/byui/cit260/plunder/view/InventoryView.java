@@ -6,15 +6,11 @@
 package byui.cit260.plunder.view;
 
 import byui.cit260.plunder.control.InventoryControl;
-import static byui.cit260.plunder.control.InventoryControl.sortInventory;
 import byui.cit260.plunder.model.InventoryItem;
 import byui.cit260.plunder.model.Ship;
 import exceptions.InventoryControlException;
-import static java.lang.Integer.parseInt;
 import java.util.ArrayList;
 import plunder.Plunder;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -37,16 +33,18 @@ public class InventoryView extends View {
         } catch (InventoryControlException ex) {
             System.out.println(ex.getMessage());
         }
-listInventory();
+       
+        listInventory();
+
         this.promptMessage
                 = "\n  Our ship be sitting at " + weight + " tonnes\n"
                 + "===============================================\n"
                 + "           What do ya want to do?\n"
                 + "              D - Drop Cargo\n"
-                + "              R - Return to navigation\n"
+                + "              Q - Return to navigation\n"
                 + "===============================================\n"
                 + "           Enter your selection below: ";
-        
+
         String input1 = this.getInput(this.promptMessage);
 
         if (input1.equals(input1.toUpperCase().equals("Q"))) {
@@ -62,24 +60,21 @@ listInventory();
 
         switch (inputs[0].toUpperCase()) {
             case "D":
-//                DropCargoView d = new DropCargoView();
+                listInventory();
                 DropView d = new DropView();
                 d.display();
                 break;
 
-            case "R":
-                inputs[0] = "Q";
-                break;
+            case "Q":
+                return true;
 
             default:
                 System.out.println("Invalid Menu Item");
 
         }
+        return false;
 
-        return true;
     }
-
-    
 
     public void listInventory() {
         Plunder p = new Plunder();
@@ -91,14 +86,21 @@ listInventory();
 //                    + item.getValue() + "  -  "
 //                    + item.getWeight() + " tonnes");
 //        }
-        
-        String format = "%-3s %-20.20s %-10s %-10s %-10s % -15s %-15s %n";
+
+        String format = "%-6s %-15.20s %-10s %-10s %-10s %-15s %-15s %n";
         System.out.format(format, "Abr", "Name", "Amount", "Weight", "Value", "Total Weight", "Total Value");
-        System.out.println("=====================================================");
-        format = " %-3s %-20.20s %-10d %-10d %-10d %-10d %-10d %n";
+        for (int i = 0; i < 83; i++) {
+            System.out.print("=");
+        }
+        System.out.print("\n");
+        format = "%-6s %-15.20s %-10d %-10.00f %-10.00f %-15.00f %-15.00f %n";
         for (int i = 0; i < items.size(); i++) {
-            System.out.format(format, items.get(i).getTypeAbr(), items.get(i).getInventoryType(), 
-                    items.get(i).getQuantityInStock(), items.get(i).getWeight(), items.get(i).getValue(),
+            System.out.format(format,
+                    items.get(i).getTypeAbr(),
+                    items.get(i).getInventoryType(),
+                    items.get(i).getQuantityInStock(),
+                    items.get(i).getWeight(),
+                    items.get(i).getValue(),
                     items.get(i).getQuantityInStock() * items.get(i).getWeight(),
                     items.get(i).getQuantityInStock() * items.get(i).getValue());
         }

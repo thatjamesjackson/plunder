@@ -15,6 +15,7 @@ import byui.cit260.plunder.model.InventoryItemType;
 import byui.cit260.plunder.model.RegularScene;
 import byui.cit260.plunder.model.ResourceScene;
 import byui.cit260.plunder.model.SceneType;
+import byui.cit260.plunder.model.Ship;
 import byui.cit260.plunder.model.ShipType;
 import byui.cit260.plunder.view.CalmOceanView;
 import byui.cit260.plunder.view.CombatView;
@@ -24,19 +25,26 @@ import byui.cit260.plunder.view.ResourceView;
 import byui.cit260.plunder.view.RoughOceanView;
 import byui.cit260.plunder.view.ShopView;
 import byui.cit260.plunder.view.WinGameView;
+import exceptions.InventoryControlException;
 import exceptions.MapControlException;
 import java.awt.Point;
 import java.util.ArrayList;
+import plunder.Plunder;
 
 /**
  *
  * @author abigailking
  */
 public class MapControl {
-public static void travel(Actor actor, Map map, int y, int x) throws MapControlException {
+public static void travel(Actor actor, Map map, int y, int x) throws MapControlException, InventoryControlException {
 
         if (y < 0 || y > map.getRowCount() - 1 || x < 0 || x > map.getColumnCount() - 1) {
             throw new MapControlException("You cannot go that way");
+        }
+        Ship ship = Plunder.getCurrentGame().getPlayer().getShip();
+        if (InventoryControl.calculateWeight(ship) > Plunder.getCurrentGame().getPlayer().getShip().getCarryWeight()){
+            throw new InventoryControlException("The ship be too heavy, toss some cargo overboard");
+          
         }
         actor.setCoordinates(new Point(x, y));
 
