@@ -33,6 +33,19 @@ public class SaveGameView extends View {
 
     @Override
     public boolean doAction(String[] inputs) {
+        
+//            filePath = get first value in inputs array
+//            game = get the currentGame in the main class
+//            try
+//            call the saveGame(game)control method
+//            catch GameControlException
+//            Print error passed with the exception
+//            return false to repeat the view
+//            endTry
+//            Print a success message indicating where the
+//            file was saved
+//            return true to end the view
+
 
         String filePath = inputs[0];
         Game playing = Plunder.getCurrentGame();
