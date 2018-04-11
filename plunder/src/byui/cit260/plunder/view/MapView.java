@@ -34,7 +34,7 @@ public class MapView extends View{
                 if (locations[y][x].isVisited() == true) {
             Point here = Plunder.getCurrentGame().getPlayer().getActor().getCoordinates();
                   if ((int)here.getX() == x && (int)here.getY() == y){
-                      this.console.print("[" + locations[y][x].getScene() + "]");
+                      this.console.print("[" + locations[y][x].getScene().getSymbol() + "]");
                   }
                   else{
                     this.console.print(" " + locations[y][x].getScene().getSymbol() + " ");
