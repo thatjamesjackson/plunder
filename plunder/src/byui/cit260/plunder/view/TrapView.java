@@ -52,7 +52,7 @@ public class TrapView extends View {
                     return true;
 
                 case "C":
-                    CrewView talkTo = new CrewView();
+                    CrewTalkView talkTo = new CrewTalkView();
                     talkTo.display();
                     return false;
 
