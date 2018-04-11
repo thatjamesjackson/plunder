@@ -41,7 +41,7 @@ public class TrapView4 extends View {
             case "C":
                 CrewTalkView talkTo = new CrewTalkView();
                 talkTo.display();
-                break;
+                return false;
 
             case "G":
                 this.console.println(

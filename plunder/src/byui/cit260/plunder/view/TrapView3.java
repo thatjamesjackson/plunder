@@ -39,7 +39,7 @@ public class TrapView3 extends View {
             case "C":
                 CrewTalkView talkTo = new CrewTalkView();
                 talkTo.display();
-                break;
+                return false;
 
             case "L":
                 this.console.println("Wise choice matey.\n\n");
