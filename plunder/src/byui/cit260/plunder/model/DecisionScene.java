@@ -17,11 +17,9 @@ public class DecisionScene extends RegularScene{
     public DecisionScene() {
     }
 
-    public DecisionScene( String description, String mapSymbol, int sceneType,  View nextView) {
+    public DecisionScene( String description, String mapSymbol, int sceneType) {
         super(description, mapSymbol, sceneType);
-        
     }
-
 
 
    

@@ -17,7 +17,6 @@ public class Player implements Serializable {
     //class instance variables
     private String name;
     private double bestTime;
-    private ArrayList<Game> games = new ArrayList<>();
     private Actor actor;
     private Ship ship;
 
@@ -40,14 +39,6 @@ public class Player implements Serializable {
         this.bestTime = bestTime;
     }
     
-    public ArrayList<Game> getGames() {
-        return games;
-    }
-
-    public void setGames(ArrayList<Game> games) {
-        this.games = games;
-    }
-    
     public Actor getActor() {
         return actor;
     }
@@ -66,17 +57,16 @@ public class Player implements Serializable {
 
     @Override
     public String toString() {
-        return "Player{" + "name=" + name + ", bestTime=" + bestTime + ", games=" + games + ", actor=" + actor + ", ship=" + ship + '}';
+        return "Player{" + "name=" + name + ", bestTime=" + bestTime + ", actor=" + actor + ", ship=" + ship + '}';
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 23 * hash + Objects.hashCode(this.name);
-        hash = 23 * hash + (int) (Double.doubleToLongBits(this.bestTime) ^ (Double.doubleToLongBits(this.bestTime) >>> 32));
-        hash = 23 * hash + Objects.hashCode(this.games);
-        hash = 23 * hash + Objects.hashCode(this.actor);
-        hash = 23 * hash + Objects.hashCode(this.ship);
+        hash = 97 * hash + Objects.hashCode(this.name);
+        hash = 97 * hash + (int) (Double.doubleToLongBits(this.bestTime) ^ (Double.doubleToLongBits(this.bestTime) >>> 32));
+        hash = 97 * hash + Objects.hashCode(this.actor);
+        hash = 97 * hash + Objects.hashCode(this.ship);
         return hash;
     }
 
@@ -98,10 +88,7 @@ public class Player implements Serializable {
         if (!Objects.equals(this.name, other.name)) {
             return false;
         }
-        if (!Objects.equals(this.games, other.games)) {
-            return false;
-        }
-        if (this.actor != other.actor) {
+        if (!Objects.equals(this.actor, other.actor)) {
             return false;
         }
         if (!Objects.equals(this.ship, other.ship)) {
