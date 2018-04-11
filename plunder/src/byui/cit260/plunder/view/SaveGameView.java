@@ -50,12 +50,12 @@ public class SaveGameView extends View {
         String filePath = inputs[0];
         Game playing = Plunder.getCurrentGame();
         
-        try {
-            GameControl.saveGame(playing, filePath);
-        } catch (GameControlException ex){
-            ErrorView.display(this.getClass().getName(), ex.getMessage());
-        }
-        
+////        try {
+////            GameControl.saveGame(playing, filePath);
+////        } catch (GameControlException ex){
+////            ErrorView.display(this.getClass().getName(), ex.getMessage());
+////        }
+////        
         this.console.println("Your file was saved to: " + filePath);
         
         return true;

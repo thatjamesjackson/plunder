@@ -71,8 +71,7 @@ public class CrewView extends View {
                     + crew[inputInt].getTalk()
                     + "\n=================================================================\n");
         } catch (CrewControlException ex) {
-            Logger.getLogger(CrewView.class.getName()).log(Level.SEVERE, null, ex);
-            ErrorView.display(this.getClass().getName(), "No crew error");
+            ErrorView.display(this.getClass().getName(), ex.getMessage());
         }
 
     }
