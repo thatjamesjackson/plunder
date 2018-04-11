@@ -253,7 +253,6 @@ public class CombatView extends View {
     }
 
     private void displayStats(Ship player, Ship enemy) {
-
         String format = "%-20.20s %-20.20s";
         this.console.format(format, player.getName(), enemy.getName());
         //for whatever reason format adds a space on the first line, so we add a space on subsiqent lines to compensate
