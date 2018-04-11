@@ -13,23 +13,12 @@ import byui.cit260.plunder.view.View;
  */
 public class DecisionScene extends RegularScene{
     
-    private View nextView;
 
     public DecisionScene() {
     }
 
-    public DecisionScene( String description, String mapSymbol, int sceneType,  View nextView) {
+    public DecisionScene( String description, String mapSymbol, int sceneType) {
         super(description, mapSymbol, sceneType);
-        
-        this.nextView = nextView;
-    }
-
-    public View getNextView() {
-        return nextView;
-    }
-
-    public void setNextView(View nextView) {
-        this.nextView = nextView;
     }
 
 

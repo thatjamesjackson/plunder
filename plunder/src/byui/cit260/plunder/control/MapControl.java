@@ -110,8 +110,8 @@ public static void travel(Actor actor, Map map, int y, int x) throws MapControlE
         DecisionScene islandRegular = new DecisionScene(
                 "The warm welcoming sands stretch out before you. A few trees offer shade and coconuts.",
                 "...",
-                SceneType.islandRegular.ordinal(),
-                new GameMenuView());
+                SceneType.islandRegular.ordinal()
+                );
         scenes[SceneType.islandRegular.ordinal()] = islandRegular;
 
         ResourceScene islandResourceScene = new ResourceScene(
@@ -125,70 +125,61 @@ public static void travel(Actor actor, Map map, int y, int x) throws MapControlE
                 CombatControl.enemyShipConstructor(ShipType.fishingBoat.ordinal()),
                 "A fishing vessel lies over yonder.",
                 "~p~",
-                SceneType.fishingBoat.ordinal(),
-                new CombatView());
+                SceneType.fishingBoat.ordinal());
         scenes[SceneType.fishingBoat.ordinal()] = combatFBoat;
         
         CombatScene combatSBoat = new CombatScene(
                 CombatControl.enemyShipConstructor(ShipType.sailBoat.ordinal()),
                 "A sailing boat aproaches.",
                 "~p~",
-                SceneType.sailBoat.ordinal(),
-                new CombatView());
+                SceneType.sailBoat.ordinal());
         scenes[SceneType.sailBoat.ordinal()] = combatSBoat;
         
         CombatScene combatClipper = new CombatScene(
                 CombatControl.enemyShipConstructor(ShipType.clipper.ordinal()),
                 "A clipper speeds across the water.",
                 "~p~",
-                SceneType.clipper.ordinal(),
-                new CombatView());
+                SceneType.clipper.ordinal());
         scenes[SceneType.clipper.ordinal()] = combatClipper;
 
         CombatScene combatFrigate = new CombatScene(
                 CombatControl.enemyShipConstructor(ShipType.frigate.ordinal()),
                 "A frigate aproaches and fires a warning shot.",
                 "~p~",
-                SceneType.frigate.ordinal(),
-                new CombatView());
+                SceneType.frigate.ordinal());
         scenes[SceneType.frigate.ordinal()] = combatFrigate;
 
         CombatScene combatGunBoat = new CombatScene(
                 CombatControl.enemyShipConstructor(ShipType.gunBoat.ordinal()),
                 "A gunboat sets course for you.",
                 "~p~",
-                SceneType.gunBoat.ordinal(),
-                new CombatView());
+                SceneType.gunBoat.ordinal());
         scenes[SceneType.gunBoat.ordinal()] = combatGunBoat;
 
         CombatScene combatManOfWar = new CombatScene(
                 CombatControl.enemyShipConstructor(ShipType.manOfWar.ordinal()),
                 "A Man of War has ye in it's sights, prepare for a tough fight.",
                 "~p~",
-                SceneType.manOfWar.ordinal(),
-                new CombatView());
+                SceneType.manOfWar.ordinal());
         scenes[SceneType.manOfWar.ordinal()] = combatManOfWar;
         
         CombatScene combatSeaMonster = new CombatScene(
                 CombatControl.enemyShipConstructor(ShipType.seaMonster.ordinal()),
                 "From the depths you see a terrifying sea monster rise and open its jaws.",
                 "~S~",
-                SceneType.seaMonster.ordinal(),
-                new CombatView());
+                SceneType.seaMonster.ordinal());
         scenes[SceneType.seaMonster.ordinal()] = combatSeaMonster;
 
         DecisionScene shopIsland = new DecisionScene(
                 "A welcoming merchant offers ye up a trade.",
                 ".@.",
-                SceneType.shopIsland.ordinal(),
-                new ShopView());
+                SceneType.shopIsland.ordinal());
         scenes[SceneType.shopIsland.ordinal()] = shopIsland;
 
         DecisionScene treasure = new DecisionScene(
                 "Glittering gold, sparkling jewels, and heavy too. For a pirate, this be the most beautiful sight in the world.",
                 "<x>",
-                SceneType.treasure.ordinal(),
-                new WinGameView());
+                SceneType.treasure.ordinal());
         scenes[SceneType.treasure.ordinal()] = treasure;
 
         ResourceScene oceanResource = new ResourceScene(

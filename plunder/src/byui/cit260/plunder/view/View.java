@@ -7,6 +7,7 @@ package byui.cit260.plunder.view;
 
 import java.io.BufferedReader;
 import java.io.PrintWriter;
+import java.io.Serializable;
 import java.util.Scanner;
 import plunder.Plunder;
 
@@ -14,7 +15,7 @@ import plunder.Plunder;
  *
  * @author James
  */
-public abstract class View implements ViewInterface {
+public abstract class View implements ViewInterface{
 
     
     protected final BufferedReader keyboard = Plunder.getInFile();

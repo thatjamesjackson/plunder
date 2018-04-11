@@ -28,7 +28,7 @@ public class GameControl {
 
     public static Player savePlayer(String playerName) throws GameControlException {
         //make a new player with name based on input
-       
+
         //fail if there is no name
         if (playerName.equals(" ") || playerName.equals("")) {
             throw new GameControlException("Please enter a name for your player.");
@@ -39,7 +39,7 @@ public class GameControl {
         return player;
     }
 
-    public static int createNewGame(Player player) throws MapControlException, GameControlException{
+    public static int createNewGame(Player player) throws MapControlException, GameControlException {
         if (player == null) {
             throw new GameControlException("Error creating new game, please try again.");
         }
@@ -137,7 +137,7 @@ public class GameControl {
         return items;
     }
 
-    public static void saveGame(Game game, String filePath) throws GameControlException{        
+    public static void saveGame(Game game, String filePath) throws GameControlException {
 //        if invalid a game or filePath is passed to the method then
 //        throw a new GameControlException
 //        endIf
@@ -148,16 +148,16 @@ public class GameControl {
         if (game == null || filePath.length() < 1) {
             throw new GameControlException("Error saving game, please try again.");
         }
-        
-        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(filePath))){
+
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(filePath))) {
             out.writeObject(game);
-        } catch (IOException ex){
+        } catch (IOException ex) {
             throw new GameControlException(ex.getMessage());
         }
-        
+
     }
-    
-        public static void getGame(Game game, String filePath) throws GameControlException{        
+
+    public static void getGame(Game game, String filePath) throws GameControlException {
 //    if the filePath is null then
 //    throw a new GameControlException
 //    endIf
@@ -168,22 +168,33 @@ public class GameControl {
 //    set the currentGame attribute in the main class to the game object
 //    set the player attribute in the main class to the player object saved in the game object
 //    return game
-
         if (filePath == null) {
             throw new GameControlException("Could not grab file, path is empty.");
         }
-        
-        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(filePath))){
-            try {
-                game = (Game) in.readObject();
-            } catch (ClassNotFoundException ce){
-                throw new GameControlException(ce.getMessage());
-            }
+
+//        try (FileInputStream in = new FileInputStream(filePath)){
+//            try (ObjectInputStream inObject = new ObjectInputStream(in)){
+//                game = (Game) inObject.readObject();
+//                Plunder.setCurrentGame(game);
+//                Plunder.setPlayer(game.getPlayer());
+//            } catch (ClassNotFoundException ce){
+//                throw new GameControlException(ce.getMessage());
+//            } 
+//        } catch (IOException ex){
+//                throw new GameControlException(ex.getMessage());
+//        }
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(filePath))) {
+            game = (Game) in.readObject();
+
             Plunder.setCurrentGame(game);
-        } catch (IOException ex){
+            Plunder.setPlayer(game.getPlayer());
+        } catch (IOException ex) {
+            ex.printStackTrace();
             throw new GameControlException(ex.getMessage());
+        } catch (ClassNotFoundException ce) {
+            throw new GameControlException(ce.getMessage());
         }
-        
+
     }
-        
+
 }

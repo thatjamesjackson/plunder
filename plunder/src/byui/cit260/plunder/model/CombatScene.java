@@ -24,8 +24,8 @@ public class CombatScene extends DecisionScene {
         this.opponent = opponent;
     }
 
-    public CombatScene(Ship opponent, String description, String mapSymbol, int type, View nextView) {
-        super(description, mapSymbol, type, nextView);
+    public CombatScene(Ship opponent, String description, String mapSymbol, int type) {
+        super(description, mapSymbol, type);
         this.opponent = opponent;
     }
     
