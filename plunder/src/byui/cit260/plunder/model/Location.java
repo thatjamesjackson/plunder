@@ -5,13 +5,14 @@
  */
 package byui.cit260.plunder.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  *
  * @author abigailking
  */
-public class Location {
+public class Location implements Serializable{
     
     private int row;
     private int column;

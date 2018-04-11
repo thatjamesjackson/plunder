@@ -18,6 +18,11 @@ import exceptions.MapControlException;
 import java.util.ArrayList;
 import plunder.Plunder;
 import java.awt.Point;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 public class GameControl {
 
@@ -132,7 +137,53 @@ public class GameControl {
         return items;
     }
 
-    public static void saveGame(Game game, String filePath){
-        //print "saveGame() in GameControl class"
+    public static void saveGame(Game game, String filePath) throws GameControlException{        
+//        if invalid a game or filePath is passed to the method then
+//        throw a new GameControlException
+//        endIf
+//        create a new FileOutputStream for the filePath
+//        create a new ObjectOutputStream from the FileOutputStream
+//        write the game object to the ObjectOutputStream
+
+        if (game == null || filePath.length() < 1) {
+            throw new GameControlException("Error saving game, please try again.");
+        }
+        
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(filePath))){
+            out.writeObject(game);
+        } catch (IOException ex){
+            throw new GameControlException(ex.getMessage());
+        }
+        
     }
+    
+        public static void getGame(Game game, String filePath) throws GameControlException{        
+//    if the filePath is null then
+//    throw a new GameControlException
+//    endIf
+
+//    create a new FileInputStream for the filePath
+//    create a new ObjectInputStream from the FileOutputStream
+//    game = call ObjectInputStream’s readObject() method
+//    set the currentGame attribute in the main class to the game object
+//    set the player attribute in the main class to the player object saved in the game object
+//    return game
+
+        if (filePath == null) {
+            throw new GameControlException("Could not grab file, path is empty.");
+        }
+        
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(filePath))){
+            try {
+                game = (Game) in.readObject();
+            } catch (ClassNotFoundException ce){
+                throw new GameControlException(ce.getMessage());
+            }
+            Plunder.setCurrentGame(game);
+        } catch (IOException ex){
+            throw new GameControlException(ex.getMessage());
+        }
+        
+    }
+        
 }

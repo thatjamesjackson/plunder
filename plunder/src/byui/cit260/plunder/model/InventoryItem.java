@@ -5,13 +5,14 @@
  */
 package byui.cit260.plunder.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  *
  * @author abigailking
  */
-public class InventoryItem {
+public class InventoryItem implements Serializable {
 
     private String inventoryType;
     private int quantityInStock;
@@ -109,9 +110,5 @@ public class InventoryItem {
         }
         return true;
     }
-
-   
-
-  
    
 }

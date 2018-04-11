@@ -27,10 +27,12 @@ public class CrewView extends View {
         //get inputs from user
         NPC[] crew = getCrew();
         getCrewMenu(crew);
-        String[] inputs = new String[1];
+        String[] inputs = new String[2];
         inputs[0] = this.getInput("\nT - Talk to Crew"
                 + "\nA - Assign Job"
                 + "\nQ - Quit");
+       
+        
         return inputs;
     }
 
@@ -39,15 +41,18 @@ public class CrewView extends View {
         NPC[] crew = getCrew();
         getCrewMenu(crew);
         inputs[0] = inputs[0].toUpperCase().trim();
+        
         //switch for the menu
         switch (inputs[0]) {
             case "T":
-                crewTalk(crew);
+                CrewTalkView talkTo = new CrewTalkView();
+                talkTo.display();
                 break;
                 
             case "A":
                 assignJob(crew);
                 break;
+                
             case "Q":
                 //this is the only way to exit this loop
                 return true;
@@ -71,8 +76,7 @@ public class CrewView extends View {
                     + crew[inputInt].getTalk()
                     + "\n=================================================================\n");
         } catch (CrewControlException ex) {
-            Logger.getLogger(CrewView.class.getName()).log(Level.SEVERE, null, ex);
-            ErrorView.display(this.getClass().getName(), "No crew error");
+            ErrorView.display(this.getClass().getName(), ex.getMessage());
         }
 
     }

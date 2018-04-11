@@ -5,11 +5,13 @@
  */
 package byui.cit260.plunder.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author abigailking
  */
-public enum SceneType {
+public enum SceneType implements Serializable{
     // make sure to ADD to the END
     
     islandRegular,

@@ -22,10 +22,10 @@ public class SaveGameView extends View {
         String[] inputs = new String[1];
 
         //instructions to save game
-        this.console.println("");
+        this.console.println("Where do you want to save the file?");
         
         //get input
-        String input = this.getInput("Select a menu item");
+        String input = this.getInput("Enter location: ");
         inputs[0] = input;
         return inputs;
 

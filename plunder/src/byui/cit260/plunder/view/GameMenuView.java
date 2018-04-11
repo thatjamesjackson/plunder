@@ -208,6 +208,4 @@ public class GameMenuView extends View {
         saving.display();
     }
 
-    
-
 }

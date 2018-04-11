@@ -39,7 +39,7 @@ public class TrapView4 extends View {
         
         switch (inputs[0]) {
             case "C":
-                CrewView talkTo = new CrewView();
+                CrewTalkView talkTo = new CrewTalkView();
                 talkTo.display();
                 break;
 

@@ -5,11 +5,13 @@
  */
 package byui.cit260.plunder.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author abigailking
  */
-public enum CrewType {
+public enum CrewType implements Serializable {
     // make sure to ADD to the END
     
     Terry,

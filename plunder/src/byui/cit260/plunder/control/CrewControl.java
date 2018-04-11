@@ -50,7 +50,9 @@ public class CrewControl {
         barry.setCrewAttack(5);
         barry.setCrewRepair(10);
         barry.setIsCrew(true);
-        barry.setTalk("");
+        barry.setTalk(
+                "      See there's this mural I know about\n"
+                + "I hear stepping back may just save our back.");
         barry.setName("Barry");
         barry.setJob("Deckhand");
         npc[CrewType.Barry.ordinal()] = barry;
@@ -59,7 +61,10 @@ public class CrewControl {
         larry.setCrewAttack(7);
         larry.setCrewRepair(7);
         larry.setIsCrew(true);
-        larry.setTalk("");
+        larry.setTalk(
+                "       Once I saw something I thought was cheese, \n"
+                + "it looked like that door there all yellowish and such.\n"
+                + "           I know not to eat it now.");
         larry.setName("Larry");
         larry.setJob("Deckhand");
         npc[CrewType.Larry.ordinal()] = larry;
@@ -68,7 +73,9 @@ public class CrewControl {
         terry.setCrewAttack(3);
         terry.setCrewRepair(14);
         terry.setIsCrew(true);
-        terry.setTalk("");
+        terry.setTalk(
+                "Door, poor, store, we could have so much more.\n"
+              + "   I think the easy way is the way to be.\n");
         terry.setName("Terry");
         terry.setJob("Deckhand");
         npc[CrewType.Terry.ordinal()] = terry;
@@ -77,7 +84,9 @@ public class CrewControl {
         steve.setCrewAttack(3);
         steve.setCrewRepair(14);
         steve.setIsCrew(true);
-        steve.setTalk("");
+        steve.setTalk(
+                "    We pirates are always on the search for that\n"
+                + "green flash. They say there be treasure that way.");
         steve.setName("Steve");
         steve.setJob("Gunner");
         npc[CrewType.Steve.ordinal()] = steve;
@@ -86,8 +95,9 @@ public class CrewControl {
         wolfgang.setCrewAttack(3);
         wolfgang.setCrewRepair(14);
         wolfgang.setIsCrew(true);
-        wolfgang.setTalk("I hope the treasure is all gold and jewels!\n"
-                + "I'm not a big fan of silver");
+        wolfgang.setTalk(
+                "I hope the treasure is all gold and jewels!\n"
+              + "       I'm not a big fan of silver");
         wolfgang.setName("Wolfgang");
         wolfgang.setJob("Gunner");
         npc[CrewType.Wolfgang.ordinal()] = wolfgang;
