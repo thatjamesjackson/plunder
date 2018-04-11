@@ -35,7 +35,6 @@ public class TrapView4 extends View {
 
     @Override
     public boolean doAction(String[] inputs) {
-        boolean win = false;
         
         switch (inputs[0]) {
             case "C":
@@ -60,10 +59,8 @@ public class TrapView4 extends View {
                 // set wolfgang to 1
                 
             case "W":
-                win = true;
                 WinGameView winner = new WinGameView();
                 winner.display();
-                break;
 
             default:
                 ErrorView.display(this.getClass().getName(), "Invalid Menu Item");

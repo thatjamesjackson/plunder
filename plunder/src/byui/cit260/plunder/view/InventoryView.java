@@ -41,6 +41,7 @@ public class InventoryView extends View {
                 + "===============================================\n"
                 + "           What do ya want to do?\n"
                 + "              D - Drop Cargo\n"
+                + "              P - Print report \n"
                 + "              Q - Return to navigation\n"
                 + "===============================================\n"
                 + "           Enter your selection below: ";
@@ -64,6 +65,10 @@ public class InventoryView extends View {
                 listInventory();
                 DropView d = new DropView();
                 d.display();
+                break;
+                
+            case "P":
+                
                 break;
 
             case "Q":
