@@ -5,13 +5,14 @@
  */
 package byui.cit260.plunder.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  *
  * @author abigailking
  */
-public class NPC {
+public class NPC implements Serializable{
     
     private boolean isCrew;
     private int crewAttack;

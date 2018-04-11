@@ -12,7 +12,7 @@ import java.io.Serializable;
  *
  * @author James
  */
-public class Actor implements Serializable{
+public class Actor implements Serializable { 
       private String name;
     private String description;
     private Point coordinates;

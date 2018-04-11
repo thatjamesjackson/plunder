@@ -5,11 +5,13 @@
  */
 package byui.cit260.plunder.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author abigailking
  */
-public enum InventoryItemType {
+public enum InventoryItemType implements Serializable{
     
     fish,
     jewels,

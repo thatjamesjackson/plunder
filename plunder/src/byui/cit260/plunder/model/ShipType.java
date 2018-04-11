@@ -5,11 +5,13 @@
  */
 package byui.cit260.plunder.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author abigailking
  */
-public enum ShipType {
+public enum ShipType implements Serializable{
     
     fishingBoat,
     sailBoat,

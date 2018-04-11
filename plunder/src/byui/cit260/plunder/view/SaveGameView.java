@@ -22,10 +22,10 @@ public class SaveGameView extends View {
         String[] inputs = new String[1];
 
         //instructions to save game
-        this.console.println("");
+        this.console.println("Where do you want to save the file?");
         
         //get input
-        String input = this.getInput("Select a menu item");
+        String input = this.getInput("Enter location: ");
         inputs[0] = input;
         return inputs;
 
@@ -50,12 +50,12 @@ public class SaveGameView extends View {
         String filePath = inputs[0];
         Game playing = Plunder.getCurrentGame();
         
-////        try {
-////            GameControl.saveGame(playing, filePath);
-////        } catch (GameControlException ex){
-////            ErrorView.display(this.getClass().getName(), ex.getMessage());
-////        }
-////        
+        try {
+            GameControl.saveGame(playing, filePath);
+        } catch (GameControlException ex){
+            ErrorView.display(this.getClass().getName(), ex.getMessage());
+        }
+        
         this.console.println("Your file was saved to: " + filePath);
         
         return true;
