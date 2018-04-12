@@ -17,7 +17,26 @@ import plunder.Plunder;
  */
 public class CrewControl {
 
-    
+    public static double getCrewAttack() {
+        double attack = 0;
+
+        NPC[] crew = getCrew();
+        for (NPC curCrew : crew) {
+            attack += curCrew.getCrewAttack();
+        }
+
+        return attack;
+    }
+
+    public static double getCrewRepair() {
+        double repair = 0;
+        NPC[] crew = getCrew();
+        for (NPC curCrew : crew) {
+            repair += curCrew.getCrewAttack();
+        }
+
+        return repair;
+    }
 
     public static NPC[] getCrew() {
         // import the list of NPCs
@@ -75,7 +94,7 @@ public class CrewControl {
         terry.setIsCrew(true);
         terry.setTalk(
                 "Door, poor, store, we could have so much more.\n"
-              + "   I think the easy way is the way to be.\n");
+                + "   I think the easy way is the way to be.\n");
         terry.setName("Terry");
         terry.setJob("Deckhand");
         npc[CrewType.Terry.ordinal()] = terry;
@@ -97,7 +116,7 @@ public class CrewControl {
         wolfgang.setIsCrew(true);
         wolfgang.setTalk(
                 "I hope the treasure is all gold and jewels!\n"
-              + "       I'm not a big fan of silver");
+                + "       I'm not a big fan of silver");
         wolfgang.setName("Wolfgang");
         wolfgang.setJob("Gunner");
         npc[CrewType.Wolfgang.ordinal()] = wolfgang;

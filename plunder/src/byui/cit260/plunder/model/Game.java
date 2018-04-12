@@ -6,7 +6,6 @@
 package byui.cit260.plunder.model;
 import java.io.Serializable;
 import java.util.ArrayList;
-import byui.cit260.plunder.model.InventoryItem;
 /**
  *
  * @author James
