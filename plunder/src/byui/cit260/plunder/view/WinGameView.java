@@ -48,8 +48,8 @@ public class WinGameView extends View {
         
         // retrieve input from user
         String input = this.getInput(
-"                    T - Take for yerself"
-+ "                  S - Share with yer crew");
+"                    T - Take for yerself\n"
++ "                  S - Share with yer crew\n");
         inputs [0] = input;
         return inputs;
     }
@@ -61,7 +61,9 @@ public class WinGameView extends View {
                 this.console.println(
                           "Ye take the treasure and run to the other end of the island\n"
                         + "         but yer crew be followin right behind ye.\n"
-                        + "They aren't happy. The crew decides to maroon you here on this island.");
+                        + "They aren't happy. The crew decides to maroon you here on this island.\n"
+                        + "           Yer crew took all the treasure too.\n");
+                Plunder.getCurrentGame().setEndGame(true);
 
             case "S":
                 this.console.println(
@@ -69,6 +71,8 @@ public class WinGameView extends View {
                         + "Ye be heavy laden with jewels. Sinching up yer belt to keep\n"
                         + "           the weight of ye booty secure.\n");
                 addBooty();
+                GameMenuView back = new GameMenuView();
+                back.display();
                 
 
             default:
@@ -90,7 +94,7 @@ public class WinGameView extends View {
         gold.setMoney(gold.getMoney() + 2000 + goldResult);
         
         this.console.println(
-                          "Lay yer eyes on yer bounty. Ye all cheer and divvy up the treasure.\n"
+                          "                 Lay yer eyes on yer bounty. \n"
                         + "              Ye found " + gold + " gold pieces\n"
                         + "              and " + jewel + " pieces of jewels\n"
                         + "  Carefully now as ye search the waters of Paradise. This booty\n"

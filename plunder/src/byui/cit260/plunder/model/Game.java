@@ -7,13 +7,15 @@ package byui.cit260.plunder.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import byui.cit260.plunder.model.InventoryItem;
+import java.util.Arrays;
+import java.util.Objects;
 /**
  *
  * @author James
  */
 public class Game implements Serializable{
     
-    private double totalTime;
+    private boolean endGame;
     private double progress;
     private Player player;
     private double money;
@@ -22,17 +24,16 @@ public class Game implements Serializable{
     private NPC[] npc;
     
     public Game() {
-        
-    }
-    
-    public double getTotalTime() {
-        return totalTime;
     }
 
-    public void setTotalTime(double totalTime) {
-        this.totalTime = totalTime;
+    public boolean isEndGame() {
+        return endGame;
     }
-    
+
+    public void setEndGame(boolean endGame) {
+        this.endGame = endGame;
+    }
+
     public double getProgress() {
         return progress;
     }
@@ -40,7 +41,7 @@ public class Game implements Serializable{
     public void setProgress(double progress) {
         this.progress = progress;
     }
-    
+
     public Player getPlayer() {
         return player;
     }
@@ -48,7 +49,7 @@ public class Game implements Serializable{
     public void setPlayer(Player player) {
         this.player = player;
     }
-    
+
     public double getMoney() {
         return money;
     }
@@ -56,7 +57,7 @@ public class Game implements Serializable{
     public void setMoney(double money) {
         this.money = money;
     }
-    
+
     public Map getMap() {
         return map;
     }
@@ -64,7 +65,7 @@ public class Game implements Serializable{
     public void setMap(Map map) {
         this.map = map;
     }
-    
+
     public ArrayList<InventoryItem> getInventory() {
         return inventory;
     }
@@ -73,24 +74,29 @@ public class Game implements Serializable{
         this.inventory = inventory;
     }
 
-    public NPC[] getNPC() {
+    public NPC[] getNpc() {
         return npc;
     }
 
-    public void setNPC(NPC[] npc) {
+    public void setNpc(NPC[] npc) {
         this.npc = npc;
     }
-
+    
     @Override
     public String toString() {
-        return "Game{" + "totalTime=" + totalTime + ", progress=" + progress + ", player=" + player + ", money=" + money + '}';
+        return "Game{" + "endGame=" + endGame + ", progress=" + progress + ", player=" + player + ", money=" + money + ", map=" + map + ", inventory=" + inventory + ", npc=" + npc + '}';
     }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 67 * hash + (int) (Double.doubleToLongBits(this.totalTime) ^ (Double.doubleToLongBits(this.totalTime) >>> 32));
-        hash = 67 * hash + (int) (Double.doubleToLongBits(this.progress) ^ (Double.doubleToLongBits(this.progress) >>> 32));
+        int hash = 5;
+        hash = 19 * hash + (this.endGame ? 1 : 0);
+        hash = 19 * hash + (int) (Double.doubleToLongBits(this.progress) ^ (Double.doubleToLongBits(this.progress) >>> 32));
+        hash = 19 * hash + Objects.hashCode(this.player);
+        hash = 19 * hash + (int) (Double.doubleToLongBits(this.money) ^ (Double.doubleToLongBits(this.money) >>> 32));
+        hash = 19 * hash + Objects.hashCode(this.map);
+        hash = 19 * hash + Objects.hashCode(this.inventory);
+        hash = 19 * hash + Arrays.deepHashCode(this.npc);
         return hash;
     }
 
@@ -106,13 +112,30 @@ public class Game implements Serializable{
             return false;
         }
         final Game other = (Game) obj;
-        if (Double.doubleToLongBits(this.totalTime) != Double.doubleToLongBits(other.totalTime)) {
+        if (this.endGame != other.endGame) {
             return false;
         }
         if (Double.doubleToLongBits(this.progress) != Double.doubleToLongBits(other.progress)) {
             return false;
         }
+        if (Double.doubleToLongBits(this.money) != Double.doubleToLongBits(other.money)) {
+            return false;
+        }
+        if (!Objects.equals(this.player, other.player)) {
+            return false;
+        }
+        if (!Objects.equals(this.map, other.map)) {
+            return false;
+        }
+        if (!Objects.equals(this.inventory, other.inventory)) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.npc, other.npc)) {
+            return false;
+        }
         return true;
     }
+    
+    
     
 }
