@@ -5,6 +5,7 @@
  */
 package byui.cit260.plunder.view;
 
+import byui.cit260.plunder.control.InventoryControl;
 import byui.cit260.plunder.control.MapControl;
 import byui.cit260.plunder.model.Actor;
 import byui.cit260.plunder.model.Map;
@@ -13,6 +14,8 @@ import byui.cit260.plunder.model.Ship;
 import plunder.Plunder;
 import exceptions.MapControlException;
 import exceptions.InventoryControlException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -202,10 +205,20 @@ public class GameMenuView extends View {
     }
 
     private void checkShip() {
-        Ship ship = Plunder.getCurrentGame().getPlayer().getShip();
+        Ship boat = Plunder.getCurrentGame().getPlayer().getShip();
         this.console.println("Yer Ship");
-                this.console.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-                this.console.println("Attack ")
+        this.console.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        this.console.println("Our Ship be called " + boat.getName() + " and she be yar\n");
+        this.console.println("We can attack with  " + boat.getShipAttack() + " force\n");
+        this.console.println("This here armor be " + boat.getArmor() + " strong\n");
+        this.console.println("Our crew can repair " + boat.getShipRepair() + " damage\n");
+        this.console.println("This ship have health of " + boat.getShipHealth() + " out of " + boat.getShipMaxHealth() + "\n");
+        try {
+            this.console.println("Our carry weight be " + InventoryControl.calculateWeight(boat) + " out of " + boat.getCarryWeight() +" tonnes\n");
+        } catch (InventoryControlException ex) {
+            ErrorView.display(this.getClass().getName(), ex.getMessage());
+        }
+                
     }
 
     private void doExplore(Actor actor) {
