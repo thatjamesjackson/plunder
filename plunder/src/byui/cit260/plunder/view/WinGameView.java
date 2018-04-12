@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package byui.cit260.plunder.view;
+import byui.cit260.plunder.control.InventoryControl;
 import byui.cit260.plunder.model.Game;
 import byui.cit260.plunder.model.InventoryItem;
 import byui.cit260.plunder.model.InventoryItemType;
@@ -89,18 +90,17 @@ public class WinGameView extends View {
 
     private void addBooty() {
         Random r = new Random();
-        int jewelResult = r.nextInt(1000-1) + 1;
-        int goldResult = r.nextInt(3000-1) + 1;
+        int jewelResult = 2000 + r.nextInt(1000-1) + 1;
+        int goldResult = 2000 + r.nextInt(3000-1) + 1;
                 
-        InventoryItem jewel = Plunder.getCurrentGame().getInventory().get(InventoryItemType.jewels.ordinal());
-        jewel.setQuantityInStock(jewel.getQuantityInStock() + 2000 + jewelResult);
+        InventoryControl.addItem(jewelResult, Plunder.getCurrentGame().getPlayer().getShip().getInventory(), "J");
         
         Game gold = Plunder.getCurrentGame();
-        gold.setMoney(gold.getMoney() + 2000 + goldResult);
+        gold.setMoney(gold.getMoney() +  goldResult);
         
         this.console.println(
                           "  Lay yer eyes on yer bounty. Here in this chest\n"
-                        + "  ye found " + gold.getMoney() + " gold pieces and " + jewel.getQuantityInStock() + " jewels\n"
+                        + "  ye found " + goldResult + " gold pieces and " + jewelResult + " jewels\n"
                         + "  Carefully now as ye search the waters of Paradise. This booty\n"
                         + "  here makes ye a fair target for other pirates and such.\n");
     }

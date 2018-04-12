@@ -26,7 +26,7 @@ public class MainMenuView extends View {
 
         //show menu options
         this.console.println("  N - New game\n"
-                + "  R - Restart Game\n"
+                + "  L - Load Game\n"
                 + "  H - Help\n"
                 + "  Q - Quit Program");
 
@@ -44,7 +44,7 @@ public class MainMenuView extends View {
                 startNewGame();
                 break;
 
-            case "R":
+            case "L":
                 restartGame();
                 break;
 

@@ -88,7 +88,7 @@ public class InventoryView extends View {
 
     public void listInventory() {
         Plunder p = new Plunder();
-        ArrayList<InventoryItem> items = InventoryControl.sortInventory(p.getCurrentGame().getInventory());
+        ArrayList<InventoryItem> items = InventoryControl.sortInventory(p.getCurrentGame().getPlayer().getShip().getInventory());
 //        for (InventoryItem item : items) {
 //            this.console.println(item.getTypeAbr() + "  -  "
 //                    + item.getInventoryType() + "  -  "

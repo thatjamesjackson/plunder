@@ -148,10 +148,10 @@ public class CombatView extends View {
             Double gain = enemy.getCarryWeight() + (double) random.nextInt((int) (enemy.getCarryWeight() / 5));
             Plunder.getCurrentGame().setMoney(Plunder.getCurrentGame().getMoney() + gain);
             this.console.println("Ye looted " + gain + " gold off yonder ship");
-            ArrayList<InventoryItem> inv = Plunder.getCurrentGame().getInventory();
+            ArrayList<InventoryItem> inv = Plunder.getCurrentGame().getPlayer().getShip().getInventory();
             for (NPC curCrew : CrewControl.getCrew()) {
                 int loot = random.nextInt(10);
-                int numLoot = random.nextInt((int) (enemy.getCarryWeight() / 50));
+                int numLoot = random.nextInt((int) (enemy.getCarryWeight() / 50) + 1);
                 if (loot == InventoryItemType.coconut.ordinal()) {
                     InventoryControl.addItem(numLoot, inv, "O");
                     this.console.println(curCrew.getName() + " looted " + numLoot + " coconuts");
@@ -168,7 +168,7 @@ public class CombatView extends View {
                     InventoryControl.addItem(numLoot, inv, "S");
                     this.console.println(curCrew.getName() + " looted " + numLoot + " bags of spices");
                 } else {
-                    this.console.println(curCrew.getName() + " could not find anything worhwile to loot");
+                    this.console.println(curCrew.getName() + " could not find anything worthwile to loot");
                 }
             }
             return true;

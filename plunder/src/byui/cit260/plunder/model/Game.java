@@ -4,25 +4,26 @@
  * and open the template in the editor.
  */
 package byui.cit260.plunder.model;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import byui.cit260.plunder.model.InventoryItem;
 import java.util.Arrays;
 import java.util.Objects;
+
 /**
  *
  * @author James
  */
-public class Game implements Serializable{
-    
+public class Game implements Serializable {
+
     private boolean endGame;
     private double progress;
     private Player player;
     private double money;
     private Map map;
-    private ArrayList <InventoryItem> inventory = new ArrayList <InventoryItem>();
     private NPC[] npc;
-    
+
     public Game() {
     }
 
@@ -66,14 +67,6 @@ public class Game implements Serializable{
         this.map = map;
     }
 
-    public ArrayList<InventoryItem> getInventory() {
-        return inventory;
-    }
-
-    public void setInventory(ArrayList<InventoryItem> inventory) {
-        this.inventory = inventory;
-    }
-
     public NPC[] getNPC() {
         return npc;
     }
@@ -81,10 +74,10 @@ public class Game implements Serializable{
     public void setNPC(NPC[] npc) {
         this.npc = npc;
     }
-    
+
     @Override
     public String toString() {
-        return "Game{" + "endGame=" + endGame + ", progress=" + progress + ", player=" + player + ", money=" + money + ", map=" + map + ", inventory=" + inventory + ", npc=" + npc + '}';
+        return "Game{" + "endGame=" + endGame + ", progress=" + progress + ", player=" + player + ", money=" + money + ", map=" + map + ", npc=" + npc + '}';
     }
 
     @Override
@@ -95,7 +88,6 @@ public class Game implements Serializable{
         hash = 19 * hash + Objects.hashCode(this.player);
         hash = 19 * hash + (int) (Double.doubleToLongBits(this.money) ^ (Double.doubleToLongBits(this.money) >>> 32));
         hash = 19 * hash + Objects.hashCode(this.map);
-        hash = 19 * hash + Objects.hashCode(this.inventory);
         hash = 19 * hash + Arrays.deepHashCode(this.npc);
         return hash;
     }
@@ -127,15 +119,10 @@ public class Game implements Serializable{
         if (!Objects.equals(this.map, other.map)) {
             return false;
         }
-        if (!Objects.equals(this.inventory, other.inventory)) {
-            return false;
-        }
         if (!Arrays.deepEquals(this.npc, other.npc)) {
             return false;
         }
         return true;
     }
-    
-    
-    
+
 }

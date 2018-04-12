@@ -38,7 +38,7 @@ public class DropView extends View {
     @Override
     public boolean doAction(String[] inputs) {
 
-        ArrayList<InventoryItem> yerInventory = Plunder.getCurrentGame().getInventory();
+        ArrayList<InventoryItem> yerInventory = Plunder.getCurrentGame().getPlayer().getShip().getInventory();
         inputs[0] = inputs[0].toUpperCase().trim();
 
         switch (inputs[0]) {

@@ -57,7 +57,7 @@ public class PrintInventoryView extends View {
 
     private void printInventory(String filePath) throws GameControlException {
 
-        ArrayList<InventoryItem> items = Plunder.getCurrentGame().getInventory();
+        ArrayList<InventoryItem> items = Plunder.getCurrentGame().getPlayer().getShip().getInventory();
 
         if (items == null || filePath.length() < 1 || items.size() < 1) {
             throw new GameControlException("Error printing report");
