@@ -42,7 +42,8 @@ public class GameMenuView extends View {
                 + "  P - Explore\n"
                 + "  H - Help\n"
                 + "  V - Save\n"
-                + "  Q - Quit");
+                + "  Q - Quit\n\n"
+                + "=============================================================");
 
         // retrieve input from user
         String input = this.getInput("Select a menu item");

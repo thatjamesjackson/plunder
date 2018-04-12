@@ -25,6 +25,7 @@ public class MapView extends View{
         //map is 5x5 in 3X1 squares
         //using x and y coordinates
         //21 total map length in chars
+        this.console.println("\n=============================================================");
         this.console.print("\n-------------------------------\n");
         //count backwards to go down for y coordinates
         for (int y = locations.length - 1; y >= 0; y--) {
