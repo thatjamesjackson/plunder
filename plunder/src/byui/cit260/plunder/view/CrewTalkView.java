@@ -5,6 +5,7 @@
  */
 package byui.cit260.plunder.view;
 
+import byui.cit260.plunder.control.CrewControl;
 import byui.cit260.plunder.model.NPC;
 import exceptions.CrewControlException;
 import plunder.Plunder;
@@ -19,7 +20,7 @@ public class CrewTalkView extends View {
     public String[] getInputs() {
         String[] inputs = new String[1];
 
-        this.getCrewMenu(Plunder.getCurrentGame().getNPC());
+        this.getCrewMenu(CrewControl.getCrew());
 
         String crewMember = this.getInput("Which # Crew Member?\n");
         inputs[0] = crewMember;
@@ -43,7 +44,7 @@ public class CrewTalkView extends View {
         NPC crewMember = null;
         try {
             int crewIndex = Integer.parseInt(inputs[0]) - 1;
-            crewMember = Plunder.getCurrentGame().getNPC()[crewIndex];
+            crewMember = CrewControl.getCrew()[crewIndex];
         } catch (NumberFormatException | ArrayIndexOutOfBoundsException ex) {
             ErrorView.display(this.getClass().getName(), "Invalid crew member");
             return false;
