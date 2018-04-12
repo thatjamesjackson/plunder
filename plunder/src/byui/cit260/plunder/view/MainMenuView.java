@@ -4,36 +4,37 @@
  * and open the template in the editor.
  */
 package byui.cit260.plunder.view;
+
 import byui.cit260.plunder.control.GameControl;
 import exceptions.GameControlException;
 import exceptions.MapControlException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 import plunder.Plunder;
+
 /**
  *
  * @author James
  */
 public class MainMenuView extends View {
-    
+
     @Override
     public String[] getInputs() {
         //declare new
-        String [] inputs = new String[1];
+        String[] inputs = new String[1];
 
         //show menu options
         this.console.println("  N - New game\n"
-                    + "  R - Restart Game\n"
-                    + "  H - Help\n"
-                    + "  Q - Quit Program");
-        
-        String input = this.getInput("Select a menu item");
-        inputs [0] = input;
+                + "  R - Restart Game\n"
+                + "  H - Help\n"
+                + "  Q - Quit Program");
+
+        inputs[0] = this.getInput("Select a menu item");
+
         return inputs;
     }
-    
+
     @Override
     public boolean doAction(String[] inputs) {
         //switch for the menu
@@ -59,7 +60,7 @@ public class MainMenuView extends View {
 //                
                 combatView.display();
                 break;
-                            
+
             case "N":
                 startNewGame();
                 break;
@@ -79,7 +80,7 @@ public class MainMenuView extends View {
                 ErrorView.display(this.getClass().getName(), "Invalid Menu Item");
 
         }
-     return false;
+        return false;
     }
 
     private void startNewGame() {
@@ -94,15 +95,15 @@ public class MainMenuView extends View {
             Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
             ErrorView.display(this.getClass().getName(), "Error making game");
         }
-    GameMenuView gameMenuView =  new GameMenuView();
-    
-    gameMenuView.display();
+        GameMenuView gameMenuView = new GameMenuView();
+
+        gameMenuView.display();
     }
 
     private void restartGame() {
         //restart the game
-       StartExistingGameView startExistingGameView = new StartExistingGameView();
-       startExistingGameView.display();
+        StartExistingGameView startExistingGameView = new StartExistingGameView();
+        startExistingGameView.display();
     }
 
     private void getHelp() {
@@ -110,5 +111,5 @@ public class MainMenuView extends View {
         HelpMenuView helpMenuView = new HelpMenuView();
         helpMenuView.display();
     }
-    
+
 }

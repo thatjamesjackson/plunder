@@ -10,8 +10,6 @@ import byui.cit260.plunder.control.CombatControl;
 import byui.cit260.plunder.model.CombatScene;
 import byui.cit260.plunder.model.Ship;
 import exceptions.CombatControlException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import plunder.Plunder;
 
 /**
@@ -56,6 +54,7 @@ public class CombatView extends View {
         double pArmor = player.getArmor();
         int pAccuracy = 50;
         int pEvasion = 50;
+        double repair = player.getShipRepair();
 
         //enemy stats
         double eAttack = enemy.getShipAttack() + (double) random.nextInt(100) / 10;
@@ -119,14 +118,14 @@ public class CombatView extends View {
             //repair if you are still floating
             if (player.getShipHealth() > 0) {
                 //repair
-                player.setShipHealth(player.getShipHealth() + player.getShipRepair());
+                player.setShipHealth(player.getShipHealth() + repair);
                 //your hp cannot be above max
                 if (player.getShipMaxHealth() < player.getShipHealth()) {
 
                     repairOut = player.getShipHealth() - player.getShipMaxHealth();
                     player.setShipHealth(player.getShipMaxHealth());
                 } else {
-                    repairOut = player.getShipRepair();
+                    repairOut = repair;
                 }
                 this.console.println("Yer crew repaired " + Math.round(repairOut * 100) / 100 + " damage\n");
             }
