@@ -94,7 +94,7 @@ public class WinGameView extends View {
                         + "              Ye found " + gold + " gold pieces\n"
                         + "              and " + jewel + " pieces of jewels\n"
                         + "  Carefully now as ye search the waters of Paradise. This booty\n"
-                        + "    here makes ye a fair target for other pirates and such."
+                        + "    here makes ye a fair target for other pirates and such.");
     }
     
 }
