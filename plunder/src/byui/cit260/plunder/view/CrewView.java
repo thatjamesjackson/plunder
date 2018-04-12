@@ -30,9 +30,9 @@ public class CrewView extends View {
         String[] inputs = new String[2];
         inputs[0] = this.getInput("\nT - Talk to Crew"
                 + "\nA - Assign Job"
+                + "\nP - Print Crew Info to file"
                 + "\nQ - Quit");
-       
-        
+
         return inputs;
     }
 
@@ -41,25 +41,27 @@ public class CrewView extends View {
         NPC[] crew = getCrew();
         getCrewMenu(crew);
         inputs[0] = inputs[0].toUpperCase().trim();
-        
+
         //switch for the menu
         switch (inputs[0]) {
             case "T":
                 CrewTalkView talkTo = new CrewTalkView();
                 talkTo.display();
                 break;
-                
+            case "P":
+                PrintCrewView print = new PrintCrewView();
+                print.display();
+                break;
             case "A":
                 assignJob(crew);
                 break;
-                
+
             case "Q":
                 //this is the only way to exit this loop
                 return true;
 
             default:
                 this.console.println("Invalid Menu Item");
-                        
 
         }
         return false;
@@ -95,9 +97,9 @@ public class CrewView extends View {
 
             boolean valid;
             do {
-                
+
                 String inputJob = this.getInput("");
-                
+
                 switch (inputJob) {
                     case "G":
                         job = "Gunner";
@@ -126,32 +128,32 @@ public class CrewView extends View {
     private void getCrewMenu(NPC[] crew) {
         String format = "%-3s %-20.20s %-10s %-10s %-10s %n";
         this.console.format(format, "#", "Name", "Job", "Attack", "Repair");
-        
-       this.console.println("=====================================================");
-        
+
+        this.console.println("=====================================================");
+
         format = " %-3d %-20.20s %-10s %-10d %-10d %n";
         for (int i = 0; i < crew.length; i++) {
             this.console.format(format, (i + 1), crew[i].getName(), crew[i].getJob(), crew[i].getCrewAttack(), crew[i].getCrewRepair());
         }
     }
+
     private int getInputCrewNumber(NPC[] crew) throws CrewControlException {
         if (crew.length == 0) {
             throw new CrewControlException("You have no crew");
         }
         int input = 0;
-        
+
         do {
             String selection;
             try {
-                 selection = getInput("Which # Crew Member?\n");
-                 parseInt(selection);
+                selection = getInput("Which # Crew Member?\n");
+                parseInt(selection);
             } catch (NumberFormatException ex) {
                 Logger.getLogger(CrewView.class.getName()).log(Level.SEVERE, null, ex);
                 this.console.println("Ye must enter a number");
             }
-            
-            //loop while there is no int, or if the int is not on the crew list
 
+            //loop while there is no int, or if the int is not on the crew list
         } while (input < 1 || input > crew.length);
 
         return input;

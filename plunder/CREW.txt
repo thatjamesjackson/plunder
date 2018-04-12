@@ -1,0 +1,48 @@
+
+ CREW REPORT
+
+
+ Crew Stats
+#   Name                 Job        Attack     Repair     
+=====================================================
+ 1   Terry                Deckhand   3          14         
+ 2   Barry                Deckhand   5          10         
+ 3   Larry                Deckhand   7          7          
+ 4   Steve                Gunner     3          14         
+ 5   Wolfgang             Gunner     3          14         
+
+
+ Crew Conversations
+
+Terry
+===================
+Door, poor, store, we could have so much more.
+   I think the easy way is the way to be.
+
+
+
+Barry
+===================
+      See there's this mural I know about
+I hear stepping back may just save our back.
+
+
+Larry
+===================
+       Once I saw something I thought was cheese, 
+it looked like that door there all yellowish and such.
+           I know not to eat it now.
+
+
+Steve
+===================
+    We pirates are always on the search for that
+green flash. They say there be treasure that way.
+
+
+Wolfgang
+===================
+I hope the treasure is all gold and jewels!
+       I'm not a big fan of silver
+
+
