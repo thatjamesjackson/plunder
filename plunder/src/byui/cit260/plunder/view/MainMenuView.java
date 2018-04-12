@@ -39,27 +39,6 @@ public class MainMenuView extends View {
     public boolean doAction(String[] inputs) {
         //switch for the menu
         switch (inputs[0]) {
-            case "C":
-                CombatView combatView = new CombatView();
-//                Ship shipOne = new Ship();
-//                shipOne.setName("Salty Dog");
-//                shipOne.setShipAttack(50);
-//                shipOne.setCarryWeight(500);
-//                shipOne.setArmor(50);
-//                shipOne.setShipRepair(10);
-//                shipOne.setShipHealth(100);
-//                shipOne.setShipMaxHealth(100);
-//                
-//                Ship shipTwo = new Ship();
-//                shipTwo.setName("Man of War");
-//                shipTwo.setShipAttack(50);
-//                shipTwo.setCarryWeight(500);
-//                shipTwo.setArmor(50);
-//                shipTwo.setShipRepair(10);
-//                shipTwo.setShipHealth(100);
-//                
-                combatView.display();
-                break;
 
             case "N":
                 startNewGame();

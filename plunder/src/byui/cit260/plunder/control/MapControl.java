@@ -29,20 +29,41 @@ import plunder.Plunder;
  * @author abigailking
  */
 public class MapControl {
-public static void travel(Actor actor, Map map, int y, int x) throws MapControlException, InventoryControlException {
+
+    public static boolean travel(Actor actor, Map map, int y, int x) throws MapControlException, InventoryControlException {
 
         if (y < 0 || y > map.getRowCount() - 1 || x < 0 || x > map.getColumnCount() - 1) {
             throw new MapControlException("You cannot go that way");
         }
         Ship ship = Plunder.getCurrentGame().getPlayer().getShip();
-        if (InventoryControl.calculateWeight(ship) > Plunder.getCurrentGame().getPlayer().getShip().getCarryWeight()){
+        if (InventoryControl.calculateWeight(ship) > Plunder.getCurrentGame().getPlayer().getShip().getCarryWeight()) {
             throw new InventoryControlException("The ship be too heavy, toss some cargo overboard");
-                  }
-                actor.setCoordinates(new Point(x, y));
-                Location loc = Plunder.getCurrentGame().getMap().getLocation()[y][x];
-                loc.setVisited(true);
+        }
+        actor.setCoordinates(new Point(x, y));
+        Location loc = Plunder.getCurrentGame().getMap().getLocation()[y][x];
+        //repair damage
+        Ship player = Plunder.getCurrentGame().getPlayer().getShip();
+        double repairOut;
+        double repair = player.getShipRepair() + CrewControl.getCrewRepair();
+                       //repair
+                player.setShipHealth(player.getShipHealth() + repair);
+                //your hp cannot be above max
+                if (player.getShipMaxHealth() < player.getShipHealth()) {
 
+                    repairOut = player.getShipHealth() - player.getShipMaxHealth();
+                    player.setShipHealth(player.getShipMaxHealth());
+                } else {
+                    repairOut = repair;
+                }
+            
+        //if you havent visited explore and set that you have visited
+        if(!loc.isVisited()){
+        loc.setVisited(true);
+        return false;
+        }
+        return true;
     }
+
     public static Map createMap(int numRows, int numColumns, ArrayList items) throws MapControlException {
         //check invalid input
         if (numRows < 1 || numColumns < 1) {
@@ -106,7 +127,7 @@ public static void travel(Actor actor, Map map, int y, int x) throws MapControlE
                 "The warm welcoming sands stretch out before you. A few trees offer shade and coconuts.\n\n",
                 "...",
                 SceneType.islandRegular.ordinal()
-                );
+        );
         scenes[SceneType.islandRegular.ordinal()] = islandRegular;
 
         ResourceScene islandResourceScene = new ResourceScene(
@@ -115,21 +136,21 @@ public static void travel(Actor actor, Map map, int y, int x) throws MapControlE
                 SceneType.islandResource.ordinal(),
                 items.get(InventoryItemType.coconut.ordinal()));
         scenes[SceneType.islandResource.ordinal()] = islandResourceScene;
-        
+
         CombatScene combatFBoat = new CombatScene(
                 CombatControl.enemyShipConstructor(ShipType.fishingBoat.ordinal()),
                 "A fishing vessel lies over yonder.\n\n",
                 "~p~",
                 SceneType.fishingBoat.ordinal());
         scenes[SceneType.fishingBoat.ordinal()] = combatFBoat;
-        
+
         CombatScene combatSBoat = new CombatScene(
                 CombatControl.enemyShipConstructor(ShipType.sailBoat.ordinal()),
                 "A sailing boat aproaches.\n\n",
                 "~p~",
                 SceneType.sailBoat.ordinal());
         scenes[SceneType.sailBoat.ordinal()] = combatSBoat;
-        
+
         CombatScene combatClipper = new CombatScene(
                 CombatControl.enemyShipConstructor(ShipType.clipper.ordinal()),
                 "A clipper speeds across the water.\n\n",
@@ -157,7 +178,7 @@ public static void travel(Actor actor, Map map, int y, int x) throws MapControlE
                 "~p~",
                 SceneType.manOfWar.ordinal());
         scenes[SceneType.manOfWar.ordinal()] = combatManOfWar;
-        
+
         CombatScene combatSeaMonster = new CombatScene(
                 CombatControl.enemyShipConstructor(ShipType.seaMonster.ordinal()),
                 "From the depths you see a terrifying sea monster rise and open its jaws.\n\n",
@@ -181,18 +202,17 @@ public static void travel(Actor actor, Map map, int y, int x) throws MapControlE
                 "There be many fish in these waters.\n\n",
                 "<#<",
                 SceneType.oResource.ordinal(),
-               items.get(InventoryItemType.fish.ordinal()));
+                items.get(InventoryItemType.fish.ordinal()));
         scenes[SceneType.oResource.ordinal()] = oceanResource;
-        
-        //oceanResource.setResource(items.get(InventoryItemType.fish.ordinal()));
 
+        //oceanResource.setResource(items.get(InventoryItemType.fish.ordinal()));
         ResourceScene roughOcean = new ResourceScene(
                 "Careful now, we be in some rough waters.\n\n",
                 "###",
                 SceneType.oRough.ordinal(),
                 items.get(InventoryItemType.fish.ordinal()));
         scenes[SceneType.oRough.ordinal()] = roughOcean;
-        
+
         ResourceScene calmOcean = new ResourceScene(
                 "Here there be no comotion on the ocean. Calm waters be upon us.\n\n",
                 "~~~",

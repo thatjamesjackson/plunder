@@ -7,6 +7,7 @@ package byui.cit260.plunder.view;
 
 import java.util.Random;
 import byui.cit260.plunder.control.CombatControl;
+import byui.cit260.plunder.control.CrewControl;
 import byui.cit260.plunder.model.CombatScene;
 import byui.cit260.plunder.model.Ship;
 import exceptions.CombatControlException;
@@ -50,11 +51,11 @@ public class CombatView extends View {
         Random random = new Random();
 
         //players stats
-        double pAttack = player.getShipAttack() + (double) random.nextInt(100) / 10;
+        double pAttack = player.getShipAttack() + CrewControl.getCrewAttack() + (double) random.nextInt(100) / 10;
         double pArmor = player.getArmor();
         int pAccuracy = 50;
         int pEvasion = 50;
-        double repair = player.getShipRepair();
+        double repair = player.getShipRepair() + CrewControl.getCrewRepair();
 
         //enemy stats
         double eAttack = enemy.getShipAttack() + (double) random.nextInt(100) / 10;
