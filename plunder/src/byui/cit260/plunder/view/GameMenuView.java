@@ -202,7 +202,10 @@ public class GameMenuView extends View {
     }
 
     private void checkShip() {
-        this.console.println("Our ship looks yar");
+        Ship ship = Plunder.getCurrentGame().getPlayer().getShip();
+        this.console.println("Yer Ship");
+                this.console.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                this.console.println("Attack ")
     }
 
     private void doExplore(Actor actor) {
