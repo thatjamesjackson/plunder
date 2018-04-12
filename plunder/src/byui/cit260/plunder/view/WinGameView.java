@@ -36,7 +36,8 @@ public class WinGameView extends View {
  "            jgs '-._'-.|| |' `_.-'\n" +
  "                    '-.||_/.-'\n\n"
 + "================================================================\n"
-+ "       Are ya gonna take the treasure for yerself?");
++ "       Are ya gonna take the treasure for yerself?\n"
++ "          Or do ye want to share with yer crew?");
         //declare new
         String [] inputs = new String[1];
         
