@@ -208,13 +208,13 @@ public class GameMenuView extends View {
         Ship boat = Plunder.getCurrentGame().getPlayer().getShip();
         this.console.println("Yer Ship");
         this.console.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-        this.console.println("Our Ship be called " + boat.getName() + "\n");
+        this.console.println("Our Ship be called " + boat.getName() + " and she be yar\n");
         this.console.println("We can attack with  " + boat.getShipAttack() + " force\n");
         this.console.println("This here armor be " + boat.getArmor() + " strong\n");
-        this.console.println("Our crew can repair " + boat.getShipRepair() + " much yar\n");
-        this.console.println("This ship have health of " + boat.getShipHealth() + "out of" + boat.getShipMaxHealth() + "\n");
+        this.console.println("Our crew can repair " + boat.getShipRepair() + " damage\n");
+        this.console.println("This ship have health of " + boat.getShipHealth() + " out of " + boat.getShipMaxHealth() + "\n");
         try {
-            this.console.println("Our carry weight be " + boat.getCarryWeight() + " out of " + InventoryControl.calculateWeight(boat) +"\n");
+            this.console.println("Our carry weight be " + InventoryControl.calculateWeight(boat) + " out of " + boat.getCarryWeight() +" tonnes\n");
         } catch (InventoryControlException ex) {
             ErrorView.display(this.getClass().getName(), ex.getMessage());
         }
