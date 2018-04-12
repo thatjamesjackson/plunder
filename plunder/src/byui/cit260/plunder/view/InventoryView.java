@@ -41,12 +41,12 @@ public class InventoryView extends View {
 
         this.promptMessage
                 = "\n  Our ship be sitting at " + weight + " tonnes\n"
-                + "===============================================\n"
-                + "           What do ya want to do?\n"
-                + "              D - Drop Cargo\n"
-                + "              P - Print report \n"
-                + "              Q - Return to navigation\n"
-                + "===============================================\n"
+                + "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
+                + "  What do ya want to do?\n"
+                + "    D - Drop Cargo\n"
+                + "    P - Print report \n"
+                + "    Q - Return to navigation\n"
+                + "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
                 + "           Enter your selection below: ";
 
         String input1 = this.getInput(this.promptMessage);

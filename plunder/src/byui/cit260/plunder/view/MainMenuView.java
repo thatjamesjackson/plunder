@@ -30,7 +30,7 @@ public class MainMenuView extends View {
                 + "  H - Help\n"
                 + "  Q - Quit Program");
 
-        inputs[0] = this.getInput("Select a menu item");
+        inputs[0] = this.getInput("Select a menu item: ");
 
         return inputs;
     }

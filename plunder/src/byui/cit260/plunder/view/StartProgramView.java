@@ -61,10 +61,11 @@ public class StartProgramView extends View {
                     + "\t Enter a different name");
             return false;
         }
-
-        this.console.println("=============================================================\n"
+                              
+        this.console.println(
+                           "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
                          + "      Welcome " + inputs[0] + ", to the seas of Paradise\n"
-                         + "=============================================================\n");
+                         + "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 
         MainMenuView mainMenuView = new MainMenuView();
         mainMenuView.display();

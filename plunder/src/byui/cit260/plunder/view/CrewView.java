@@ -73,10 +73,10 @@ public class CrewView extends View {
         int inputInt;
         try {
             inputInt = (getInputCrewNumber(crew) - 1);
-            this.console.println("=================================================================\n"
+            this.console.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
                     + crew[inputInt].getName() + ":\n"
                     + crew[inputInt].getTalk()
-                    + "\n=================================================================\n");
+                    + "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
         } catch (CrewControlException ex) {
             ErrorView.display(this.getClass().getName(), ex.getMessage());
         }
@@ -129,7 +129,7 @@ public class CrewView extends View {
         String format = "%-3s %-20.20s %-10s %-10s %-10s %n";
         this.console.format(format, "#", "Name", "Job", "Attack", "Repair");
 
-        this.console.println("=====================================================");
+        this.console.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
         format = " %-3d %-20.20s %-10s %-10d %-10d %n";
         for (int i = 0; i < crew.length; i++) {
