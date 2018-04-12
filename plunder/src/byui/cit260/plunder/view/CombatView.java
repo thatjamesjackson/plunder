@@ -150,8 +150,10 @@ public class CombatView extends View {
             this.console.println("Ye looted " + gain + " gold off yonder ship");
             ArrayList<InventoryItem> inv = Plunder.getCurrentGame().getPlayer().getShip().getInventory();
             for (NPC curCrew : CrewControl.getCrew()) {
+                //looting for every crew member
                 int loot = random.nextInt(10);
-                int numLoot = random.nextInt((int) (enemy.getCarryWeight() / 50) + 1);
+                int numLoot = random.nextInt((int) (enemy.getCarryWeight() / 50)) + 1;
+                
                 if (loot == InventoryItemType.coconut.ordinal()) {
                     InventoryControl.addItem(numLoot, inv, "O");
                     this.console.println(curCrew.getName() + " looted " + numLoot + " coconuts");

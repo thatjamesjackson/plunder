@@ -61,8 +61,7 @@ public class GameControl {
         NPC[] npc = CrewControl.createNPC();
         game.setNPC(npc);
 
-        //Save the list of items in the game 
-        game.getPlayer().getShip().setInventory(inventory);
+        
         //map = create
         //Map(noOfRows, noOfColumns, items) 
         Map map = MapControl.createMap(5, 5, inventory);

@@ -85,7 +85,7 @@ public class ResourceView extends View {
         }
         try {
             this.console.println("Ye gathered " + gain + " units of " + resource.getInventoryType()
-                    + "\n Yer ship be sittin at " + InventoryControl.calculateWeight(ship) + "tonnes");
+                    + "\n Yer ship be sittin at " + InventoryControl.calculateWeight(ship) + "/" + ship.getCarryWeight() + " tonnes");
         } catch (InventoryControlException ex) {
             Logger.getLogger(ResourceView.class.getName()).log(Level.SEVERE, null, ex);
         }
