@@ -43,7 +43,8 @@ public class GameMenuView extends View {
                 + "  H - Help\n"
                 + "  V - Save\n"
                 + "  Q - Quit\n\n"
-                + "=============================================================");
+                + "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                   
 
         // retrieve input from user
         String input = this.getInput("Select a menu item");
@@ -149,7 +150,7 @@ public class GameMenuView extends View {
         Ship player = Plunder.getCurrentGame().getPlayer().getShip();
         if (player.getShipHealth() <= 0 || Plunder.getCurrentGame().isEndGame()) {
             this.console.println(
-                    "                     .ed\"\"\"\" \"\"\"$$$$be.\n"
+                      "                     .ed\"\"\"\" \"\"\"$$$$be.\n"
                     + "                   -\"           ^\"\"**$$$e.\n"
                     + "                 .\"                   '$$$c\n"
                     + "                /                      \"4$$b\n"

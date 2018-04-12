@@ -25,7 +25,7 @@ public class BuyShopView extends View {
 
         String format = "%-3s %-30.30s %-10s %n";
         this.console.format(format, "#", "Upgrade", "Cost");
-        this.console.println("=========================================");
+        this.console.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         //costs are based off current stat
        this.console.format(format, "1", "More Cannons", ship.getShipAttack() * 10);
         this.console.format(format, "2", "Reinforce Hull", ship.getArmor()* 50);

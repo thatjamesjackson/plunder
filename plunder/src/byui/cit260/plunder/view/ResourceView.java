@@ -31,8 +31,9 @@ public class ResourceView extends View {
         int playerX = (int) actor.getCoordinates().getX();
         int playerY = (int) actor.getCoordinates().getY();
         this.console.println(Plunder.getCurrentGame().getMap().getLocation()[playerY][playerX].getScene().getDescription());
-        this.console.println("  H - Attempt to harvest here\n"
-                + "  Q - Return to previous menu\n");
+        this.console.println(
+                  "    H - Attempt to harvest here\n"
+                + "    Q - Return to previous menu\n");
         //declare new
         String[] inputs = new String[1];
 

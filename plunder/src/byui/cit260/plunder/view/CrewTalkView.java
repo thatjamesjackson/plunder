@@ -31,7 +31,7 @@ public class CrewTalkView extends View {
         String format = "%-3s %-20.20s %-10s %-10s %-10s %n";
         this.console.format(format, "#", "Name", "Job", "Attack", "Repair");
 
-        this.console.println("=====================================================");
+        this.console.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
         format = " %-3d %-20.20s %-10s %-10d %-10d %n";
         for (int i = 0; i < crew.length; i++) {
@@ -52,10 +52,11 @@ public class CrewTalkView extends View {
      
 
         this.console.println(
-                  "\n=================================================================\n"
+                     
+                  "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
                 + crewMember.getName() + ":\n"
                 + crewMember.getTalk()
-                + "\n=================================================================\n");
+                + "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
         
         return true; 
     }

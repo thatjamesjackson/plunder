@@ -26,11 +26,12 @@ public class DropView extends View {
         //get inputs from user
         String[] inputs = new String[1];
         inputs[0] = this.getInput(
-                "================================ \n"
-                + "        Do ye want to:\n"
-                + "   A  - Drop all of an item\n"
-                + "   P  - Drop part of an item\n"
-                + "   Q  - Quit \n");
+                
+                  "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n"
+                + "  Do ye want to:\n"
+                + "    A  - Drop all of an item\n"
+                + "    P  - Drop part of an item\n"
+                + "    Q  - Quit \n");
         return inputs;
     }
 

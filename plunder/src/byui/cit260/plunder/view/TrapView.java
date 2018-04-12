@@ -16,13 +16,13 @@ public class TrapView extends View {
 
         // display menu
         this.console.println(
-                "     The majestic shrine of The Siren stands before you. \n "
-                + "           There be talk of treasure inside. \n"
-                + "=======================================================\n"
-                + "                Do ye want to:\n"
-                + "                E  -  Enter the shrine\n"
-                + "                S  -  Leave to ship\n"
-                + "                C  -  Check yer crew\n");
+              "\n\n  The majestic shrine of The Siren stands before you. \n "
+                + "  There be talk of treasure inside. \n"
+                + "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
+                + "  Do ye want to:\n"
+                + "    E  -  Enter the shrine\n"
+                + "    S  -  Leave to ship\n"
+                + "    C  -  Check yer crew\n");
         //declare new
         String[] inputs = new String[1];
 
@@ -41,8 +41,10 @@ public class TrapView extends View {
         
         switch (inputs[0]) {
                 case "E":
-                    this.console.println("You and yer crew enter the temple. Don't forget, \n"
-                            + "yer crew may know more than ye do about this here temple.\n\n");
+                    this.console.println(
+                          "\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
+                            + "  You and yer crew enter the temple. Don't forget, \n"
+                            + "  yer crew may know more than ye do about this here temple.\n\n");
                     
                     TrapView2 moveOn = new TrapView2();
                     moveOn.display();

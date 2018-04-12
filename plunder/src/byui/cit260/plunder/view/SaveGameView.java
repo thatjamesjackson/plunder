@@ -22,7 +22,8 @@ public class SaveGameView extends View {
         String[] inputs = new String[1];
 
         //instructions to save game
-        this.console.println("Where do you want to save the file? \n Input Q to quit to main menu");
+        this.console.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
+                + "Where do you want to save the file? \n (Input Q to quit to main menu)");
         
         //get input
         String input = this.getInput("Enter location: ");

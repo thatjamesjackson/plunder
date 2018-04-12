@@ -16,8 +16,9 @@ public class RoughOceanView extends View{
     public String[] getInputs() {
         
         // display menu
-        this.console.println("  H - Attempt to harvest here"
-                + "  E - Keep exploring");
+        this.console.println(
+                  "    H - Attempt to harvest here"
+                + "    E - Keep exploring");
         //declare new
         String [] inputs = new String[1];
         
