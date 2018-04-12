@@ -5,9 +5,12 @@
  */
 package byui.cit260.plunder.view;
 
+import byui.cit260.plunder.control.GameControl;
 import byui.cit260.plunder.control.InventoryControl;
+import byui.cit260.plunder.model.Game;
 import byui.cit260.plunder.model.InventoryItem;
 import byui.cit260.plunder.model.Ship;
+import exceptions.GameControlException;
 import exceptions.InventoryControlException;
 import java.util.ArrayList;
 import plunder.Plunder;
@@ -68,7 +71,8 @@ public class InventoryView extends View {
                 break;
                 
             case "P":
-                
+                PrintInventoryView printMe = new PrintInventoryView();
+                printMe.display();
                 break;
 
             case "Q":

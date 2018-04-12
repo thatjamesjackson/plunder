@@ -1,0 +1,10 @@
+
+ Inventory Report 
+
+Abr    Name            Amount     Weight     Value      Total Weight    Total Value     
+===================================================================================
+F      Fish            50         1          20         50              1000            
+J      Jewels          2          2          300        4               600             
+C      Cotton          5          1          50         5               250             
+O      Coconuts        10         1          10         10              100             
+S      Spices          3          1          100        3               300             
