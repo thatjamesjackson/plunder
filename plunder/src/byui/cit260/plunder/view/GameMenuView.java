@@ -147,8 +147,7 @@ public class GameMenuView extends View {
 
         }
         Ship player = Plunder.getCurrentGame().getPlayer().getShip();
-        if (player.getShipHealth() <= 0) {
-            this.console.println("Ye be joining the fishes");
+        if (player.getShipHealth() <= 0 || Plunder.getCurrentGame().isEndGame()) {
             this.console.println(
                     "                     .ed\"\"\"\" \"\"\"$$$$be.\n"
                     + "                   -\"           ^\"\"**$$$e.\n"
