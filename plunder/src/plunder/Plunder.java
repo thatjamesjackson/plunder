@@ -87,7 +87,6 @@ public class Plunder {
         playerOne.setBestTime(9999.99);
 
         Game gameOne = new Game();
-        gameOne.setTotalTime(1);
         gameOne.setMoney(100);
         gameOne.setPlayer(playerOne);
         gameOne.setProgress(2);
