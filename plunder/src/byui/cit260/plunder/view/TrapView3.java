@@ -17,8 +17,8 @@ public class TrapView3 extends View {
         // display menu
         this.console.println(
                     "           The long hallway forks two ways. \n"
-                    + "  To the right ye see a faint mysterious green glow. \n"
-                    + "         To the left ye see a warm orange glow.\n"
+                    + "  To the left ye see a faint mysterious green glow. \n"
+                    + "        To the right ye see a warm orange glow.\n"
                     + "======================================================\n"
                     + "               C  -  Check yer crew \n"
                     + "               L  -  Go left\n"

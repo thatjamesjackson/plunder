@@ -103,14 +103,14 @@ public static void travel(Actor actor, Map map, int y, int x) throws MapControlE
         RegularScene[] scenes = new RegularScene[SceneType.values().length];
 
         RegularScene islandRegular = new RegularScene(
-                "The warm welcoming sands stretch out before you. A few trees offer shade and coconuts.",
+                "The warm welcoming sands stretch out before you. A few trees offer shade and coconuts.\n\n",
                 "...",
                 SceneType.islandRegular.ordinal()
                 );
         scenes[SceneType.islandRegular.ordinal()] = islandRegular;
 
         ResourceScene islandResourceScene = new ResourceScene(
-                "While you are on the island, you see some useful items here.",
+                "While you are on the island, you see some useful items here.\n\n",
                 ".T.",
                 SceneType.islandResource.ordinal(),
                 items.get(InventoryItemType.coconut.ordinal()));
@@ -118,67 +118,67 @@ public static void travel(Actor actor, Map map, int y, int x) throws MapControlE
         
         CombatScene combatFBoat = new CombatScene(
                 CombatControl.enemyShipConstructor(ShipType.fishingBoat.ordinal()),
-                "A fishing vessel lies over yonder.",
+                "A fishing vessel lies over yonder.\n\n",
                 "~p~",
                 SceneType.fishingBoat.ordinal());
         scenes[SceneType.fishingBoat.ordinal()] = combatFBoat;
         
         CombatScene combatSBoat = new CombatScene(
                 CombatControl.enemyShipConstructor(ShipType.sailBoat.ordinal()),
-                "A sailing boat aproaches.",
+                "A sailing boat aproaches.\n\n",
                 "~p~",
                 SceneType.sailBoat.ordinal());
         scenes[SceneType.sailBoat.ordinal()] = combatSBoat;
         
         CombatScene combatClipper = new CombatScene(
                 CombatControl.enemyShipConstructor(ShipType.clipper.ordinal()),
-                "A clipper speeds across the water.",
+                "A clipper speeds across the water.\n\n",
                 "~p~",
                 SceneType.clipper.ordinal());
         scenes[SceneType.clipper.ordinal()] = combatClipper;
 
         CombatScene combatFrigate = new CombatScene(
                 CombatControl.enemyShipConstructor(ShipType.frigate.ordinal()),
-                "A frigate aproaches and fires a warning shot.",
+                "A frigate aproaches and fires a warning shot.\n\n",
                 "~p~",
                 SceneType.frigate.ordinal());
         scenes[SceneType.frigate.ordinal()] = combatFrigate;
 
         CombatScene combatGunBoat = new CombatScene(
                 CombatControl.enemyShipConstructor(ShipType.gunBoat.ordinal()),
-                "A gunboat sets course for you.",
+                "A gunboat sets course for you.\n\n",
                 "~p~",
                 SceneType.gunBoat.ordinal());
         scenes[SceneType.gunBoat.ordinal()] = combatGunBoat;
 
         CombatScene combatManOfWar = new CombatScene(
                 CombatControl.enemyShipConstructor(ShipType.manOfWar.ordinal()),
-                "A Man of War has ye in it's sights, prepare for a tough fight.",
+                "A Man of War has ye in it's sights, prepare for a tough fight.\n\n",
                 "~p~",
                 SceneType.manOfWar.ordinal());
         scenes[SceneType.manOfWar.ordinal()] = combatManOfWar;
         
         CombatScene combatSeaMonster = new CombatScene(
                 CombatControl.enemyShipConstructor(ShipType.seaMonster.ordinal()),
-                "From the depths you see a terrifying sea monster rise and open its jaws.",
+                "From the depths you see a terrifying sea monster rise and open its jaws.\n\n",
                 "~S~",
                 SceneType.seaMonster.ordinal());
         scenes[SceneType.seaMonster.ordinal()] = combatSeaMonster;
 
         RegularScene shopIsland = new RegularScene(
-                "A welcoming merchant offers ye up a trade.",
+                "A welcoming merchant offers ye up a trade.\n\n",
                 ".@.",
                 SceneType.shopIsland.ordinal());
         scenes[SceneType.shopIsland.ordinal()] = shopIsland;
 
         DecisionScene treasure = new DecisionScene(
-                "Glittering gold, sparkling jewels, and heavy too. For a pirate, this be the most beautiful sight in the world.",
+                "Ye land on shore, what be this?\n\n",
                 "<x>",
                 SceneType.treasure.ordinal());
         scenes[SceneType.treasure.ordinal()] = treasure;
 
         ResourceScene oceanResource = new ResourceScene(
-                "There be many fish in these waters.",
+                "There be many fish in these waters.\n\n",
                 "<#<",
                 SceneType.oResource.ordinal(),
                items.get(InventoryItemType.fish.ordinal()));
@@ -187,14 +187,14 @@ public static void travel(Actor actor, Map map, int y, int x) throws MapControlE
         //oceanResource.setResource(items.get(InventoryItemType.fish.ordinal()));
 
         ResourceScene roughOcean = new ResourceScene(
-                "Careful now, we be in some rough waters.",
+                "Careful now, we be in some rough waters.\n\n",
                 "###",
                 SceneType.oRough.ordinal(),
                 items.get(InventoryItemType.fish.ordinal()));
         scenes[SceneType.oRough.ordinal()] = roughOcean;
         
         ResourceScene calmOcean = new ResourceScene(
-                "Here there be no comotion on the ocean. Calm waters be upon us.",
+                "Here there be no comotion on the ocean. Calm waters be upon us.\n\n",
                 "~~~",
                 SceneType.oCalm.ordinal(),
                 items.get(InventoryItemType.fish.ordinal()));
