@@ -93,6 +93,13 @@ public class InventoryControl {
             }
         }
     }
+    public static void addItem(int amount,  ArrayList<InventoryItem> inventoryItems, String typeAbr){
+        for (InventoryItem i : inventoryItems) {
+            if (i.getTypeAbr().equals(typeAbr)) {
+                i.setQuantityInStock(i.getQuantityInStock() + amount);
+            }
+        }
+    }
 
     // equation 1 for sorting inventory
     public static ArrayList<InventoryItem> sortInventory(ArrayList<InventoryItem> inventoryItems) {

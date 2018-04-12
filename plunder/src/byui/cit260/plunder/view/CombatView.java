@@ -8,9 +8,14 @@ package byui.cit260.plunder.view;
 import java.util.Random;
 import byui.cit260.plunder.control.CombatControl;
 import byui.cit260.plunder.control.CrewControl;
+import byui.cit260.plunder.control.InventoryControl;
 import byui.cit260.plunder.model.CombatScene;
+import byui.cit260.plunder.model.InventoryItem;
+import byui.cit260.plunder.model.InventoryItemType;
+import byui.cit260.plunder.model.NPC;
 import byui.cit260.plunder.model.Ship;
 import exceptions.CombatControlException;
+import java.util.ArrayList;
 import plunder.Plunder;
 
 /**
@@ -137,7 +142,35 @@ public class CombatView extends View {
         if (enemy.getShipHealth() <= 0) {
             //enemy sank
             this.console.println("Yer opponent sank!\n");
+            //respawn opponent for next game
             enemy.setShipHealth(enemy.getShipMaxHealth());
+            
+            Double gain = enemy.getCarryWeight() + (double) random.nextInt((int) (enemy.getCarryWeight() / 5));
+            Plunder.getCurrentGame().setMoney(Plunder.getCurrentGame().getMoney() + gain);
+            this.console.println("Ye looted " + gain + " gold off yonder ship");
+            ArrayList<InventoryItem> inv = Plunder.getCurrentGame().getInventory();
+            for (NPC curCrew : CrewControl.getCrew()) {
+                int loot = random.nextInt(10);
+                int numLoot = random.nextInt((int) (enemy.getCarryWeight() / 50));
+                if (loot == InventoryItemType.coconut.ordinal()) {
+                    InventoryControl.addItem(numLoot, inv, "O");
+                    this.console.println(curCrew.getName() + " looted " + numLoot + " coconuts");
+                } else if (loot == InventoryItemType.cotton.ordinal()) {
+                    InventoryControl.addItem(numLoot, inv, "C");
+                                        this.console.println(curCrew.getName() + " looted " + numLoot + " crates of cotton");
+                } else if (loot == InventoryItemType.fish.ordinal()) {
+                    InventoryControl.addItem(numLoot, inv, "F");
+                    this.console.println(curCrew.getName() + " looted " + numLoot + " barrels of fish");
+                } else if (loot == InventoryItemType.jewels.ordinal()) {
+                    InventoryControl.addItem(numLoot, inv, "J");
+                    this.console.println(curCrew.getName() + " looted " + numLoot + " jewels");
+                } else if (loot == InventoryItemType.spices.ordinal()) {
+                    InventoryControl.addItem(numLoot, inv, "S");
+                    this.console.println(curCrew.getName() + " looted " + numLoot + " bags of spices");
+                } else {
+                    this.console.println(curCrew.getName() + " could not find anything worhwile to loot");
+                }
+            }
             return true;
         } else if (player.getShipHealth() <= 0 && flee) {
             this.console.println("Yeh sank while turning tail!\n");

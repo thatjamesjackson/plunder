@@ -211,12 +211,11 @@ public class GameMenuView extends View {
         //switch statement is incompatible with ordinal so multiple if statments required
 
         if (type == SceneType.islandRegular.ordinal()) {
-
+            RegularSceneView view = new RegularSceneView();
+            view.display();
         }
 
-        if (type == SceneType.islandResource.ordinal()) {
-
-        }
+       
         if (type == SceneType.fishingBoat.ordinal()
                 || type == SceneType.seaMonster.ordinal()
                 || type == SceneType.sailBoat.ordinal()
@@ -239,16 +238,13 @@ public class GameMenuView extends View {
             trap.display();
         }
 
-        if (type == SceneType.oRough.ordinal()) {
 
-        }
+        
 
-        if (type == SceneType.oCalm.ordinal()) {
-            CalmOceanView calm = new CalmOceanView();
-            calm.display();
-        }
-
-        if (type == SceneType.oResource.ordinal()) {
+        if (type == SceneType.oResource.ordinal() 
+                || type == SceneType.islandResource.ordinal()
+                || type == SceneType.oRough.ordinal()
+                ||type == SceneType.oCalm.ordinal()) {
             ResourceView resource = new ResourceView();
             resource.display();
         }

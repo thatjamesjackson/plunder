@@ -22,7 +22,7 @@ public class CombatControl {
         if (danger == ShipType.fishingBoat.ordinal()) {
             enemy.setName("Fishing Boat");
             enemy.setShipAttack(10);
-            enemy.setCarryWeight(500);
+            enemy.setCarryWeight(100);
             enemy.setArmor(5);
             enemy.setShipRepair(1);
             enemy.setShipHealth(50);
@@ -31,7 +31,7 @@ public class CombatControl {
         if (danger == ShipType.sailBoat.ordinal()) {
             enemy.setName("Sail Boat");
             enemy.setShipAttack(20);
-            enemy.setCarryWeight(500);
+            enemy.setCarryWeight(200);
             enemy.setArmor(10);
             enemy.setShipRepair(5);
             enemy.setShipHealth(100);
@@ -40,7 +40,7 @@ public class CombatControl {
         if (danger == ShipType.clipper.ordinal()) {
             enemy.setName("Clipper");
             enemy.setShipAttack(45);
-            enemy.setCarryWeight(500);
+            enemy.setCarryWeight(300);
             enemy.setArmor(20);
             enemy.setShipRepair(15);
             enemy.setShipHealth(200);
@@ -58,7 +58,7 @@ public class CombatControl {
         if (danger == ShipType.frigate.ordinal()) {
             enemy.setName("Frigate");
             enemy.setShipAttack(100);
-            enemy.setCarryWeight(500);
+            enemy.setCarryWeight(700);
             enemy.setArmor(45);
             enemy.setShipRepair(30);
             enemy.setShipHealth(400);
@@ -67,7 +67,7 @@ public class CombatControl {
         if (danger == ShipType.galleon.ordinal()) {
             enemy.setName("Galleon");
             enemy.setShipAttack(120);
-            enemy.setCarryWeight(500);
+            enemy.setCarryWeight(1000);
             enemy.setArmor(50);
             enemy.setShipRepair(50);
             enemy.setShipHealth(600);
@@ -76,7 +76,7 @@ public class CombatControl {
         if (danger == ShipType.manOfWar.ordinal()) {
             enemy.setName("Man of War");
             enemy.setShipAttack(160);
-            enemy.setCarryWeight(500);
+            enemy.setCarryWeight(1500);
             enemy.setArmor(60);
             enemy.setShipRepair(70);
             enemy.setShipHealth(800);
