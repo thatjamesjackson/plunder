@@ -22,7 +22,9 @@ public class CrewControl {
 
         NPC[] crew = getCrew();
         for (NPC curCrew : crew) {
-            attack += curCrew.getCrewAttack();
+            if (curCrew.getJob().equals("Gunner")) {
+                attack += curCrew.getCrewAttack();
+            }
         }
 
         return attack;
@@ -32,7 +34,9 @@ public class CrewControl {
         double repair = 0;
         NPC[] crew = getCrew();
         for (NPC curCrew : crew) {
-            repair += curCrew.getCrewAttack();
+            if (curCrew.getJob().equals("Deckhand")) {
+                repair += curCrew.getCrewAttack();
+            }
         }
 
         return repair;
