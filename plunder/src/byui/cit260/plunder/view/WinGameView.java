@@ -62,7 +62,8 @@ public class WinGameView extends View {
                           "Ye take the treasure and run to the other end of the island\n"
                         + "         but yer crew be followin right behind ye.\n"
                         + "They aren't happy. The crew decides to maroon you here on this island.\n"
-                        + "           Yer crew took all the treasure too.\n");
+                        + "           Yer crew took all the treasure too.\n"
+                        + "       There's no food on this here island. Ye starve.");
                 Plunder.getCurrentGame().setEndGame(true);
 
             case "S":
@@ -71,8 +72,6 @@ public class WinGameView extends View {
                         + "Ye be heavy laden with jewels. Sinching up yer belt to keep\n"
                         + "           the weight of ye booty secure.\n");
                 addBooty();
-                GameMenuView back = new GameMenuView();
-                back.display();
                 
 
             default:
